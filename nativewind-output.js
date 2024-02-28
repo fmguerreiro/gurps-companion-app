@@ -796,9 +796,383 @@ _NativeWindStyleSheet.create({
       "shadowRadius": 6,
       "shadowColor": "rgba(0, 0, 0, 0.1)",
       "shadowOpacity": 1
+    },
+    "shadow@69": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@70": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@71": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@72": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@73": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@74": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@75": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@76": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@77": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@78": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@79": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@80": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@81": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@82": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@83": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@84": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@85": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@86": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@87": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@88": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@89": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@90": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@91": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@92": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@93": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@94": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@95": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@96": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@97": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@98": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@99": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@100": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@101": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@102": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@103": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@104": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@105": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@106": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@107": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@108": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@109": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@110": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@111": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@112": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@113": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@114": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@115": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@116": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@117": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@118": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@119": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
     }
   },
   atRules: {
-    "shadow": [[["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]]]
+    "shadow": [[["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]]]
   }
 });
