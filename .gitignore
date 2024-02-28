@@ -12,6 +12,7 @@ pom.xml
 .idea/
 *.iml
 app
+result
 .cpcache
 /web-build
 .calva/output-window/

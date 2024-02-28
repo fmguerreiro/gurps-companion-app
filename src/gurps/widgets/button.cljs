@@ -1,6 +1,5 @@
-(ns example.widgets
+(ns gurps.widgets.button
   (:require ["react-native" :as rn]))
-
 
 (defn button [{:keys [style text-style on-press
                        disabled? disabled-style disabled-text-style]

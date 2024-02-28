@@ -1,7 +1,7 @@
-(ns example.events
+(ns gurps.events
   (:require
    [re-frame.core :as rf]
-   [example.db :as db :refer [app-db]]))
+   [gurps.db :as db :refer [app-db]]))
 
 
 (rf/reg-event-db

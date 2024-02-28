@@ -54,14 +54,14 @@ Of course you should try to fire up the app on all simulators, emulators and pho
 
 Open Emacs and a bash shell:
 
-1. Run `npx shadow-cljs compile :app` to perform an initial build of the app.
+1. Run `npx shadow-cljs compile :app` to perform an initial build of the app.mobile
 1. In Emacs open one of the files in the project (`deps.edn` is fine)
 1. From that buffer, do `cider-jack-in-clojurescript` [C-c M-J] to
    launch a REPL. Follow the series of interactive prompts in the
    minibuffer:
    1. select `shadow-cljs` as the command to launch
    1. select `shadow` as the repl type
-   1. select `:app` as the build to connect
+   1. select `:app` as the build to connectmobile
    1. and optionally answer `y` or `n` to the final question about
       opening the `shadow-cljs` UI in a browser.
    At this point `shadow-cljs` will be watching the project folder and
@@ -123,7 +123,7 @@ Note that you can also run the following instead of `npm start` to run the app i
 Once the app is deployed and opened in phone/simulator/emulator/browser, connect to nrepl and run the following:
 
 ```clojure
-(shadow/nrepl-select :app)
+(shadow/nrepl-select :mobile)
 ```
 
 NB: _Calva users don't need to do ^ this ^._
@@ -139,7 +139,7 @@ To test the REPL connection:
 Shadow can start a CLJS repl for you, if you prefer to stay at the terminal prompt:
 
 ```bash
-$ npx shadow-cljs cljs-repl :app
+$ npx shadow-cljs cljs-repl :mobile
 ```
 
 ## Disabling Expo Fast Refresh
