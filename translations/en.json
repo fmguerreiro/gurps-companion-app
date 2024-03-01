@@ -1,5 +1,13 @@
 {
   "header": "GURPS companion - 4th edition",
   "stats": "Stats",
-  "items": "Items"
+  "items": "Items",
+  "stat-strength": "ST",
+  "stat-dexterity": "DX",
+  "stat-intelligence": "IQ",
+  "stat-health": "HT",
+  "stat-hitpoints": "HP",
+  "stat-will": "Will",
+  "stat-perception": "Per",
+  "stat-fatiguepoints": "FP"
 }

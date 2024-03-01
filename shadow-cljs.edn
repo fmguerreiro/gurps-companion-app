@@ -18,5 +18,7 @@
                          :init-fn          gurps.app/init
                          :output-dir       "app"
                          :compiler-options {:infer-externs :auto}
-                         :devtools         {:autoload true
-                                            :preloads [shadow.expo.keep-awake]}}}}
+                         :devtools         {:autoload true}}
+                :stories {:target :npm-module
+                          :ns-regexp "-stories$"
+                          :output-to "app/stories.js"}}}

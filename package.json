@@ -2,7 +2,9 @@
   "scripts": {
     "server": "npx shadow-cljs server",
     "expo": "npx expo start",
-    "storybook": "STORYBOOK_ENABLED='true' expo start",
+    "storybook:build": "npx storybook build -c app",
+    "storybook:generate": "sb-rn-get-stories",
+    "storybook:ios": "STORYBOOK_ENABLED='true' expo ios",
     "watch:css": "npx tailwindcss -i src/css/tailwind.css --postcss postcss.config.js --watch",
     "android": "npx expo start --android",
     "ios": "npx expo start --ios",
@@ -11,8 +13,7 @@
     "release": "npx shadow-cljs release mobile",
     "eject": "npx expo eject",
     "eas-build-pre-install": "bash eas-build-pre-install.sh",
-    "eas-build-post-install": "npx shadow-cljs release mobile",
-    "storybook-generate": "sb-rn-get-stories"
+    "eas-build-post-install": "npx shadow-cljs release mobile"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.5.14",
@@ -20,8 +21,7 @@
     "@react-navigation/native-stack": "^6.9.12",
     "create-react-class": "^15.7.0",
     "expo": "^48.0.19",
-    "expo-cli": "^6.3.8",
-    "expo-keep-awake": "~12.0.1",
+    "expo-constants": "~14.2.1",
     "expo-status-bar": "^1.4.4",
     "i18n-js": "^3.3.0",
     "react": "^18.2.0",
@@ -45,12 +45,14 @@
     "babel-loader": "^8.3.0",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
+    "expo-cli": "^6.3.8",
     "nativewind": "^2.0.11",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.35",
     "postcss-cli": "^11.0.0",
     "postcss-import": "^16.0.1",
-    "shadow-cljs": "^2.23.3"
+    "shadow-cljs": "^2.23.3",
+    "storybook": "^7.6.17"
   },
   "private": true
 }

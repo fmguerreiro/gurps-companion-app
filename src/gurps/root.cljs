@@ -27,4 +27,5 @@
                       :options {:title (i18n/label :t/stats)}}]
       [:> Tab.Screen {:name (i18n/label :t/items)
                       :component (fn [props] (r/as-element [character-items-page props]))
-                      :options {:title (i18n/label :t/items)}}]]]))
+                      :options {:title (i18n/label :t/items)}}]
+      ]]))

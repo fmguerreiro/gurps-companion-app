@@ -8,14 +8,30 @@
    [gurps.root :refer [root]]
    [expo.root :as expo-root]
    [re-frame.core :as rf]
-   [reagent.core :as r]))
+   [reagent.core :as r]
+   ["expo-constants" :default expo-contants]))
+
+(def storybook-enabled? (-> expo-contants
+                            .-expoConfig
+                            .-extra
+                            .-storybookEnabled))
+
+(def real-root (if (= storybook-enabled? "true")
+                 nil
+                 ;; TODO instead of 'nil, we should load the storybook root
+                 ;; (do (require '["./.storybook"] :refer [default] :rename {default storybook})
+                 ;;      storybook)
+                 root))
 
 (defn start
   {:dev/after-load true}
   []
   (i18n/set-language "en")
   (i18n-resources/load-language "en")
-  (expo-root/render-root (r/as-element [root])))
+  (expo-root/render-root
+   (r/as-element [real-root
+                  {:x (js/Date.now)} ;; TODO: probably want to remove this when not developing
+                  ])))
 
 (defn init []
   (rf/dispatch-sync [:initialize-db])
