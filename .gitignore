@@ -17,6 +17,7 @@ result
 /web-build
 .calva/output-window/
 .DS_Store
+dist-newstyle/
 
 .lsp/.cache
 .clj-kondo/.cache

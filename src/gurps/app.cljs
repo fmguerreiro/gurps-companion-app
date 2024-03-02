@@ -29,9 +29,7 @@
   (i18n/set-language "en")
   (i18n-resources/load-language "en")
   (expo-root/render-root
-   (r/as-element [real-root
-                  {:x (js/Date.now)} ;; TODO: probably want to remove this when not developing
-                  ])))
+   (r/as-element [real-root])))
 
 (defn init []
   (rf/dispatch-sync [:initialize-db])

@@ -1,5 +1,6 @@
 {
   "header": "GURPS companion - 4th edition",
+  "current": "Current",
   "stats": "Stats",
   "items": "Items",
   "stat-strength": "ST",
@@ -9,5 +10,14 @@
   "stat-hitpoints": "HP",
   "stat-will": "Will",
   "stat-perception": "Per",
-  "stat-fatiguepoints": "FP"
+  "stat-fatigue": "FP",
+  "name": "Name",
+  "player": "Player",
+  "point-total": "Pt Total",
+  "ht": "Ht",
+  "wt": "Wt",
+  "size-modifier": "Size Modifier",
+  "age": "Age",
+  "unspent-points": "Unspent Pts",
+  "appearance": "Appearance"
 }
