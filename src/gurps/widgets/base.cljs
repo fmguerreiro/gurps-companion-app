@@ -2,6 +2,6 @@
   (:require ["nativewind" :as nw]
             ["react-native" :as rn]))
 
-(def styled-view (nw/styled rn/View))
-(def styled-text (nw/styled rn/Text))
-(def styled-input (nw/styled rn/TextInput))
+(def view (nw/styled rn/View))
+(def text (nw/styled rn/Text))
+(def input (nw/styled rn/TextInput))

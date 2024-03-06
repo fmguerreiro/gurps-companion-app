@@ -1,8 +1,8 @@
 (ns gurps.events
   (:require
+   [gurps.events.profile]
    [re-frame.core :as rf]
    [gurps.db :as db :refer [app-db]]))
-
 
 (rf/reg-event-db
  :initialize-db
