@@ -1,2 +1,2 @@
 import "./nativewind-output.js";
-import './app/index.js';
+import "./app/index.js";

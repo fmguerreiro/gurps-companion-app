@@ -4,6 +4,7 @@
    [gurps.setup.i18n-resources :as i18n-resources]
    [gurps.events]
    [gurps.subs]
+   [gurps.effects]
    [gurps.utils.i18n :as i18n]
    [gurps.root :refer [root]]
    [expo.root :as expo-root]
@@ -33,4 +34,5 @@
 
 (defn init []
   (rf/dispatch-sync [:initialize-db])
+  (rf/dispatch [:initialize-storage])
   (start))

@@ -6,6 +6,11 @@
  (fn [db _]
    (:counter db)))
 
+(re-frame.core/reg-sub
+ :initialized?
+ (fn  [db _]
+   (not (empty? db))))
+
 (rf/reg-sub
  :counter-tappable?
  (fn [db _]
