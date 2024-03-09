@@ -2,8 +2,7 @@
   ;; (:require-macros
   ;;  [gurps.events.profile :as macro])
   (:require
-   [re-frame.core :as rf]
-   [gurps.db :as db :refer [app-db]]))
+   [re-frame.core :as rf]))
 
 (rf/reg-event-db
  :profile/update

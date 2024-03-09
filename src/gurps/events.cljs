@@ -14,7 +14,17 @@
  :initialize-storage
  (fn [{:keys [db]} [_]]
    {:db db
-    :effects.async-storage/get {:keys [:profile/name :profile/player] ;; TODO: add more keys
+    :effects.async-storage/get {:keys [:profile/name
+                                       :profile/player
+                                       :t/attr-strength
+                                       :t/attr-dexterity
+                                       :t/attr-intelligence
+                                       :t/attr-health
+                                       :t/attr-hitpoints
+                                       :t/attr-will
+                                       :t/attr-perception
+                                       :t/attr-fatigue
+                                       ] ;; TODO: add more keys/re-write this to be less verbose
                                 :cb #(rf/dispatch [:initialize-storage/set %])}}))
 
 (rf/reg-event-db

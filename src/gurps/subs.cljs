@@ -9,7 +9,7 @@
 (re-frame.core/reg-sub
  :initialized?
  (fn  [db _]
-   (not (empty? db))))
+   (seq db)))
 
 (rf/reg-sub
  :counter-tappable?
