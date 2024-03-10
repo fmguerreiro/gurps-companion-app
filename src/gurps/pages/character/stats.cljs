@@ -5,6 +5,7 @@
    [gurps.widgets.base :refer [text view]]
    [gurps.pages.character.widgets.attributes :refer [attributes]]
    [gurps.pages.character.widgets.summary :refer [summary]]
+   [gurps.pages.character.widgets.basics :refer [basics]]
    ["expo-status-bar" :refer [StatusBar]]
    [re-frame.core :as rf]
    ["react-native" :as rn]
@@ -25,6 +26,8 @@
        [summary]]
 
       [attributes]
+
+      [basics]
 
       [:> view {:className "items-center gap-y-4"}
        [:> text {:className "text-4xl color-blue-500 font-bold"} @counter]

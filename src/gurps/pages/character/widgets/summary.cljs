@@ -18,10 +18,10 @@
     [:> view {:className "flex flex-row gap-2 justify-items-start flex-grow"}
      [:> text {:className "font-bold"} (i18n/label (keyword "t" key))]
      [:> input {:className (str "flex-grow border-b-2")
-                :defaultValue @value
                 :onChangeText (debounce/debounce #(on-change-text fqn key %) 500)
                 ;; :onChangeText #(debounce/debounce-and-dispatch [:profile/update key %] 1000)}]]))
-                }]]))
+                }
+      @value]]))
 
 (defn- input-group
   [children]

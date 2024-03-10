@@ -7,24 +7,27 @@
             [re-frame.core :as rf]))
 
 (defn- on-change-text
-  [label cost]
-  (let [callback #(rf/dispatch [:attrs/update label cost])]
-    (async-storage/set-item! label cost callback)))
+  [label value]
+  (let [callback #(rf/dispatch [:attrs/update label value])]
+    (async-storage/set-item! label value callback)))
 
-(def cost-per-lvl
+;; TODO: apply modifier functions
+(def value-per-lvl
   {;; primary
-   :t/attr-strength     10
-   :t/attr-dexterity    20
-   :t/attr-intelligence 20
-   :t/attr-health       10
+   :t/attr-strength     {:incr 10 :modifier (fn [size]
+                                              (js/Math.max -0.8 (* -0.1 size)))}
+   :t/attr-dexterity    {:incr 20}
+   :t/attr-intelligence {:incr 20}
+   :t/attr-health       {:incr 10}
    ;; secondary
-   :t/attr-hitpoints    2
-   :t/attr-will         5
-   :t/attr-perception   5
-   :t/attr-fatigue      3})
+   :t/attr-hitpoints    {:incr 2}
+   :t/attr-will         {:incr 5}
+   :t/attr-perception   {:incr 5}
+   :t/attr-fatigue      {:incr 3}})
 
-(defn- calc-value [cost label]
-  (js/Math.floor (+ 10 (/ cost (label cost-per-lvl)))))
+(defn- calc-cost [label value]
+  (let [incr (:incr (label value-per-lvl))]
+    (* incr (- (if (nil? value) 10 value) 10))))
 
 (defn- box
   [children]
@@ -38,13 +41,16 @@
 (defn attribute
   [^js {:keys [label current add-current-space?]
         :or   {add-current-space? true}}]
-  (r/with-let [cost (rf/subscribe [label])]
-    [:> view {:className "flex flex-row gap-0 bg-gray-200"}
+  (r/with-let [value (rf/subscribe [label])]
+    [:> view {:className "flex flex-row gap-0"}
      (box
       [:> text {:className "text-2xl font-bold"} (i18n/label label)])
 
      (box-border
-      [:> text {:className "text-2xl"} (calc-value @cost label)])
+      [:> input {:className "text-2xl bg-slate-100"
+                 :maxLength 3
+                 :keyboardType "numeric"
+                 :onChangeText (debounce/debounce #(on-change-text label %) 500)} @value])
 
      (if (not (nil? current))
        [:> view
@@ -56,15 +62,10 @@
 
      (box [:> view {:className "flex flex-row bg-blue-500"}
            [:> text {:className "text-2xl font-bold"} "["]
-           [:> input {:className "text-2xl bg-red-500 leading-6" ;; TODO: align this crap
-                      :maxLength 2
-                      :onChangeText (debounce/debounce #(on-change-text label %) 500)}
-            @cost]
+           [:> text {:className "text-2xl font-bold"} (calc-cost label @value)]
+
+           ; [:> input {:className "bg-green-500 leading-6" ;; TODO: align this crap
+           ;            :maxLength 3
+           ;            :onChangeText (debounce/debounce #(on-change-text label %) 500)}
+           ;  @value]
            [:> text {:className "text-2xl font-bold"} "]"]])]))
-
-;; TODO: apply these somewhere
-(defn- basic-speed [ht dx]
-  (/ (+ ht dx) 4))
-
-(defn- basic-move [speed]
-  (js/Math.floor speed))

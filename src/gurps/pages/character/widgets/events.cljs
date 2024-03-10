@@ -13,7 +13,6 @@
   (rf/reg-sub
    (keyword (str "t/attr-" attr))
    (fn [db _]
-     (js/console.log (str "t/attr-" attr))
      ((keyword "t" (str "attr-" attr)) db 0))))
 
 (rf/reg-event-db
