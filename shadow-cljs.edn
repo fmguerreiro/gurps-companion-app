@@ -20,7 +20,12 @@
                          :init-fn          gurps.app/init
                          :output-dir       "app"
                          :compiler-options {:infer-externs :auto}
-                         :devtools         {:autoload true}}
+                         :devtools         {:autoload true
+                                            :autobuild #shadow/env ["SHADOW_AUTOBUILD_ENABLED" :default true :as :bool]
+                                            :before-load-async gurps.setup.hot-reload/before-reload
+                                            ;; TODO: doesnt exist?
+                                            ;; :after-load-async gurps.setup.hot-reload/after-reload
+                                            }}
                 :stories {:target :npm-module
                           :ns-regexp "-stories$"
                           :output-to "app/stories.js"}}}
