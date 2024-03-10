@@ -6,8 +6,12 @@
 (defn basic
   [^js {:keys [label value upgradable?]
         :or {upgradable? false}}]
-  [:> view {:className "flex flex-row flex-grow align-items-center"}
+  [:> view {:className "flex flex-row flex-grow align-items-center gap-1 ml-0 mt-0"} ;; NOTE: ml-0 mt-0 counters the effects of gap-1
    [:> text {:className "text-xl text-bold"} label]
-   [:> text {:className "underline"} value]
+   [:> text {:className "text-xl underline"} value]
    (when upgradable?
-     [:> input {:className "bg-slate-200"} "[  ]"])])
+     [:> view {:className "flex flex-row items-center justify-items-center align-items-center"}
+      [:> text "["]
+      [:> input {:keyboardType "numeric"
+                 :className "bg-slate-200"} 0] ;; TODO cost
+      [:> text "]"]])])

@@ -38,6 +38,6 @@
       [basic {:label (i18n/label :t/damage-thrust) :value thrust}]
       [basic {:label (i18n/label :t/damage-swing) :value swing}]]
 
-     [:> view {:className "flex flex-row gap-2 items-stretch"}
+     [:> view {:className "flex flex-row gap-2"}
       [basic {:label (i18n/label :t/basic-speed) :value speed :upgradable? true}]
       [basic {:label (i18n/label :t/basic-move)  :value move  :upgradable? true}]]]))

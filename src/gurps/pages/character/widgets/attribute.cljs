@@ -7,8 +7,6 @@
             [reagent.core :as r]
             [re-frame.core :as rf]))
 
-(default-to 0 0)
-
 (defn- on-change-text
   [label value]
   (let [callback #(rf/dispatch [:attrs/update label (js/parseInt value)])]

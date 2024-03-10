@@ -20,9 +20,9 @@
   "age": "Age",
   "unspent-points": "Unspent Pts",
   "appearance": "Appearance",
-  "basic-lift": "BASIC LIFT",
-  "basic-speed": "BASIC SPEED",
-  "basic-move": "BASIC MOVE",
+  "basic-lift": "BASE LIFT",
+  "basic-speed": "BASE SPEED",
+  "basic-move": "BASE MOVE",
   "damage-thrust": "DAMAGE Thr",
   "damage-swing": "Sw"
 }

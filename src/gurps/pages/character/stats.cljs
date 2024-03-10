@@ -25,10 +25,13 @@
       [:> view {:className "w-full px-4"}
        [summary]]
 
-      [attributes]
+      [:> view {:className "my-0"}
+       [attributes]]
 
-      [basics]
+      [:> view {:className "my-0"}
+       [basics]]
 
+      ;; TODO: remove this
       [:> view {:className "items-center gap-y-4"}
        [:> text {:className "text-4xl color-blue-500 font-bold"} @counter]
        [button {:on-press #(rf/dispatch [:inc-counter]) :disabled? (not @tap-enabled?) :style {:background-color :red}} "Tap me, I'll count"]]
