@@ -10,7 +10,11 @@
    [expo.root :as expo-root]
    [re-frame.core :as rf]
    [reagent.core :as r]
+   ["expo-splash-screen" :as splash-screen]
    ["expo-constants" :default expo-contants]))
+
+;; Keep the splash screen visible while we fetch resources
+(splash-screen/preventAutoHideAsync)
 
 (def storybook-enabled? (-> expo-contants
                             .-expoConfig
@@ -33,6 +37,7 @@
    (r/as-element [real-root])))
 
 (defn init []
-  (rf/dispatch-sync [:initialize-db])
+  (rf/dispatch [:initialize-db])
   (rf/dispatch [:initialize-storage])
+  (splash-screen/hideAsync) ;; TODO: This should be done after the resources are loaded
   (start))
