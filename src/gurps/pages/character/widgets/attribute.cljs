@@ -2,8 +2,7 @@
   (:require [gurps.utils.i18n :as i18n]
             [gurps.utils.debounce :as debounce]
             [gurps.utils.helpers :refer [default-to]]
-            [gurps.widgets.base :refer [view text input]]
-            [reagent.core :as r]))
+            [gurps.widgets.base :refer [view text input]]))
 
 ;; TODO: apply modifier functions
 (def value-per-lvl
