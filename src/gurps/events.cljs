@@ -17,19 +17,25 @@
     :effects.async-storage/get {:keys [:profile/name
                                        :profile/player
                                        :t/attr-strength
+                                       :t/attr-strength-cost
                                        :t/attr-dexterity
+                                       :t/attr-dexterity-cost
                                        :t/attr-intelligence
+                                       :t/attr-intelligence-cost
                                        :t/attr-health
+                                       :t/attr-health-cost
                                        :t/attr-hitpoints
-                                       :t/attr-will
-                                       :t/attr-perception
-                                       :t/attr-fatigue
                                        :t/attr-hitpoints-cost
+                                       :t/attr-will
                                        :t/attr-will-cost
+                                       :t/attr-perception
                                        :t/attr-perception-cost
+                                       :t/attr-fatigue
                                        :t/attr-fatigue-cost
                                        :t/attr-hitpoints-current
                                        :t/attr-fatigue-current
+                                       :t/basic-move-cost
+                                       :t/basic-speed-cost
                                        ] ;; TODO: add more keys/re-write this to be less verbose
                                 :cb #(rf/dispatch [:initialize-storage/set %])}}))
 

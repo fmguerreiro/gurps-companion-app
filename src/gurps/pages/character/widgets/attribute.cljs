@@ -57,11 +57,11 @@
    (when (and secondary? has-current-space?)
      (box [:<>]))
 
-   (box [:> view {:className "flex flex-row"}
+   (box [:> view {:className "flex flex-row items-center justify-items-center align-items-center"}
          [:> text {:className "text-xl font-bold"} "["]
          (if (not secondary?)
            [:> text {:className "text-xl font-bold"} (calc-cost label val)]
-           [:> input {:className "text-xl font-bold bg-slate-100 items-center justify-center align-middle" ;; TODO center
+           [:> input {:className "text-xl font-bold bg-slate-200" ;; TODO center
                       :maxLength 3
                       :keyboardType "numeric"
                       :onChangeText (debounce/debounce #(on-change-text %) 500)}
