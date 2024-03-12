@@ -24,6 +24,12 @@
                                        :t/attr-will
                                        :t/attr-perception
                                        :t/attr-fatigue
+                                       :t/attr-hitpoints-cost
+                                       :t/attr-will-cost
+                                       :t/attr-perception-cost
+                                       :t/attr-fatigue-cost
+                                       :t/attr-hitpoints-current
+                                       :t/attr-fatigue-current
                                        ] ;; TODO: add more keys/re-write this to be less verbose
                                 :cb #(rf/dispatch [:initialize-storage/set %])}}))
 

@@ -1,7 +1,5 @@
 (ns gurps.pages.character.widgets.basic
-  (:require [gurps.widgets.base :refer [view text input]]
-            [reagent.core :as r]
-            [re-frame.core :as rf]))
+  (:require [gurps.widgets.base :refer [view text input]]))
 
 (defn basic
   [^js {:keys [label value upgradable?]
