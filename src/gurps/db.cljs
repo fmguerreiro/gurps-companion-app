@@ -11,5 +11,4 @@
                  :t/attr-hitpoints-cost 0
                  :t/attr-will-cost 0
                  :t/attr-perception-cost 0
-                 :t/attr-fatigue-cost 0
-                 })
+                 :t/attr-fatigue-cost 0})
