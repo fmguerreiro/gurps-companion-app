@@ -3,7 +3,8 @@
             ["@react-navigation/native" :as rnn]
             [reagent.core :as r]
             [gurps.utils.i18n :as i18n]
-            [gurps.widgets.base :refer [view text input button]]))
+            [gurps.widgets.base :refer [view text input button]]
+            [gurps.pages.character.widgets.skill-groups :refer [skill-groups]]))
 
 (defn- header []
   [:> view {:className "flex flex-row gap-1 flex-grow items-center h-10"}
@@ -43,10 +44,11 @@
     (js/console.log "character-skills-page")
     ;; (if-let [navigation (rnn/useNavigation)]
     [:> rn/ScrollView
-     [:> view {:className "flex flex-column px-2"}
+     [:> view {:className "flex bg-red-200 flex-column px-2"}
       [header]
       [row]
-      [add-skill-button]
+      [:> view {:className "absolute bottom-1 right-1"}
+       [add-skill-button]]
       ;; [row]
       ;; [row]
       ]]))
@@ -56,4 +58,4 @@
   [^js props]
   [:> rn/ScrollView
    [:> view {:className "flex flex-column px-2"}
-    [:> text "hello world"]]])
+    [skill-groups]]])
