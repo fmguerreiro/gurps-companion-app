@@ -42,5 +42,7 @@
   "dodge-encumbrance-light": "Dodge -1",
   "dodge-encumbrance-medium": "Dodge -2",
   "dodge-encumbrance-heavy": "Dodge -3",
-  "dodge-encumbrance-extra-heavy": "Dodge -4"
+  "dodge-encumbrance-extra-heavy": "Dodge -4",
+  "skills": "Skills",
+  "add-skill": "Add Skill"
 }

@@ -16,6 +16,10 @@
 ;; Keep the splash screen visible while we fetch resources
 (splash-screen/preventAutoHideAsync)
 
+;; Make reagent create functional react components by default
+(defonce functional-compiler (reagent.core/create-compiler {:function-components true}))
+(reagent.core/set-default-compiler! functional-compiler)
+
 (def storybook-enabled? (-> expo-contants
                             .-expoConfig
                             .-extra

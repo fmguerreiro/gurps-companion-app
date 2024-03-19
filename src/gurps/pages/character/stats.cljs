@@ -17,22 +17,19 @@
 
 (defn character-stats-page
   [^js props]
-  (r/with-let [counter (rf/subscribe [:get-counter])
-               tap-enabled? (rf/subscribe [:counter-tappable?])]
+  [:> rn/ScrollView
+   [:> view {:className "flex flex-col gap-4 py-4 bg-white items-center justify-between"}
 
-    [:> rn/ScrollView
-     [:> view {:className "flex flex-col gap-4 py-4 bg-white items-center justify-between"}
+    [:> view {:className "w-full px-4"}
+     [summary]]
 
-      [:> view {:className "w-full px-4"}
-       [summary]]
+    [:> view {:className "my-0"}
+     [attributes]]
 
-      [:> view {:className "my-0"}
-       [attributes]]
+    [:> view {:className "my-0"}
+     [basics]]
 
-      [:> view {:className "my-0"}
-       [basics]]
+    [:> view {:className "my-0 px-2"}
+     [encumbrance-table]]
 
-      [:> view {:className "my-0 px-2"}
-       [encumbrance-table]]
-
-      [:> StatusBar {:style "auto"}]]]))
+    [:> StatusBar {:style "auto"}]]])
