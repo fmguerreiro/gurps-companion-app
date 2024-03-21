@@ -17,6 +17,9 @@
 (defn calc-hoc [keys subtrahend]
   (fn [char] (- (get-in char keys) subtrahend)))
 
+(defn calc-any-hoc [keys subtrahend]
+  (fn [char] (- (get-in-any char keys) subtrahend)))
+
 (def animal-skills
   {:animal-handling {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
    :falconry {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
@@ -136,7 +139,7 @@
                                              (calc-hoc [:skills :combat-melee :two-handed-sword] 4)]}
    :cloak {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
                                         (calc-hoc [:skills :combat-ranged :net] 4),
-                                        (fn [char] (- (get-in-any char [:skills :combat-melee :shield]) 4))]}
+                                        (calc-any-hoc [:skills :combat-melee :shield] 4)]}
    :fast-draw-sp {:diff :e :attr :dx :default []}
    :flail {:diff :h :attr :dx :default [(calc-hoc [:skills :combat-melee :axe-mace] 4),
                                         (calc-hoc [:skills :combat-melee :two-handed-flail] 3)]}
@@ -255,7 +258,70 @@
    :smith-sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)] :specializations [:copper :iron :lead-and-tin]}})
 
 (def criminal-skills
-  {})
+  {:carousing {:diff :e :attr :ht :default [(calc-hoc [:attributes :ht] 4)]}
+   :climbing {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5)]}
+   :computer-hacking {:diff :v :attr :iq :default []}
+   :counterfeiting {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                                 (calc-hoc [:skills :criminal :forgery] 2)]}
+   :disguise {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                           (calc-hoc [:skills :arts :makeup] 3)]}
+   :electronics-operation-security {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                                 (calc-hoc [:skills :invention :engineer-electrical] 3),
+                                                                 (calc-hoc [:skills :repair :electronics-repair] 5),
+                                                                 (calc-hoc [:skills :invention :engineer-electronics] 5)]}
+   :escape {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6)]}
+   :explosives-demolition {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :fast-talk {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                            (calc-hoc [:skills :social :acting] 5),
+                                            (calc-hoc [:skills :spy :acting] 5)]}
+   :filch {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
+                                        (calc-hoc [:skills :criminal :pickpocket] 4),
+                                        (calc-hoc [:skills :criminal :sleight-of-hand] 4)]}
+   :forced-entry {:diff :e :attr :dx :default []}
+   :forgery {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                          (calc-hoc [:skills :criminal :counterfeiting] 2)]}
+   :gambling {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                           (calc-hoc [:skills :science :mathematics-statistics] 5),
+                                           (calc-hoc [:skills :business :mathematics-statistics] 5)]}
+   :holdout {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                          (calc-hoc [:skills :criminal :sleight-of-hand] 3)]}
+   :intimidation {:diff :a :attr :will :default [(calc-hoc [:attributes :will] 5),
+                                                 (calc-hoc [:skills :spy :acting] 3),
+                                                 (calc-hoc [:skills :social :acting] 3)]}
+   :lockpicking {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :observation {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5),
+                                               (calc-hoc [:skills :police :shadowing] 5),
+                                               (calc-hoc [:skills :spy :shadowing] 5),
+                                               (calc-hoc [:skills :criminal :shadowing] 5)]}
+   :panhandling {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
+                                              (calc-hoc [:skills :criminal :fast-talk] 2),
+                                              (calc-hoc [:skills :business :public-speaking] 3),
+                                              (calc-hoc [:skills :scholar :public-speaking] 3),
+                                              (calc-hoc [:skills :social :public-speaking] 3)]}
+   :pickpocket {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6),
+                                             (calc-hoc [:skills :criminal :filch] 5),
+                                             (calc-hoc [:skills :criminal :sleight-of-hand] 4)]}
+   :poisons {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                          (calc-hoc [:skills :science :chemistry] 5),
+                                          (calc-any-hoc [:skills :science :pharmacy] 3),
+                                          (calc-hoc [:skills :medical :physician] 3)]}
+   :savoir-faire-mafia {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :scrounging {:diff :e :attr :per :default [(calc-hoc [:attributes :per] 4)]}
+   :shadowing {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                            (calc-hoc [:skills :military :observation] 5),
+                                            (calc-hoc [:skills :spy :observation] 5),
+                                            (calc-hoc [:skills :criminal :observation] 5),
+                                            (calc-hoc [:skills :criminal :stealth] 4),
+                                            (calc-hoc [:skills :police :stealth] 4),
+                                            (calc-hoc [:skills :spy :stealth] 4)]}
+   :streetwise {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                             (calc-hoc [:attributes :dx] 5)]}
+   :traps {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                        (calc-hoc [:skills :police :lockpicking] 3),
+                                        (calc-hoc [:skills :criminal :lockpicking] 3),
+                                        (calc-hoc [:skills :spy :lockpicking] 3),
+                                        (calc-hoc [:skills :technical :lockpicking] 3)]}
+   :urban-survival {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5)]}})
 
 ;; TODO: specializations
 ;; TODO: techlevel
