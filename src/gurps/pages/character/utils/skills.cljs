@@ -323,20 +323,55 @@
                                         (calc-hoc [:skills :technical :lockpicking] 3)]}
    :urban-survival {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5)]}})
 
+(def invention-skills
+  {:architecture {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                               (calc-hoc [:skills :invention :engineer-civil] 5)]}
+   :bioengineering {:diff :h :attr :iq :default [(calc-hoc [:skills :science :biology] 5),
+                                                 (calc-hoc [:skills :plant :biology] 5)]}
+   :computer-programming {:diff :h :attr :iq :default []}
+   :engineer-sp {:diff :h :attr :iq :default [], :specializations [:artillery :civil :clockwork :combat :electrical :materials :microtechnology :mining :nanotechnology :parachronic :psychothronics :robotics :small-arms :temporal :vehicle]}
+   :pharmacy-sp {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)], :specializations [:herbal :synthetic]}
+   :weird-science {:diff :v :attr :iq :default []}})
+
+(def esoteric-skills
+  {:autohypnosis {:diff :h :attr :will :default [(calc-hoc [:skills :esoteric :meditation] 4)]}
+   :blind-fighting {:diff :v :attr :per :default []}
+   :body-control {:diff :v :attr :ht :default []}
+   :breaking-blow {:diff :h :attr :iq :default []}
+   :captivate {:diff :h :attr :will :default []}
+   :dreaming {:diff :h :attr :will :default [(calc-hoc [:attributes :will] 6)]}
+   ;; :enthralment TODO
+   :flying-leap {:diff :h :attr :iq :default []}
+   :immovable-stance {:diff :h :attr :dx :default []}
+   :invisibility-art {:diff :v :attr :iq :default []}
+   :kiai {:diff :h :attr :ht :default []}
+   :light-walk {:diff :h :attr :dx :default []}
+   :meditation {:diff :h :attr :will :default [(calc-hoc [:attributes :will] 6),
+                                               (calc-hoc [:skills :esoteric :autohypnosis] 4)]}
+   :mental-strength {:diff :e :attr :will :default []}
+   :mind-block {:diff :a :attr :will :default [(calc-hoc [:attributes :will] 5),
+                                               (calc-hoc [:skills :esoteric :meditation] 5)]}
+   :musical-influence {:diff :v :attr :iq :default []}
+   :persuade {:diff :h :attr :will :default []}
+   :power-blow {:diff :h :attr :will :default []}
+   :pressure-points {:diff :h :attr :iq :default []}
+   :pressure-secrets {:diff :v :attr :iq :default []}
+   :push {:diff :h :attr :dx :default []}
+   :suggest {:diff :h :attr :will :default []}
+   :sway-emotions {:diff :h :attr :will :default []}
+   :throwing-art {:diff :h :attr :dx :default []}
+   :zen-archery {:diff :v :attr :iq :default []}})
+
 ;; TODO: specializations
 ;; TODO: techlevel
+;; TODO: prerequisites
 (def skills {:animal animal-skills
-
              :arts art-skills
-
              :athletic athletics-skills
-
              :business business-skills
-
              :combat-melee combat-melee-skills
-
              :combat-ranged combat-ranged-skills
-
              :craft craft-skills
-
-             :criminal criminal-skills})
+             :criminal criminal-skills
+             :invention invention-skills
+             :esoteric esoteric-skills})
