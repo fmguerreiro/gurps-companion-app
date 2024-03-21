@@ -10822,15 +10822,675 @@ _NativeWindStyleSheet.create({
       "shadowRadius": 15,
       "shadowColor": "rgba(0, 0, 0, 0.1)",
       "shadowOpacity": 1
+    },
+    "shadow@513": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@514": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@515": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@171": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@171": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@171": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@171": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@513": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@514": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@515": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@516": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@517": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@518": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@172": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@172": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@172": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@172": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@516": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@517": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@518": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@519": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@520": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@521": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@173": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@173": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@173": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@173": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@519": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@520": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@521": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@522": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@523": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@524": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@174": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@174": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@174": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@174": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@522": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@523": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@524": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@525": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@526": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@527": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@175": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@175": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@175": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@175": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@525": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@526": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@527": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@528": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@529": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@530": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@176": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@176": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@176": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@176": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@528": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@529": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@530": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@531": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@532": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@533": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@177": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@177": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@177": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@177": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@531": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@532": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@533": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@534": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@535": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@536": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@178": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@178": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@178": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@178": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@534": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@535": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@536": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@537": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@538": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@539": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@179": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@179": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@179": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@179": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@537": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@538": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@539": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@540": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@541": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@542": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@180": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@180": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@180": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@180": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@540": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@541": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@542": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@543": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@544": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@545": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@181": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@181": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@181": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@181": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@543": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@544": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@545": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
     }
   },
   atRules: {
-    "shadow": [[["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]]],
-    "gap-0.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
-    "gap-1.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
-    "gap-2.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
-    "gap-4.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
-    "active:shadow-lg": [[["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]]]
+    "shadow": [[["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]]],
+    "gap-0.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
+    "gap-1.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
+    "gap-2.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
+    "gap-4.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
+    "active:shadow-lg": [[["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]]]
   },
   masks: {
     "active:shadow-lg": 128,
@@ -10861,9 +11521,9 @@ _NativeWindStyleSheet.create({
     }
   },
   childClasses: {
-    "gap-0": ["gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children"],
-    "gap-1": ["gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children"],
-    "gap-2": ["gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children"],
-    "gap-4": ["gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children"]
+    "gap-0": ["gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children"],
+    "gap-1": ["gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children"],
+    "gap-2": ["gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children"],
+    "gap-4": ["gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children"]
   }
 });

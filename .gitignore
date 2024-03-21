@@ -19,6 +19,7 @@ result
 .DS_Store
 dist-newstyle/
 
+app/
 .clj-kondo/taoensso
 .lsp/.cache
 .clj-kondo/.cache
