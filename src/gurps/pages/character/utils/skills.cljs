@@ -213,4 +213,26 @@
                                                                 (fn [char] (- (get-in char [:skills :combat-melee :kusari]) 3))]}
                             :wrestling {:diff :a :attr :dx :default []}}
 
-             :combat-ranged {}})
+             :combat-ranged {:artillery-sp {:diff :a :attr :iq :default [(fn [char] (- (get-in char [:attributes :iq]) 5))] :specializations [:beam :bomb :cannon :guided-missile :torpedo]}
+                             :beam-weapons-sp {:diff :e :attr :dx :default [(fn [char] (- (get-in char [:attributes :dx]) 4))] :specializations [:pistol :projector :rifle]}
+                             :blowpipe {:diff :h :attr :dx :default [(fn [char] (- (get-in char [:attributes :dx]) 6))]}
+                             :bolas {:diff :a :attr :dx :default []}
+                             :bow {:diff :a :attr :dx :default [(fn [char] (- (get-in char [:attributes :dx]) 5))]}
+                             :crossbow {:diff :e :attr :dx :default [(fn [char] (- (get-in char [:attributes :dx]) 4))]}
+                             :dropping {:diff :a :attr :dx :default [(fn [char] (- (get-in char [:attributes :dx]) 3)),
+                                                                     (fn [char] (- (get-in char [:skills :combat-ranged :throwing]) 4))]}
+                             :fast-draw-sp {:diff :e :attr :dx :default [] :specializations [;; TODO
+                                                                                             ]}
+                             :gunner-sp {:diff :e :attr :dx :default [(fn [char] (- (get-in char [:attributes :dx]) 4))] :specializations [:beam :cannon :catapult :machine-gun :rocket]}
+                             :guns-sp {:diff :e :attr :dx :default [(fn [char] (- (get-in char [:attributes :dx]) 4))] :specializations [:grenade-launcher :gyroc :light-antiarmor-weapon :light-machine-gun :musket :pistol :rifle :shotgun :submachine-gun :wrist-gun]}
+                             :innate-attack-sp {:diff :e :attr :dx :default [(fn [char] (- (get-in char [:attributes :dx]) 4))] :specializations [:beam :breath :gaze :projectile]}
+                             :lasso {:diff :a :attr :dx :default []}
+                             :liquid-projector-sp {:diff :e :attr :dx :default [(fn [char] (- (get-in char [:attributes :dx]) 4))] :specializations [:flamethrower :sprayer :squirt-gun :water-cannon]}
+                             :net {:diff :h :attr :dx :default [(fn [char] (- (get-in char [:skills :combat-melee :cloak]) 5))]}
+                             :sling {:diff :h :attr :dx :default [(fn [char] (- (get-in char [:attributes :dx]) 6))]}
+                             :spear-thrower {:diff :a :attr :dx :default [(fn [char] (- (get-in char [:attributes :dx]) 5)),
+                                                                          (fn [char] (- (get-in char [:skills :combat-ranged :thrown-weapon-spear]) 4))]}
+                             :throwing-art {:diff :h :attr :dx :default []}
+                             :thrown-weapon-sp {:diff :e :attr :dx :default [(fn [char] (- (get-in char [:attributes :dx]) 4))] :specializations [;; TODO: melee weapons
+                                                                                                                                                  ]}}
+             :craft {}})
