@@ -235,4 +235,17 @@
                              :throwing-art {:diff :h :attr :dx :default []}
                              :thrown-weapon-sp {:diff :e :attr :dx :default [(fn [char] (- (get-in char [:attributes :dx]) 4))] :specializations [;; TODO: melee weapons
                                                                                                                                                   ]}}
-             :craft {}})
+             :craft {:pottery {:diff :h :attr :iq :default [(fn [char] (- (get-in char [:attributes :iq]) 6))]}
+                     :sculpting {:diff :h :attr :iq :default [(fn [char] (- (get-in char [:attributes :iq]) 6))]}
+                     :woodworking {:diff :h :attr :iq :default [(fn [char] (- (get-in char [:attributes :iq]) 6))]}
+                     :bone-carving {:diff :a :attr :dx :default [(fn [char] (- (get-in char [:attributes :dx]) 2)),
+                                                                 (fn [char] (- (get-in char [:skills :military :armoury]) 2))]}
+                     :carpentry {:diff :e :attr :iq :default [(fn [char] (- (get-in char [:attributes :iq]) 4))]}
+                     :jewelry {:diff :h :attr :iq :default [(fn [char] (- (get-in char [:attributes :iq]) 6)),
+                                                            (fn [char] (- (get-in char [:skills :craft :smith-copper]) 4))
+                                                            (fn [char] (- (get-in char [:skills :craft :smith-lead-and-tin]) 4))]}
+                     :leatherworking {:diff :e :attr :dx :default [(fn [char] (- (get-in char [:attributes :dx]) 4))]}
+                     :masonry {:diff :e :attr :iq :default [(fn [char] (- (get-in char [:attributes :iq]) 4))]}
+                     :smith-sp {:diff :a :attr :iq :default [(fn [char] (- (get-in char [:attributes :iq]) 5))] :specializations [:copper :iron :lead-and-tin]}}
+
+             :criminal {}})
