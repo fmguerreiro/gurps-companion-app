@@ -1,4 +1,5 @@
-(ns gurps.pages.character.utils.skills)
+(ns gurps.pages.character.utils.skills
+  (:require [clojure.string :as str]))
 
 (defn- get-in-any [m ks]
   "Like get-in, but takes a sequence of keys and returns the max value of the last key's starting name in the sequence.
@@ -6,7 +7,7 @@
         => 12"
   (->> (get-in m (butlast ks))
        seq
-       (filter #(clojure.string/starts-with? (name (key %)) (name (last ks))))
+       (filter #(str/starts-with? (name (key %)) (name (last ks))))
        (map val)
        (reduce max)))
 
@@ -417,7 +418,7 @@
                                                                 (calc-hoc [:skills :invention :engineer/electronics] 5),
                                                                 (calc-hoc [:skills :repair :electronics-repair/medical] 5)]}
    :esoteric-medicine {:diff :h :attr :per :default [(calc-hoc [:attributes :per] 6)]}
-   :expert-skill-epidemiology {:diff :h :attr :iq}
+   :expert-skill/epidemiology {:diff :h :attr :iq}
    :first-aid {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
                                             (calc-hoc [:skills :medical :esoteric-medicine] 0),
                                             (calc-hoc [:skills :medical :physician] 0),
@@ -675,7 +676,7 @@
    :electrician {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
                                               (calc-hoc [:skills :invention :engineer/electrical] 3)]}
    :electronics-repair/sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                                        (calc-hoc [:skills :art :electronics-operation/same] 3),
+                                                        (calc-hoc [:skills :arts :electronics-operation/same] 3),
                                                         (calc-hoc [:skills :spy :electronics-operation/same] 3),
                                                         (calc-hoc [:skills :technical :electronics-operation/same] 3),
                                                         (calc-hoc [:skills :criminal :electronics-operation/same] 3),
@@ -691,8 +692,23 @@
    :mechanic/sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
                                               (calc-hoc [:skills :invention :engineer/same] 4)
                                               (calc-hoc [:skills :repair :machinist] 5)]} ;; TODO specializations
-   ;;
    })
+
+(def scholar-skills
+  {:computer-operation {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :expert-skill/sp {:diff :h :attr :iq}
+   :literature {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
+   :public-speaking {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                  (calc-hoc [:skills :business :politics] 5),
+                                                  (calc-hoc [:skills :social :acting] 5),
+                                                  (calc-hoc [:skills :arts :performance] 2)]}
+   :research {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                           (calc-hoc [:skills :scholar :writing] 3),
+                                           (calc-hoc [:skills :arts :writing] 3)]}
+   :speed-reading {:diff :a :attr :iq}
+   :teaching {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :typing {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4)]} ;; TODO: any skill requiring typing
+   :writing {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}})
 
 ;; TODO: specializations
 ;; TODO: techlevel
@@ -718,4 +734,5 @@
              :outdoor outdoor-skills
              :plant plant-skills
              :police police-skills
-             :repair repair-skills})
+             :repair repair-skills
+             :scholar scholar-skills})
