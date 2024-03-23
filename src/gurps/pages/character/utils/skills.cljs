@@ -360,11 +360,50 @@
    :suggest {:diff :h :attr :will :default []}
    :sway-emotions {:diff :h :attr :will :default []}
    :throwing-art {:diff :h :attr :dx :default []}
-   :zen-archery {:diff :v :attr :iq :default []}})
+   :zen-archery {:diff :v :attr :iq :default []}
+   :zen-marksmanship {:diff :v :attr :iq :default []}})
+
+(def everyman-skills
+  {:area-knowledge-sp {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
+                                                    (calc-hoc [:skills :humanities :geography] 3)], ;; TODO: geography has to be same as area-knowledge
+                       :specializations [:city :country :region :world]}
+   :computer-operation {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :cooking {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5), (calc-hoc [:skills :everyman :housekeeping] 5)]}
+   :housekeeping {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :knot-tying {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4),
+                                             (calc-hoc [:skills :vehicle :seamanship] 4),
+                                             (calc-hoc [:skills :outdoor :climbing] 4),
+                                             (calc-hoc [:skills :criminal :climbing] 4),
+                                             (calc-hoc [:skills :athletic :climbing] 4)]}
+   :savoir-faire-servant {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :sewing {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4)]}
+   :typing {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4)]}
+   :weather-sense {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}})
+
+(def knowledge-skills
+  {:area-knowledge-sp {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
+                                                    (calc-hoc [:skills :humanities :geography] 3)], ;; TODO: geography has to be same as area-knowledge
+                       :specializations [:city :country :region :world]}
+   :connoisseur-sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)] :specializations []} ;; TODO specializations
+   :current-affairs-sp {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
+                                                     (calc-hoc [:skills :spy :research] 4)
+                                                     (calc-hoc [:skills :scholar :research] 4)]
+                        :specializations []} ;; TODO
+   :games-sp {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)], :specializations []} ;; TODO specializations
+   :heraldry {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                           (calc-hoc [:skills :business :savoir-faire-high-society] 3),
+                                           (calc-hoc [:skills :knowledge :savoir-faire-high-society] 3)
+                                           (calc-hoc [:skills :social :savoir-faire-high-society] 3)]}
+   :hidden-lore-sp {:diff :a :attr :iq :default [] :specializations []} ;; TODO specializations
+   :hobby-skill-sp {:diff :e :attr [:iq :dx] :default [(calc-hoc [:attributes :iq] 4), (calc-hoc [:attributes :dx] 4)] :specializations []} ;; TODO specializations
+   :professional-skill-sp {:diff :e :attr [:iq :dx] :default [] :specializations []} ;; TODO default/specializations
+   :savoir-faire-sp {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)] :specializations []} ;; TODO specializations
+   })
 
 ;; TODO: specializations
 ;; TODO: techlevel
 ;; TODO: prerequisites
+;; TODO: same-type defaults
 (def skills {:animal animal-skills
              :arts art-skills
              :athletic athletics-skills
@@ -374,4 +413,6 @@
              :craft craft-skills
              :criminal criminal-skills
              :invention invention-skills
-             :esoteric esoteric-skills})
+             :esoteric esoteric-skills
+             :everyman everyman-skills
+             :knowledge knowledge-skills})

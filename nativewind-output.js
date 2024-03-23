@@ -1019,15 +1019,855 @@ _NativeWindStyleSheet.create({
       "shadowRadius": 15,
       "shadowColor": "rgba(0, 0, 0, 0.1)",
       "shadowOpacity": 1
+    },
+    "shadow@24": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@25": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@26": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@8": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@8": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@8": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@8": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@24": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@25": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@26": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@27": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@28": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@29": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@9": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@9": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@9": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@9": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@27": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@28": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@29": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@30": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@31": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@32": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@10": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@10": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@10": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@10": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@30": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@31": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@32": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@33": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@34": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@35": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@11": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@11": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@11": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@11": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@33": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@34": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@35": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@36": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@37": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@38": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@12": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@12": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@12": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@12": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@36": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@37": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@38": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@39": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@40": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@41": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@13": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@13": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@13": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@13": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@39": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@40": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@41": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@42": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@43": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@44": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@14": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@14": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@14": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@14": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@42": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@43": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@44": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@45": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@46": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@47": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@15": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@15": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@15": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@15": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@45": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@46": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@47": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@48": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@49": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@50": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@16": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@16": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@16": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@16": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@48": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@49": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@50": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@51": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@52": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@53": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@17": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@17": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@17": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@17": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@51": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@52": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@53": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@54": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@55": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@56": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@18": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@18": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@18": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@18": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@54": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@55": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@56": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@57": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@58": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@59": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@19": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@19": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@19": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@19": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@57": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@58": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@59": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@60": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@61": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@62": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@20": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@20": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@20": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@20": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@60": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@61": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@62": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@63": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@64": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@65": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@21": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@21": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@21": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@21": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@63": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@64": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@65": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
     }
   },
   atRules: {
-    "shadow": [[["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]]],
-    "gap-0.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
-    "gap-1.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
-    "gap-2.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
-    "gap-4.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
-    "active:shadow-lg": [[["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]]]
+    "shadow": [[["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]]],
+    "gap-0.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
+    "gap-1.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
+    "gap-2.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
+    "gap-4.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
+    "active:shadow-lg": [[["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]]]
   },
   masks: {
     "active:shadow-lg": 128,
@@ -1052,9 +1892,9 @@ _NativeWindStyleSheet.create({
     "dark:focus:text-white": ["colorScheme"]
   },
   childClasses: {
-    "gap-0": ["gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children"],
-    "gap-1": ["gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children"],
-    "gap-2": ["gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children"],
-    "gap-4": ["gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children"]
+    "gap-0": ["gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children"],
+    "gap-1": ["gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children"],
+    "gap-2": ["gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children"],
+    "gap-4": ["gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children"]
   }
 });
