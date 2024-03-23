@@ -71,7 +71,7 @@
    :aeronautics {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6)]}
    :aquabatics {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6)]}
    :bicycling {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4),
-                                            (calc-hoc [:skills :vehicle :driving :motorcycle] 4)]}
+                                            (calc-hoc [:skills :transporation :driving :motorcycle] 4)]}
    :body-sense {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6),
                                              (calc-hoc [:skills :athletic :acrobatics] 3)]}
    :breath-control {:diff :h :attr :ht :default []}
@@ -371,7 +371,7 @@
    :cooking {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5), (calc-hoc [:skills :everyman :housekeeping] 5)]}
    :housekeeping {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
    :knot-tying {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4),
-                                             (calc-hoc [:skills :vehicle :seamanship] 4),
+                                             (calc-hoc [:skills :transportation :seamanship] 4),
                                              (calc-hoc [:skills :outdoor :climbing] 4),
                                              (calc-hoc [:skills :criminal :climbing] 4),
                                              (calc-hoc [:skills :athletic :climbing] 4)]}
@@ -400,6 +400,43 @@
    :savoir-faire-sp {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)] :specializations []} ;; TODO specializations
    })
 
+(def medical-skills
+  {:diagnosis {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                            (calc-hoc [:skills :medical :first-aid] 8),
+                                            (calc-hoc [:skills :medical :physician] 4),
+                                            (calc-hoc [:skills :medical :veterinary] 5),
+                                            (calc-hoc [:skills :animal :veterinary] 5)]}
+   :electronics-operation-medical {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                                (calc-hoc [:skills :invention :engineer-electrical] 3),
+                                                                (calc-hoc [:skills :invention :engineer-electronics] 5),
+                                                                (calc-hoc [:skills :repair :electronics-repair-medical] 5)]}
+   :esoteric-medicine {:diff :h :attr :per :default [(calc-hoc [:attributes :per] 6)]}
+   :expert-skill-epidemiology {:diff :h :attr :iq :default []}
+   :first-aid {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
+                                            (calc-hoc [:skills :medical :esoteric-medicine] 0),
+                                            (calc-hoc [:skills :medical :physician] 0),
+                                            (calc-hoc [:skills :medical :veterinary] 4)]}
+   :hypnotism {:diff :h :attr :iq :default []}
+   :pharmacy-sp {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)] :specializations []} ;; TODO: specializations
+   :physician {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 7),
+                                            (calc-hoc [:skills :medical :first-aid] 11),
+                                            (calc-hoc [:skills :medical :veterinary] 5),
+                                            (calc-hoc [:skills :animal :veterinary] 5)]}
+   :poisons {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                          (calc-hoc [:skills :science :chemistry] 5),
+                                          (calc-any-hoc [:skills :medical :pharmacy] 3),
+                                          (calc-hoc [:skills :medical :physician] 3)]}
+   :psychology {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                             (calc-hoc [:skills :humanities :sociology] 4)]}
+   :surgery {:diff :v :attr :iq :default [(calc-hoc [:skills :medical :first-aid] 12),
+                                          (calc-hoc [:skills :medical :physician] 5),
+                                          (calc-hoc [:skills :science :physiology] 8),
+                                          (calc-hoc [:skills :medical :veterinary] 5),
+                                          (calc-hoc [:skills :animal :veterinary] 5)]}
+   :veterinary {:diff :h :attr :iq :default [(calc-any-hoc [:skills :animal :animal-handling] 6),
+                                             (calc-hoc [:skills :medical :physician] 5),
+                                             (calc-hoc [:skills :medical :surgery] 5)]}})
+
 ;; TODO: specializations
 ;; TODO: techlevel
 ;; TODO: prerequisites
@@ -415,4 +452,5 @@
              :invention invention-skills
              :esoteric esoteric-skills
              :everyman everyman-skills
-             :knowledge knowledge-skills})
+             :knowledge knowledge-skills
+             :medical medical-skills})

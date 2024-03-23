@@ -1,11 +1,11 @@
 (ns gurps.pages.character.widgets.skill-groups
-  (:require [reagent.core :as r]
+  (:require [clojure.string :as str]
             [gurps.pages.character.utils.skills :refer [skills categories]]
             [gurps.widgets.base :refer [view text button]]))
 
 (defn- keyword->str
   [keyword]
-  (clojure.string/replace (str (name keyword)) #"-" " "))
+  (str/replace (str (name keyword)) #"-" " "))
 
 (defn skill-groups []
   [:> view {:className "w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"}

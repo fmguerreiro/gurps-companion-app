@@ -1859,15 +1859,555 @@ _NativeWindStyleSheet.create({
       "shadowRadius": 15,
       "shadowColor": "rgba(0, 0, 0, 0.1)",
       "shadowOpacity": 1
+    },
+    "shadow@66": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@67": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@68": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@22": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@22": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@22": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@22": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@66": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@67": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@68": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@69": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@70": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@71": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@23": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@23": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@23": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@23": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@69": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@70": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@71": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@72": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@73": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@74": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@24": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@24": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@24": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@24": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@72": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@73": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@74": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@75": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@76": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@77": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@25": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@25": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@25": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@25": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@75": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@76": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@77": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@78": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@79": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@80": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@26": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@26": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@26": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@26": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@78": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@79": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@80": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@81": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@82": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@83": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@27": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@27": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@27": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@27": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@81": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@82": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@83": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@84": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@85": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@86": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@28": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@28": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@28": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@28": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@84": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@85": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@86": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@87": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@88": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@89": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@29": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@29": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@29": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@29": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@87": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@88": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@89": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@90": {
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "shadow@91": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "shadow@92": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 2
+      },
+      "shadowRadius": 6,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "gap-0.children@30": {
+      "marginLeft": 0,
+      "marginTop": 0
+    },
+    "gap-1.children@30": {
+      "marginLeft": 4,
+      "marginTop": 4
+    },
+    "gap-2.children@30": {
+      "marginLeft": 8,
+      "marginTop": 8
+    },
+    "gap-4.children@30": {
+      "marginLeft": 16,
+      "marginTop": 16
+    },
+    "active:shadow-lg@90": {
+      "elevation": 7.5,
+      "shadowColor": "rgba(0, 0, 0, 0.1)"
+    },
+    "active:shadow-lg@91": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
+    },
+    "active:shadow-lg@92": {
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "shadowRadius": 15,
+      "shadowColor": "rgba(0, 0, 0, 0.1)",
+      "shadowOpacity": 1
     }
   },
   atRules: {
-    "shadow": [[["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]]],
-    "gap-0.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
-    "gap-1.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
-    "gap-2.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
-    "gap-4.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
-    "active:shadow-lg": [[["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]]]
+    "shadow": [[["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]]],
+    "gap-0.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
+    "gap-1.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
+    "gap-2.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
+    "gap-4.children": [[["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]], [["selector", "(> *)"]]],
+    "active:shadow-lg": [[["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]], [["media", "android"]], [["media", "ios"]], [["media", "web"]]]
   },
   masks: {
     "active:shadow-lg": 128,
@@ -1892,9 +2432,9 @@ _NativeWindStyleSheet.create({
     "dark:focus:text-white": ["colorScheme"]
   },
   childClasses: {
-    "gap-0": ["gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children"],
-    "gap-1": ["gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children"],
-    "gap-2": ["gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children"],
-    "gap-4": ["gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children"]
+    "gap-0": ["gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children", "gap-0.children"],
+    "gap-1": ["gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children", "gap-1.children"],
+    "gap-2": ["gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children", "gap-2.children"],
+    "gap-4": ["gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children", "gap-4.children"]
   }
 });
