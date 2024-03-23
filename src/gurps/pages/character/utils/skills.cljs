@@ -312,7 +312,7 @@
                                           (calc-hoc [:skills :science :chemistry] 5),
                                           (calc-any-hoc [:skills :science :pharmacy] 3),
                                           (calc-hoc [:skills :medical :physician] 3)]}
-   :savoir-faire/mafia {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :savoir-faire/mafia {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]} ;; TODO: others
    :scrounging {:diff :e :attr :per :default [(calc-hoc [:attributes :per] 4)]}
    :shadowing {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
                                             (calc-hoc [:skills :military :observation] 5),
@@ -321,8 +321,7 @@
                                             (calc-hoc [:skills :criminal :stealth] 4),
                                             (calc-hoc [:skills :police :stealth] 4),
                                             (calc-hoc [:skills :spy :stealth] 4)]}
-   :streetwise {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                             (calc-hoc [:attributes :dx] 5)]}
+   :streetwise {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
    :traps {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
                                         (calc-hoc [:skills :police :lockpicking] 3),
                                         (calc-hoc [:skills :criminal :lockpicking] 3),
@@ -609,6 +608,70 @@
                                                            (calc-any-hoc [:skills :science :biology] 4)]}
    :pharmacy/herbal {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}})
 
+(def police-skills
+  {:body-language {:diff :a :attr :per :default [(calc-hoc [:skills :police :detect-lies] 4),
+                                                 (calc-hoc [:skills :social :detect-lies] 4),
+                                                 (calc-hoc [:skills :spy :detect-lies] 4),
+                                                 (calc-hoc [:skills :humanities :psychology] 4),
+                                                 (calc-hoc [:skills :medical :psychology] 4)]}
+   :criminology {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                              (calc-hoc [:skills :humanities :psychology] 4),
+                                              (calc-hoc [:skills :medical :psychology] 4)]}
+   :detect-lies {:diff :h :attr :per :default [(calc-hoc [:attributes :per] 6),
+                                               (calc-hoc [:skills :police :body-language] 4),
+                                               (calc-hoc [:skills :social :body-language] 4),
+                                               (calc-hoc [:skills :spy :body-language] 4),
+                                               (calc-hoc [:skills :humanities :psychology] 4),
+                                               (calc-hoc [:skills :medical :psychology] 4)]}
+   :diplomacy {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                            (calc-hoc [:skills :business :politics] 6)]}
+   :electronics-operation/surveillance {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                                     (calc-hoc [:skills :invention :engineer/electrical] 3),
+                                                                     (calc-hoc [:skills :repair :electronics-repair/surveillance] 5),
+                                                                     (calc-hoc [:skills :invention :engineer/electronics] 5)]}
+   :explosives/explosive-ordnance-disposal {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :forced-entry {:diff :e :attr :dx}
+   :forensics {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                            (calc-hoc [:skills :police :criminology] 4),
+                                            (calc-hoc [:skills :humanities :criminology] 4)]}
+   :intelligence-analysis {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                                        (calc-any-hoc [:skills :military :strategy] 6)]}
+   :interrogation {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                (calc-hoc [:skills :police :intimidation] 3),
+                                                (calc-hoc [:skills :social :intimidation] 3),
+                                                (calc-hoc [:skills :criminal :intimidation] 3),
+                                                (calc-hoc [:skills :humanities :psychology] 4),
+                                                (calc-hoc [:skills :medical :psychology] 4)]}
+   :intimidation {:diff :a :attr :will :default [(calc-hoc [:attributes :will] 5),
+                                                 (calc-hoc [:skills :spy :acting] 3),
+                                                 (calc-hoc [:skills :social :acting] 3)]}
+   :law/sp {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]} ;; TODO: spec
+   :lockpicking {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :observation {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5),
+                                               (calc-hoc [:skills :police :shadowing] 5),
+                                               (calc-hoc [:skills :spy :shadowing] 5),
+                                               (calc-hoc [:skills :criminal :shadowing] 5)]}
+   :savoir-faire/police {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]} ;; TODO others
+   :search {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5),
+                                          (calc-hoc [:skills :police :criminology] 5),
+                                          (calc-hoc [:skills :humanities :criminology] 5)]}
+   :shadowing {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                            (calc-hoc [:skills :military :observation] 5),
+                                            (calc-hoc [:skills :spy :observation] 5),
+                                            (calc-hoc [:skills :criminal :observation] 5),
+                                            (calc-hoc [:skills :criminal :stealth] 4),
+                                            (calc-hoc [:skills :police :stealth] 4),
+                                            (calc-hoc [:skills :spy :stealth] 4)]}
+   :stealth {:diff :a :attrb :dx :default [(calc-hoc [:attributes :iq] 5),
+                                           (calc-hoc [:attributes :dx] 5)]}
+   :streetwise {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :traps {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                        (calc-hoc [:skills :police :lockpicking] 3),
+                                        (calc-hoc [:skills :criminal :lockpicking] 3),
+                                        (calc-hoc [:skills :spy :lockpicking] 3),
+                                        (calc-hoc [:skills :technical :lockpicking] 3)]}
+   :urban-survival {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5)]}})
+
 ;; TODO: specializations
 ;; TODO: techlevel
 ;; TODO: prerequisites
@@ -631,4 +694,5 @@
              :science science-skills
              :occult occult-skills
              :outdoor outdoor-skills
-             :plant plant-skills})
+             :plant plant-skills
+             :police police-skills})
