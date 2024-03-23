@@ -505,59 +505,96 @@
 
 (def science-skills
   {:alchemy {:diff :v :attr :iq}
-   :astronomy {:diff :h :attr :iq :defaults [(calc-hoc [:attributes :iq] 6)]}
-   :biology {:diff :v :attr :iq :defaults [(calc-hoc [:attributes :iq] 6),
-                                           (calc-hoc [:skills :science :naturalist] 6),
-                                           (calc-hoc [:skills :outdoor :naturalist] 6),
-                                           (calc-hoc [:skills :plant :naturalist] 6),
-                                           (calc-hoc [:skills :animal :naturalist] 6)]}
-   :chemistry {:diff :h :attr :iq :defaults [(calc-hoc [:attributes :iq] 6),
-                                             (calc-hoc [:skills :science :alchemy] 3)]}
+   :astronomy {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
+   :biology {:diff :v :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                          (calc-hoc [:skills :science :naturalist] 6),
+                                          (calc-hoc [:skills :outdoor :naturalist] 6),
+                                          (calc-hoc [:skills :plant :naturalist] 6),
+                                          (calc-hoc [:skills :animal :naturalist] 6)]}
+   :chemistry {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                            (calc-hoc [:skills :science :alchemy] 3)]}
    :expert-skill/epidemiology {:diff :h :attr :iq}
    :expert-skill/hydrology {:diff :h :attr :iq}
    :expert-skill/natural-philosofy {:diff :h :attr :iq}
-   :geology/sp {:diff :h :attr :iq :specializations [] :defaults [(calc-hoc [:attributes :iq] 6),
-                                                                  (calc-hoc [:skills :humanities :geography/physical] 4),
-                                                                  (calc-hoc [:skills :outdoor :prospecting] 5)]} ;; TODO: specializations
-   :mathematics/sp {:diff :h :attr :iq :specializations [] :defaults [(calc-hoc [:attributes :iq] 6)]} ;; TODO: specializations
-   :metallurgy {:diff :h :attr :iq :defaults [(calc-hoc [:skills :science :chemistry] 5),
-                                              (calc-hoc [:skills :craft :jeweller] 8),
-                                              (calc-any-hoc [:skills :craft :smith] 8)]}
-   :meteorology/sp {:diff :a :attr :iq :specializations [] :defaults [(calc-hoc [:attributes :iq] 5)]} ;; TODO: specializations
-   :naturalist {:diff :h :attr :iq :defaults [(calc-hoc [:attributes :iq] 6),
-                                              (calc-hoc [:skills :science :biology] 3),
-                                              (calc-hoc [:skills :plant :biology] 3)]}
-   :paleontology/sp {:diff :h :attr :iq :defaults [(calc-hoc [:skills :science :biology] 4),
-                                                   (calc-hoc [:skills :plant :biology] 4)] :specializations []} ;; TODO: specializations
-   :physics {:diff :v :attr :iq :defaults [(calc-hoc [:attributes :iq] 6)]}
-   :physiology/sp {:diff :h :attr :iq :defaults [(calc-hoc [:attributes :iq] 6),
-                                                 (calc-hoc [:skills :medical :diagnosis] 5),
-                                                 (calc-hoc [:skills :medical :physician] 5),
-                                                 (calc-hoc [:skills :medical :surgery] 5)] :specializations []} ;; TODO: specializations
+   :geology/sp {:diff :h :attr :iq :specializations [] :default [(calc-hoc [:attributes :iq] 6),
+                                                                 (calc-hoc [:skills :humanities :geography/physical] 4),
+                                                                 (calc-hoc [:skills :outdoor :prospecting] 5)]} ;; TODO: specializations
+   :mathematics/sp {:diff :h :attr :iq :specializations [] :default [(calc-hoc [:attributes :iq] 6)]} ;; TODO: specializations
+   :metallurgy {:diff :h :attr :iq :default [(calc-hoc [:skills :science :chemistry] 5),
+                                             (calc-hoc [:skills :craft :jeweller] 8),
+                                             (calc-any-hoc [:skills :craft :smith] 8)]}
+   :meteorology/sp {:diff :a :attr :iq :specializations [] :default [(calc-hoc [:attributes :iq] 5)]} ;; TODO: specializations
+   :naturalist {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                             (calc-hoc [:skills :science :biology] 3),
+                                             (calc-hoc [:skills :plant :biology] 3)]}
+   :paleontology/sp {:diff :h :attr :iq :default [(calc-hoc [:skills :science :biology] 4),
+                                                  (calc-hoc [:skills :plant :biology] 4)] :specializations []} ;; TODO: specializations
+   :physics {:diff :v :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
+   :physiology/sp {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                                (calc-hoc [:skills :medical :diagnosis] 5),
+                                                (calc-hoc [:skills :medical :physician] 5),
+                                                (calc-hoc [:skills :medical :surgery] 5)] :specializations []} ;; TODO: specializations
    })
 
 (def occult-skills
   {:alchemy {:diff :v :attr :iq}
-   :exorcism {:diff :h :attr :will :defaults [(calc-hoc [:attributes :will] 6)
-                                              (calc-any-hoc [:skills :occult :religious-ritual] 3),
-                                              (calc-any-hoc [:skills :occult :religious-magic] 3),
-                                              (calc-any-hoc [:skills :humanities :theology] 3)]}
+   :exorcism {:diff :h :attr :will :default [(calc-hoc [:attributes :will] 6)
+                                             (calc-any-hoc [:skills :occult :religious-ritual] 3),
+                                             (calc-any-hoc [:skills :occult :religious-magic] 3),
+                                             (calc-any-hoc [:skills :humanities :theology] 3)]}
    :expert-skill/psionics {:diff :h :attr :iq}
    :herb-lore {:diff :v :attr :iq}
    :hidden-lore/demon-lore {:diff :a :attr :iq}
    :hidden-lore/faerie-lore {:diff :a :attr :iq}
    :hidden-lore/spirit-lore {:diff :a :attr :iq}
-   :occultism {:diff :a :attr :iq :defaults [(calc-hoc [:attributes :iq] 5)]}
-   :religious-ritual/sp {:diff :h :attr :iq :defaults [(calc-hoc [:skills :occult :religious-magic/same] 6)
-                                                       (calc-hoc [:skills :humanities :theology/same] 4)]} ;; TODO: specializations
-   :ritual-magic/sp {:diff :v :attr :iq :defaults [(calc-hoc [:skills :occult :religious-ritual/same] 6)]}
+   :occultism {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :religious-ritual/sp {:diff :h :attr :iq :default [(calc-hoc [:skills :occult :religious-magic/same] 6)
+                                                      (calc-hoc [:skills :humanities :theology/same] 4)]} ;; TODO: specializations
+   :ritual-magic/sp {:diff :v :attr :iq :default [(calc-hoc [:skills :occult :religious-ritual/same] 6)]}
    :symbol-drawing/sp {:diff :h :attr :iq :default []} ;; TODO: special, spec
    :thaumatology {:diff :v :attr :iq :default [(calc-hoc [:attributes :iq] 7)]}})
+
+(def outdoor-skills
+  {:camouflage {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)
+                                             (calc-hoc [:skills :outdoor :survival] 2)]}
+   :cartography {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)
+                                              (calc-any-hoc [:skills :humanities :geography] 2),
+                                              (calc-hoc [:skills :science :mathematics/surveying] 2),
+                                              (calc-hoc [:skills :technical :mathematics/surveying] 2),
+                                              (calc-any-hoc [:skills :outdoor :navigation] 4),
+                                              (calc-any-hoc [:skills :technical :navigation] 4)]}
+   :climbing {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 5)]}
+   :fishing {:diff :e :attr :per :default [(calc-hoc [:attributes :per] 4)]}
+   :hiking {:diff :a :attr :ht :default [(calc-hoc [:attributes :ht] 5)]}
+   :mimicry/animal-sounds {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
+   :mimicry/bird-calls {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
+   :naturalist {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                             (calc-hoc [:skills :science :biology] 3),
+                                             (calc-hoc [:skills :plant :biology] 3)]}
+   :navigation/sp {:diff :a :attr :iq :default []} ;; TODO: specializations, special
+   :prospecting {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                              (calc-any-hoc [:skills :science :geology] 4)]}
+   :scuba {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                        (calc-hoc [:skills :technical :diving-suit] 2)]}
+   :skating {:diff :h :attr :ht :default [(calc-hoc [:attributes :ht] 6)]}
+   :skiing {:diff :h :attr :ht :default [(calc-hoc [:attributes :ht] 6)]}
+   :survival/sp {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5),
+                                               (calc-hoc [:skills :science :naturalist] 3),
+                                               (calc-hoc [:skills :outdoor :naturalist] 3)
+                                               (calc-hoc [:skills :animal :naturalist] 3)]} ;; TODO: same planet
+   :swimming {:diff :e :attr :ht :default [(calc-hoc [:attributes :ht] 4)]}
+   :tracking {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5),
+                                            (calc-hoc [:skills :science :naturalist] 5),
+                                            (calc-hoc [:skills :outdoor :naturalist] 5)
+                                            (calc-hoc [:skills :animal :naturalist] 5)]}
+   :weather-sense {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   ;;
+   })
 
 ;; TODO: specializations
 ;; TODO: techlevel
 ;; TODO: prerequisites
-;; TODO: same-type defaults
+;; TODO: same-type default
 ;; TODO: change all specializations from -sp to /sp
 (def skills {:animal animal-skills
              :arts art-skills
@@ -574,4 +611,5 @@
              :medical medical-skills
              :military military-skills
              :science science-skills
-             :occult occult-skills})
+             :occult occult-skills
+             :outdoor outdoor-skills})
