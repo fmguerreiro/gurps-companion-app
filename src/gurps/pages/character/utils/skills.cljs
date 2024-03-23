@@ -497,6 +497,39 @@
                                         (calc-hoc [:skills :technical :lockpicking] 6),
                                         (calc-hoc [:skills :criminal :lockpicking] 6)]}})
 
+(def science-skills
+  {:alchemy {:diff :v :attr :iq :defaults []}
+   :astronomy {:diff :h :attr :iq :defaults [(calc-hoc [:attributes :iq] 6)]}
+   :biology {:diff :v :attr :iq :defaults [(calc-hoc [:attributes :iq] 6),
+                                           (calc-hoc [:skills :science :naturalist] 6),
+                                           (calc-hoc [:skills :outdoor :naturalist] 6),
+                                           (calc-hoc [:skills :plant :naturalist] 6),
+                                           (calc-hoc [:skills :animal :naturalist] 6)]}
+   :chemistry {:diff :h :attr :iq :defaults [(calc-hoc [:attributes :iq] 6),
+                                             (calc-hoc [:skills :science :alchemy] 3)]}
+   :expert-skill/epidemiology {:diff :h :attr :iq}
+   :expert-skill/hydrology {:diff :h :attr :iq}
+   :expert-skill/natural-philosofy {:diff :h :attr :iq}
+   :geology/sp {:diff :h :attr :iq :specializations [] :defaults [(calc-hoc [:attributes :iq] 6),
+                                                                  (calc-hoc [:skills :humanities :geography/physical] 4),
+                                                                  (calc-hoc [:skills :outdoor :prospecting] 5)]} ;; TODO: specializations
+   :mathematics/sp {:diff :h :attr :iq :specializations [] :defaults [(calc-hoc [:attributes :iq] 6)]} ;; TODO: specializations
+   :metallurgy {:diff :h :attr :iq :defaults [(calc-hoc [:skills :science :chemistry] 5),
+                                              (calc-hoc [:skills :craft :jeweller] 8),
+                                              (calc-any-hoc [:skills :craft :smith] 8)]}
+   :meteorology/sp {:diff :a :attr :iq :specializations [] :defaults [(calc-hoc [:attributes :iq] 5)]} ;; TODO: specializations
+   :naturalist {:diff :h :attr :iq :defaults [(calc-hoc [:attributes :iq] 6),
+                                              (calc-hoc [:skills :science :biology] 3),
+                                              (calc-hoc [:skills :plant :biology] 3)]}
+   :paleontology/sp {:diff :h :attr :iq :defaults [(calc-hoc [:skills :science :biology] 4),
+                                                   (calc-hoc [:skills :plant :biology] 4)] :specializations []} ;; TODO: specializations
+   :physics {:diff :v :attr :iq :defaults [(calc-hoc [:attributes :iq] 6)]}
+   :physiology/sp {:diff :h :attr :iq :defaults [(calc-hoc [:attributes :iq] 6),
+                                                 (calc-hoc [:skills :medical :diagnosis] 5),
+                                                 (calc-hoc [:skills :medical :physician] 5),
+                                                 (calc-hoc [:skills :medical :surgery] 5)] :specializations []} ;; TODO: specializations
+   })
+
 ;; TODO: specializations
 ;; TODO: techlevel
 ;; TODO: prerequisites
@@ -515,4 +548,5 @@
              :everyman everyman-skills
              :knowledge knowledge-skills
              :medical medical-skills
-             :military military-skills})
+             :military military-skills
+             :science science-skills})
