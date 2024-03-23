@@ -337,7 +337,7 @@
    :bioengineering/sp {:diff :h :attr :iq :default [(calc-any-hoc [:skills :science :biology] 5),
                                                     (calc-any-hoc [:skills :plant :biology] 5)]} ;; TODO: spec
    :computer-programming {:diff :h :attr :iq}
-   :engineer/sp {:diff :h :attr :iq, :specializations [:artillery :civil :clockwork :combat :electrical :materials :microtechnology :mining :nanotechnology :parachronic :psychothronics :robotics :small-arms :temporal :vehicle]}
+   :engineer/sp {:diff :h :attr :iq, :specializations [:artillery :civil :clockwork :combat :electrical :materials :microtechnology :mining :nanotechnology :parachronic :psychothronics :robotics :small-arms :temporal :transportation]}
    :pharmacy/sp {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)], :specializations [:herbal :synthetic]}
    :weird-science {:diff :v :attr :iq}})
 
@@ -462,7 +462,7 @@
                                                                            (calc-hoc [:skills :technical :electronics-repair/electronic-warfare] 3),
                                                                            (calc-hoc [:skills :military :electronics-repair/electronic-warfare] 3)]}
    :expert-skill/military-science {:diff :h :attr :iq}
-   :explosives {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :explosives/sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]} ;; TODO specializations
    :forward-observer {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
                                                    (calc-hoc [:skills :combat-ranged :artillery] 5)]}
    :intelligence-analysis {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
@@ -475,7 +475,7 @@
                                                 (calc-hoc [:skills :medical :psychology] 4)]}
    :leadership {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
    :nbc-suit {:diff :a :attr :dx :default [(calc-hoc [:skills :technical :battlesuit] 2),
-                                           (calc-hoc [:skills :vehicle :battlesuit] 2),
+                                           (calc-hoc [:skills :transportation :battlesuit] 2),
                                            (calc-hoc [:skills :technical :diving-suit] 4),
                                            (calc-hoc [:skills :technical :vacc-suit] 2)]} ;; TODO vacc suit comes from where
    :observation {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5),
@@ -919,6 +919,60 @@
    :stealth {:diff :a :attrb :dx :default [(calc-hoc [:attributes :iq] 5),
                                            (calc-hoc [:attributes :dx] 5)]}})
 
+(def technical-skills
+  {:battlesuit {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
+                                             (calc-hoc [:skills :technical :diving-suit] 4),
+                                             (calc-hoc [:skills :technical :vacc-suit] 2),
+                                             (calc-hoc [:skills :technical :nbc-suit] 2)]}
+   :computer-operation {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :diving-suit {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
+                                              (calc-hoc [:skills :technical :battlesuit] 4),
+                                              (calc-hoc [:skills :technical :scuba] 2),
+                                              (calc-hoc [:skills :technical :vacc-suit] 4),
+                                              (calc-hoc [:skills :technical :nbc-suit] 4)]}
+   :electronics-operation/sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                           (calc-hoc [:skills :invention :engineer/electrical] 3),
+                                                           (calc-hoc [:skills :military :electronics-repair] 5),
+                                                           (calc-hoc [:skills :invention :engineer/electronics] 5)]}
+   :explosives/sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]} ;; TODO specializations
+   :freight-handling {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :hazardous-materials/sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]} ;; TODO: specializations
+   :lockpicking {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :mathematics/surveying {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
+   :navigation/sp {:diff :a :attr :iq :default []} ;; TODO: specializations, special
+   :parachuting {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4)]}
+   :photography {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                              (calc-hoc [:skills :arts :electronics-operation/media] 2)]}
+   :scuba {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                        (calc-hoc [:skills :technical :diving-suit] 2)]}
+   :vacc-suit {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
+                                            (calc-hoc [:skills :technical :battlesuit] 2),
+                                            (calc-hoc [:skills :technical :diving-suit] 4),
+                                            (calc-hoc [:skills :technical :nbc-suit] 2)]}})
+
+(def transportation-skills
+  {:airshipman {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :battlesuit {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
+                                             (calc-hoc [:skills :technical :diving-suit] 4),
+                                             (calc-hoc [:skills :technical :vacc-suit] 2),
+                                             (calc-hoc [:skills :technical :nbc-suit] 2)]}
+   :bicycling {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4),
+                                            (calc-hoc [:skills :transporation :driving/motorcycle] 4)]}
+   :boating/sp {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
+                                             (calc-hoc [:attributes :iq] 5)]} ;; TODO: specialization
+   :crewman {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :driving/sp {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
+                                             (calc-hoc [:attributes :iq] 5)]} ;; TODO: specialization
+   :freight-handling {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :piloting/sp {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 6)]}
+   :seamanship {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :shiphandling/sp {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]} ;; TODO: specialization
+   :spacer {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :submarine {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6)]}
+   :submariner {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :teamster/sp {:diff :a :attr :iq :default [(calc-hoc [:skills :animal :animal-handling/same] 4),
+                                              (calc-hoc [:skills :animal :riding/same] 2)]}})
+
 ;; TODO: specializations
 ;; TODO: techlevel
 ;; TODO: prerequisites
@@ -947,4 +1001,6 @@
              :scholar scholar-skills
              :social social-skills
              :humanities humanities-skills
-             :spy spy-skills})
+             :spy spy-skills
+             :technical technical-skills
+             :transportation transportation-skills})
