@@ -12,7 +12,7 @@
 
 (def difficulties {:e :easy :a :average :h :hard :v :very-hard})
 
-(def categories [:animal :arts :athletics :business :combat-melee :combat-ranged :craft :criminal :invention :esoteric :everyman :knowledge :medical :military :science :occult :outdoors :plant :police :repair :scholar :social :humanities :spy :technical :transportation])
+(def categories [:animal :arts :athletics :business :combat-melee :combat-ranged :craft :criminal :invention :esoteric :everyman :knowledge :medical :military :science :occult :outdoor :plant :police :repair :scholar :social :humanities :spy :technical :transportation])
 
 (defn calc-hoc [keys subtrahend]
   (fn [char] (- (get-in char keys) subtrahend)))
@@ -437,10 +437,71 @@
                                              (calc-hoc [:skills :medical :physician] 5),
                                              (calc-hoc [:skills :medical :surgery] 5)]}})
 
+(def military-skills
+  {:armoury/sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                             (calc-hoc [:skills :invention :engineer/same] 3) ;; TODO: same calculation
+                                             ]:specializations []} ;; TODO spec
+   :brain-hacking {:diff :h :attr :iq :default []} ;; TODO: special
+   :brainwashing {:diff :h :attr :iq :default []} ;; TODO: special
+   :camouflage {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)
+                                             (calc-hoc [:skills :outdoor :survival] 2)]}
+   :cryptography {:diff :h :attr :iq :default [(calc-hoc [:attributes :science :mathematics/cryptology] 5)]}
+   :electronics-operation/electronic-warfare {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                                           (calc-hoc [:skills :science :engineer/electrical] 3),
+                                                                           (calc-hoc [:skills :science :engineer/electronics] 5),
+                                                                           (calc-hoc [:skills :spy :electronics-repair/electronic-warfare] 3),
+                                                                           (calc-hoc [:skills :repair :electronics-repair/electronic-warfare] 3),
+                                                                           (calc-hoc [:skills :technical :electronics-repair/electronic-warfare] 3),
+                                                                           (calc-hoc [:skills :military :electronics-repair/electronic-warfare] 3)]}
+   :expert-skill/military-science {:diff :h :attr :iq :default []}
+   :explosives {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :forward-observer {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                   (calc-hoc [:skills :combat-ranged :artillery] 5)]}
+   :intelligence-analysis {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                                        (calc-any-hoc [:skills :military :strategy] 6)]}
+   :interrogation {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                (calc-hoc [:skills :police :intimidation] 3),
+                                                (calc-hoc [:skills :social :intimidation] 3),
+                                                (calc-hoc [:skills :criminal :intimidation] 3),
+                                                (calc-hoc [:skills :humanities :psychology] 4),
+                                                (calc-hoc [:skills :medical :psychology] 4)]}
+   :leadership {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :nbc-suit {:diff :a :attr :dx :default [(calc-hoc [:skills :technical :battlesuit] 2),
+                                           (calc-hoc [:skills :vehicle :battlesuit] 2),
+                                           (calc-hoc [:skills :technical :diving-suit] 4),
+                                           (calc-hoc [:skills :technical :vacc-suit] 2)]} ;; TODO vacc suit comes from where
+   :observation {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5),
+                                               (calc-hoc [:skills :spy :shadowing] 5),
+                                               (calc-hoc [:skills :police :shadowing] 5),
+                                               (calc-hoc [:skills :criminal :shadowing] 5)]}
+   :parachuting {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4)]}
+   :propaganda {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                             (calc-hoc [:skills :social :merchant] 5),
+                                             (calc-hoc [:skills :business :merchant] 5),
+                                             (calc-hoc [:skills :humanities :psychology] 4),
+                                             (calc-hoc [:skills :medical :psychology] 4)]}
+   :savoir-faire/military {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]} ;; TODO: and others
+   :scuba {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                        (calc-hoc [:skills :technical :diving-suit] 2)]}
+   :soldier {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :strategy/sp {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                              (calc-hoc [:skills :military :intelligence-analysis] 6),
+                                              (calc-hoc [:skills :spy :intelligence-analysis] 6),
+                                              (calc-hoc [:skills :military :tactics] 6),
+                                              (calc-hoc [:skills :police :tactics] 6)]}
+   :tactics {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                          (calc-any-hoc [:skills :military :strategy] 6)]}
+   :traps {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                        (calc-hoc [:skills :police :lockpicking] 6),
+                                        (calc-hoc [:skills :spy :lockpicking] 6),
+                                        (calc-hoc [:skills :technical :lockpicking] 6),
+                                        (calc-hoc [:skills :criminal :lockpicking] 6)]}})
+
 ;; TODO: specializations
 ;; TODO: techlevel
 ;; TODO: prerequisites
 ;; TODO: same-type defaults
+;; TODO: change all specializations from -sp to /sp
 (def skills {:animal animal-skills
              :arts art-skills
              :athletic athletics-skills
@@ -453,4 +514,5 @@
              :esoteric esoteric-skills
              :everyman everyman-skills
              :knowledge knowledge-skills
-             :medical medical-skills})
+             :medical medical-skills
+             :military military-skills})
