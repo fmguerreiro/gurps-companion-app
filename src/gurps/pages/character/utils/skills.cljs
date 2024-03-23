@@ -331,7 +331,7 @@
 
 (def invention-skills
   {:architecture {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                               (calc-hoc [:skills :invention :engineer-civil] 5)]}
+                                               (calc-hoc [:skills :invention :engineer/civil] 5)]}
    :bioengineering/sp {:diff :h :attr :iq :default [(calc-any-hoc [:skills :science :biology] 5),
                                                     (calc-any-hoc [:skills :plant :biology] 5)]} ;; TODO: spec
    :computer-programming {:diff :h :attr :iq}
@@ -453,8 +453,8 @@
                                              (calc-hoc [:skills :outdoor :survival] 2)]}
    :cryptography {:diff :h :attr :iq :default [(calc-hoc [:attributes :science :mathematics/cryptology] 5)]}
    :electronics-operation/electronic-warfare {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                                                           (calc-hoc [:skills :science :engineer/electrical] 3),
-                                                                           (calc-hoc [:skills :science :engineer/electronics] 5),
+                                                                           (calc-hoc [:skills :invention :engineer/electrical] 3),
+                                                                           (calc-hoc [:skills :invention :engineer/electronics] 5),
                                                                            (calc-hoc [:skills :spy :electronics-repair/electronic-warfare] 3),
                                                                            (calc-hoc [:skills :repair :electronics-repair/electronic-warfare] 3),
                                                                            (calc-hoc [:skills :technical :electronics-repair/electronic-warfare] 3),
@@ -665,12 +665,34 @@
    :stealth {:diff :a :attrb :dx :default [(calc-hoc [:attributes :iq] 5),
                                            (calc-hoc [:attributes :dx] 5)]}
    :streetwise {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
-   :traps {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                        (calc-hoc [:skills :police :lockpicking] 3),
-                                        (calc-hoc [:skills :criminal :lockpicking] 3),
-                                        (calc-hoc [:skills :spy :lockpicking] 3),
-                                        (calc-hoc [:skills :technical :lockpicking] 3)]}
+   :tactics {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                          (calc-any-hoc [:skills :military :strategy] 6)]}
    :urban-survival {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5)]}})
+
+(def repair-skills
+  {:armoury/sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                             (calc-hoc [:skills :invention :engineer/same] 4)]} ;; TODO: specializations
+   :electrician {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                              (calc-hoc [:skills :invention :engineer/electrical] 3)]}
+   :electronics-repair/sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                        (calc-hoc [:skills :art :electronics-operation/same] 3),
+                                                        (calc-hoc [:skills :spy :electronics-operation/same] 3),
+                                                        (calc-hoc [:skills :technical :electronics-operation/same] 3),
+                                                        (calc-hoc [:skills :criminal :electronics-operation/same] 3),
+                                                        (calc-hoc [:skills :medical :electronics-operation/same] 3),
+                                                        (calc-hoc [:skills :military :electronics-operation/same] 3),
+                                                        (calc-hoc [:skills :police :electronics-operation/same] 3),
+                                                        (calc-hoc [:skills :invention :engineer/electronics] 3)]} ;; TODO: specialization
+   :flint-knapping {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 2),
+                                                 (calc-hoc [:skills :repair :armoury] 1),
+                                                 (calc-hoc [:skills :humanities :anthropology] 4)]}
+   :machinist {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                            (calc-any-hoc [:skills :repair :mechanic] 5)]}
+   :mechanic/sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                              (calc-hoc [:skills :invention :engineer/same] 4)
+                                              (calc-hoc [:skills :repair :machinist] 5)]} ;; TODO specializations
+   ;;
+   })
 
 ;; TODO: specializations
 ;; TODO: techlevel
@@ -695,4 +717,5 @@
              :occult occult-skills
              :outdoor outdoor-skills
              :plant plant-skills
-             :police police-skills})
+             :police police-skills
+             :repair repair-skills})
