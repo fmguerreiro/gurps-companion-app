@@ -824,6 +824,101 @@
    :theology/sp {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
                                               (calc-hoc [:skills :occultist :religious-ritual/same] 4)]}})
 
+(def spy-skills
+  {:acting {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                         (calc-hoc [:skills :arts :performance] 2),
+                                         (calc-hoc [:skills :business :public-speaking] 5),
+                                         (calc-hoc [:skills :scholar :public-speaking] 5),
+                                         (calc-hoc [:skills :social :public-speaking] 5)]}
+   :body-language {:diff :a :attr :per :default [(calc-hoc [:skills :police :detect-lies] 4),
+                                                 (calc-hoc [:skills :social :detect-lies] 4),
+                                                 (calc-hoc [:skills :spy :detect-lies] 4),
+                                                 (calc-hoc [:skills :humanities :psychology] 4),
+                                                 (calc-hoc [:skills :medical :psychology] 4)]}
+   :brain-hacking {:diff :h :attr :iq} ;; TODO: special
+   :brainwashing {:diff :h :attr :iq} ;; TODO: special
+   :computer-hacking {:diff :v :attr :iq}
+   :cryptography {:diff :h :attr :iq :default [(calc-hoc [:attributes :science :mathematics/cryptology] 5)]}
+   :detect-lies {:diff :h :attr :per :default [(calc-hoc [:attributes :per] 6),
+                                               (calc-hoc [:skills :police :body-language] 4),
+                                               (calc-hoc [:skills :social :body-language] 4),
+                                               (calc-hoc [:skills :spy :body-language] 4),
+                                               (calc-hoc [:skills :humanities :psychology] 4),
+                                               (calc-hoc [:skills :medical :psychology] 4)]}
+   :disguise/sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                              (calc-hoc [:skills :arts :makeup] 3)]} ;; TODO: spec
+   :electronics-operation/electronic-warfare {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                                           (calc-hoc [:skills :invention :engineer/electrical] 3),
+                                                                           (calc-hoc [:skills :invention :engineer/electronics] 5),
+                                                                           (calc-hoc [:skills :spy :electronics-repair/electronic-warfare] 3),
+                                                                           (calc-hoc [:skills :repair :electronics-repair/electronic-warfare] 3),
+                                                                           (calc-hoc [:skills :technical :electronics-repair/electronic-warfare] 3),
+                                                                           (calc-hoc [:skills :military :electronics-repair/electronic-warfare] 3)]}
+
+   :electronics-operation/security {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                                 (calc-hoc [:skills :invention :engineer/electrical] 3),
+                                                                 (calc-hoc [:skills :repair :electronics-repair/security] 5),
+                                                                 (calc-hoc [:skills :invention :engineer/electronics] 5)]}
+
+   :electronics-operation/surveillance {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                                     (calc-hoc [:skills :invention :engineer/electrical] 3),
+                                                                     (calc-hoc [:skills :repair :electronics-repair/surveillance] 5),
+                                                                     (calc-hoc [:skills :invention :engineer/electronics] 5)]}
+   :escape {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6)]}
+   :expert-skill/computer-security {:diff :h :attr :iq}
+   :fast-talk {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                            (calc-hoc [:skills :social :acting] 5),
+                                            (calc-hoc [:skills :spy :acting] 5)]}
+   :filch {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
+                                        (calc-hoc [:skills :criminal :pickpocket] 4),
+                                        (calc-hoc [:skills :criminal :sleight-of-hand] 4)]}
+   :forced-entry {:diff :e :attr :dx}
+   :forgery {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                          (calc-hoc [:skills :criminal :counterfeiting] 2)]}
+   :holdout {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                          (calc-hoc [:skills :criminal :sleight-of-hand] 3)]}
+   :intelligence-analysis {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                                        (calc-any-hoc [:skills :military :strategy] 6)]}
+   :interrogation {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                (calc-hoc [:skills :police :intimidation] 3),
+                                                (calc-hoc [:skills :social :intimidation] 3),
+                                                (calc-hoc [:skills :criminal :intimidation] 3),
+                                                (calc-hoc [:skills :humanities :psychology] 4),
+                                                (calc-hoc [:skills :medical :psychology] 4)]}
+   :lip-reading {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 10)]}
+   :lockpicking {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :observation {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5),
+                                               (calc-hoc [:skills :police :shadowing] 5),
+                                               (calc-hoc [:skills :spy :shadowing] 5),
+                                               (calc-hoc [:skills :criminal :shadowing] 5)]}
+   :photography {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                              (calc-hoc [:skills :arts :electronics-operation/media] 2)]}
+   :poisons {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                          (calc-hoc [:skills :science :chemistry] 5),
+                                          (calc-any-hoc [:skills :science :pharmacy] 3),
+                                          (calc-hoc [:skills :medical :physician] 3)]}
+   :propaganda {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                             (calc-hoc [:skills :social :merchant] 5),
+                                             (calc-hoc [:skills :business :merchant] 5),
+                                             (calc-hoc [:skills :humanities :psychology] 4),
+                                             (calc-hoc [:skills :medical :psychology] 4)]}
+   :research {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                           (calc-hoc [:skills :scholar :writing] 3),
+                                           (calc-hoc [:skills :arts :writing] 3)]}
+   :search {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5),
+                                          (calc-hoc [:skills :police :criminology] 5),
+                                          (calc-hoc [:skills :humanities :criminology] 5)]}
+   :shadowing {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                            (calc-hoc [:skills :military :observation] 5),
+                                            (calc-hoc [:skills :spy :observation] 5),
+                                            (calc-hoc [:skills :criminal :observation] 5),
+                                            (calc-hoc [:skills :criminal :stealth] 4),
+                                            (calc-hoc [:skills :police :stealth] 4),
+                                            (calc-hoc [:skills :spy :stealth] 4)]}
+   :smuggling {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :stealth {:diff :a :attrb :dx :default [(calc-hoc [:attributes :iq] 5),
+                                           (calc-hoc [:attributes :dx] 5)]}})
+
 ;; TODO: specializations
 ;; TODO: techlevel
 ;; TODO: prerequisites
@@ -851,4 +946,5 @@
              :repair repair-skills
              :scholar scholar-skills
              :social social-skills
-             :humanities humanities-skills})
+             :humanities humanities-skills
+             :spy spy-skills})
