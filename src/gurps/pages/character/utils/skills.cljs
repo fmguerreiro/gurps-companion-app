@@ -303,6 +303,7 @@
                                                (calc-hoc [:skills :criminal :shadowing] 5)]}
    :panhandling {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
                                               (calc-hoc [:skills :criminal :fast-talk] 2),
+                                              (calc-hoc [:skills :social :fast-talk] 2),
                                               (calc-hoc [:skills :business :public-speaking] 3),
                                               (calc-hoc [:skills :scholar :public-speaking] 3),
                                               (calc-hoc [:skills :social :public-speaking] 3)]}
@@ -710,6 +711,119 @@
    :typing {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4)]} ;; TODO: any skill requiring typing
    :writing {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}})
 
+(def social-skills
+  {:acting {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                         (calc-hoc [:skills :arts :performance] 2),
+                                         (calc-hoc [:skills :business :public-speaking] 5),
+                                         (calc-hoc [:skills :scholar :public-speaking] 5),
+                                         (calc-hoc [:skills :social :public-speaking] 5)]}
+   :administration {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                 (calc-hoc [:skills :business :merchant] 3)]}
+   :body-language {:diff :a :attr :per :default [(calc-hoc [:skills :police :detect-lies] 4),
+                                                 (calc-hoc [:skills :social :detect-lies] 4),
+                                                 (calc-hoc [:skills :spy :detect-lies] 4),
+                                                 (calc-hoc [:skills :humanities :psychology] 4),
+                                                 (calc-hoc [:skills :medical :psychology] 4)]}
+   :carousing {:diff :e :attr :ht :default [(calc-hoc [:attributes :ht] 4)]}
+   :connoisseur/sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]} ;; TODO: specializations
+   :current-affairs/sp {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
+                                                     (calc-hoc [:skills :spy :research] 4)
+                                                     (calc-hoc [:skills :scholar :research] 4)]} ;; TODO: spec
+   :detect-lies {:diff :h :attr :per :default [(calc-hoc [:attributes :per] 6),
+                                               (calc-hoc [:skills :police :body-language] 4),
+                                               (calc-hoc [:skills :social :body-language] 4),
+                                               (calc-hoc [:skills :spy :body-language] 4),
+                                               (calc-hoc [:skills :humanities :psychology] 4),
+                                               (calc-hoc [:skills :medical :psychology] 4)]}
+   :diplomacy {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                            (calc-hoc [:skills :business :politics] 6)]}
+   :erotic-art {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
+                                             (calc-hoc [:skills :athletics :accrobatics] 5)]}
+   :fast-talk {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                            (calc-hoc [:skills :social :acting] 5),
+                                            (calc-hoc [:skills :spy :acting] 5)]}
+   :fortune-telling/sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                     (calc-hoc [:skills :social :fast-talk] 3),
+                                                     (calc-hoc [:skills :spy :fast-talk] 3),
+                                                     (calc-hoc [:skills :criminal :fast-talk] 3),
+                                                     (calc-hoc [:skills :occultist :occultism] 3)]} ;; TODO specialization
+   :gambling {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                           (calc-hoc [:skills :science :mathematics/statistics] 5),
+                                           (calc-hoc [:skills :business :mathematics/statistics] 5)]}
+   :intimidation {:diff :a :attr :will :default [(calc-hoc [:attributes :will] 5),
+                                                 (calc-hoc [:skills :spy :acting] 3),
+                                                 (calc-hoc [:skills :social :acting] 3)]}
+   :gesture {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :heraldry {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                           (calc-hoc [:skills :business :savoir-faire/high-society] 3),
+                                           (calc-hoc [:skills :knowledge :savoir-faire/high-society] 3)
+                                           (calc-hoc [:skills :social :savoir-faire/high-society] 3)]}
+   :leadership {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :merchant {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                           (calc-hoc [:skills :business :finance] 6),
+                                           (calc-hoc [:skills :business :market-analysis] 4)]}
+   :panhandling {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
+                                              (calc-hoc [:skills :criminal :fast-talk] 2),
+                                              (calc-hoc [:skills :social :fast-talk] 2),
+                                              (calc-hoc [:skills :business :public-speaking] 3),
+                                              (calc-hoc [:skills :scholar :public-speaking] 3),
+                                              (calc-hoc [:skills :social :public-speaking] 3)]}
+   :politics {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                           (calc-hoc [:skills :business :diplomacy] 5)]}
+   :propaganda {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                             (calc-hoc [:skills :social :merchant] 5),
+                                             (calc-hoc [:skills :business :merchant] 5),
+                                             (calc-hoc [:skills :humanities :psychology] 4),
+                                             (calc-hoc [:skills :medical :psychology] 4)]}
+   :public-speaking {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                                  (calc-hoc [:skills :business :politics] 5),
+                                                  (calc-hoc [:skills :social :acting] 5),
+                                                  (calc-hoc [:skills :arts :performance] 2)]}
+   :savoir-faire/high-society {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]} ;; TODO: and others?
+   :sex-appeal {:diff :a :attr :ht :default [(calc-hoc [:attributes :ht] 3)]}
+   :streetwise {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :teaching {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}})
+
+(def humanities-skills
+  {:anthropology {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                               (calc-hoc [:skills :humanities :sociology] 3),
+                                               (calc-hoc [:skills :sciences :paleontology/paleoanthropology] 2),
+                                               (calc-hoc [:skills :humanities :paleontology/paleoanthropology] 2)]}
+   :archaeology {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
+   :cartography {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                              (calc-any-hoc [:skills :humanities :geography] 2),
+                                              (calc-hoc [:skills :science :mathematics/surveying] 2),
+                                              (calc-hoc [:skills :technical :mathematics/surveying] 2)
+                                              (calc-any-hoc [:skills :outdoor :navigation] 4),
+                                              (calc-any-hoc [:skills :technical :navigation] 4)]}
+   :criminology {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
+                                              (calc-hoc [:skills :humanities :psychology] 4),
+                                              (calc-hoc [:skills :medical :psychology] 4)]}
+   :economics {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                            (calc-hoc [:skills :business :finance] 3),
+                                            (calc-hoc [:skills :business :market-analysis] 5),
+                                            (calc-hoc [:skills :business :merchant] 6)]}
+   :expert-skill/egyptology {:diff :h :attr :iq}
+   :expert-skill/political-science {:diff :h :attr :iq}
+   :expert-skill/thanatology {:diff :h :attr :iq}
+   :expert-skill/xenology {:diff :h :attr :iq}
+   :geography/sp {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]} ;; TODO specializations
+   :history/sp {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]} ;; TODO: specialization
+   :law/sp {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]} ;; TODO: specialization
+   :linguistics {:diff :h :attr :iq}
+   :literature {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
+   :paleontology/paleoanthropology {:diff :h :attr :iq :default [(calc-any-hoc [:skills :science :biology] 3),
+                                                                 (calc-any-hoc [:skills :plant :biology] 3)]}
+   :philosophy/sp {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]} ;; TODO: specialization
+   :psychology {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                             (calc-hoc [:skills :humanities :sociology] 4)]}
+   :sociology {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                            (calc-hoc [:skills :humanities :anthropology] 3),
+                                            (calc-hoc [:skills :humanities :psychology] 4),
+                                            (calc-hoc [:skills :medical :psychology] 4)]}
+   :theology/sp {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
+                                              (calc-hoc [:skills :occultist :religious-ritual/same] 4)]}})
+
 ;; TODO: specializations
 ;; TODO: techlevel
 ;; TODO: prerequisites
@@ -735,4 +849,6 @@
              :plant plant-skills
              :police police-skills
              :repair repair-skills
-             :scholar scholar-skills})
+             :scholar scholar-skills
+             :social social-skills
+             :humanities humanities-skills})
