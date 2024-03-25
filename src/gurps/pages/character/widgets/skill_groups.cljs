@@ -5,7 +5,10 @@
 
 (defn- keyword->str
   [keyword]
-  (str/replace (str (name keyword)) #"-" " "))
+  (let [namespace (namespace keyword)
+        name (name keyword)
+        text (if namespace namespace name)]
+    (str/replace text #"-" " ")))
 
 (defn skill-groups []
   [:> view {:className "w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"}

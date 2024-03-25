@@ -425,7 +425,7 @@
                                             (calc-hoc [:skills :medical :physician] 0),
                                             (calc-hoc [:skills :medical :veterinary] 4)]}
    :hypnotism {:diff :h :attr :iq}
-   :pharmacy-sp {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)] :specializations []} ;; TODO: specializations
+   :pharmacy/sp {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)], :specializations [:herbal :synthetic]}
    :physician {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 7),
                                             (calc-hoc [:skills :medical :first-aid] 11),
                                             (calc-hoc [:skills :medical :veterinary] 5),
@@ -977,7 +977,6 @@
 ;; TODO: techlevel
 ;; TODO: prerequisites
 ;; TODO: same-type default
-;; TODO: change all specializations from -sp to /sp
 (def skills {:animal animal-skills
              :arts art-skills
              :athletic athletics-skills

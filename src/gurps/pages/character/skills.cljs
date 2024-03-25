@@ -41,7 +41,6 @@
 (defn character-skills-page
   [^js props]
   (r/with-let [a 5]
-    (js/console.log "character-skills-page")
     ;; (if-let [navigation (rnn/useNavigation)]
     [:> rn/ScrollView
      [:> view {:className "flex bg-red-200 flex-column px-2"}
