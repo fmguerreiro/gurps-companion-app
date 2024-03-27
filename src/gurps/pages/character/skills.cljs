@@ -55,6 +55,5 @@
 ;; TODO: put this in its own file
 (defn character-add-skill-page
   [^js props]
-  [:> rn/ScrollView
-   [:> view {:className "flex flex-column px-2"}
-    [skill-groups]]])
+  [:> view {:className "flex flex-column px-2"}
+   [skill-groups]])
