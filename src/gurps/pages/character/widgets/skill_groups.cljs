@@ -4,58 +4,75 @@
 (ns gurps.pages.character.widgets.skill-groups
   (:require [clojure.string :as str]
             [reagent.core :as r]
-            [gurps.pages.character.utils.skills :refer [skills grouped-skills categories]]
+            [re-frame.core :as rf]
+            [gurps.utils.i18n :as i18n]
+            [gurps.pages.character.utils.skills :refer [skills grouped-skills categories difficulties default-skill-lvl]]
             [gurps.widgets.base :refer [view text button section-list]]))
 
-(defn- keyword->str
+;; NOTE: passing keywords to js functions is a bit tricky, so we convert them to strings first
+(defn- key->str
+  [key]
+  (str (symbol key)))
+
+;; NOTE: then we convert the strings back to keywords when we need to
+(defn- str->keyword
+  [str]
+  (keyword str))
+
+(defn- keyword->title
   [keyword]
   (let [namespace (namespace keyword)
         name (name keyword)
         text (if namespace namespace name)]
     (str/replace text #"-" " ")))
 
-;; (defn skill-groups []
-;;   [:> view {:className "w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"}
-;;    (for [category categories]
-;;      [:> view {:key (str category "-view")}
-;;       [:> text {:key category
-;;                 :className "font-bold capitalize"}
-;;        (keyword->str category)]
-;;       (for [skill (-> skills category keys)]
-;;         [:> button {:key (str skill "-btn")
-;;                     :className "w-full px-4 py-2 font-medium text-left rtl:text-right border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"}
-;;          [:> text {:key skill :className "capitalize"}
-;;           (keyword->str skill)]])])])
+(defn- vec->js-array [vec]
+  (let [arr #js []]
+    (doseq [x vec]
+      (.push arr x))
+    arr))
 
-;; (->> skills
-;;      (map (fn [x]
-;;             {:title (keyword->str (key x))
-;;              :data (->> x val)}))
-;;      first
-;;      :data
-;;      )
+(defn skill-row [props default-lvls]
+  (let [item-txt (.-item props)
+        item-key (str->keyword item-txt)
+        skill (item-key skills)
+        difficulty (i18n/label (keyword "t" ((:diff skill) difficulties)))]
+    (r/as-element
+     [:> button {:key (str item-txt "-btn")
+                 :className "w-full px-4 py-2 font-medium text-left rtl:text-right border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
+                 ;; TODO
+                 :onClick #(js/console.log item-txt)}
+      [:> view {:className "flex flex-row justify-between"}
+       [:> text {:className "capitalize"} item-txt]
+       [:> view {:className "flex flex-row"}
+        [:> text {:className ""} difficulty]
+        [:> text (item-key default-lvls)]]]])))
+
+(defn skill-header [props]
+  (let [title (-> ^js props .-section .-title str->keyword keyword->title)]
+    (r/as-element
+     [:> text {:className "font-bold capitalize bg-white"} title])))
 
 (defn skill-groups
   []
   (r/with-let [sections (->> grouped-skills
                              (map (fn [x]
-                                    {:title (keyword->str (key x))
-                                     :data (->> x val keys (map keyword->str))})))]
-    [:> section-list
-     {:sections sections
-      :renderSectionHeader (fn [props]
-                             (let [title (-> ^js props .-section .-title)]
-                               (r/as-element [:> text {:className "font-bold capitalize bg-white"} title])))
-      ;; :keyExtractor (fn [item] (str item "-key"))
-      :renderItem (fn [props]
-                    (let [item-txt (.-item props)
-                          ;; item-txt (-> item keyword->str)
-                          ]
-                      (r/as-element
-                       [:> button {:key (str item-txt "-btn")
-                                   :className "w-full px-4 py-2 font-medium text-left rtl:text-right border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
-                                   :onClick #(js/console.log item-txt) ;; TODO
-                                   }
-                        [:> view {:className "flex flex-row justify-between"}
-                         [:> text {:className "capitalize"} item-txt]
-                         [:> text {:className ""} "0"]]])))}]))
+                                    #js {:title (-> x key key->str)
+                                         :data  (->> x val keys (map key->str) vec->js-array)})))
+               default-lvls @(rf/subscribe [:skills/defaults])]
+    (r/create-element
+     section-list
+     #js {:sections (vec->js-array sections)
+          :renderSectionHeader skill-header
+          :keyExtractor (fn [item] (str item "-key"))
+          :renderItem #(skill-row % default-lvls)})))
+
+;; TODO: this is probably gonna be pretty slow
+(rf/reg-sub
+ :skills/defaults
+ (fn [db]
+   (let [skill-keys (keys skills)]
+     (js/console.log "default-lvls" (count skill-keys))
+     (reduce (fn [acc key] (assoc acc key (default-skill-lvl db key)))
+             {}
+             skill-keys))))

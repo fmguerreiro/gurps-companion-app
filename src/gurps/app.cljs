@@ -25,12 +25,11 @@
                             .-extra
                             .-storybookEnabled))
 
-(def real-root (if (= storybook-enabled? "true")
-                 nil
-                 ;; TODO instead of 'nil, we should load the storybook root
-                 ;; (do (require '["./.storybook"] :refer [default] :rename {default storybook})
-                 ;;      storybook)
-                 root))
+(def real-root
+  ;; (if (= storybook-enabled? "true")
+  ;;   (let [storybook (js/require "storybook")]
+  ;;     storybook)
+  root)
 
 (defn start
   {:dev/after-load true}

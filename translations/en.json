@@ -44,5 +44,9 @@
   "dodge-encumbrance-heavy": "Dodge -3",
   "dodge-encumbrance-extra-heavy": "Dodge -4",
   "skills": "Skills",
-  "add-skill": "Add Skill"
+  "add-skill": "Add Skill",
+  "easy": "E",
+  "average": "A",
+  "hard": "H",
+  "very-hard": "VH"
 }

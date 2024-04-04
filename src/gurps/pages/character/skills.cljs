@@ -29,7 +29,6 @@
 
 (defn- add-skill-button
   [^js props]
-  (js/console.log "add-skill-button")
   (if-let [navigation (rnn/useNavigation)]
     [:> view {:className ""}
      ;; TODO: put this button into a design library and use it here

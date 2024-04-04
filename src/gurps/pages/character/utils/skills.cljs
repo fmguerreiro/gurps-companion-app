@@ -708,3 +708,10 @@
    :spy (select-keys skills [:acting :body-language :brain-hacking :brainwashing :computer-hacking :cryptography :detect-lies :disguise/sp :electronics-operation/electronic-warfare :electronics-operation/security :electronics-operation/surveillance :escape :expert-skill/computer-security :fast-talk :filch :forced-entry :forgery :holdout :intelligence-analysis :interrogation :lip-reading :lockpicking :observation :photography :poisons :propaganda :research :search :shadowing :smuggling :stealth])
    :technical (select-keys skills [:battlesuit :computer-operation :diving-suit :electronics-operation/sp :explosives/sp :freight-handling :hazardous-materials/sp :lockpicking :mathematics/surveying :navigation/sp :parachuting :photography :scuba :vacc-suit])
    :transportation (select-keys skills [:airshipman :battlesuit :bicycling :boating :crewman :driving/sp :freight-handling :piloting :seamanship :shiphandling/sp :spacer :spacemarine/sp :submariner :teamster/sp])})
+
+(defn default-skill-lvl
+  [char skill]
+  (let [default-funs (get-in skills [skill :default])]
+    (->> (concat [(fn [_] 0)] default-funs)
+         (map #(% char))
+         (reduce max))))
