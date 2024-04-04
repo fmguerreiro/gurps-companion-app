@@ -25,3 +25,4 @@ app/
 .clj-kondo/.cache
 .lsp/sqlite.db
 nativewind-output.js
+.storybook/
