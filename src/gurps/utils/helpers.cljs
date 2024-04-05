@@ -5,3 +5,11 @@
   (if (or (and (seqable? v) (empty? v)) (nil? v))
     default
     v))
+
+(defn str->key
+  [str]
+  (keyword str))
+
+(defn key->str
+  [key]
+  (str (symbol key)))

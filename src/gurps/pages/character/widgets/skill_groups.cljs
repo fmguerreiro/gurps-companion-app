@@ -5,19 +5,11 @@
   (:require [clojure.string :as str]
             [reagent.core :as r]
             [re-frame.core :as rf]
+            ["@react-navigation/native" :as rnn]
             [gurps.utils.i18n :as i18n]
-            [gurps.pages.character.utils.skills :refer [skills grouped-skills categories difficulties default-skill-lvl]]
+            [gurps.utils.helpers :refer [str->key key->str]]
+            [gurps.pages.character.utils.skills :refer [skills grouped-skills difficulties default-skill-lvl]]
             [gurps.widgets.base :refer [view text button section-list]]))
-
-;; NOTE: passing keywords to js functions is a bit tricky, so we convert them to strings first
-(defn- key->str
-  [key]
-  (str (symbol key)))
-
-;; NOTE: then we convert the strings back to keywords when we need to
-(defn- str->keyword
-  [str]
-  (keyword str))
 
 (defn- keyword->title
   [keyword]
@@ -33,23 +25,24 @@
     arr))
 
 (defn skill-row [props default-lvls]
-  (let [item-txt (.-item props)
-        item-key (str->keyword item-txt)
+  (let [navigation (rnn/useNavigation)
+        item-txt (.-item props)
+        item-key (str->key item-txt)
         skill (item-key skills)
-        difficulty (i18n/label (keyword "t" ((:diff skill) difficulties)))]
+        difficulty (i18n/label (keyword "t" ((:diff skill) difficulties)))
+        needs-specialization? (= "sp" (name item-key))]
     (r/as-element
      [:> button {:key (str item-txt "-btn")
                  :className "w-full px-4 py-2 font-medium text-left rtl:text-right border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
-                 ;; TODO
-                 :onClick #(js/console.log item-txt)}
+                 :onPress #(-> navigation (.navigate (i18n/label :t/add-skill-specialization) #js {:id item-txt}))}
       [:> view {:className "flex flex-row justify-between"}
-       [:> text {:className "capitalize"} item-txt]
+       [:> text {:className "capitalize"} (if needs-specialization? (namespace item-key) item-txt)]
        [:> view {:className "flex flex-row"}
         [:> text {:className ""} difficulty]
         [:> text (item-key default-lvls)]]]])))
 
 (defn skill-header [props]
-  (let [title (-> ^js props .-section .-title str->keyword keyword->title)]
+  (let [title (-> ^js props .-section .-title str->key keyword->title)]
     (r/as-element
      [:> text {:className "font-bold capitalize bg-white"} title])))
 
@@ -67,12 +60,10 @@
           :keyExtractor (fn [item] (str item "-key"))
           :renderItem #(skill-row % default-lvls)})))
 
-;; TODO: this is probably gonna be pretty slow
 (rf/reg-sub
  :skills/defaults
  (fn [db]
    (let [skill-keys (keys skills)]
-     (js/console.log "default-lvls" (count skill-keys))
      (reduce (fn [acc key] (assoc acc key (default-skill-lvl db key)))
              {}
              skill-keys))))
