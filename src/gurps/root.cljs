@@ -21,15 +21,15 @@
                character-add-skill-component (fn [props] (r/as-element [character-add-skill-page props]))
                character-add-skill-spec-component (fn [props] (r/as-element [character-add-skill-spec-page props]))]
     [:> SkillStack.Navigator
-     [:> SkillStack.Screen {:name (i18n/label :t/skills)
+     [:> SkillStack.Screen {:name      (i18n/label :t/skills)
                             :component character-skills-component
-                            :options {:headerShown false}}]
-     [:> SkillStack.Screen {:name (i18n/label :t/add-skill)
+                            :options   {:headerShown false}}]
+     [:> SkillStack.Screen {:name      (i18n/label :t/add-skill)
                             :component character-add-skill-component
-                            :options {:headerShown false}}]
-     [:> SkillStack.Screen {:name (i18n/label :t/add-skill-specialization)
+                            :options   {:headerShown false}}]
+     [:> SkillStack.Screen {:name      (i18n/label :t/add-skill-specialization)
                             :component character-add-skill-spec-component
-                            :options {:headerShown false}}]]))
+                            :options   {:headerShown false}}]]))
 
 (defn root []
   ;; The save and restore of the navigation root state is for development time bliss
@@ -40,16 +40,16 @@
                                (when navigation-ref
                                  (.addListener navigation-ref "state" save-root-state!)))
                skill-stack-component (fn [] (r/as-element [skills-stack]))]
-    [:> rnn/NavigationContainer {:ref add-listener!
+    [:> rnn/NavigationContainer {:ref          add-listener!
                                  :initialState (when @!root-state (-> @!root-state .-data .-state))}
      [:> RootTab.Navigator
       ;; TODO: should be stats > skills > items in the end
-      [:> RootTab.Screen {:name (str (i18n/label :t/skills) "-Root")
+      [:> RootTab.Screen {:name      (str (i18n/label :t/skills) "-Root")
                           :component skill-stack-component
-                          :options {:title (i18n/label :t/skills) :headerTitleStyle header-title-style}}]
-      [:> RootTab.Screen {:name (i18n/label :t/stats)
+                          :options   {:title (i18n/label :t/skills) :headerTitleStyle header-title-style}}]
+      [:> RootTab.Screen {:name      (i18n/label :t/stats)
                           :component (fn [props] (r/as-element [character-stats-page props]))
-                          :options {:title (i18n/label :t/stats) :headerTitleStyle header-title-style}}]
-      [:> RootTab.Screen {:name (i18n/label :t/items)
+                          :options   {:title (i18n/label :t/stats) :headerTitleStyle header-title-style}}]
+      [:> RootTab.Screen {:name      (i18n/label :t/items)
                           :component (fn [props] (r/as-element [character-items-page props]))
-                          :options {:title (i18n/label :t/items) :headerTitleStyle header-title-style}}]]]))
+                          :options   {:title (i18n/label :t/items) :headerTitleStyle header-title-style}}]]]))

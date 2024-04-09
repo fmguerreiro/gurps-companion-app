@@ -1,4 +1,5 @@
-(ns gurps.pages.character.utils.skills)
+(ns gurps.pages.character.utils.skills
+  (:require [clojure.string :as str]))
 
 (defn- get-in-any [m ks]
   "Like get-in, but takes a sequence of keys and returns the max value of the last key's starting name in the sequence.
@@ -8,6 +9,22 @@
        seq
        (map val)
        (reduce max)))
+
+(defn- normalize-skill
+  [txt]
+  (-> txt
+      (str/replace #"-or-" "/")
+      (str/replace #"-" " ")))
+
+(defn skill->txt [key]
+  "Converts a skill key to a human-readable string.
+   e.g. (skill->txt :fast-draw/two-handed-axe-or-mace) => \"Fast Draw (Two Handed Axe/Mace)\""
+  (let [category (namespace key)
+        skill    (name key)]
+    (str/join " "
+              (if (some? category)
+                [(normalize-skill category) (str "(" (normalize-skill skill) ")")]
+                [(normalize-skill skill)]))))
 
 (def difficulties {:e :easy :a :average :h :hard :v :very-hard})
 

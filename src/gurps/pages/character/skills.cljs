@@ -41,15 +41,12 @@
   [^js props]
   (r/with-let [a 5]
     ;; (if-let [navigation (rnn/useNavigation)]
-    [:> rn/ScrollView
-     [:> view {:className "flex bg-red-200 flex-column px-2"}
+    [:> view {:className "flex flex-1 bg-red-200 flex-column px-2"}
+     [:> rn/ScrollView {:className "flex flex-1 flex-column flex-grow bg-indigo-200"}
       [header]
-      [row]
-      [:> view {:className "absolute bottom-1 right-1"}
-       [add-skill-button]]
-      ;; [row]
-      ;; [row]
-      ]]))
+      [row]]
+     [:> view {:className "absolute bottom-2 right-2"}
+       [add-skill-button]]]))
 
 ;; TODO: put this in its own file
 (defn character-add-skill-page

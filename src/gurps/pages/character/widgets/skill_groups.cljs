@@ -8,7 +8,7 @@
             ["@react-navigation/native" :as rnn]
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [str->key key->str]]
-            [gurps.pages.character.utils.skills :refer [skills grouped-skills difficulties default-skill-lvl]]
+            [gurps.pages.character.utils.skills :refer [skills grouped-skills difficulties default-skill-lvl skill->txt]]
             [gurps.widgets.base :refer [view text button section-list]]))
 
 (defn- keyword->title
@@ -36,7 +36,9 @@
                  :className "w-full px-4 py-2 font-medium text-left rtl:text-right border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
                  :onPress #(-> navigation (.navigate (i18n/label :t/add-skill-specialization) #js {:id item-txt}))}
       [:> view {:className "flex flex-row justify-between"}
-       [:> text {:className "capitalize"} (if needs-specialization? (namespace item-key) item-txt)]
+       [:> text {:className "capitalize"} (if needs-specialization?
+                                            (skill->txt (symbol (namespace item-key)))
+                                            (skill->txt item-key))]
        [:> view {:className "flex flex-row"}
         [:> text {:className ""} difficulty]
         [:> text (item-key default-lvls)]]]])))
