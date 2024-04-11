@@ -13,3 +13,10 @@
 (defn key->str
   [key]
   (str (symbol key)))
+
+(defn flatten-key
+  [key]
+  (symbol
+   (if (some? (namespace key))
+     (str (namespace key) "-" (name key))
+     (str (name key)))))
