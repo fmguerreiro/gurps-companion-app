@@ -2,8 +2,12 @@
   (:require ["react-native" :as rn]
             ["@react-navigation/native" :as rnn]
             [reagent.core :as r]
+            [re-frame.core :as rf]
+            [taoensso.timbre :refer [info]]
             [gurps.utils.i18n :as i18n]
             [gurps.widgets.base :refer [view text input button]]
+            [gurps.utils.helpers :refer [flatten-key]]
+            [gurps.pages.character.utils.skills :refer [skills]]
             [gurps.pages.character.widgets.skill-groups :refer [skill-groups]]))
 
 (defn- header []
@@ -46,10 +50,21 @@
       [header]
       [row]]
      [:> view {:className "absolute bottom-2 right-2"}
-       [add-skill-button]]]))
+      [add-skill-button]]]))
 
 ;; TODO: put this in its own file
 (defn character-add-skill-page
   [^js props]
   [:> view {:className "flex flex-column px-2"}
    [skill-groups]])
+
+;; register all skill-cost subs
+;; TODO not working unless manually executed?
+(for [skill (keys skills)]
+  (when (not (= "sp" (name skill)))
+    (let [skill-key (flatten-key skill)]
+      (info "registering sub" (str (keyword :skill-costs skill-key)))
+      (rf/reg-sub
+       (keyword :skill-costs skill-key)
+       (fn [db _]
+         (get-in db [:skill-costs skill-key] 0))))))
