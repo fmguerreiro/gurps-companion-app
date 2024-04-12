@@ -23,4 +23,5 @@ module.exports = {
       storybookEnabled: process.env.STORYBOOK_ENABLED,
     },
   },
+  plugins: [["expo-router", { root: "./app" }]],
 };
