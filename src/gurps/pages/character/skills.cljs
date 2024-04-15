@@ -60,10 +60,10 @@
 
 ;; register all skill-cost subs
 ;; TODO not working unless manually executed?
-(for [skill (keys skills)]
+(doseq [skill (keys skills)]
   (when (not (= "sp" (name skill)))
     (let [skill-key (flatten-key skill)]
-      (info "registering sub" (str (keyword :skill-costs skill-key)))
+      ;; (info "registering sub" (str (keyword :skill-costs skill-key)))
       (rf/reg-sub
        (keyword :skill-costs skill-key)
        (fn [db _]

@@ -12,6 +12,6 @@
 (rf/reg-sub
  :character/point-total
  (fn [db _]
-   (let [cost-keys (filter #(str/ends-with? (str %) "-cost") (keys db))]
-     (js/console.log "character/point-total" (str/join " " (map str cost-keys)))
-     (reduce + (map #(js/parseInt (default-to (get db %) 0)) cost-keys)))))
+   (let [costs (vals (merge (:skill-costs db)
+                            (:attribute-costs db)))] ;; TODO: other costs
+     (reduce + costs))))

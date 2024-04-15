@@ -6,24 +6,24 @@
             [gurps.pages.character.widgets.attribute :refer [attribute]]))
 
 (def cost-per-point
-  {:t/attr-strength 10
-   :t/attr-dexterity 20
-   :t/attr-intelligence 20
-   :t/attr-health 10})
+  {:str 10
+   :dex 20
+   :int 20
+   :ht  10})
 
-(defn- calc-cost [label value]
-  (let [incr (label cost-per-point)
+(defn- calc-cost [attr value]
+  (let [incr (attr cost-per-point)
         val  (default-to value 10)]
     (* incr (- val 10))))
 
 (defn reified-attribute
   [^js {:keys [attr]}]
-  (let [key      (keyword "t" (str "attr-" attr))
-        key-cost (keyword "t" (str "attr-" attr "-cost"))
-        val      @(rf/subscribe [key])
+  (let [key      (keyword :attributes attr)
+        key-cost (keyword :attribute-costs attr)
+        val      (some-> (rf/subscribe [key]) deref)
         on-change-text (fn [v]
-                         (update-attribute key v)
-                         (update-attribute key-cost (calc-cost key v)))]
-    [attribute {:label key
+                         (update-attribute attr v)
+                         (update-attribute key-cost (calc-cost attr v)))]
+    [attribute {:attr attr
                 :val val
                 :on-change-text on-change-text}]))

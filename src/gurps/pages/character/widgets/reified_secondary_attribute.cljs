@@ -6,24 +6,20 @@
             [gurps.pages.character.widgets.attribute :refer [attribute]]))
 
 (def point-per-cost
-  {:t/attr-hitpoints 2
-   :t/attr-will 5
-   :t/attr-perception 5
-   :t/attr-fatigue 3})
+  {:hp   2
+   :will 5
+   :per  5
+   :fp   3})
 
 (defn reified-secondary-attribute
   [^js {:keys [attr based-on has-current?]
         :or   {has-current? false}}]
-  (let [key-val (keyword "t" (str "attr-" based-on))
-        key-attr (keyword "t" (str "attr-" attr))
-        key-cost (keyword "t" (str "attr-" attr "-cost"))
-        key-current (keyword "t" (str "attr-" attr "-current"))
-        cost @(rf/subscribe [key-cost])
-        val (js/Math.floor (+ (/ (default-to cost 0) (key-attr point-per-cost))
-                              (js/parseInt (default-to @(rf/subscribe [key-val]) 10))))
-        current (if has-current? @(rf/subscribe [key-current]) nil)
-        on-change-text (partial update-attribute key-cost)]
-    [attribute {:label key-attr
+  (let [cost @(rf/subscribe [(keyword :attribute-costs attr)])
+        val (js/Math.floor (+ (/ (default-to cost 0) (attr point-per-cost))
+                              (js/parseInt (default-to @(rf/subscribe [(keyword :attributes based-on)]) 10))))
+        current (if has-current? @(rf/subscribe [(keyword :attributes (str (symbol attr) "-current"))]) nil)
+        on-change-text (partial update-attribute (keyword :attribute-costs attr))]
+    [attribute {:attr attr
                 :cost cost
                 :val val
                 :secondary? true

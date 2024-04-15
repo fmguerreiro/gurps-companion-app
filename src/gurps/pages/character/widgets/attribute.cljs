@@ -1,5 +1,6 @@
 (ns gurps.pages.character.widgets.attribute
-  (:require [gurps.utils.i18n :as i18n]
+  (:require [taoensso.timbre :refer [info]]
+            [gurps.utils.i18n :as i18n]
             [gurps.utils.debounce :as debounce]
             [gurps.utils.helpers :refer [default-to]]
             [gurps.widgets.base :refer [view text input]]))
@@ -7,16 +8,15 @@
 ;; TODO: apply modifier functions
 (def value-per-lvl
   {;; primary
-   :t/attr-strength     {:incr 10 :modifier (fn [size]
-                                              (js/Math.max -0.8 (* -0.1 size)))}
-   :t/attr-dexterity    {:incr 20}
-   :t/attr-intelligence {:incr 20}
-   :t/attr-health       {:incr 10}
+   :str {:incr 10 :modifier (fn [size] (js/Math.max -0.8 (* -0.1 size)))}
+   :dex {:incr 20}
+   :int {:incr 20}
+   :ht  {:incr 10}
    ;; secondary
-   :t/attr-hitpoints    {:incr 2}
-   :t/attr-will         {:incr 5}
-   :t/attr-perception   {:incr 5}
-   :t/attr-fatigue      {:incr 3}})
+   :hp   {:incr 2}
+   :will {:incr 5}
+   :per  {:incr 5}
+   :fp   {:incr 3}})
 
 (defn- calc-cost [label value]
   (let [incr (:incr (label value-per-lvl))
@@ -32,22 +32,36 @@
   [:> view {:key key :className (str "box-border h-14 w-14 align-middle border-2 items-center justify-center " className)}
    children])
 
+(def long-attr
+  {:str :strength
+   :dex :dexterity
+   :int :intelligence
+   :ht :health
+   :fp :fatigue
+   :hp :hitpoints
+   :will :will
+   :per :perception})
+
+(defn key->i18n-label [key]
+  (keyword "t" (str "attr-" (symbol (long-attr key)))))
+
 (defn attribute
-  [^js {:keys [label val cost current on-change-text has-current-space? secondary?]
+  [^js {:keys [attr val cost current on-change-text has-current-space? secondary?]
         :or   {has-current-space? false secondary? false}}]
-  (js/console.log (str label) val cost)
+  (info "attribute" (str attr) val cost)
+
   [:> view {:className "flex flex-row gap-0"}
    (box
-    [:> text {:className "text-2xl font-bold"} (i18n/label label)])
+    [:> text {:className "text-2xl font-bold"} (i18n/label (key->i18n-label attr))])
 
    (if (not secondary?)
      (box-border {:className "bg-slate-100"}
-                 [:> input {:key label
+                 [:> input {:key attr
                             :className "text-2xl"
                             :maxLength 3
                             :keyboardType "numeric"
                             :onChangeText (debounce/debounce #(on-change-text %) 500)} val])
-     (box-border {:key label} [:> text {:key label :className "text-2xl"} val]))
+     (box-border {:key attr} [:> text {:key attr :className "text-2xl"} val]))
 
    (when (some? current)
      [:> view
@@ -60,7 +74,7 @@
    (box [:> view {:className "flex flex-row items-center justify-items-center align-items-center"}
          [:> text {:className "text-xl font-bold"} "["]
          (if (not secondary?)
-           [:> text {:className "text-xl font-bold"} (calc-cost label val)]
+           [:> text {:className "text-xl font-bold"} (calc-cost attr val)]
            [:> input {:className "text-xl font-bold bg-slate-200" ;; TODO center
                       :maxLength 3
                       :keyboardType "numeric"

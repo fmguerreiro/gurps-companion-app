@@ -25,7 +25,7 @@
 
 (rf/reg-sub
  :character/basic-lift
- :<- [:t/attr-strength]
+ :<- [:attributes/str]
  (fn [str]
    (js/Math.floor (/ (* str str) 5)))) ;; TODO: use a helper calc-basic-lift function instead
 
@@ -45,8 +45,8 @@
 
 (rf/reg-sub
  :character/basic-move
- :<- [:t/attr-health]
- :<- [:t/attr-dexterity]
+ :<- [:attributes/ht]
+ :<- [:attributes/dex]
  (fn [[ht dx]]
    (js/Math.floor (/ (+ ht dx) 4)))) ;; TODO: use a helper calc-basic-move function instead
 

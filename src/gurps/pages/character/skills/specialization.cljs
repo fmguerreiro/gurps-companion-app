@@ -52,7 +52,7 @@
     (let [skill (skill-key skills)
           flattened-key (flatten-key skill-key)
           cost (some-> (rf/subscribe [(keyword :skill-costs flattened-key)]) deref)
-          lvl  (or (some-> (diff+cost->lvl-mod skill cost) (+ default-lvl))
+          lvl  (or (some-> (diff+cost->lvl-mod skill cost) (+ default-lvl)) ;; TODO: putting a single point gets the character to 10 - difficulty-modifier, instead of default-lvl (from defaults calculation)
                    default-lvl)]
       (info "add-skill-row" (str skill-key) cost lvl default-lvl)
       (r/as-element
@@ -101,6 +101,8 @@
        (->> specializations
             (map (fn [spec]
                    (let [display-text (skill->txt spec)]
-                     [:> text {:key (str spec "-spec")} display-text])))))]))
+                     [:> button {:key (str spec "-spec")
+                                 :onPress #()} ;; TODO
+                      [:> text display-text]])))))]))
 
 ;; TODO: add list of prerequisites (clickable)

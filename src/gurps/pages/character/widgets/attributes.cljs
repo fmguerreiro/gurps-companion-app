@@ -1,46 +1,47 @@
 (ns gurps.pages.character.widgets.attributes
-  (:require [gurps.widgets.base :refer [view]]
+  (:require [taoensso.timbre :refer [info]]
+            [re-frame.core :as rf]
+            [gurps.widgets.base :refer [view]]
             [gurps.pages.character.widgets.reified-attribute :refer [reified-attribute]]
-            [gurps.pages.character.widgets.reified-secondary-attribute :refer [reified-secondary-attribute]]
-            [re-frame.core :as rf]))
+            [gurps.pages.character.widgets.reified-secondary-attribute :refer [reified-secondary-attribute]]))
 
 (defn attributes []
   [:> view {:className "flex flex-row gap-0"}
 
    [:> view {:className "flex flex-col"}
-    [reified-attribute {:attr "strength"}]
-    [reified-attribute {:attr "dexterity"}]
-    [reified-attribute {:attr "intelligence"}]
-    [reified-attribute {:attr "health"}]]
+    [reified-attribute {:attr :str}]
+    [reified-attribute {:attr :dex}]
+    [reified-attribute {:attr :int}]
+    [reified-attribute {:attr :ht}]]
 
    [:> view {:className "flex flex-col"}
-    [reified-secondary-attribute {:attr "hitpoints" :based-on "strength" :has-current? true}]
-    [reified-secondary-attribute {:attr "will" :based-on "intelligence"}]
-    [reified-secondary-attribute {:attr "perception" :based-on "intelligence"}]
-    [reified-secondary-attribute {:attr "fatigue" :based-on "health" :has-current? true}]]])
+    [reified-secondary-attribute {:attr :hp :based-on :str :has-current? true}]
+    [reified-secondary-attribute {:attr :will :based-on :int}]
+    [reified-secondary-attribute {:attr :per :based-on :int}]
+    [reified-secondary-attribute {:attr :fp :based-on :ht :has-current? true}]]])
 
-(def attrs ["strength"
-            "strength-cost"
-            "dexterity"
-            "dexterity-cost"
-            "intelligence"
-            "intelligence-cost"
-            "health"
-            "health-cost"
-            "hitpoints-cost"
-            "hitpoints-current"
-            "will-cost"
-            "perception-cost"
-            "fatigue-cost"
-            "fatigue-current"])
+(def attrs [:attributes/str
+            :attribute-costs/str
+            :attributes/dex
+            :attribute-costs/dex
+            :attributes/int
+            :attribute-costs/int
+            :attributes/ht
+            :attribute-costs/ht
+            :attribute-costs/hp
+            :attributes/hp-current
+            :attribute-costs/will
+            :attribute-costs/per
+            :attribute-costs/fp
+            :attributes/fp-current])
 (doseq [attr attrs]
   (rf/reg-sub
-   (keyword (str "t/attr-" attr))
+   attr
    (fn [db _]
-     ((keyword "t" (str "attr-" attr)) db 0))))
+     (or (get-in db [(namespace attr) (name attr)]) 0))))
 
 (rf/reg-event-db
  :attrs/update
  (fn [db [_ k v]]
-   (println "update attr:" k v)
+   (info "update attr:" k v)
    (assoc db k v)))

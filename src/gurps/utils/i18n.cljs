@@ -46,6 +46,8 @@
   (into {} (for [[k v] options] [k (or v default-option-value)])))
 
 (defn label-fn
+  "Returns the translation for the given path.
+  If options are provided, they are used to interpolate the translation."
   ([path] (label-fn path {}))
   ([path options]
    (if (exists? (.t i18n))

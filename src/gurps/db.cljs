@@ -2,26 +2,32 @@
 
 ;; initial state of app-db
 (defonce app-db
-  {:attributes {:str 10
-                :dx 10
+  {:profile {:name ""
+             :player ""
+             :point-total 0
+             :ht nil
+             :wt nil
+             :size-modifier nil
+             :unspent-points nil
+             :age nil
+             :appearance ""}
+
+   :attributes {:str 10
+                :dex 10
                 :int 10
                 :ht 10}
 
    :attribute-costs {:hp 0
                      :will 0
                      :per 0
-                     :fp 0}
+                     :fp 0
 
-   :skill-costs {:acrobatics 10}
+                     :basic-move 0
+                     :basic-speed 0
 
-;; TODO remove
-   :t/attr-strength 10
-   :t/attr-dexterity 10
-   :t/attr-intelligence 10
-   :t/attr-health 10
-   :t/attr-hitpoints-cost 0
-   :t/attr-will-cost 0
-   :t/attr-perception-cost 0
-   :t/attr-fatigue-cost 0
-   ;;
-   })
+                     :str 0
+                     :dex 0
+                     :int 0
+                     :ht 0}
+
+   :skill-costs {:acrobatics 10}})

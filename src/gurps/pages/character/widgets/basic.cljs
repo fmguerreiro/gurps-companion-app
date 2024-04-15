@@ -22,8 +22,8 @@
 
 (defn basic
   [^js {:keys [label value upgradable?]
-        :or {upgradable? false}}]
-  (let [cost (if upgradable? @(rf/subscribe [(add-suffix-to-keyword label "-cost")]) 0)] ;; TODO: move from here
+        :or   {upgradable? false}}]
+  (let [cost (if upgradable? @(rf/subscribe [(keyword :attribute-costs (name label))]) 0)]
     [:> view {:className "flex flex-row flex-grow align-items-center gap-1 ml-0 mt-0"} ;; NOTE: ml-0 mt-0 counters the effects of gap-1
      [:> text {:className "text-xl text-bold"} (i18n/label label)]
      [:> text {:className "text-xl underline"} (if upgradable? (calc-val label value cost) value)]

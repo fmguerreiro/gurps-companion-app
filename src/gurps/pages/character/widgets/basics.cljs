@@ -18,9 +18,9 @@
 
 (defn basics
   []
-  (let [ht  (js/parseInt (default-to @(rf/subscribe [:t/attr-health]) 10)) ;; TODO: need to re-write this for multiplayer
-        dx  (js/parseInt (default-to @(rf/subscribe [:t/attr-dexterity]) 10))
-        str (js/parseInt (default-to @(rf/subscribe [:t/attr-strength]) 10))
+  (let [ht  (js/parseInt (or (some-> (rf/subscribe [:attributes/ht]) deref) 10))
+        dx  (js/parseInt (or (some-> (rf/subscribe [:attributes/dex]) deref) 10))
+        str (js/parseInt (or (some-> (rf/subscribe [:attributes/str]) deref) 10))
         speed (basic-speed ht dx)
         move (basic-move speed)
         lift (basic-lift str)
@@ -37,10 +37,10 @@
       [basic {:label :t/basic-speed :value speed :upgradable? true}]
       [basic {:label :t/basic-move :value move :upgradable? true}]]]))
 
-(def attrs ["basic-move-cost"
-            "basic-speed-cost"])
+(def attrs [:basic-move
+            :basic-speed])
 (doseq [attr attrs]
   (rf/reg-sub
-   (keyword "t" attr)
+   (keyword :attribute-costs attr)
    (fn [db _]
-     ((keyword "t" attr) db 0))))
+     (or (get-in db [:attribute-costs attr]) 0))))

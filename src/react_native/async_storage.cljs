@@ -13,7 +13,9 @@
 (def ^:private reader (transit/reader :json))
 (def ^:private writer (transit/writer :json))
 
-(defn clj->transit [o] (transit/write writer o))
+(defn clj->transit
+  [o]
+  (transit/write writer o))
 (defn transit->clj
   [o]
   (try (transit/read reader o)
@@ -47,9 +49,12 @@
   (-> ^js async-storage
       (.multiGet (to-array (map str ks)))
       (.then (fn [^js data]
-               (cb (->> (js->clj data)
-                        (map (comp transit->clj second))
-                        (zipmap ks)))))
+               (let [res (->> (js->clj data)
+                              (map (comp transit->clj second))
+                              (zipmap ks))]
+                 (log/info "[async-storage] pre-process" data)
+                 (log/info "[async-storage] post-process" res)
+                 (cb res))))
       (.catch (fn [error]
                 (cb nil)
                 (log/error "[async-storage]" error)))))
