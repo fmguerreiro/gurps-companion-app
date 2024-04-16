@@ -44,4 +44,4 @@
  :attrs/update
  (fn [db [_ k v]]
    (info "update attr:" k v)
-   (assoc db k v)))
+   (assoc-in db [(namespace k) (name k)] v)))

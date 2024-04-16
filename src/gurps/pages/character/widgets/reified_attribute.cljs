@@ -22,7 +22,7 @@
         key-cost (keyword :attribute-costs attr)
         val      (some-> (rf/subscribe [key]) deref)
         on-change-text (fn [v]
-                         (update-attribute attr v)
+                         (update-attribute key v)
                          (update-attribute key-cost (calc-cost attr v)))]
     [attribute {:attr attr
                 :val val

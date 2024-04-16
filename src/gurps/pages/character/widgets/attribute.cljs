@@ -19,6 +19,7 @@
    :fp   {:incr 3}})
 
 (defn- calc-cost [label value]
+  (info "calc-cost" label value)
   (let [incr (:incr (label value-per-lvl))
         val  (default-to value 10)]
     (* incr (- val 10))))
@@ -54,14 +55,14 @@
    (box
     [:> text {:className "text-2xl font-bold"} (i18n/label (key->i18n-label attr))])
 
-   (if (not secondary?)
+   (if secondary?
+     (box-border {:key attr} [:> text {:key attr :className "text-2xl"} val])
      (box-border {:className "bg-slate-100"}
                  [:> input {:key attr
                             :className "text-2xl"
                             :maxLength 3
                             :keyboardType "numeric"
-                            :onChangeText (debounce/debounce #(on-change-text %) 500)} val])
-     (box-border {:key attr} [:> text {:key attr :className "text-2xl"} val]))
+                            :onChangeText (debounce/debounce #(on-change-text %) 500)} val]))
 
    (when (some? current)
      [:> view
@@ -73,11 +74,10 @@
 
    (box [:> view {:className "flex flex-row items-center justify-items-center align-items-center"}
          [:> text {:className "text-xl font-bold"} "["]
-         (if (not secondary?)
-           [:> text {:className "text-xl font-bold"} (calc-cost attr val)]
+         (if secondary?
            [:> input {:className "text-xl font-bold bg-slate-200" ;; TODO center
                       :maxLength 3
                       :keyboardType "numeric"
-                      :onChangeText (debounce/debounce #(on-change-text %) 500)}
-            cost])
+                      :onChangeText (debounce/debounce #(on-change-text %) 500)} cost]
+           [:> text {:className "text-xl font-bold"} (calc-cost attr val)])
          [:> text {:className "text-xl font-bold"} "]"]])])
