@@ -46,10 +46,10 @@
 (defn key->i18n-label [key]
   (keyword "t" (str "attr-" (symbol (long-attr key)))))
 
-(defn attribute
+(defn attribute-input
   [^js {:keys [attr val cost current on-change-text has-current-space? secondary?]
         :or   {has-current-space? false secondary? false}}]
-  (info "attribute" (str attr) val cost)
+  (info "attribute" (str attr) val has-current-space?)
 
   [:> view {:className "flex flex-row gap-0"}
    (box
@@ -62,7 +62,8 @@
                             :className "text-2xl"
                             :maxLength 3
                             :keyboardType "numeric"
-                            :onChangeText (debounce/debounce #(on-change-text %) 500)} val]))
+                            :onChangeText (debounce/debounce #(on-change-text %) 500)
+                            :value (str val)}]))
 
    (when (some? current)
      [:> view
@@ -72,12 +73,13 @@
    (when (and secondary? has-current-space?)
      (box [:<>]))
 
-   (box [:> view {:className "flex flex-row items-center justify-items-center align-items-center"}
+   (box [:> view {:className "flex flex-1 flex-row items-center justify-items-center align-items-center"}
          [:> text {:className "text-xl font-bold"} "["]
          (if secondary?
            [:> input {:className "text-xl font-bold bg-slate-200" ;; TODO center
                       :maxLength 3
                       :keyboardType "numeric"
-                      :onChangeText (debounce/debounce #(on-change-text %) 500)} cost]
+                      :onChangeText (debounce/debounce #(on-change-text %) 500)
+                      :value (str cost)}]
            [:> text {:className "text-xl font-bold"} (calc-cost attr val)])
          [:> text {:className "text-xl font-bold"} "]"]])])

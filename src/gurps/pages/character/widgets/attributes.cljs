@@ -5,7 +5,7 @@
             [gurps.pages.character.widgets.reified-attribute :refer [reified-attribute]]
             [gurps.pages.character.widgets.reified-secondary-attribute :refer [reified-secondary-attribute]]))
 
-(defn attributes []
+(defn attribute-group []
   [:> view {:className "flex flex-row gap-0"}
 
    [:> view {:className "flex flex-col"}
@@ -38,10 +38,11 @@
   (rf/reg-sub
    attr
    (fn [db _]
+     (when (= attr :attributes/str) (info "sub" attr db)) ;; TODO: remove
      (or (get-in db [(namespace attr) (name attr)]) 0))))
 
 (rf/reg-event-db
  :attrs/update
  (fn [db [_ k v]]
-   (info "update attr:" k v)
+   (info "update attr" k v)
    (assoc-in db [(namespace k) (name k)] v)))

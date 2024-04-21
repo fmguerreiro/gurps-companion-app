@@ -16,11 +16,13 @@
 (defn clj->transit
   [o]
   (transit/write writer o))
+
 (defn transit->clj
   [o]
-  (try (transit/read reader o)
-       (catch :default e
-         (log/error e))))
+  (try
+    (transit/read reader o)
+    (catch :default e
+      (log/error e))))
 
 (defn set-item!
   ([k value] (set-item! k value identity))
@@ -44,6 +46,12 @@
       (swap! tmp-storage merge items)
       (debounced))))
 
+(defn- deflatten-db
+  "Transforms {:attributes/str ...} => {:attributes {:str ...}}"
+  [db]
+  (reduce-kv
+   (fn [acc k v] (assoc-in acc [(keyword (namespace k)) (keyword (name k))] v)) {} db))
+
 (defn get-items
   [ks cb]
   (-> ^js async-storage
@@ -51,9 +59,9 @@
       (.then (fn [^js data]
                (let [res (->> (js->clj data)
                               (map (comp transit->clj second))
-                              (zipmap ks))]
-                 (log/info "[async-storage] pre-process" data)
-                 (log/info "[async-storage] post-process" res)
+                              (zipmap ks)
+                              deflatten-db)]
+                 ;; (log/info "[async-storage] post-process" res)
                  (cb res))))
       (.catch (fn [error]
                 (cb nil)

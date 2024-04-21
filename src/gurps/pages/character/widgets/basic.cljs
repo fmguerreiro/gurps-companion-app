@@ -30,7 +30,7 @@
      (when upgradable?
        [:> view {:className "flex flex-row items-center justify-items-center align-items-center"}
         [:> text "["]
-        [:> input {:keyboardType "numeric"
-                   :maxLength 3
-                   :className "bg-slate-200"} cost]
+        ; [:> input {:keyboardType "numeric"
+        ;            :maxLength 3
+        ;            :className "bg-slate-200"} cost]
         [:> text "]"]])]))

@@ -11,14 +11,14 @@
             [gurps.pages.character.widgets.skill-groups :refer [skill-groups]]))
 
 (defn- header []
-  [:> view {:className "flex flex-row gap-1 flex-grow items-center h-10"}
+  [:> view {:className "flex flex-row flex-1 gap-1 flex-grow items-center h-10"}
    [:> text {:className "font-bold text-start  w-6/12 capitalize"} "Name"]
    [:> text {:className "font-bold text-center w-2/12 break-normal overflow-visible capitalize"} "Level"]
    [:> text {:className "font-bold text-center w-3/12 capitalize"} "Relative Level"]
    [:> text {:className "w-3/12"} ""]])
 
 (defn- row []
-  [:> view {:className "flex flex-row gap-1 flex-grow bg-indigo-100"}
+  [:> view {:className "flex flex-row gap-1 flex-grow bg-indigo-500"}
    ;; name
    [:> input {:className "border-b-1 border-black w-6/12"}]
    ;; level
@@ -43,7 +43,7 @@
 
 (defn character-skills-page
   [^js props]
-  (r/with-let [a 5]
+  (r/with-let [a 5] ;; TODO
     ;; (if-let [navigation (rnn/useNavigation)]
     [:> view {:className "flex flex-1 bg-red-200 flex-column px-2"}
      [:> rn/ScrollView {:className "flex flex-1 flex-column flex-grow bg-indigo-200"}

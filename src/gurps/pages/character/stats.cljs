@@ -3,8 +3,8 @@
    [gurps.widgets.button :refer [button]]
    [gurps.utils.i18n :as i18n]
    [gurps.widgets.base :refer [text view]]
-   [gurps.pages.character.widgets.attributes :refer [attributes]]
-   [gurps.pages.character.widgets.summary :refer [summary]]
+   [gurps.pages.character.widgets.attributes :refer [attribute-group]]
+   [gurps.pages.character.widgets.summary :refer [summary-group]]
    [gurps.pages.character.widgets.basics :refer [basics]]
    [gurps.pages.character.widgets.encumbrance-table :refer [encumbrance-table]]
    ["expo-status-bar" :refer [StatusBar]]
@@ -21,10 +21,10 @@
    [:> view {:className "flex flex-col gap-4 py-4 bg-white items-center justify-between"}
 
     [:> view {:className "w-full px-4"}
-     [summary]]
+     [summary-group]]
 
     [:> view {:className "my-0"}
-     [attributes]]
+     [attribute-group]]
 
     [:> view {:className "my-0"}
      [basics]]

@@ -16,6 +16,7 @@
 (defn- basic-lift [str]
   (/ (* str str) 5))
 
+;; TODO: push subscriptions down to individual components
 (defn basics
   []
   (let [ht  (js/parseInt (or (some-> (rf/subscribe [:attributes/ht]) deref) 10))
