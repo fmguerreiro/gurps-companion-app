@@ -38,11 +38,10 @@
   (rf/reg-sub
    attr
    (fn [db _]
-     (when (= attr :attributes/str) (info "sub" attr db)) ;; TODO: remove
-     (or (get-in db [(namespace attr) (name attr)]) 0))))
+     (or (get-in db [(keyword (namespace attr)) (keyword (name attr))]) 0))))
 
 (rf/reg-event-db
  :attrs/update
  (fn [db [_ k v]]
    (info "update attr" k v)
-   (assoc-in db [(namespace k) (name k)] v)))
+   (assoc-in db [(keyword (namespace k)) (keyword (name k))] v)))

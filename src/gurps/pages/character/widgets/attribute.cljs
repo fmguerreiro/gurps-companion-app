@@ -49,7 +49,7 @@
 (defn attribute-input
   [^js {:keys [attr val cost current on-change-text has-current-space? secondary?]
         :or   {has-current-space? false secondary? false}}]
-  (info "attribute" (str attr) val has-current-space?)
+  (info "attribute" (str attr) val)
 
   [:> view {:className "flex flex-row gap-0"}
    (box
@@ -63,7 +63,7 @@
                             :maxLength 3
                             :keyboardType "numeric"
                             :onChangeText (debounce/debounce #(on-change-text %) 500)
-                            :value (str val)}]))
+                            :placeholder (str val)}]))
 
    (when (some? current)
      [:> view
@@ -80,6 +80,6 @@
                       :maxLength 3
                       :keyboardType "numeric"
                       :onChangeText (debounce/debounce #(on-change-text %) 500)
-                      :value (str cost)}]
+                      :placeholder (str cost)}]
            [:> text {:className "text-xl font-bold"} (calc-cost attr val)])
          [:> text {:className "text-xl font-bold"} "]"]])])

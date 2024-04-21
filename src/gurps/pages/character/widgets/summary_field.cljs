@@ -16,7 +16,7 @@
   (let [fqn   (keyword :profile key)
         value (or val (some-> (rf/subscribe [fqn]) deref))]
     [:> view {:className "flex flex-row gap-2 justify-items-start flex-grow"}
-     [:> text {:className "font-bold"} (i18n/label (keyword "t" key))]
+     [:> text {:className "font-bold"} (i18n/label (keyword :t key))]
      (if (some? val)
        [:> text {:className "border-b-2"} value]
        ;; [:> input {:className (str "flex-grow border-b-2 bg-slate-100")
