@@ -61,7 +61,7 @@
                               (map (comp transit->clj second))
                               (zipmap ks)
                               deflatten-db)]
-                 ;; (log/info "[async-storage] post-process" res)
+                 (log/info "[async-storage] post-process" res)
                  (cb res))))
       (.catch (fn [error]
                 (cb nil)

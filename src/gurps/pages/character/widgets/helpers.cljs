@@ -4,5 +4,6 @@
 
 (defn update-attribute
   [label value]
-  (let [callback #(rf/dispatch [:attrs/update label (js/parseInt value)])]
-    (async-storage/set-item! label value callback)))
+  (let [int-val (js/parseInt value)
+        callback #(rf/dispatch [:attrs/update label int-val])]
+    (async-storage/set-item! label int-val callback)))

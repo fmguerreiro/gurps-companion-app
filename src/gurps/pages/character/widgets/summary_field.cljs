@@ -19,7 +19,6 @@
      [:> text {:className "font-bold"} (i18n/label (keyword :t key))]
      (if (some? val)
        [:> text {:className "border-b-2"} value]
-       ;; [:> input {:className (str "flex-grow border-b-2 bg-slate-100")
-       ;;            :onChangeText (debounce/debounce #(on-change-text fqn key %) 500)}
-       ;;  value]
-       )]))
+       [:> input {:className (str "flex-grow border-b-2 bg-slate-100")
+                  :onChangeText (debounce/debounce #(on-change-text fqn key %) 500)
+                  :value value}])]))

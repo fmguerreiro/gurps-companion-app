@@ -12,6 +12,6 @@
   (rf/reg-sub
    (keyword :profile param)
    (fn [db _]
-     ((keyword :profile param) db))))
+     (get-in db [:profile param]))))
 (doseq [i [:name :player :point-total :ht :wt :size-modifier :unspent-points :age :appearance]]
   (generate-profile-sub i))

@@ -24,11 +24,11 @@
 (rf/reg-event-fx
  :initialize-storage
  (fn [{:keys [db]} [_]]
-   (info "Initializing storage" (keys db))
+   ;; (info "Initializing storage" (keys db))
    {:db db
     :effects.async-storage/get {:keys (get-flattened-db-keys db)
                                 :cb #(do
-                                       (info "Got storage" (:attribute-costs %)) ;; TODO remove
+                                       ;; (info "Got storage" (:attribute-costs %)) ;; TODO remove
                                        (rf/dispatch [:initialize-storage/set %]))}}))
 
 (rf/reg-event-db

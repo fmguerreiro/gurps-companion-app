@@ -3,7 +3,7 @@
   (:require
    ["react-native-navigation" :refer (Navigation)]))
 
-;; TODO: remove
+;; TODO: remove, note used
 
 (defn set-default-options
   [opts]

@@ -31,3 +31,5 @@
                      :ht 0}
 
    :skill-costs {:acrobatics 10}})
+
+(comment (reduce + (vals (merge (:skill-costs app-db) (:attribute-costs app-db)))))

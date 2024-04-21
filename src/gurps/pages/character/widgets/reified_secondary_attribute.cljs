@@ -11,12 +11,18 @@
    :per  5
    :fp   3})
 
+(defn- calc-attr-val
+  [attr cost based-on-val]
+  (js/Math.floor
+   (+ (/ (default-to cost 0) (attr point-per-cost))
+      based-on-val)))
+
 (defn reified-secondary-attribute
   [^js {:keys [attr based-on has-current?]
         :or   {has-current? false}}]
-  (let [cost @(rf/subscribe [(keyword :attribute-costs attr)])
-        val (js/Math.floor (+ (/ (default-to cost 0) (attr point-per-cost))
-                              (or (some-> (rf/subscribe [(keyword :attributes based-on)]) deref js/parseInt) 10)))
+  (let [cost (some-> (rf/subscribe [(keyword :attribute-costs attr)]) deref)
+        based-on-val (or (some-> (rf/subscribe [(keyword :attributes based-on)]) deref js/parseInt) 10)
+        val (calc-attr-val attr cost based-on-val)
         current (if has-current? @(rf/subscribe [(keyword :attributes (str (symbol attr) "-current"))]) nil)
         on-change-text (partial update-attribute (keyword :attribute-costs attr))]
     [attribute-input {:attr attr

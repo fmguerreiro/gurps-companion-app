@@ -19,7 +19,7 @@
    :fp   {:incr 3}})
 
 (defn- calc-cost [label value]
-  (info "calc-cost" label value)
+  ;; (info "calc-cost" label value)
   (let [incr (:incr (label value-per-lvl))
         val  (default-to value 10)]
     (* incr (- val 10))))
@@ -49,7 +49,7 @@
 (defn attribute-input
   [^js {:keys [attr val cost current on-change-text has-current-space? secondary?]
         :or   {has-current-space? false secondary? false}}]
-  (info "attribute" (str attr) val)
+  ;; (info "attribute" (str attr) val)
 
   [:> view {:className "flex flex-row gap-0"}
    (box
