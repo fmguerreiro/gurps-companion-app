@@ -9,4 +9,4 @@
 (rf/reg-sub
  :navigation/root-state
  (fn [db _]
-   (get-in db [:navigation :root-state])))
+   (clj->js (get-in db [:navigation :root-state])))) ;; TODO: this is probably slow? use transit or something perhaps

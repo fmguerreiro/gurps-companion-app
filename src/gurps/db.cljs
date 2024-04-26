@@ -8,7 +8,7 @@
              :ht nil
              :wt nil
              :size-modifier nil
-             :unspent-points nil
+             :unspent-points 150
              :age nil
              :appearance ""}
 
@@ -30,6 +30,9 @@
                      :int 0
                      :ht 0}
 
-   :skill-costs {:acrobatics 10}})
+   :skill-costs {:acrobatics 10}
+
+   ;; for reloading state on app re-start
+   :navigation {:root-state #js {}}})
 
 (comment (reduce + (vals (merge (:skill-costs app-db) (:attribute-costs app-db)))))

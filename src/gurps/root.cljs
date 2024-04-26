@@ -1,6 +1,7 @@
 (ns gurps.root
   (:require [re-frame.core :as rf]
             [reagent.core :as r]
+            [taoensso.timbre :refer [info]]
             ["@react-navigation/native" :as rnn]
             ["@react-navigation/native-stack" :as rnn-stack]
             ["@react-navigation/bottom-tabs" :as rnn-bottom-tabs]
@@ -34,14 +35,13 @@
 (defn root []
   ;; The save and restore of the navigation root state is for development time bliss
   (r/with-let [!root-state (rf/subscribe [:navigation/root-state])
-               save-root-state! (fn [^js state]
-                                  (rf/dispatch [:navigation/set-root-state state]))
+               save-root-state! (fn [^js state] (rf/dispatch [:navigation/set-root-state state]))
                add-listener! (fn [^js navigation-ref]
                                (when navigation-ref
                                  (.addListener navigation-ref "state" save-root-state!)))
                skill-stack-component (fn [] (r/as-element [skills-stack]))]
-    [:> rnn/NavigationContainer {:ref          add-listener!
-                                 :initialState (when @!root-state (-> @!root-state .-data .-state))}
+    [:> rnn/NavigationContainer {:ref add-listener!
+                                 :initialState (when @!root-state (some-> @!root-state .-data .-state))}
      [:> RootTab.Navigator
       ;; TODO: should be stats > skills > items in the end
       [:> RootTab.Screen {:name      (str (i18n/label :t/skills) "-Root")

@@ -40,7 +40,7 @@
    (r/as-element [real-root])))
 
 (defn init []
-  (rf/dispatch [:initialize-db])
-  (rf/dispatch [:initialize-storage])
+  (rf/dispatch-sync [:initialize-db])
+  (rf/dispatch-sync [:initialize-storage])
   (splash-screen/hideAsync) ;; TODO: This should be done after the resources are loaded
   (start))
