@@ -3,18 +3,19 @@
             [re-frame.core :as rf]
             [gurps.widgets.base :refer [view]]
             [gurps.pages.character.widgets.reified-attribute :refer [reified-attribute]]
-            [gurps.pages.character.widgets.reified-secondary-attribute :refer [reified-secondary-attribute]]))
+            [gurps.pages.character.widgets.reified-secondary-attribute :refer [reified-secondary-attribute]]
+            ["twrnc" :refer [style] :rename {style tw}]))
 
 (defn attribute-group []
-  [:> view {:className "flex flex-row gap-0"}
+  [:> view {:style (tw "flex flex-row gap-0")}
 
-   [:> view {:className "flex flex-col"}
+   [:> view {:style (tw "flex flex-col")}
     [reified-attribute {:attr :str}]
     [reified-attribute {:attr :dex}]
     [reified-attribute {:attr :int}]
     [reified-attribute {:attr :ht}]]
 
-   [:> view {:className "flex flex-col"}
+   [:> view {:style (tw "flex flex-col")}
     [reified-secondary-attribute {:attr :hp :based-on :str :has-current? true}]
     [reified-secondary-attribute {:attr :will :based-on :int}]
     [reified-secondary-attribute {:attr :per :based-on :int}]

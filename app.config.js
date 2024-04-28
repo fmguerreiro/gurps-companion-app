@@ -22,6 +22,9 @@ module.exports = {
     extra: {
       storybookEnabled: process.env.STORYBOOK_ENABLED,
     },
+    web: {
+      bundler: "metro", // for tailwind support
+    },
   },
   plugins: [["expo-router", { root: "./app" }]],
 };

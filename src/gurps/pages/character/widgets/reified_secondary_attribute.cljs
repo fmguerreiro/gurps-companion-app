@@ -1,6 +1,5 @@
 (ns gurps.pages.character.widgets.reified-secondary-attribute
-  (:require [reagent.core :as r]
-            [re-frame.core :as rf]
+  (:require [re-frame.core :as rf]
             [gurps.utils.helpers :refer [default-to]]
             [gurps.pages.character.widgets.helpers :refer [update-attribute]]
             [gurps.pages.character.widgets.attribute :refer [attribute-input]]))
@@ -23,7 +22,7 @@
   (let [cost (some-> (rf/subscribe [(keyword :attribute-costs attr)]) deref)
         based-on-val (or (some-> (rf/subscribe [(keyword :attributes based-on)]) deref js/parseInt) 10)
         val (calc-attr-val attr cost based-on-val)
-        current (if has-current? @(rf/subscribe [(keyword :attributes (str (symbol attr) "-current"))]) nil)
+        current (if has-current? (some-> (rf/subscribe [(keyword :attributes (str (symbol attr) "-current"))]) deref) nil)
         on-change-text (partial update-attribute (keyword :attribute-costs attr))]
     [attribute-input {:attr attr
                       :cost cost

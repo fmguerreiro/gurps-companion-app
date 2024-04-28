@@ -10,7 +10,10 @@
    ["expo-status-bar" :refer [StatusBar]]
    [re-frame.core :as rf]
    ["react-native" :as rn]
+   ["twrnc" :refer [style] :rename {style tw}]
    [reagent.core :as r]))
+
+;; (tw "bg-blue-100 text-2xl flex")
 
 ;; (defonce shadow-splash (js/require "../assets/shadow-cljs.png"))
 ;; (defonce cljs-splash (js/require "../assets/cljs.png"))
@@ -18,18 +21,18 @@
 (defn character-stats-page
   [^js props]
   [:> rn/ScrollView
-   [:> view {:className "flex flex-col gap-4 py-4 bg-white items-center justify-between"}
+   [:> view {:style (tw "flex flex-col gap-4 py-4 bg-white items-center justify-between")}
 
-    [:> view {:className "w-full px-4"}
+    [:> view {:style (tw "w-full px-4")}
      [summary-group]]
 
-    [:> view {:className "my-0"}
+    [:> view {:style (tw "my-0")}
      [attribute-group]]
 
-    [:> view {:className "my-0"}
+    [:> view {:style (tw "my-0")}
      [basics]]
 
-    [:> view {:className "my-0 px-2"}
+    [:> view {:style (tw "my-0 px-2")}
      [encumbrance-table]]
 
     [:> StatusBar {:style "auto"}]]])

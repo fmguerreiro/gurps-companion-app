@@ -2,12 +2,13 @@
   (:require [re-frame.core :as rf]
             [gurps.widgets.base :refer [text view]]
             [gurps.utils.helpers :refer [default-to]]
+            ["twrnc" :refer [style] :rename {style tw}]
             [gurps.utils.i18n :as i18n]))
 
 (defn labeled-underlined-row [^js {:keys [label value]}]
-  [:> view {:className "flex flex-row gap-2 justify-items-center ml-0 mt-0"}
-   [:> text {:className "text-start flex-grow bg-red-100"} label]
-   [:> text {:className "underline px-6 shrink-0 text-center"} value]]) ;; TODO: width should be 3 digits wide
+  [:> view {:style (tw "flex flex-row gap-2 justify-items-center ml-0 mt-0")}
+   [:> text {:style (tw "text-start flex-grow bg-red-100")} label]
+   [:> text {:style (tw "underline px-6 shrink-0 text-center")} value]]) ;; TODO: width should be 3 digits wide
 
 (defn encumbrance-column []
   (let [basic-lift (default-to @(rf/subscribe [:character/basic-lift]) 0)
@@ -15,8 +16,8 @@
         medium-lift (* 3 basic-lift)
         heavy-lift (* 6 basic-lift)
         extra-heavy-lift (* 10 basic-lift)]
-    [:> view {:className "flex flex-col gap-1 ml-0 mt-0"}
-     [:> text {:className "uppercase"} (i18n/label :t/encumbrance)]
+    [:> view {:style (tw "flex flex-col gap-1 ml-0 mt-0")}
+     [:> text {:style (tw "uppercase")} (i18n/label :t/encumbrance)]
      [labeled-underlined-row {:label (i18n/label :t/encumbrance-none) :value basic-lift}]
      [labeled-underlined-row {:label (i18n/label :t/encumbrance-light) :value light-lift}]
      [labeled-underlined-row {:label (i18n/label :t/encumbrance-medium) :value medium-lift}]
@@ -35,8 +36,8 @@
         medium-move (- basic-move 2)
         heavy-move (- basic-move 3)
         extra-heavy-move (- basic-move 4)]
-    [:> view {:className "flex flex-col gap-1 ml-0 mt-0"}
-     [:> text {:className "uppercase"} (i18n/label :t/move)]
+    [:> view {:style (tw "flex flex-col gap-1 ml-0 mt-0")}
+     [:> text {:style (tw "uppercase")} (i18n/label :t/move)]
      [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-none) :value basic-move}]
      [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-light) :value light-move}]
      [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-medium) :value medium-move}]
@@ -56,8 +57,8 @@
         medium-dodge (- basic-dodge 2)
         heavy-dodge (- basic-dodge 3)
         extra-heavy-dodge (- basic-dodge 4)]
-    [:> view {:className "flex flex-col gap-1 ml-0 mt-0"}
-     [:> text {:className "uppercase"} (i18n/label :t/dodge)]
+    [:> view {:style (tw "flex flex-col gap-1 ml-0 mt-0")}
+     [:> text {:style (tw "uppercase")} (i18n/label :t/dodge)]
      [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-none) :value basic-dodge}]
      [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-light) :value light-dodge}]
      [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-medium) :value medium-dodge}]
@@ -71,7 +72,7 @@
    (+ 3 bm))) ;; TODO: use a helper calc-basic-dodge function instead
 
 (defn encumbrance-table []
-  [:> view {:className "flex flex-row gap-2 border-2 border-black ml-0 mt-0"}
+  [:> view {:style (tw "flex flex-row gap-2 border-2 border-black ml-0 mt-0")}
    [encumbrance-column]
    [move-column]
    [dodge-column]])

@@ -3,6 +3,7 @@
             [gurps.pages.character.widgets.basic :refer [basic]]
             [gurps.pages.character.utils.damage-table :refer [damage-table]]
             [gurps.utils.helpers :refer [default-to]]
+            ["twrnc" :refer [style] :rename {style tw}]
             [re-frame.core :as rf]))
 
 ;; TODO: If you have less than 1/3 of your HP remaining, you reel from your wounds. Halve your Move and Dodge (round up).
@@ -27,14 +28,14 @@
         lift (basic-lift str)
         swing (get-in damage-table [str :sw])
         thrust (get-in damage-table [str :thr])]
-    [:> view {:className "flex flex-col gap-2 w-full"}
+    [:> view {:style (tw "flex flex-col gap-2 w-full")}
 
-     [:> view {:className "flex flex-row gap-2 items-stretch"}
+     [:> view {:style (tw "flex flex-row gap-2 items-stretch")}
       [basic {:label :t/basic-lift :value lift}]
       [basic {:label :t/damage-thrust :value thrust}]
       [basic {:label :t/damage-swing :value swing}]]
 
-     [:> view {:className "flex flex-row gap-2"}
+     [:> view {:style (tw "flex flex-row gap-2")}
       [basic {:label :t/basic-speed :value speed :upgradable? true}]
       [basic {:label :t/basic-move :value move :upgradable? true}]]]))
 

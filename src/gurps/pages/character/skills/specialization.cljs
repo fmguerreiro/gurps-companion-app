@@ -6,7 +6,8 @@
             [gurps.widgets.base :refer [view text button]]
             [gurps.utils.helpers :refer [str->key flatten-key]]
             [gurps.utils.i18n :as i18n]
-            [gurps.pages.character.utils.skills :refer [skills skill->txt difficulties]]))
+            [gurps.pages.character.utils.skills :refer [skills skill->txt difficulties]]
+            ["twrnc" :refer [style] :rename {style tw}]))
 
 (defn next-cost
   [current-cost]
@@ -56,7 +57,7 @@
                    default-lvl)]
       (info "add-skill-row" (str skill-key) cost lvl default-lvl)
       (r/as-element
-       [:> view {:className "flex flex-row justify-between"}
+       [:> view {:style (tw "flex flex-row justify-between")}
         ;; lvl
         [:> text lvl]
 
@@ -64,11 +65,11 @@
         [:> text (i18n/label (keyword "t" ((:diff skill) difficulties)))]
 
         ;; cost
-        [:> view {:className "w-1/4 flex flex-row bg-slate-100"}
+        [:> view {:style (tw "w-1/4 flex flex-row bg-slate-100")}
          (when (> cost 0)
            [:> button {:onPress #(rf/dispatch [:skills/dec-skill-lvl flattened-key])}
             [:> text "-"]])
-         [:> text {:className ""} cost]
+         [:> text {:style (tw "")} cost]
          [:> button {:onPress #(rf/dispatch [:skills/inc-skill-lvl flattened-key])}
           [:> text "+"]]]]))))
 
@@ -91,13 +92,13 @@
                specializations (:specializations skill)
                default-lvls @(rf/subscribe [:skills/defaults])]
     [:> view
-     [:> text {:className ""}
+     [:> text {:style (tw "")}
       (i18n/label (keyword "t" (str "skill-description-" (symbol (if (some? (namespace skill-key)) (namespace skill-key) (name skill-key))))))]
 
      [add-skill-row skill-key (get default-lvls skill-key)]
 
      (when (some? specializations)
-       [:> text {:className "mt-4"} "Specializations:"]
+       [:> text {:style (tw "mt-4")} "Specializations:"]
        (->> specializations
             (map (fn [spec]
                    (let [display-text (skill->txt spec)]

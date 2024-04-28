@@ -3,7 +3,8 @@
             [gurps.utils.i18n :as i18n]
             [gurps.utils.debounce :as debounce]
             [gurps.utils.helpers :refer [default-to]]
-            [gurps.widgets.base :refer [view text input]]))
+            [gurps.widgets.base :refer [view text input]]
+            ["twrnc" :refer [style] :rename {style tw}]))
 
 ;; TODO: apply modifier functions
 (def value-per-lvl
@@ -26,11 +27,11 @@
 
 (defn- box
   [children]
-  [:> view {:className "h-14 w-14 items-center justify-center flex-row"} children])
+  [:> view {:style (tw "h-14 w-14 items-center justify-center flex-row")} children])
 
 (defn- box-border
-  [^js {:keys [className key]} & children]
-  [:> view {:key key :className (str "box-border h-14 w-14 align-middle border-2 items-center justify-center " className)}
+  [^js {:keys [style key]} & children]
+  [:> view {:key key :style (tw (str "box-border h-14 w-14 align-middle border-2 items-center justify-center " style))}
    children])
 
 (def long-attr
@@ -51,15 +52,15 @@
         :or   {has-current-space? false secondary? false}}]
   ;; (info "attribute" (str attr) val)
 
-  [:> view {:className "flex flex-row gap-0"}
+  [:> view {:style (tw "flex flex-row gap-0")}
    (box
-    [:> text {:className "text-2xl font-bold"} (i18n/label (key->i18n-label attr))])
+    [:> text {:style (tw "text-2xl font-bold")} (i18n/label (key->i18n-label attr))])
 
    (if secondary?
-     (box-border {:key attr} [:> text {:key attr :className "text-2xl"} val])
-     (box-border {:className "bg-slate-100"}
+     (box-border {:key attr} [:> text {:key attr :style (tw "text-2xl")} val])
+     (box-border {:style (tw "bg-slate-100")}
                  [:> input {:key attr
-                            :className "text-2xl"
+                            :style (tw "text-2xl")
                             :maxLength 3
                             :keyboardType "numeric"
                             :onChangeText (debounce/debounce #(on-change-text %) 500)
@@ -67,19 +68,19 @@
 
    (when (some? current)
      [:> view
-      [:> text {:className "text-xs text-center w-14 capitalize font-bold absolute -top-4"}
+      [:> text {:style (tw "text-xs text-center w-14 capitalize font-bold absolute -top-4")}
        (i18n/label :t/current)]
-      (box-border [:> input {:className "text-2xl bg-slate-100"} current])])
+      (box-border [:> input {:style (tw "text-2xl bg-slate-100")} current])])
    (when (and secondary? has-current-space?)
      (box [:<>]))
 
-   (box [:> view {:className "flex flex-1 flex-row items-center justify-items-center align-items-center"}
-         [:> text {:className "text-xl font-bold"} "["]
-         (if secondary?
-           [:> input {:className "text-xl font-bold bg-slate-200" ;; TODO center
-                      :maxLength 3
-                      :keyboardType "numeric"
-                      :onChangeText (debounce/debounce #(on-change-text %) 500)
-                      :placeholder (str cost)}]
-           [:> text {:className "text-xl font-bold"} (calc-cost attr val)])
-         [:> text {:className "text-xl font-bold"} "]"]])])
+   (box [:> view {:style (tw "flex flex-1 flex-row items-center justify-items-center align-items-center")}
+         [:> text {:style (tw "text-xl font-bold")} "["]]]
+        (if secondary?
+          [:> input {:style (tw "text-xl font-bold bg-slate-200") ;; TODO center
+                     :maxLength 3
+                     :keyboardType "numeric"
+                     :onChangeText (debounce/debounce #(on-change-text %) 500)
+                     :placeholder (str cost)}]
+          [:> text {:style (tw "text-xl font-bold")} (calc-cost attr val)])
+        [:> text {:style (tw "text-xl font-bold")} "]")])

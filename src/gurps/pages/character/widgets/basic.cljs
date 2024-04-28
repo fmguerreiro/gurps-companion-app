@@ -1,6 +1,7 @@
 (ns gurps.pages.character.widgets.basic
   (:require [re-frame.core :as rf]
             [gurps.utils.i18n :as i18n]
+            ["twrnc" :refer [style] :rename {style tw}]
             [gurps.widgets.base :refer [view text input]]))
 
 (defonce cost-to-point
@@ -24,13 +25,13 @@
   [^js {:keys [label value upgradable?]
         :or   {upgradable? false}}]
   (let [cost (if upgradable? (some-> (rf/subscribe [(keyword :attribute-costs (name label))]) deref) 0)]
-    [:> view {:className "flex flex-row flex-grow align-items-center gap-1 ml-0 mt-0"} ;; NOTE: ml-0 mt-0 counters the effects of gap-1
-     [:> text {:className "text-xl text-bold"} (i18n/label label)]
-     [:> text {:className "text-xl underline"} (if upgradable? (calc-val label value cost) value)]
+    [:> view {:style (tw "flex flex-row flex-grow align-items-center gap-1 ml-0 mt-0")} ;; NOTE: ml-0 mt-0 counters the effects of gap-1
+     [:> text {:style (tw "text-xl text-bold")} (i18n/label label)]
+     [:> text {:style (tw "text-xl underline")} (if upgradable? (calc-val label value cost) value)]
      (when upgradable?
-       [:> view {:className "flex flex-row items-center justify-items-center align-items-center"}
+       [:> view {:style (tw "flex flex-row items-center justify-items-center align-items-center")}
         [:> text "["]
         ; [:> input {:keyboardType "numeric"
         ;            :maxLength 3
-        ;            :className "bg-slate-200"} cost]
+        ;            :style (tw "bg-slate-200")} cost]
         [:> text "]"]])]))
