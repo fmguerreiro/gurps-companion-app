@@ -75,12 +75,14 @@
      (box [:<>]))
 
    (box [:> view {:style (tw "flex flex-1 flex-row items-center justify-items-center align-items-center")}
-         [:> text {:style (tw "text-xl font-bold")} "["]]]
-        (if secondary?
-          [:> input {:style (tw "text-xl font-bold bg-slate-200") ;; TODO center
-                     :maxLength 3
-                     :keyboardType "numeric"
-                     :onChangeText (debounce/debounce #(on-change-text %) 500)
-                     :placeholder (str cost)}]
-          [:> text {:style (tw "text-xl font-bold")} (calc-cost attr val)])
-        [:> text {:style (tw "text-xl font-bold")} "]")])
+         [:> text {:style (tw "text-xl font-bold")} "["]
+
+         (if secondary?
+           [:> input {:style (tw "text-xl font-bold bg-slate-200") ;; TODO center
+                      :maxLength 3
+                      :keyboardType "numeric"
+                      :onChangeText (debounce/debounce #(on-change-text %) 500)
+                      :placeholder (str cost)}]
+           [:> text {:style (tw "text-xl font-bold")} (calc-cost attr val)])
+
+         [:> text {:style (tw "text-xl font-bold")} "]"]])])
