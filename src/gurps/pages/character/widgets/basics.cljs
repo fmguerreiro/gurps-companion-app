@@ -45,4 +45,4 @@
   (rf/reg-sub
    (keyword :attribute-costs attr)
    (fn [db _]
-     (or (get-in db [:attribute-costs attr]) 0))))
+     (get-in db [:attribute-costs attr] 0))))

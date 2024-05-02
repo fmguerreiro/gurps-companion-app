@@ -1,6 +1,7 @@
 (ns gurps.db)
 
 ;; initial state of app-db
+;; TODO: write spec
 (defonce app-db
   {:profile {:name ""
              :player ""

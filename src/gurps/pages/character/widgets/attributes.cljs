@@ -41,8 +41,25 @@
    (fn [db _]
      (or (get-in db [(keyword (namespace attr)) (keyword (name attr))]) 0))))
 
-(rf/reg-event-db
+;; (rf/reg-event-db
+;;  :attrs/update
+;;  (fn [db [_ k v]]
+;;    (info "update attr" k v)
+;;    (let [old-val (get-in db [(keyword (namespace k)) (keyword (name k))])
+;;          diff    (- v old-val)]
+;;      (-> db
+;;          (update-in [:profile :unspent-points] #(- % diff))
+;;          (assoc-in [(keyword (namespace k)) (keyword (name k))] v)))))
+
+(rf/reg-event-fx
  :attrs/update
- (fn [db [_ k v]]
+ (fn [{:keys [db]} [_ k v]]
    (info "update attr" k v)
-   (assoc-in db [(keyword (namespace k)) (keyword (name k))] v)))
+   (let [old-val (get-in db [(keyword (namespace k)) (keyword (name k))])
+         diff    (- v old-val)]
+     {:db (-> db
+              (update-in [:profile :unspent-points] #(- % diff))
+              (assoc-in [(keyword (namespace k)) (keyword (name k))] v))
+
+      :effects.async-storage/set {:k     :profile/unspent-points
+                                  :value (- (get-in db [:profile :unspent-points] 0) diff)}}))) ;; TODO: should just call profile/update :unspent-points (- v diff)

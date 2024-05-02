@@ -1,6 +1,6 @@
 (ns gurps.pages.character.widgets.summary
   (:require [gurps.widgets.base :refer [view]]
-            [gurps.pages.character.widgets.point-total :refer [point-total-field]]
+            [gurps.pages.character.widgets.point-total :refer [point-total-field unspent-points-field]]
             [gurps.pages.character.widgets.summary-field :refer [summary-field]]
             ["twrnc" :refer [style] :rename {style tw}]))
 
@@ -21,7 +21,7 @@
     ^{:key "summary-ht"} [summary-field {:key :ht, :style (tw "max-w-12")}]
     ^{:key "summary-wt"} [summary-field {:key :wt, :style (tw "max-w-12")}]
     ;; TODO: [summary-field {:key :size-modifier}]
-    ^{:key "summary-unspent-points"} [summary-field {:key :unspent-points}]]
+    ^{:key "summary-unspent-points"} [unspent-points-field]]
 
    [input-group {:key "summary-3"}
     ^{:key "summary-unspent-points"} [summary-field {:key :age, :style (tw "max-w-14")}]

@@ -14,6 +14,15 @@
                             (:attribute-costs db)))] ;; TODO: other costs
      (or (reduce + costs) 0))))
 
+(defn unspent-points-field
+  [style]
+  [summary-field {:key :unspent-points, :style style}])
+
+(rf/reg-sub
+ :profile/unspent-points
+ (fn [db]
+   (get-in db [:profile :unspent-points] 0)))
+
 (comment
   ;; TODO: move this somewhere else/delete?
   (def a {:profile {:unspent-points nil, :age nil, :name "Asdasd", :ht nil, :point-total nil, :size-modifier nil, :wt nil, :appearance nil, :player nil},
