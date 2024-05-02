@@ -1,12 +1,11 @@
 (ns gurps.pages.character.widgets.point-total
-  (:require [re-frame.core :as rf]
-            [taoensso.timbre :refer [info]]
+  (:require [taoensso.timbre :refer [info]]
+            [re-frame.core :as rf]
             [gurps.pages.character.widgets.summary-field :refer [summary-field]]))
 
 (defn point-total-field
   []
-  [summary-field {:key :point-total
-                  :editable? false}])
+  [summary-field {:key :point-total, :editable? false}])
 
 (rf/reg-sub
  :profile/point-total
@@ -16,7 +15,7 @@
      (or (reduce + costs) 0))))
 
 (comment
-
+  ;; TODO: move this somewhere else/delete?
   (def a {:profile {:unspent-points nil, :age nil, :name "Asdasd", :ht nil, :point-total nil, :size-modifier nil, :wt nil, :appearance nil, :player nil},
           :attributes {:ht nil, :dex nil, :int nil, :str 10},
           :attribute-costs {:will "10", :int nil, :per nil, :ht nil, :str 0, :dex nil, :hp "10", :basic-move nil, :basic-speed nil, :fp nil},

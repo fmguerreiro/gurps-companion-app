@@ -6,25 +6,25 @@
 
 (defn- input-group
   [{:keys [key]} & children]
-  [:> view {:key key :style (tw "flex flex-row flex-1 bg-green-100")}
+  [:> view {:key key :style (tw "flex flex-row flex-1 bg-green-100 gap-2")}
    children])
 
 (defn summary-group
   []
-  [:> view {:style (tw "flex flex-col")}
+  [:> view {:style (tw "flex flex-col gap-1")}
    [input-group {:key "summary-1"}
     ^{:key "summary-name"} [summary-field {:key :name}]
     ^{:key "summary-player"} [summary-field {:key :player}]
     ^{:key "summary-point-total"} [point-total-field]]
 
    [input-group {:key "summary-2"}
-    ^{:key "summary-ht"} [summary-field {:key :ht}]
-    ^{:key "summary-wt"} [summary-field {:key :wt}]
+    ^{:key "summary-ht"} [summary-field {:key :ht, :style (tw "max-w-12")}]
+    ^{:key "summary-wt"} [summary-field {:key :wt, :style (tw "max-w-12")}]
     ;; TODO: [summary-field {:key :size-modifier}]
     ^{:key "summary-unspent-points"} [summary-field {:key :unspent-points}]]
 
    [input-group {:key "summary-3"}
-    ^{:key "summary-unspent-points"} [summary-field {:key :age}]
+    ^{:key "summary-unspent-points"} [summary-field {:key :age, :style (tw "max-w-14")}]
     ^{:key "summary-appearance"} [summary-field {:key :appearance}]]])
 
 ;; [input-group [:<>
