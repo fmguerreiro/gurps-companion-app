@@ -27,7 +27,6 @@
                                v (if (js/isNaN parsed) 10 parsed)]
                            (update-attribute key v)
                            (update-attribute key-cost (calc-cost attr v))))]
-    (info "reified-attribute" key val)
     [attribute-input {:attr attr
                       :val val
                       :on-change-text on-change-text}]))

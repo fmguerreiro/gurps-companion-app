@@ -5,9 +5,10 @@
             ["twrnc" :refer [style] :rename {style tw}]
             [gurps.utils.i18n :as i18n]))
 
-(defn labeled-underlined-row [^js {:keys [label value]}]
-  [:> view {:style (tw "flex flex-row gap-2 justify-items-center ml-0 mt-0")}
-   [:> text {:style (tw "text-start flex-grow bg-red-100")} label]
+(defn labeled-underlined-row
+  [^js {:keys [label value]}]
+  [:> view {:style (tw "flex flex-row gap-2 justify-center ml-0 mt-0")}
+   [:> text {:style (tw "flex-grow bg-red-100")} label]
    [:> text {:style (tw "underline px-6 shrink-0 text-center")} value]]) ;; TODO: width should be 3 digits wide
 
 (defn encumbrance-column []

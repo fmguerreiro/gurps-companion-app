@@ -25,11 +25,11 @@
   [^js {:keys [label value upgradable?]
         :or   {upgradable? false}}]
   (let [cost (if upgradable? (some-> (rf/subscribe [(keyword :attribute-costs (name label))]) deref) 0)]
-    [:> view {:style (tw "flex flex-row flex-grow align-items-center gap-1 ml-0 mt-0")} ;; NOTE: ml-0 mt-0 counters the effects of gap-1
-     [:> text {:style (tw "text-xl text-bold")} (i18n/label label)]
+    [:> view {:style (tw "flex flex-row flex-grow items-center gap-1 ml-0 mt-0")} ;; NOTE: ml-0 mt-0 counters the effects of gap-1
+     [:> text {:style (tw "text-xl font-bold")} (i18n/label label)]
      [:> text {:style (tw "text-xl underline")} (if upgradable? (calc-val label value cost) value)]
      (when upgradable?
-       [:> view {:style (tw "flex flex-row items-center justify-items-center align-items-center")}
+       [:> view {:style (tw "flex flex-row items-center justify-center")}
         [:> text "["]
         ; [:> input {:keyboardType "numeric"
         ;            :maxLength 3
