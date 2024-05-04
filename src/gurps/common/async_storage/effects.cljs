@@ -8,6 +8,12 @@
    (async-storage/set-item! k value)))
 
 (rf/reg-fx
+ :effects.async-storage/set-multiple
+ (fn [{items :items}]
+   (for [{k :k value :value} items]
+     (async-storage/set-item! k value))))
+
+(rf/reg-fx
  :effects.async-storage/set-factory
  (async-storage/set-item-factory))
 

@@ -19,15 +19,14 @@
 (defn reified-secondary-attribute
   [^js {:keys [attr based-on has-current?]
         :or   {has-current? false}}]
-  (let [cost (some-> (rf/subscribe [(keyword :attribute-costs attr)]) deref)
-        based-on-val (or (some-> (rf/subscribe [(keyword :attributes based-on)]) deref js/parseInt) 10)
-        val (calc-attr-val attr cost based-on-val)
-        current (if has-current? (some-> (rf/subscribe [(keyword :attributes (str (symbol attr) "-current"))]) deref) nil)
+  (let [cost           (some-> (rf/subscribe [(keyword :attribute-costs attr)]) deref)
+        based-on-val   (or (some-> (rf/subscribe [(keyword :attributes based-on)]) deref js/parseInt) 10)
+        val            (calc-attr-val attr cost based-on-val)
+        current        (when has-current? (or (some-> (rf/subscribe [(keyword :attribute-current attr)]) deref) val))
         on-change-text (partial update-attribute (keyword :attribute-costs attr))]
     [attribute-input {:attr attr
                       :cost cost
                       :val val
                       :secondary? true
                       :on-change-text on-change-text
-                      :has-current-space? (or (= attr :will) (= attr :per))
                       :current current}]))

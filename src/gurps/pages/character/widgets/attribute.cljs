@@ -5,8 +5,10 @@
             [gurps.utils.debounce :as debounce]
             [gurps.utils.helpers :refer [default-to]]
             [gurps.widgets.base :refer [view text input]]
+            [gurps.pages.character.widgets.helpers :refer [update-attribute]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
-            ["twrnc" :refer [style] :rename {style tw}]))
+            ["twrnc" :refer [style] :rename {style tw}]
+            [re-frame.core :as rf]))
 
 ;; TODO: apply modifier functions
 (def value-per-lvl
@@ -51,8 +53,8 @@
   (keyword :t (str "attr-" (symbol (long-attr key)))))
 
 (defn attribute-input
-  [^js {:keys [attr val cost current on-change-text has-current-space? secondary?]
-        :or   {has-current-space? false secondary? false}}]
+  [^js {:keys [attr val cost current on-change-text secondary?]
+        :or   {secondary? false}}]
   [:> view {:style (tw "flex flex-row gap-0")}
    (box
     [:> text {:style (tw "text-2xl font-bold")}
@@ -68,13 +70,18 @@
                             :onChangeText (debounce/debounce #(on-change-text %) 500)
                             :placeholder (str val)}]))
 
-   (when (some? current)
+   (when current
      [:> view
       [:> text {:style (tw "text-xs text-center w-14 capitalize font-bold absolute -top-4")}
        (i18n/label :t/current)]
-      (box-border [:> input {:style (tw "text-2xl bg-slate-100")} current])])
+      (box-border {:style (tw "bg-slate-100")}
+                  [:> input {:style (tw "text-2xl")
+                             :keyboardType "numeric"
+                             :onChangeText (debounce/debounce #(rf/dispatch [:attribute-current/update (keyword :attribute-current attr) (js/parseInt %)]) 500)
+                             :placeholder (str (if current current val))}
+                   current])])
 
-   (when (and secondary? has-current-space?)
+   (when (and secondary? (some? current))
      (box [:<>]))
 
    (box [bracketed-numeric-input {:on-change-text on-change-text

@@ -1,9 +1,8 @@
 (ns gurps.pages.character.widgets.helpers
-  (:require [re-frame.core :as rf]
-            [react-native.async-storage :as async-storage]))
+  (:require [re-frame.core :as rf]))
 
+;; TODO: stop using this
 (defn update-attribute
   [label value]
-  (let [int-val (js/parseInt value)
-        callback #(rf/dispatch [:attrs/update label int-val])]
-    (async-storage/set-item! label int-val callback)))
+  (let [int-val (js/parseInt value)]
+    (rf/dispatch [:attrs/update label int-val])))
