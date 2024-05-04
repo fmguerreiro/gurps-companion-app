@@ -7,7 +7,7 @@
             ["twrnc" :refer [style] :rename {style tw}]))
 
 (defn attribute-group []
-  [:> view {:style (tw "flex flex-row gap-0")}
+  [:> view {:style (tw "flex flex-row gap-0 mt-2")} ;; NOTE: mt-2 to account for out-of-bounds "current" label
 
    [:> view {:style (tw "flex flex-col")}
     [reified-attribute {:attr :str}]

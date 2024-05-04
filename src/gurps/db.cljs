@@ -31,6 +31,9 @@
                      :int 0
                      :ht 0}
 
+   :attribute-current {:hp 0
+                       :fp 0}
+
    :skill-costs {:acrobatics 10}
 
    ;; for reloading state on app re-start

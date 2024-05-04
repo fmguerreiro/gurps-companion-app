@@ -5,7 +5,6 @@
             [gurps.utils.debounce :as debounce]
             [gurps.utils.helpers :refer [default-to]]
             [gurps.widgets.base :refer [view text input]]
-            [gurps.pages.character.widgets.helpers :refer [update-attribute]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
             ["twrnc" :refer [style] :rename {style tw}]
             [re-frame.core :as rf]))
@@ -76,13 +75,13 @@
        (i18n/label :t/current)]
       (box-border {:style (tw "bg-slate-100")}
                   ^{:key (str attr "-current")}
-                  [:> input {:style (tw "text-2xl")
+                  [:> input {:style (tw "text-2xl pb-2")
                              :keyboardType "numeric"
                              :onChangeText (debounce/debounce #(rf/dispatch [:attribute-current/update (keyword :attribute-current attr) (js/parseInt %)]) 500)
                              :placeholder (str (if current current val))}
                    current])])
 
-   (when (and secondary? (some? current))
+   (when (and secondary? (nil? current))
      (box [:<>]))
 
    (box [bracketed-numeric-input {:on-change-text on-change-text

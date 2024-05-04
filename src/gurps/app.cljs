@@ -2,6 +2,7 @@
   (:require
    ;; NOTE: Do NOT sort i18n-resources because it MUST be loaded first.
    [gurps.setup.i18n-resources :as i18n-resources]
+   [gurps.common.async-storage.effects]
    [gurps.events]
    [gurps.subs]
    [gurps.effects]
