@@ -7,9 +7,9 @@
 
 (defn labeled-underlined-row
   [^js {:keys [label value]}]
-  [:> view {:style (tw "flex flex-row gap-2 justify-center ml-0 mt-0")}
-   [:> text {:style (tw "flex-grow bg-red-100")} label]
-   [:> text {:style (tw "underline px-6 shrink-0 text-center")} value]]) ;; TODO: width should be 3 digits wide
+  [:> view {:style (tw "flex flex-row gap-1 justify-center ml-0 mt-0")}
+   [:> text {:style (tw "flex-grow")} label]
+   [:> text {:style (tw "underline grow-0 w-7 text-center")} value]]) ;; TODO: width should be 3 digits wide
 
 (defn encumbrance-column []
   (let [basic-lift (default-to @(rf/subscribe [:character/basic-lift]) 0)
@@ -18,7 +18,7 @@
         heavy-lift (* 6 basic-lift)
         extra-heavy-lift (* 10 basic-lift)]
     [:> view {:style (tw "flex flex-col gap-1 ml-0 mt-0")}
-     [:> text {:style (tw "uppercase")} (i18n/label :t/encumbrance)]
+     [:> text {:style (tw "uppercase text-center font-bold")} (i18n/label :t/encumbrance)]
      [labeled-underlined-row {:label (i18n/label :t/encumbrance-none) :value basic-lift}]
      [labeled-underlined-row {:label (i18n/label :t/encumbrance-light) :value light-lift}]
      [labeled-underlined-row {:label (i18n/label :t/encumbrance-medium) :value medium-lift}]
@@ -38,7 +38,7 @@
         heavy-move (- basic-move 3)
         extra-heavy-move (- basic-move 4)]
     [:> view {:style (tw "flex flex-col gap-1 ml-0 mt-0")}
-     [:> text {:style (tw "uppercase")} (i18n/label :t/move)]
+     [:> text {:style (tw "uppercase text-center font-bold")} (i18n/label :t/move)]
      [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-none) :value basic-move}]
      [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-light) :value light-move}]
      [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-medium) :value medium-move}]
@@ -59,7 +59,7 @@
         heavy-dodge (- basic-dodge 3)
         extra-heavy-dodge (- basic-dodge 4)]
     [:> view {:style (tw "flex flex-col gap-1 ml-0 mt-0")}
-     [:> text {:style (tw "uppercase")} (i18n/label :t/dodge)]
+     [:> text {:style (tw "uppercase text-center font-bold")} (i18n/label :t/dodge)]
      [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-none) :value basic-dodge}]
      [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-light) :value light-dodge}]
      [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-medium) :value medium-dodge}]
@@ -73,7 +73,7 @@
    (+ 3 bm))) ;; TODO: use a helper calc-basic-dodge function instead
 
 (defn encumbrance-table []
-  [:> view {:style (tw "flex flex-row gap-2 border-2 border-black ml-0 mt-0")}
+  [:> view {:style (tw "flex flex-row gap-2 border-2 border-black p-1")}
    [encumbrance-column]
    [move-column]
    [dodge-column]])
