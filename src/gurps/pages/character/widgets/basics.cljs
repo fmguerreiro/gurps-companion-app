@@ -18,7 +18,7 @@
   (/ (* str str) 5))
 
 ;; TODO: push subscriptions down to individual components
-(defn basics
+(defn basics-table
   []
   (let [ht  (js/parseInt (or (some-> (rf/subscribe [:attributes/ht]) deref) 10))
         dx  (js/parseInt (or (some-> (rf/subscribe [:attributes/dex]) deref) 10))
@@ -28,7 +28,7 @@
         lift (basic-lift str)
         swing (get-in damage-table [str :sw])
         thrust (get-in damage-table [str :thr])]
-    [:> view {:style (tw "flex flex-col gap-2 w-full")}
+    [:> view {:style (tw "flex flex-col gap-2")}
 
      [:> view {:style (tw "flex flex-row gap-2 items-stretch")}
       [basic {:label :t/basic-lift :value lift}]
@@ -37,7 +37,8 @@
 
      [:> view {:style (tw "flex flex-row gap-2")}
       [basic {:label :t/basic-speed :value speed :upgradable? true}]
-      [basic {:label :t/basic-move :value move :upgradable? true}]]]))
+      [basic {:label :t/basic-move :value move :upgradable? true}]
+      [:> view {:style (tw "flex")}]]]))
 
 (def attrs [:basic-move
             :basic-speed])
