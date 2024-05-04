@@ -39,7 +39,7 @@
   (rf/reg-sub
    attr
    (fn [db _]
-     (or (get-in db [(keyword (namespace attr)) (keyword (name attr))]) 0))))
+     (get-in db [(keyword (namespace attr)) (keyword (name attr))] 0))))
 
 ;; (rf/reg-event-db
 ;;  :attrs/update

@@ -12,7 +12,7 @@
    [:> text {:style (tw "underline grow-0 w-7 text-center")} value]]) ;; TODO: width should be 3 digits wide
 
 (defn encumbrance-column []
-  (let [basic-lift (default-to @(rf/subscribe [:character/basic-lift]) 0)
+  (let [basic-lift (default-to @(rf/subscribe [:attributes/basic-lift]) 0)
         light-lift (* 2 basic-lift)
         medium-lift (* 3 basic-lift)
         heavy-lift (* 6 basic-lift)
@@ -26,13 +26,13 @@
      [labeled-underlined-row {:label (i18n/label :t/encumbrance-extra-heavy) :value extra-heavy-lift}]]))
 
 (rf/reg-sub
- :character/basic-lift
+ :attributes/basic-lift
  :<- [:attributes/str]
  (fn [str]
    (js/Math.floor (/ (* str str) 5)))) ;; TODO: use a helper calc-basic-lift function instead
 
 (defn move-column []
-  (let [basic-move (default-to @(rf/subscribe [:character/basic-move]) 0)
+  (let [basic-move (default-to @(rf/subscribe [:attributes/basic-move]) 0)
         light-move (- basic-move 1)
         medium-move (- basic-move 2)
         heavy-move (- basic-move 3)
@@ -46,14 +46,14 @@
      [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-extra-heavy) :value extra-heavy-move}]]))
 
 (rf/reg-sub
- :character/basic-move
+ :attributes/basic-move
  :<- [:attributes/ht]
  :<- [:attributes/dex]
  (fn [[ht dx]]
    (js/Math.floor (/ (+ ht dx) 4)))) ;; TODO: use a helper calc-basic-move function instead
 
 (defn dodge-column []
-  (let [basic-dodge @(rf/subscribe [:character/basic-dodge])
+  (let [basic-dodge @(rf/subscribe [:attributes/basic-dodge])
         light-dodge (- basic-dodge 1)
         medium-dodge (- basic-dodge 2)
         heavy-dodge (- basic-dodge 3)
@@ -67,8 +67,8 @@
      [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-extra-heavy) :value extra-heavy-dodge}]]))
 
 (rf/reg-sub
- :character/basic-dodge
- :<- [:character/basic-move]
+ :attributes/basic-dodge
+ :<- [:attributes/basic-move]
  (fn [bm]
    (+ 3 bm))) ;; TODO: use a helper calc-basic-dodge function instead
 

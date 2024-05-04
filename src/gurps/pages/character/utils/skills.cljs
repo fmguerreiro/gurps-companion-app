@@ -42,14 +42,14 @@
                                            (calc-hoc [:skills :animal :animal-handling-raptor] 3)]}
    :mimicry/animal-sounds {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
    :mimicry/bird-calls {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
-   :mount {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5)]}
+   :mount {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5)]}
    :naturalist {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
                                              (calc-any-hoc [:skills :science :biology] 3),
                                              (calc-any-hoc [:skills :plant :biology] 3)]}
    :packing {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
                                           (calc-hoc [:skills :animal :animal-handling/equines] 5)]}
-   :riding/sp {:diff :a :attr :dx :specializations [:horse :bovines :camel :elephant :dolphin :dragon :bear :pigs-or-hogs :rams :hadrosaur :sauropod-or-big-raptor :bird :gheap]
-               :default [(calc-hoc [:attributes :dx] 5),
+   :riding/sp {:diff :a :attr :dex :specializations [:horse :bovines :camel :elephant :dolphin :dragon :bear :pigs-or-hogs :rams :hadrosaur :sauropod-or-big-raptor :bird :gheap]
+               :default [(calc-hoc [:attributes :dex] 5),
                          (calc-hoc [:skills :animal :animal-handling/same] 3)]}
    :teamster/sp {:diff :a :attr :iq :specializations [:horse :bovines :camel :elephant :dolphin :dragon :bear :pigs-or-hogs :rams :hadrosaur :sauropod-or-big-raptor :bird :gheap]
                  :default [(calc-hoc [:skills :animal :animal-handling/same] 4),
@@ -63,14 +63,14 @@
                     :default [(calc-hoc [:attributes :iq] 5)]}
    :current-affairs/high-culture {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4), (calc-hoc [:skills :scholar :research] 4)]}
    :current-affairs/popular-culture {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4), (calc-hoc [:skills :scholar :research] 4)]}
-   :dancing {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5)]}
+   :dancing {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5)]}
    :electronics-operation/sp {:diff :a :attr :iq
                               :specializations [:communications :electronic-warfare :force-shields :matter-transmitters :media :medical :parachronic :psychotronics :scientific :security :sensors :sonar :surveillance :temporal]
                               :default [(calc-hoc [:attributes :iq] 5),
                                         (calc-hoc [:skills :invention :engineer/electrical] 3),
                                         (calc-hoc [:skills :military :electronics-repair] 5),
                                         (calc-hoc [:skills :invention :engineer/electronics] 5)]}
-   :fire-eating {:diff :a :attr :dx}
+   :fire-eating {:diff :a :attr :dex}
    :group-performance/sp {:diff :a :attr :iq
                           :specializations [:choreography :conducting :directing :fight-choreography]
                           :default [(calc-hoc [:attributes :iq] 5)]}
@@ -91,38 +91,38 @@
    :poetry {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
                                          (calc-hoc [:skills :arts :writing] 2)]}
    :singing {:diff :e :attr :ht :default [(calc-hoc [:attributes :ht] 4)]}
-   :sleight-of-hand {:diff :a :attr :dx :default [(calc-hoc [:skills :criminal :filch] 5)]}
-   :stage-combat {:diff :a :attr :dx :default [(calc-hoc [:skills :athletic :combat-art] 2),
-                                               (calc-hoc [:skills :athletic :sports] 2),
-                                               (calc-hoc [:skills :arts :performance] 3)]}
+   :sleight-of-hand {:diff :a :attr :dex :default [(calc-hoc [:skills :criminal :filch] 5)]}
+   :stage-combat {:diff :a :attr :dex :default [(calc-hoc [:skills :athletic :combat-art] 2),
+                                                (calc-hoc [:skills :athletic :sports] 2),
+                                                (calc-hoc [:skills :arts :performance] 3)]}
    :ventriloquism {:diff :h :attr :iq}
    :writing {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
 
-   :acrobatics {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6)]}
-   :aeronautics {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6)]}
-   :aquabatics {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6)]}
-   :bicycling {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4),
-                                            (calc-hoc [:skills :transporation :driving/motorcycle] 4)]}
-   :body-sense {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6),
-                                             (calc-hoc [:skills :athletic :acrobatics] 3)]}
+   :acrobatics {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6)]}
+   :aeronautics {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6)]}
+   :aquabatics {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6)]}
+   :bicycling {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 4),
+                                             (calc-hoc [:skills :transporation :driving/motorcycle] 4)]}
+   :body-sense {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6),
+                                              (calc-hoc [:skills :athletic :acrobatics] 3)]}
    :breath-control {:diff :h :attr :ht}
-   :climbing {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5)]}
+   :climbing {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5)]}
    ;; :combat-art/sp :: TODO: fukin varies?
    :flight {:diff :a :attr :ht :default [(calc-hoc [:attributes :ht] 5)]}
-   :free-fall {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
-                                            (calc-hoc [:attributes :ht] 5)]}
+   :free-fall {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5),
+                                             (calc-hoc [:attributes :ht] 5)]}
    :hiking {:diff :a :attr :ht :default [(calc-hoc [:attributes :ht] 5)]}
-   :jumping {:diff :e :attr :dx}
+   :jumping {:diff :e :attr :dex}
    :lifting {:diff :a :attr :ht}
-   :parachuting {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4)]}
+   :parachuting {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 4)]}
    :running {:diff :a :attr :ht :default [(calc-hoc [:attributes :ht] 5)]}
    :scuba {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
                                         (calc-hoc [:skills :technical :diving-suit] 2)]}
-   :sports/sp {:diff :a :attr :dx
+   :sports/sp {:diff :a :attr :dex
                :specializations [:baseball :basketball :football :golf :hockey :soccer :tennis :track-and-field :bull-fighting :darts :skating :skiing :swimming]}
    :swimming {:diff :e :attr :ht :default [(calc-hoc [:attributes :ht] 4)]}
-   :throwing {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 3)
-                                           (calc-hoc [:skills :combat-ranged :dropping] 2)]}
+   :throwing {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 3)
+                                            (calc-hoc [:skills :combat-ranged :dropping] 2)]}
    :accounting {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
                                              (calc-hoc [:skills :business :finance] 4),
                                              (calc-hoc [:skills :business :mathematics/statistics] 5),
@@ -155,143 +155,143 @@
                                                   (calc-hoc [:skills :arts :performance] 2)]}
    :savoir-faire/high-society {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]} ;; TODO: and others?
 
-   :axe-or-mace {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :flail] 4),
-                                              (calc-hoc [:skills :combat-melee :two-handed-axe-or-mace] 3)]}
-   :boxing {:diff :a :attr :dx}
-   :brawling {:diff :e :attr :dx}
-   :broadsword {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :force-sword] 4),
-                                             (calc-hoc [:skills :combat-melee :rapier] 4),
-                                             (calc-hoc [:skills :combat-melee :saber] 4),
-                                             (calc-hoc [:skills :combat-melee :shortsword] 2),
-                                             (calc-hoc [:skills :combat-melee :two-handed-sword] 4)]}
-   :cloak {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
-                                        (calc-hoc [:skills :combat-ranged :net] 4),
-                                        (calc-any-hoc [:skills :combat-melee :shield] 4)]}
-   :fast-draw/sp {:diff :e :attr :dx
+   :axe-or-mace {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :flail] 4),
+                                               (calc-hoc [:skills :combat-melee :two-handed-axe-or-mace] 3)]}
+   :boxing {:diff :a :attr :dex}
+   :brawling {:diff :e :attr :dex}
+   :broadsword {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :force-sword] 4),
+                                              (calc-hoc [:skills :combat-melee :rapier] 4),
+                                              (calc-hoc [:skills :combat-melee :saber] 4),
+                                              (calc-hoc [:skills :combat-melee :shortsword] 2),
+                                              (calc-hoc [:skills :combat-melee :two-handed-sword] 4)]}
+   :cloak {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5),
+                                         (calc-hoc [:skills :combat-ranged :net] 4),
+                                         (calc-any-hoc [:skills :combat-melee :shield] 4)]}
+   :fast-draw/sp {:diff :e :attr :dex
                   :specializations [:arrow :ammo :knife :pistol :long-arm :force-sword :sword :two-handed-sword]}
-   :flail {:diff :h :attr :dx :default [(calc-hoc [:skills :combat-melee :axe-or-mace] 4),
-                                        (calc-hoc [:skills :combat-melee :two-handed-flail] 3)]}
-   :force-sword {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :broadsword] 3),
-                                              (calc-hoc [:skills :combat-melee :rapier] 3),
-                                              (calc-hoc [:skills :combat-melee :saber] 3),
-                                              (calc-hoc [:skills :combat-melee :shortsword] 3),
-                                              (calc-hoc [:skills :combat-melee :smallsword] 3),
-                                              (calc-hoc [:skills :combat-melee :two-handed-sword] 3)]}
-   :force-whip {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :kusari] 3),
-                                             (calc-hoc [:skills :combat-melee :monowire-whip] 3),
-                                             (calc-hoc [:skills :combat-melee :whip] 3)]}
-   :garrote {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4)]}
-   :jitte-sai {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :force-sword] 4),
-                                            (calc-hoc [:skills :combat-melee :main-gauche] 4),
-                                            (calc-hoc [:skills :combat-melee :shortsword] 3)]}
-   :judo {:diff :h :attr :dx}
-   :karate {:diff :h :attr :dx}
-   :knife {:diff :e :attr :dx :default [(calc-hoc [:skills :combat-melee :force-sword] 3),
-                                        (calc-hoc [:skills :combat-melee :main-gauche] 3),
-                                        (calc-hoc [:skills :combat-melee :shortsword] 3)]}
-   :kusari {:diff :h :attr :dx :default [(calc-hoc [:skills :combat-melee :force-whip] 3),
-                                         (calc-hoc [:skills :combat-melee :monowire-whip] 3),
-                                         (calc-hoc [:skills :combat-melee :two-handed-flail] 4),
-                                         (calc-hoc [:skills :combat-melee :whip] 3)]}
-   :lance {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :spear] 3),
-                                        (calc-hoc [:attributes :dx] 5)]}
-   :main-gauche {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :knife] 4),
-                                              (calc-hoc [:skills :combat-melee :jitte-sai] 4),
-                                              (calc-hoc [:skills :combat-melee :rapier] 3),
-                                              (calc-hoc [:skills :combat-melee :saber] 3),
-                                              (calc-hoc [:skills :combat-melee :smallsword] 3)]}
-   :monowire-whip {:diff :h :attr :dx :default [(calc-hoc [:skills :combat-melee :force-whip] 3),
-                                                (calc-hoc [:skills :combat-melee :kusari] 3),
-                                                (calc-hoc [:skills :combat-melee :whip] 3)]}
-   :parry-missile-weapons {:diff :h :attr :dx}
-   :polearm {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :spear] 4),
-                                          (calc-hoc [:skills :combat-melee :staff] 4),
-                                          (calc-hoc [:skills :combat-melee :two-handed-axe-or-mace] 4)]}
-   :rapier {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :broadsword] 3),
+   :flail {:diff :h :attr :dex :default [(calc-hoc [:skills :combat-melee :axe-or-mace] 4),
+                                         (calc-hoc [:skills :combat-melee :two-handed-flail] 3)]}
+   :force-sword {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :broadsword] 3),
+                                               (calc-hoc [:skills :combat-melee :rapier] 3),
+                                               (calc-hoc [:skills :combat-melee :saber] 3),
+                                               (calc-hoc [:skills :combat-melee :shortsword] 3),
+                                               (calc-hoc [:skills :combat-melee :smallsword] 3),
+                                               (calc-hoc [:skills :combat-melee :two-handed-sword] 3)]}
+   :force-whip {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :kusari] 3),
+                                              (calc-hoc [:skills :combat-melee :monowire-whip] 3),
+                                              (calc-hoc [:skills :combat-melee :whip] 3)]}
+   :garrote {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 4)]}
+   :jitte-sai {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :force-sword] 4),
+                                             (calc-hoc [:skills :combat-melee :main-gauche] 4),
+                                             (calc-hoc [:skills :combat-melee :shortsword] 3)]}
+   :judo {:diff :h :attr :dex}
+   :karate {:diff :h :attr :dex}
+   :knife {:diff :e :attr :dex :default [(calc-hoc [:skills :combat-melee :force-sword] 3),
                                          (calc-hoc [:skills :combat-melee :main-gauche] 3),
-                                         (calc-hoc [:skills :combat-melee :saber] 3),
+                                         (calc-hoc [:skills :combat-melee :shortsword] 3)]}
+   :kusari {:diff :h :attr :dex :default [(calc-hoc [:skills :combat-melee :force-whip] 3),
+                                          (calc-hoc [:skills :combat-melee :monowire-whip] 3),
+                                          (calc-hoc [:skills :combat-melee :two-handed-flail] 4),
+                                          (calc-hoc [:skills :combat-melee :whip] 3)]}
+   :lance {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :spear] 3),
+                                         (calc-hoc [:attributes :dex] 5)]}
+   :main-gauche {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :knife] 4),
+                                               (calc-hoc [:skills :combat-melee :jitte-sai] 4),
+                                               (calc-hoc [:skills :combat-melee :rapier] 3),
+                                               (calc-hoc [:skills :combat-melee :saber] 3),
+                                               (calc-hoc [:skills :combat-melee :smallsword] 3)]}
+   :monowire-whip {:diff :h :attr :dex :default [(calc-hoc [:skills :combat-melee :force-whip] 3),
+                                                 (calc-hoc [:skills :combat-melee :kusari] 3),
+                                                 (calc-hoc [:skills :combat-melee :whip] 3)]}
+   :parry-missile-weapons {:diff :h :attr :dex}
+   :polearm {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :spear] 4),
+                                           (calc-hoc [:skills :combat-melee :staff] 4),
+                                           (calc-hoc [:skills :combat-melee :two-handed-axe-or-mace] 4)]}
+   :rapier {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :broadsword] 3),
+                                          (calc-hoc [:skills :combat-melee :main-gauche] 3),
+                                          (calc-hoc [:skills :combat-melee :saber] 3),
+                                          (calc-hoc [:skills :combat-melee :smallsword] 3)]}
+   :saber {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :broadsword] 4),
+                                         (calc-hoc [:skills :combat-melee :main-gauche] 3),
+                                         (calc-hoc [:skills :combat-melee :rapier] 3),
+                                         (calc-hoc [:skills :combat-melee :shortsword] 4),
                                          (calc-hoc [:skills :combat-melee :smallsword] 3)]}
-   :saber {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :broadsword] 4),
-                                        (calc-hoc [:skills :combat-melee :main-gauche] 3),
-                                        (calc-hoc [:skills :combat-melee :rapier] 3),
-                                        (calc-hoc [:skills :combat-melee :shortsword] 4),
-                                        (calc-hoc [:skills :combat-melee :smallsword] 3)]}
-   :shield/sp {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4)] :specializations [:buckler :shield :force]}
-   :shortsword {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :broadsword] 2),
-                                             (calc-hoc [:skills :combat-melee :force-sword] 4),
-                                             (calc-hoc [:skills :combat-melee :jitte-sai] 3),
-                                             (calc-hoc [:skills :combat-melee :knife] 4),
-                                             (calc-hoc [:skills :combat-melee :saber] 4),
-                                             (calc-hoc [:skills :combat-melee :smallsword] 4),
-                                             (calc-hoc [:skills :combat-melee :tonfa] 3)]}
-   :smallsword {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :main-gauche] 3),
-                                             (calc-hoc [:skills :combat-melee :rapier] 3),
-                                             (calc-hoc [:skills :combat-melee :saber] 3),
-                                             (calc-hoc [:skills :combat-melee :shortsword] 4)]}
-   :spear {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :polearm] 4),
-                                        (calc-hoc [:skills :combat-melee :staff] 2)]}
-   :staff {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :polearm] 4),
-                                        (calc-hoc [:skills :combat-melee :spear] 2)]}
-   :sumo-wrestling {:diff :a :attr :dx}
-   :tonfa {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :shortsword] 3)]}
-   :two-handed-axe-or-mace {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :polearm] 4),
-                                                         (calc-hoc [:skills :combat-melee :axe-or-mace] 3),
-                                                         (calc-hoc [:skills :combat-melee :two-handed-flail] 4)]}
-   :two-handed-flail {:diff :h :attr :dx :default [(calc-hoc [:skills :combat-melee :flail] 3),
-                                                   (calc-hoc [:skills :combat-melee :kusari] 4),
-                                                   (calc-hoc [:skills :combat-melee :two-handed-axe-or-mace] 4)]}
-   :two-handed-sword {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :broadsword] 4),
-                                                   (calc-hoc [:skills :combat-melee :force-sword] 4)]}
-   :whip {:diff :a :attr :dx :default [(calc-hoc [:skills :combat-melee :force-whip] 3),
-                                       (calc-hoc [:skills :combat-melee :monowire-whip] 3),
-                                       (calc-hoc [:skills :combat-melee :kusari] 3)]}
-   :wrestling {:diff :a :attr :dx}
+   :shield/sp {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 4)] :specializations [:buckler :shield :force]}
+   :shortsword {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :broadsword] 2),
+                                              (calc-hoc [:skills :combat-melee :force-sword] 4),
+                                              (calc-hoc [:skills :combat-melee :jitte-sai] 3),
+                                              (calc-hoc [:skills :combat-melee :knife] 4),
+                                              (calc-hoc [:skills :combat-melee :saber] 4),
+                                              (calc-hoc [:skills :combat-melee :smallsword] 4),
+                                              (calc-hoc [:skills :combat-melee :tonfa] 3)]}
+   :smallsword {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :main-gauche] 3),
+                                              (calc-hoc [:skills :combat-melee :rapier] 3),
+                                              (calc-hoc [:skills :combat-melee :saber] 3),
+                                              (calc-hoc [:skills :combat-melee :shortsword] 4)]}
+   :spear {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :polearm] 4),
+                                         (calc-hoc [:skills :combat-melee :staff] 2)]}
+   :staff {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :polearm] 4),
+                                         (calc-hoc [:skills :combat-melee :spear] 2)]}
+   :sumo-wrestling {:diff :a :attr :dex}
+   :tonfa {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :shortsword] 3)]}
+   :two-handed-axe-or-mace {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :polearm] 4),
+                                                          (calc-hoc [:skills :combat-melee :axe-or-mace] 3),
+                                                          (calc-hoc [:skills :combat-melee :two-handed-flail] 4)]}
+   :two-handed-flail {:diff :h :attr :dex :default [(calc-hoc [:skills :combat-melee :flail] 3),
+                                                    (calc-hoc [:skills :combat-melee :kusari] 4),
+                                                    (calc-hoc [:skills :combat-melee :two-handed-axe-or-mace] 4)]}
+   :two-handed-sword {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :broadsword] 4),
+                                                    (calc-hoc [:skills :combat-melee :force-sword] 4)]}
+   :whip {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :force-whip] 3),
+                                        (calc-hoc [:skills :combat-melee :monowire-whip] 3),
+                                        (calc-hoc [:skills :combat-melee :kusari] 3)]}
+   :wrestling {:diff :a :attr :dex}
 
    :artillery/sp {:diff :a :attr :iq
                   :default [(calc-hoc [:attributes :iq] 5)]
                   :specializations [:beam :bomb :cannon :guided-missile :torpedo]}
-   :beam-weapons/sp {:diff :e :attr :dx
-                     :default [(calc-hoc [:attributes :dx] 4)]
+   :beam-weapons/sp {:diff :e :attr :dex
+                     :default [(calc-hoc [:attributes :dex] 4)]
                      :specializations [:pistol :projector :rifle]}
-   :blowpipe {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6)]}
-   :bolas {:diff :a :attr :dx}
-   :bow {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5)]}
-   :crossbow {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4)]}
-   :dropping {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 3),
-                                           (calc-hoc [:skills :combat-ranged :throwing] 4)]}
-   :gunner/sp {:diff :e :attr :dx
-               :default [(calc-hoc [:attributes :dx] 4)]
+   :blowpipe {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6)]}
+   :bolas {:diff :a :attr :dex}
+   :bow {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5)]}
+   :crossbow {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 4)]}
+   :dropping {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 3),
+                                            (calc-hoc [:skills :combat-ranged :throwing] 4)]}
+   :gunner/sp {:diff :e :attr :dex
+               :default [(calc-hoc [:attributes :dex] 4)]
                :specializations [:beam :cannon :catapult :machine-gun :rocket]}
-   :guns/sp {:diff :e :attr :dx
-             :default [(calc-hoc [:attributes :dx] 4)]
+   :guns/sp {:diff :e :attr :dex
+             :default [(calc-hoc [:attributes :dex] 4)]
              :specializations [:grenade-launcher :gyroc :light-antiarmor-weapon :light-machine-gun :musket :pistol :rifle :shotgun :submachine-gun :wrist-gun]}
-   :innate-attack/sp {:diff :e :attr :dx
-                      :default [(calc-hoc [:attributes :dx] 4)]
+   :innate-attack/sp {:diff :e :attr :dex
+                      :default [(calc-hoc [:attributes :dex] 4)]
                       :specializations [:beam :breath :gaze :projectile]}
-   :lasso {:diff :a :attr :dx}
-   :liquid-projector/sp {:diff :e :attr :dx
-                         :default [(calc-hoc [:attributes :dx] 4)]
+   :lasso {:diff :a :attr :dex}
+   :liquid-projector/sp {:diff :e :attr :dex
+                         :default [(calc-hoc [:attributes :dex] 4)]
                          :specializations [:flamethrower :sprayer :squirt-gun :water-cannon]}
-   :net {:diff :h :attr :dx :default [(calc-hoc [:skills :combat-melee :cloak] 5)]}
-   :sling {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6)]}
-   :spear-thrower {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
-                                                (calc-hoc [:skills :combat-ranged :thrown-weapon/spear] 4)]}
-   :throwing-art {:diff :h :attr :dx}
-   :thrown-weapon/sp {:diff :e :attr :dx
-                      :default [(calc-hoc [:attributes :dx] 4)]
+   :net {:diff :h :attr :dex :default [(calc-hoc [:skills :combat-melee :cloak] 5)]}
+   :sling {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6)]}
+   :spear-thrower {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5),
+                                                 (calc-hoc [:skills :combat-ranged :thrown-weapon/spear] 4)]}
+   :throwing-art {:diff :h :attr :dex}
+   :thrown-weapon/sp {:diff :e :attr :dex
+                      :default [(calc-hoc [:attributes :dex] 4)]
                       :specializations [:axe-or-mace :dart :harpoon :knife :shuriken :spear :stick]}
 
    :artist/pottery {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
    :artist/sculpting {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
    :artist/woodworking {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
-   :bone-carving {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 2),
-                                               (calc-hoc [:skills :military :armoury] 2)]}
+   :bone-carving {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 2),
+                                                (calc-hoc [:skills :military :armoury] 2)]}
    :carpentry {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
    :jeweler {:diff :h :attr :iq
              :default [(calc-hoc [:attributes :iq] 6),
                        (calc-hoc [:skills :craft :smith/copper] 4),
                        (calc-hoc [:skills :craft :smith/lead-and-tin] 4)]}
-   :leatherworking {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4)]}
+   :leatherworking {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 4)]}
    :masonry {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
    :smith/sp {:diff :a :attr :iq
               :default [(calc-hoc [:attributes :iq] 5)]
@@ -309,15 +309,15 @@
                                                                  (calc-hoc [:skills :invention :engineer/electrical] 3),
                                                                  (calc-hoc [:skills :repair :electronics-repair/security] 5),
                                                                  (calc-hoc [:skills :invention :engineer/electronics] 5)]}
-   :escape {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6)]}
+   :escape {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6)]}
    :explosives/demolition {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
    :fast-talk {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
                                             (calc-hoc [:skills :social :acting] 5),
                                             (calc-hoc [:skills :spy :acting] 5)]}
-   :filch {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
-                                        (calc-hoc [:skills :criminal :pickpocket] 4),
-                                        (calc-hoc [:skills :criminal :sleight-of-hand] 4)]}
-   :forced-entry {:diff :e :attr :dx}
+   :filch {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5),
+                                         (calc-hoc [:skills :criminal :pickpocket] 4),
+                                         (calc-hoc [:skills :criminal :sleight-of-hand] 4)]}
+   :forced-entry {:diff :e :attr :dex}
    :forgery {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
                                           (calc-hoc [:skills :criminal :counterfeiting] 2)]}
    :gambling {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
@@ -339,9 +339,9 @@
                                               (calc-hoc [:skills :business :public-speaking] 3),
                                               (calc-hoc [:skills :scholar :public-speaking] 3),
                                               (calc-hoc [:skills :social :public-speaking] 3)]}
-   :pickpocket {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6),
-                                             (calc-hoc [:skills :criminal :filch] 5),
-                                             (calc-hoc [:skills :criminal :sleight-of-hand] 4)]}
+   :pickpocket {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6),
+                                              (calc-hoc [:skills :criminal :filch] 5),
+                                              (calc-hoc [:skills :criminal :sleight-of-hand] 4)]}
    :poisons {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
                                           (calc-hoc [:skills :science :chemistry] 5),
                                           (calc-any-hoc [:skills :science :pharmacy] 3),
@@ -385,10 +385,10 @@
    :enthrallment/sp {:diff :h :attr :will
                      :specializations []}
    :flying-leap {:diff :h :attr :iq}
-   :immovable-stance {:diff :h :attr :dx}
+   :immovable-stance {:diff :h :attr :dex}
    :invisibility-art {:diff :v :attr :iq}
    :kiai {:diff :h :attr :ht}
-   :light-walk {:diff :h :attr :dx}
+   :light-walk {:diff :h :attr :dex}
    :meditation {:diff :h :attr :will :default [(calc-hoc [:attributes :will] 6),
                                                (calc-hoc [:skills :esoteric :autohypnosis] 4)]}
    :mental-strength {:diff :e :attr :will}
@@ -399,7 +399,7 @@
    :power-blow {:diff :h :attr :will}
    :pressure-points {:diff :h :attr :iq}
    :pressure-secrets {:diff :v :attr :iq}
-   :push {:diff :h :attr :dx}
+   :push {:diff :h :attr :dex}
    :suggest {:diff :h :attr :will}
    :sway-emotions {:diff :h :attr :will}
    :zen-archery {:diff :v :attr :iq}
@@ -411,14 +411,14 @@
    :computer-operation {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
    :cooking {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5), (calc-hoc [:skills :everyman :housekeeping] 5)]}
    :housekeeping {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
-   :knot-tying {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4),
-                                             (calc-hoc [:skills :transportation :seamanship] 4),
-                                             (calc-hoc [:skills :outdoor :climbing] 4),
-                                             (calc-hoc [:skills :criminal :climbing] 4),
-                                             (calc-hoc [:skills :athletic :climbing] 4)]}
+   :knot-tying {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 4),
+                                              (calc-hoc [:skills :transportation :seamanship] 4),
+                                              (calc-hoc [:skills :outdoor :climbing] 4),
+                                              (calc-hoc [:skills :criminal :climbing] 4),
+                                              (calc-hoc [:skills :athletic :climbing] 4)]}
    :savoir-faire/servant {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
-   :sewing {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4)]}
-   :typing {:diff :e :attr :dx :default [(calc-hoc [:attributes :dx] 4)]}
+   :sewing {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 4)]}
+   :typing {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 4)]}
    :weather-sense {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
    :current-affairs/sp {:diff :e :attr :iq
                         :default [(calc-hoc [:attributes :iq] 4),
@@ -434,10 +434,10 @@
                                            (calc-hoc [:skills :social :savoir-faire/high-society] 3)]}
    :hidden-lore/sp {:diff :a :attr :iq
                     :specializations [:conspiracies :demon-lore :faerie-lore :spirit-lore]}
-   :hobby-skill/sp {:diff :e :attr [:iq :dx]
-                    :default [(calc-hoc [:attributes :iq] 4), (calc-hoc [:attributes :dx] 4)]
+   :hobby-skill/sp {:diff :e :attr [:iq :dex]
+                    :default [(calc-hoc [:attributes :iq] 4), (calc-hoc [:attributes :dex] 4)]
                     :specializations []}
-   :professional-skill/sp {:diff :e :attr [:iq :dx]
+   :professional-skill/sp {:diff :e :attr [:iq :dex]
                            :specializations [:bartender :cooper :prostitute :distiller :dyer :florist :glassblower :sonar-imaging :tanning :weaver]}
    :savoir-faire/sp {:diff :e :attr :iq
                      :default [(calc-hoc [:attributes :iq] 4)]
@@ -501,10 +501,10 @@
                                                 (calc-hoc [:skills :humanities :psychology] 4),
                                                 (calc-hoc [:skills :medical :psychology] 4)]}
    :leadership {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
-   :nbc-suit {:diff :a :attr :dx :default [(calc-hoc [:skills :technical :battlesuit] 2),
-                                           (calc-hoc [:skills :transportation :battlesuit] 2),
-                                           (calc-hoc [:skills :technical :diving-suit] 4),
-                                           (calc-hoc [:skills :technical :vacc-suit] 2)]}
+   :nbc-suit {:diff :a :attr :dex :default [(calc-hoc [:skills :technical :battlesuit] 2),
+                                            (calc-hoc [:skills :transportation :battlesuit] 2),
+                                            (calc-hoc [:skills :technical :diving-suit] 4),
+                                            (calc-hoc [:skills :technical :vacc-suit] 2)]}
    :propaganda {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
                                              (calc-hoc [:skills :social :merchant] 5),
                                              (calc-hoc [:skills :business :merchant] 5),
@@ -644,8 +644,8 @@
    :search {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5),
                                           (calc-hoc [:skills :police :criminology] 5),
                                           (calc-hoc [:skills :humanities :criminology] 5)]}
-   :stealth {:diff :a :attrb :dx :default [(calc-hoc [:attributes :iq] 5),
-                                           (calc-hoc [:attributes :dx] 5)]}
+   :stealth {:diff :a :attrb :dex :default [(calc-hoc [:attributes :iq] 5),
+                                            (calc-hoc [:attributes :dex] 5)]}
    :electrician {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
                                               (calc-hoc [:skills :invention :engineer/electrical] 3)]}
    :electronics-repair/sp {:diff :a :attr :iq
@@ -659,9 +659,9 @@
                                      (calc-hoc [:skills :military :electronics-operation/same] 3),
                                      (calc-hoc [:skills :police :electronics-operation/same] 3),
                                      (calc-hoc [:skills :invention :engineer/electronics] 3)]}
-   :flint-knapping {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 2),
-                                                 (calc-hoc [:skills :repair :armoury] 1),
-                                                 (calc-hoc [:skills :humanities :anthropology] 4)]}
+   :flint-knapping {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 2),
+                                                  (calc-hoc [:skills :repair :armoury] 1),
+                                                  (calc-hoc [:skills :humanities :anthropology] 4)]}
    :machinist {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
                                             (calc-any-hoc [:skills :repair :mechanic] 5)]}
    :mechanic/sp {:diff :a :attr :iq
@@ -682,8 +682,8 @@
                                          (calc-hoc [:skills :business :public-speaking] 5),
                                          (calc-hoc [:skills :scholar :public-speaking] 5),
                                          (calc-hoc [:skills :social :public-speaking] 5)]}
-   :erotic-art {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
-                                             (calc-hoc [:skills :athletics :accrobatics] 5)]}
+   :erotic-art {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5),
+                                              (calc-hoc [:skills :athletics :accrobatics] 5)]}
    :fortune-telling/sp {:diff :a :attr :iq
                         :specializations [:astrology :cartomancy :crystal-gazing :dream-interpretation :numerology :palmistry :phrenology :psychometry :rune-casting :tarot-reading :tea-leaf-reading :tasseography :yarrow-sticks]
                         :default [(calc-hoc [:attributes :iq] 5),
@@ -727,44 +727,44 @@
    :expert-skill/computer-security {:diff :h :attr :iq}
    :lip-reading {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 10)]}
    :smuggling {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
-   :battlesuit {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
-                                             (calc-hoc [:skills :technical :diving-suit] 4),
-                                             (calc-hoc [:skills :technical :vacc-suit] 2),
-                                             (calc-hoc [:skills :technical :nbc-suit] 2)]}
-   :diving-suit {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
-                                              (calc-hoc [:skills :technical :battlesuit] 4),
-                                              (calc-hoc [:skills :technical :scuba] 2),
-                                              (calc-hoc [:skills :technical :vacc-suit] 4),
-                                              (calc-hoc [:skills :technical :nbc-suit] 4)]}
+   :battlesuit {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5),
+                                              (calc-hoc [:skills :technical :diving-suit] 4),
+                                              (calc-hoc [:skills :technical :vacc-suit] 2),
+                                              (calc-hoc [:skills :technical :nbc-suit] 2)]}
+   :diving-suit {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5),
+                                               (calc-hoc [:skills :technical :battlesuit] 4),
+                                               (calc-hoc [:skills :technical :scuba] 2),
+                                               (calc-hoc [:skills :technical :vacc-suit] 4),
+                                               (calc-hoc [:skills :technical :nbc-suit] 4)]}
    :freight-handling {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
    :hazardous-materials/sp {:diff :a :attr :iq
                             :specializations [:biological :chemical :nuclear :radiological :toxicological :explosives :flammables :gases :liquids :solids :corrosives :oxidizers :poisons]
                             :default [(calc-hoc [:attributes :iq] 5)]}
    :mathematics/surveying {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
-   :vacc-suit {:diff :a :attr :dx :default [(calc-hoc [:attributes :dx] 5),
-                                            (calc-hoc [:skills :technical :battlesuit] 2),
-                                            (calc-hoc [:skills :technical :diving-suit] 4),
-                                            (calc-hoc [:skills :technical :nbc-suit] 2)]}
+   :vacc-suit {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5),
+                                             (calc-hoc [:skills :technical :battlesuit] 2),
+                                             (calc-hoc [:skills :technical :diving-suit] 4),
+                                             (calc-hoc [:skills :technical :nbc-suit] 2)]}
 
    :airshipman {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
-   :boating/sp {:diff :a :attr :dx
+   :boating/sp {:diff :a :attr :dex
                 :specializations [:large-powerboat :motorboat :sailboat :unpowered]
-                :default [(calc-hoc [:attributes :dx] 5),
+                :default [(calc-hoc [:attributes :dex] 5),
                           (calc-hoc [:attributes :iq] 5)]}
    :crewman {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
-   :driving/sp {:diff :a :attr :dx
+   :driving/sp {:diff :a :attr :dex
                 :specializations [:automobile :construction-equipment :half-track :heavy-wheeled :hovercraft :locomotive :mecha :motorcycle :tracked]
-                :default [(calc-hoc [:attributes :dx] 5),
+                :default [(calc-hoc [:attributes :dex] 5),
                           (calc-hoc [:attributes :iq] 5)]}
-   :piloting/sp {:diff :a :attr :dx
+   :piloting/sp {:diff :a :attr :dex
                  :specializations [:aerospace :autogyro :contragravity :flight-pack :glider :heavy-airplane :helicopter :spacecraft :lightsail :ornithopter :vertol]
-                 :default [(calc-hoc [:attributes :dx] 6)]}
+                 :default [(calc-hoc [:attributes :dex] 6)]}
    :seamanship {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
    :shiphandling/sp {:diff :h :attr :iq
                      :specializations [:airship :ship :spaceship :starship :submarine]
                      :default [(calc-hoc [:attributes :iq] 6)]}
    :spacer {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
-   :submarine {:diff :h :attr :dx :default [(calc-hoc [:attributes :dx] 6)]}
+   :submarine {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6)]}
    :submariner {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}})
 
 ;; TODO: modifiers, like, riding (+5 if the animal knows and likes you)

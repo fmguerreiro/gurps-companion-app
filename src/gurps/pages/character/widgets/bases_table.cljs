@@ -1,43 +1,25 @@
 (ns gurps.pages.character.widgets.bases-table
-  (:require [gurps.widgets.base :refer [view]]
+  (:require [taoensso.timbre :refer [info]]
+            [gurps.widgets.base :refer [view]]
             [gurps.pages.character.widgets.base-text :refer [base-text]]
             [gurps.pages.character.utils.damage-table :refer [damage-table]]
+            ;; NOTE: referenced because of events registered there we depend on, this is kinda jank, need to refactor so we dont need to do this
+            [gurps.pages.character.widgets.encumbrance-table]
             ["twrnc" :refer [style] :rename {style tw}]
             [re-frame.core :as rf]))
 
-;; TODO: If you have less than 1/3 of your HP remaining, you reel from your wounds. Halve your Move and Dodge (round up).
-;; make it show RED in that case
-(defn- basic-speed [ht dx]
-  (/ (+ ht dx) 4))
-
-(defn- basic-move [speed]
-  (js/Math.floor speed))
-
-(defn- basic-lift [str]
-  (/ (* str str) 5))
-
-;; TODO: push subscriptions down to individual components
 (defn bases-table
   []
-  (let [ht  (js/parseInt (or (some-> (rf/subscribe [:attributes/ht]) deref) 10))
-        dx  (js/parseInt (or (some-> (rf/subscribe [:attributes/dex]) deref) 10))
-        str (js/parseInt (or (some-> (rf/subscribe [:attributes/str]) deref) 10))
-        speed (basic-speed ht dx)
-        move (basic-move speed)
-        lift (basic-lift str)
-        swing (get-in damage-table [str :sw])
-        thrust (get-in damage-table [str :thr])]
-    [:> view {:style (tw "flex flex-col gap-2")}
+  [:> view {:style (tw "flex flex-col gap-2")}
 
-     [:> view {:style (tw "flex flex-row gap-2 items-stretch")}
-      [base-text {:label :t/basic-lift :value lift}]
-      [base-text {:label :t/damage-thrust :value thrust}]
-      [base-text {:label :t/damage-swing :value swing}]]
+   [:> view {:style (tw "flex flex-row gap-2 items-stretch")}
+    [base-text {:attr :basic-lift}]
+    [base-text {:attr :damage-thrust}]
+    [base-text {:attr :damage-swing}]]
 
-     [:> view {:style (tw "flex flex-row gap-2")}
-      [base-text {:label :t/basic-speed, :value speed, :upgradable? true}]
-      [base-text {:label :t/basic-move,  :value move,  :upgradable? true}]
-      [:> view {:style (tw "flex")}]]]))
+   [:> view {:style (tw "flex flex-row gap-2")}
+    [base-text {:attr :basic-speed, :upgradable? true}]
+    [base-text {:attr :basic-move,  :upgradable? true}]]])
 
 (def attrs [:basic-move
             :basic-speed])
@@ -51,5 +33,23 @@
  :attribute-costs/update
  (fn [{:keys [db]} [_ k v]]
    {:db (assoc-in db [:attribute-costs k] v)
-    :effects.async-storage/set {:k     (keyword :attribute-costs k)
-                                :value v}}))
+    :effects.async-storage/set {:k     (keyword :attribute-costs k)}}))
+
+(rf/reg-sub
+ :attributes/basic-speed
+ :<- [:attributes/ht]
+ :<- [:attributes/dex]
+ (fn [[ht dx]]
+   (/ (+ ht dx) 4)))
+
+(rf/reg-sub
+ :attributes/damage-thrust
+ :<- [:attributes/str]
+ (fn [str]
+   (get-in damage-table [str :sw])))
+
+(rf/reg-sub
+ :attributes/damage-swing
+ :<- [:attributes/str]
+ (fn [str]
+   (get-in damage-table [str :thr])))

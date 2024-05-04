@@ -2,6 +2,7 @@
   (:require [taoensso.timbre :refer [info]]
             [re-frame.core :as rf]))
 
+;; TODO: change to reg-event-fx and add effect to store in async storage
 (rf/reg-event-db
  :profile/update
  (fn [db [_ k v]]
