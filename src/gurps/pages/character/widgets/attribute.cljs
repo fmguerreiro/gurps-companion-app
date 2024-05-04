@@ -75,6 +75,7 @@
       [:> text {:style (tw "text-xs text-center w-14 capitalize font-bold absolute -top-4")}
        (i18n/label :t/current)]
       (box-border {:style (tw "bg-slate-100")}
+                  ^{:key (str attr "-current")}
                   [:> input {:style (tw "text-2xl")
                              :keyboardType "numeric"
                              :onChangeText (debounce/debounce #(rf/dispatch [:attribute-current/update (keyword :attribute-current attr) (js/parseInt %)]) 500)
