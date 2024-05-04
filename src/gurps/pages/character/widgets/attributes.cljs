@@ -33,7 +33,8 @@
             :attribute-current/hp
             :attribute-costs/will
             :attribute-costs/per
-            :attribute-costs/fp])
+            :attribute-costs/fp
+            :attribute-costs/basic-speed])
 (doseq [attr attrs]
   (rf/reg-sub
    attr

@@ -28,4 +28,4 @@
      [:> text {:style (tw "text-lg underline")} (if upgradable? (calc-val attr value cost) value)]
      (when upgradable?
        [bracketed-numeric-input {:val            cost
-                                 :on-change-text #(rf/dispatch [:attribute-costs/update attr %])}])]))
+                                 :on-change-text #(rf/dispatch [:attribute-costs/update attr (js/parseInt %)])}])]))

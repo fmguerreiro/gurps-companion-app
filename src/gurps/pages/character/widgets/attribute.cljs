@@ -75,11 +75,10 @@
        (i18n/label :t/current)]
       (box-border {:style (tw "bg-slate-100")}
                   ^{:key (str attr "-current")}
-                  [:> input {:style (tw "text-2xl pb-2")
+                  [:> input {:style (tw "text-2xl pb-1")
                              :keyboardType "numeric"
                              :onChangeText (debounce/debounce #(rf/dispatch [:attribute-current/update (keyword :attribute-current attr) (js/parseInt %)]) 500)
-                             :placeholder (str (if current current val))}
-                   current])])
+                             :placeholder (str (if current current val))}])])
 
    (when (and secondary? (nil? current))
      (box [:<>]))
