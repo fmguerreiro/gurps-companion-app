@@ -34,23 +34,3 @@
         val]
 
        [:> text {:style (tw "")} val])]))
-
-;; (defn summary-field
-;;   [{:keys [key val editable? rows]
-;;     :or   {editable? true, rows 1}}]
-;;   (let [fqn   (keyword :profile key)
-;;         value (or val (some-> (rf/subscribe [fqn]) deref))]
-;;     [:> view {:style (tw )(str "flex flex-row gap-1 justify-items-start bg-blue-100"
-;;                               (if editable? "flex-grow" "flex-none"))}
-;;      ;; label
-;;      [:> text {:style (tw )"font-bold"} (i18n/label (keyword :t key))]
-
-;;      ;; value
-;;      (if (not editable?)
-;;        [:> text {:style (tw )"border-b-2 flex-none"} value]
-;;        [:> input {:style (tw )(str "border-b-2 flex-1 bg-slate-100")
-;;                   :editable editable?
-;;                   :rows rows
-;;                   :multiline (> rows 1)
-;;                   :onChangeText (debounce/debounce #(on-change-text fqn key %) 500)
-;;                   :placeholder value}])]))

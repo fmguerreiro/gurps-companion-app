@@ -14,7 +14,7 @@
                 :maxLength 3
                 :keyboardType "numeric"
                 :textAlign "center"
-                :onChangeText (debounce/debounce #(on-change-text %) 500)
+                :onChangeText (debounce/debounce #(on-change-text (js/parseInt %)) 500)
                 :placeholder (str val)}]
      [:> text {:style (tw "text-xl font-bold min-w-6 text-center")} val])
 

@@ -1,8 +1,7 @@
-(ns gurps.pages.character.widgets.basics
+(ns gurps.pages.character.widgets.bases-table
   (:require [gurps.widgets.base :refer [view]]
-            [gurps.pages.character.widgets.basic :refer [basic]]
+            [gurps.pages.character.widgets.base-text :refer [base-text]]
             [gurps.pages.character.utils.damage-table :refer [damage-table]]
-            [gurps.utils.helpers :refer [default-to]]
             ["twrnc" :refer [style] :rename {style tw}]
             [re-frame.core :as rf]))
 
@@ -18,7 +17,7 @@
   (/ (* str str) 5))
 
 ;; TODO: push subscriptions down to individual components
-(defn basics-table
+(defn bases-table
   []
   (let [ht  (js/parseInt (or (some-> (rf/subscribe [:attributes/ht]) deref) 10))
         dx  (js/parseInt (or (some-> (rf/subscribe [:attributes/dex]) deref) 10))
@@ -31,13 +30,13 @@
     [:> view {:style (tw "flex flex-col gap-2")}
 
      [:> view {:style (tw "flex flex-row gap-2 items-stretch")}
-      [basic {:label :t/basic-lift :value lift}]
-      [basic {:label :t/damage-thrust :value thrust}]
-      [basic {:label :t/damage-swing :value swing}]]
+      [base-text {:label :t/basic-lift :value lift}]
+      [base-text {:label :t/damage-thrust :value thrust}]
+      [base-text {:label :t/damage-swing :value swing}]]
 
      [:> view {:style (tw "flex flex-row gap-2")}
-      [basic {:label :t/basic-speed :value speed :upgradable? true}]
-      [basic {:label :t/basic-move :value move :upgradable? true}]
+      [base-text {:label :t/basic-speed, :value speed, :upgradable? true}]
+      [base-text {:label :t/basic-move,  :value move,  :upgradable? true}]
       [:> view {:style (tw "flex")}]]]))
 
 (def attrs [:basic-move
@@ -47,3 +46,10 @@
    (keyword :attribute-costs attr)
    (fn [db _]
      (get-in db [:attribute-costs attr] 0))))
+
+(rf/reg-event-fx
+ :attribute-costs/update
+ (fn [{:keys [db]} [_ k v]]
+   {:db (assoc-in db [:attribute-costs k] v)
+    :effects.async-storage/set {:k     (keyword :attribute-costs k)
+                                :value v}}))
