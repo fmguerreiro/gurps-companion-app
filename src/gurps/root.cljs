@@ -6,6 +6,7 @@
             [gurps.utils.i18n :as i18n]
             [gurps.pages.character.stats :refer [character-stats-page]]
             [gurps.pages.character.items :refer [character-items-page]]
+            [gurps.pages.character.info :refer [character-info-page]]
             [gurps.navigation.skills-stack :refer [skills-stack]]))
 
 (defonce RootTab (rnn-bottom-tabs/createBottomTabNavigator))
@@ -32,4 +33,7 @@
                           :options   {:title (i18n/label :t/skills) :headerTitleStyle header-title-style}}]
       [:> RootTab.Screen {:name      (i18n/label :t/items)
                           :component (fn [props] (r/as-element [character-items-page props]))
-                          :options   {:title (i18n/label :t/items) :headerTitleStyle header-title-style}}]]]))
+                          :options   {:title (i18n/label :t/items) :headerTitleStyle header-title-style}}]
+      [:> RootTab.Screen {:name      (str (i18n/label :t/info))
+                          :component (fn [props] (r/as-element [character-info-page props]))
+                          :options   {:title (i18n/label :t/info) :headerTitleStyle header-title-style}}]]]))

@@ -5,6 +5,7 @@
 (defonce app-db
   {:profile {:name ""
              :player ""
+             :portrait nil
              :point-total 0
              :ht nil
              :wt nil

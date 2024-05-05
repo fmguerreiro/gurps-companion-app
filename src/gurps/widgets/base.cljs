@@ -6,6 +6,7 @@
 (def text rn/Text)
 (def input rn/TextInput)
 (def button rn/TouchableHighlight)
+(def image rn/Image)
 
 (def section-list rn/SectionList)
 (def flat-list (r/adapt-react-class rn/FlatList))

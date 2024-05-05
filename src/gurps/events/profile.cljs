@@ -2,17 +2,17 @@
   (:require [taoensso.timbre :refer [info]]
             [re-frame.core :as rf]))
 
-;; TODO: change to reg-event-fx and add effect to store in async storage
-(rf/reg-event-db
+(rf/reg-event-fx
  :profile/update
- (fn [db [_ k v]]
-   (info "update profile" k v)
-   (assoc-in db [:profile k] v)))
+ (fn [{:keys [db]} [_ k v]]
+   {:db (assoc-in db [:profile k] v)
+    :effects.async-storage/set {:k     (keyword :profile k)
+                                :value v}}))
 
 (defn- generate-profile-sub [param]
   (rf/reg-sub
    (keyword :profile param)
    (fn [db _]
      (get-in db [:profile param]))))
-(doseq [i [:name :player :point-total :ht :wt :size-modifier :age :appearance]]
+(doseq [i [:name :player :portrait :point-total :ht :wt :size-modifier :age :appearance]]
   (generate-profile-sub i))
