@@ -3,6 +3,9 @@
             [reagent.core :as r]
             ["@react-navigation/native" :as rnn]
             ["@react-navigation/bottom-tabs" :as rnn-bottom-tabs]
+            ["@expo/vector-icons/Feather" :default icon]
+            ["@expo/vector-icons/MaterialCommunityIcons" :default material-icon]
+            ["twrnc" :refer [style] :rename {style tw}]
             [gurps.utils.i18n :as i18n]
             [gurps.pages.character.stats :refer [character-stats-page]]
             [gurps.pages.character.items :refer [character-items-page]]
@@ -10,6 +13,8 @@
             [gurps.navigation.skills-stack :refer [skills-stack]]))
 
 (defonce RootTab (rnn-bottom-tabs/createBottomTabNavigator))
+
+(def icon-color (.-color (tw "text-slate-400")))
 
 (def header-title-style {:textTransform "uppercase"}) ;; TODO: headerTitleStyle doesnt work here
 
@@ -27,13 +32,21 @@
 
       [:> RootTab.Screen {:name      (i18n/label :t/stats)
                           :component (fn [props] (r/as-element [character-stats-page props]))
-                          :options   {:title (i18n/label :t/stats) :headerTitleStyle header-title-style}}]
+                          :options   {:title (i18n/label :t/stats)
+                                      :tabBarIcon (fn [] (r/as-element [:> material-icon {:name "arm-flex" :size 20 :color icon-color}]))
+                                      :headerTitleStyle header-title-style}}]
       [:> RootTab.Screen {:name      (str (i18n/label :t/skills))
                           :component skill-stack-component
-                          :options   {:title (i18n/label :t/skills) :headerTitleStyle header-title-style}}]
+                          :options   {:title (i18n/label :t/skills)
+                                      :tabBarIcon (fn [] (r/as-element [:> material-icon {:name "dice-multiple" :size 20 :color icon-color}]))
+                                      :headerTitleStyle header-title-style}}]
       [:> RootTab.Screen {:name      (i18n/label :t/items)
                           :component (fn [props] (r/as-element [character-items-page props]))
-                          :options   {:title (i18n/label :t/items) :headerTitleStyle header-title-style}}]
+                          :options   {:title (i18n/label :t/items)
+                                      :tabBarIcon (fn [] (r/as-element [:> material-icon {:name "shield-sword" :size 20 :color icon-color}]))
+                                      :headerTitleStyle header-title-style}}]
       [:> RootTab.Screen {:name      (str (i18n/label :t/info))
                           :component (fn [props] (r/as-element [character-info-page props]))
-                          :options   {:title (i18n/label :t/info) :headerTitleStyle header-title-style}}]]]))
+                          :options   {:title (i18n/label :t/info)
+                                      :tabBarIcon (fn [] (r/as-element [:> icon {:name "info" :size 20 :color icon-color}]))
+                                      :headerTitleStyle header-title-style}}]]]))
