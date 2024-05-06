@@ -1,9 +1,10 @@
 (ns react-native.async-storage
-  (:require
-   ["@react-native-async-storage/async-storage" :default async-storage]
-   [cognitect.transit :as transit]
-   goog.functions
-   [taoensso.timbre :as log]))
+  (:require [cljs-bean.core :refer [->clj]]
+            ["@react-native-async-storage/async-storage" :default async-storage]
+            [cognitect.transit :as transit]
+            goog.functions
+            [taoensso.timbre :as log]
+            [clojure.string :as str]))
 
 ;; NOTE: Taken from
 ;; https://github.com/status-im/status-mobile/blob/33e637ff715a2ca5ef4527ec392861fff32fc672/src/react_native/async_storage.cljs#L4
@@ -46,21 +47,27 @@
       (swap! tmp-storage merge items)
       (debounced))))
 
-(defn- deflatten-db
+(defn- inflate-map
   "Transforms {:attributes/str ...} => {:attributes {:str ...}}"
-  [db]
+  [m]
   (reduce-kv
-   (fn [acc k v] (assoc-in acc [(keyword (namespace k)) (keyword (name k))] v)) {} db))
+   (fn [acc k v]
+     (assoc-in acc (->> (str/split (str (symbol k)) "/") (map keyword) vec) v))
+   {}
+   m))
 
+(keyword (str/replace-first ":attribute-costs/str" ":" ""))
+(set! *warn-on-infer* false)
 (defn get-items
   [ks cb]
   (-> ^js async-storage
       (.multiGet (to-array (map str ks)))
       (.then (fn [^js data]
-               (let [res (->> (js->clj data)
+               (let [ds  (filter second (->clj data))
+                     res (->> ds ;; (->clj data)
                               (map (comp transit->clj second))
-                              (zipmap ks)
-                              deflatten-db)]
+                              (zipmap (map #(keyword (str/replace-first (first %) ":" "")) ds)) ;; (zipmap ks)
+                              inflate-map)]
                  (log/info "[async-storage] post-process" res)
                  (cb res))))
       (.catch (fn [error]
@@ -79,3 +86,15 @@
       (.catch (fn [error]
                 (cb nil)
                 (log/error "[async-storage]" error)))))
+
+(comment (-> ^js async-storage
+             (.getAllKeys)
+             (.then #(js/console.log "get-all-keys" %)))
+
+         (-> ^js async-storage
+             (.multiGet #js [":profile/name", ":navigation/root-state" ":non-existing-key"])
+             (.then #(js/console.log "multi-get" %)))
+
+         (-> ^js async-storage
+             (.getItem ":profile/name")
+             (.then #(js/console.log "get-item" %))))

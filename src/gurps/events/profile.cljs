@@ -5,7 +5,7 @@
 (rf/reg-event-fx
  :profile/update
  (fn [{:keys [db]} [_ k v]]
-   {:db (assoc-in db [:profile k] v)
+   {:db                        (assoc-in db [:profile k] v)
     :effects.async-storage/set {:k     (keyword :profile k)
                                 :value v}}))
 

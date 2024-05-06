@@ -18,10 +18,15 @@
 
 (def header-title-style {:textTransform "uppercase"}) ;; TODO: headerTitleStyle doesnt work here
 
+;; (clj->js {:navigation {:root-state {"type" "state", "data" {"state" nil}}}})
+;; => #js {:navigation #js {:root-state #js {:type "state", :data #js {:state nil}}}}
+
 (defn root []
   ;; The save and restore of the navigation root state is for development time bliss
   (r/with-let [!root-state (rf/subscribe [:navigation/root-state])
-               save-root-state! (fn [^js state] (rf/dispatch [:navigation/set-root-state state]))
+               save-root-state! (fn [^js state] (when (some-> state .-data .-state)
+                                                  (js/console.log "setting root! " (some-> state .-data .-state))
+                                                  (rf/dispatch [:navigation/set-root-state state])))
                add-listener! (fn [^js navigation-ref]
                                (when navigation-ref
                                  (.addListener navigation-ref "state" save-root-state!)))

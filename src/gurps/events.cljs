@@ -1,45 +1,49 @@
 (ns gurps.events
   (:require [re-frame.core :as rf]
             [taoensso.timbre :refer [info]]
+            [cljs.spec.alpha :as s]
             [gurps.events.profile]
-            [react-native.async-storage :as async-storage]
             [gurps.db :as db :refer [app-db]]))
+
+(defn check-and-throw
+  "Throws an exception if `db` doesn't match the Spec `a-spec`."
+  [a-spec db]
+  (when-not (s/valid? a-spec db)
+    (throw (ex-info (str "spec check failed: " (s/explain-str a-spec db)) {}))))
+
+(def check-spec-interceptor (rf/after (partial check-and-throw :gurps.db/db)))
+
+;; TODO: inject spec interceptor
+;; https://github.com/day8/re-frame/blob/master/examples/todomvc/src/todomvc/events.cljs
 
 (rf/reg-event-db
  :initialize-db
  (fn [_ _]
    app-db))
 
-(defn- get-flattened-db-keys
-  "Get all keys in the db, including nested keys
-   e.g. (:profile :attributes :attribute-costs :skill-costs) => (:profile/name :profile/age :attributes/str ...)"
-  [db]
-  (let [keys (keys db)]
-    (mapcat (fn [k]
-              (if (map? (db k))
-                (map #(keyword k (symbol %)) (get-flattened-db-keys (db k)))
-                [k]))
-            keys)))
+(defn flatten-map
+  ([form separator]
+   (into {} (flatten-map form separator nil)))
+  ([form separator pre]
+   (mapcat (fn [[k v]]
+             (let [prefix (if pre (str pre separator (name k)) (name k))]
+               (if (map? v)
+                 (flatten-map v separator prefix)
+                 [[(keyword prefix) v]])))
+           form)))
 
 (rf/reg-event-fx
  :initialize-storage
  (fn [{:keys [db]} [_]]
-   ;; (info "Initializing storage" (keys db))
    {:db db
-    :effects.async-storage/get {:keys (get-flattened-db-keys db)
-                                :cb #(do
-                                       (info "Got storage" (:navigation %)) ;; TODO remove
-                                       (rf/dispatch [:initialize-storage/set %]))}}))
+    :effects.async-storage/get {:keys (keys (flatten-map db "/"))
+                                :cb   #(rf/dispatch [:initialize-storage/set %])}}))
 
 (rf/reg-event-db
  :initialize-storage/set
  (fn [db [_ res]]
+   (info "initialize-storage" res)
    (merge db res)))
-
-;; (rf/reg-event-db
-;;  :navigation/set-root-state
-;;  (fn [db [_ navigation-root-state]]
-;;    (assoc-in db [:navigation :root-state] navigation-root-state)))
 
 (rf/reg-event-fx
  :navigation/set-root-state
