@@ -28,7 +28,7 @@
 (defn set-item!
   ([k value] (set-item! k value identity))
   ([k value cb]
-   (log/info "[set-item!]" (str k) (clj->transit value))
+   ;; (log/info "[set-item!]" (str k) (clj->transit value))
    (-> ^js async-storage
        (.setItem (str k)
                  (clj->transit value))

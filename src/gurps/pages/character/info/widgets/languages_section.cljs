@@ -108,8 +108,7 @@
 (defn languages-section []
   (let [languages (some-> (rf/subscribe [:languages]) deref)
         lang-array (vec (sort-by :i (filter map? (apply concat languages))))]
-    (info "languages-section" lang-array)
-    [:> view {:style (tw "flex flex-col gap-1 w-full")}
+    [:> view {:style (tw "flex flex-col gap-1")}
 
      [header]
 

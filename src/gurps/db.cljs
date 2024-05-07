@@ -21,7 +21,8 @@
 (s/def ::unspent-points number?)
 (s/def ::age number?)
 (s/def ::appearance string?)
-(s/def ::profile (s/keys :req-un [::name ::player ::portrait ::point-total ::ht ::wt ::size-modifier ::unspent-points ::age ::appearance]))
+(s/def ::notes string?)
+(s/def ::profile (s/keys :req-un [::name ::player ::portrait ::point-total ::ht ::wt ::size-modifier ::unspent-points ::age ::appearance ::notes]))
 (s/def ::db
   (s/keys :req-un [::profile ::attributes ::attribute-costs ::attribute-current ::skill-costs ::languages ::navigation]))
 
@@ -36,7 +37,8 @@
              :size-modifier nil
              :unspent-points 150
              :age nil
-             :appearance ""}
+             :appearance ""
+             :notes ""}
 
    :attributes {:str 10
                 :dex 10

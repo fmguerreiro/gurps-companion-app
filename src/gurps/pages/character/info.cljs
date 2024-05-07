@@ -5,7 +5,7 @@
             [gurps.pages.character.info.widgets.cultural-familiarities-section :refer [cultural-familiarities-section]]
             [gurps.pages.character.info.widgets.reaction-modifiers-section :refer [reaction-modifiers-section]]
             [gurps.pages.character.info.widgets.languages-section :refer [languages-section]]
-            [gurps.pages.character.info.widgets.character-notes :refer [character-notes]]
+            [gurps.pages.character.info.widgets.notes :refer [notes-section]]
             ["expo-status-bar" :refer [StatusBar]]
             ["react-native" :as rn]
             ["twrnc" :refer [style] :rename {style tw}]))
@@ -30,7 +30,7 @@
     [:> view {:style (tw "w-full")}
      [languages-section]]
 
-    [:> view
-     [character-notes]]
+    [:> view {:style (tw "w-full")}
+     [notes-section]]
 
     [:> StatusBar {:style "auto"}]]])
