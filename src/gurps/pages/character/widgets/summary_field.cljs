@@ -3,6 +3,7 @@
             [gurps.utils.i18n :as i18n]
             [gurps.utils.debounce :as debounce]
             [gurps.widgets.base :refer [view text input]]
+            [gurps.widgets.underlined-input :refer [underlined-input]]
             [react-native.async-storage :as async-storage]
             [re-frame.core :as rf]
             ["twrnc" :refer [style] :rename {style tw}]
@@ -27,10 +28,5 @@
 
      ;; input
      (if editable?
-       [:> input {:key (str key "-value")
-                  :style #js [(tw "border-b-2 flex-1")]
-                  :onChangeText (debounce/debounce #(on-change-text key %) 800)
-                  :placeholder (str val)}
-        val]
-
+       [underlined-input {:val val :on-change-text (debounce/debounce #(on-change-text key %) 800)}]
        [:> text {:style (tw "")} val])]))

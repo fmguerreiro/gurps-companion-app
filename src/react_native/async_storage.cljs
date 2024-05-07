@@ -28,6 +28,7 @@
 (defn set-item!
   ([k value] (set-item! k value identity))
   ([k value cb]
+   (log/info "[set-item!]" (str k) (clj->transit value))
    (-> ^js async-storage
        (.setItem (str k)
                  (clj->transit value))
@@ -56,8 +57,6 @@
    {}
    m))
 
-(keyword (str/replace-first ":attribute-costs/str" ":" ""))
-(set! *warn-on-infer* false)
 (defn get-items
   [ks cb]
   (-> ^js async-storage
@@ -92,9 +91,13 @@
              (.then #(js/console.log "get-all-keys" %)))
 
          (-> ^js async-storage
+             (.clear)
+             (.then #(js/console.log "clear" %)))
+
+         (-> ^js async-storage
              (.multiGet #js [":profile/name", ":navigation/root-state" ":non-existing-key"])
              (.then #(js/console.log "multi-get" %)))
 
          (-> ^js async-storage
-             (.getItem ":profile/name")
+             (.getItem ":languages/0")
              (.then #(js/console.log "get-item" %))))

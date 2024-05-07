@@ -32,6 +32,9 @@
                  [[(keyword prefix) v]])))
            form)))
 
+;; TODO
+;; ((keyword :languages :1) (flatten-map app-db "/"))
+
 (rf/reg-event-fx
  :initialize-storage
  (fn [{:keys [db]} [_]]

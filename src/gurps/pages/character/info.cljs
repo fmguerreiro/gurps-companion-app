@@ -27,7 +27,7 @@
     [:> view
      [reaction-modifiers-section]]
 
-    [:> view
+    [:> view {:style (tw "w-full")}
      [languages-section]]
 
     [:> view
