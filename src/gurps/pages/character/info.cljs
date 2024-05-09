@@ -2,7 +2,7 @@
   (:require [gurps.widgets.base :refer [view]]
             [gurps.pages.character.widgets.summary :refer [summary-group]]
             [gurps.pages.character.info.widgets.portrait :refer [portrait]]
-            [gurps.pages.character.info.widgets.cultural-familiarities-section :refer [cultural-familiarities-section]]
+            [gurps.pages.character.info.widgets.tech-level-dropdown :refer [tech-level-dropdown]]
             [gurps.pages.character.info.widgets.reaction-modifiers-section :refer [reaction-modifiers-section]]
             [gurps.pages.character.info.widgets.languages-section :refer [languages-section]]
             [gurps.pages.character.info.widgets.notes :refer [notes-section]]
@@ -21,8 +21,8 @@
     [:> view
      [portrait]]
 
-    [:> view
-     [cultural-familiarities-section]]
+    [:> view {:style (tw "w-full")}
+     [tech-level-dropdown]]
 
     [:> view
      [reaction-modifiers-section]]

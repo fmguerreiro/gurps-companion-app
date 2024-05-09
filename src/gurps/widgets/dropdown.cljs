@@ -1,6 +1,8 @@
 (ns gurps.widgets.dropdown
   (:require ["react-native-element-dropdown" :refer [Dropdown]]
-            ["twrnc" :refer [style] :rename {style tw}]))
+            ["twrnc" :refer [style] :rename {style tw}]
+            ["@expo/vector-icons/Entypo" :default icon]
+            [reagent.core :as r]))
 
 (defn dropdown
   "Receives data in the format {:value 'hello' :label 'Hello', ...}"
@@ -12,9 +14,9 @@
                 :placeholderStyle #js [(tw "text-slate-400"), placeholder-style]
                 :itemTextStyle #js [(tw "text-xs")]
                 :selectedTextStyle #js [selected-style]
-                :renderRightIcon (fn [] nil) ;; TODO
+                :renderRightIcon (fn [] (r/as-element [:> icon {:name "chevron-small-down" :size 20 :color (.-color (tw (if disabled? "text-slate-400" "text-black")))}]))
                 :onChange #(on-change (.-value %))
                 :labelField "label"
                 :valueField "value"
-                :disable (not disabled?)
+                :disable disabled?
                 :data data}])
