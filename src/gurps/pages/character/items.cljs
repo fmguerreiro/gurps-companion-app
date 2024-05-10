@@ -1,33 +1,92 @@
 (ns gurps.pages.character.items
-  (:require
-   ["expo-status-bar" :refer [StatusBar]]
-   [re-frame.core :as rf]
-   [reagent.core :as r]
-   [gurps.utils.i18n :as i18n]
-   ["twrnc" :refer [style] :rename {style tw}]
-   [gurps.widgets.base :refer [view text]]))
+  (:require ["expo-status-bar" :refer [StatusBar]]
+            ["twrnc" :refer [style] :rename {style tw}]
+            [re-frame.core :as rf]
+            [gurps.utils.i18n :as i18n]
+            [gurps.widgets.underlined-input :refer [underlined-input]]
+            [gurps.widgets.dropdown :refer [dropdown]]
+            [gurps.widgets.base :refer [view text]]
+            [taoensso.timbre :as log]
+            [gurps.utils.debounce :refer [debounce-and-dispatch]]))
+
+(defn row
+  [col1 col2]
+  [:> view {:style (tw "flex flex-row h-5 gap-2")}
+   [:> view {:style (tw "w-3/4")} col1]
+   [:> view {:style (tw "w-1/4")} col2]])
+
+(defn header
+  []
+  [row
+   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/item)]
+   [:> text {:style (tw "font-bold capitalize self-end")} (i18n/label :t/location)]])
+
+(def locations
+  [{:value "head" :label (i18n/label :t/head)}
+   {:value "torso" :label (i18n/label :t/torso)}
+   {:value "arm" :label (i18n/label :t/arm)}
+   {:value "hand" :label (i18n/label :t/hand)}
+   {:value "leg" :label (i18n/label :t/leg)}
+   {:value "foot" :label (i18n/label :t/foot)}
+   {:value "bag" :label (i18n/label :t/bag)}])
+
+(def location-val->label
+  (zipmap (map :value locations) (map :label locations)))
+
+(def empty-item {:name "" :location "bag" :cost 0 :weight 0})
+
+(map-indexed (fn [i {:keys [name location]}]
+               ^{:key (str "item-" i)}
+               [row
+                [underlined-input {:val name
+                                   :on-change-text #(debounce-and-dispatch [:items/update :equipment % location] 500)}]
+                [dropdown {:style (tw "flex-1")
+                           :placeholder-style (tw "text-right text-xs")
+                           :selected-style (tw "text-right")
+                           :on-change #() ;; #(rf/dispatch [:tech-level/update (get-in val->lvl [%])])
+                           :placeholder (get-in location-val->label [location])
+                           :data locations}]])
+             [empty-item])
+
+(defn items
+  []
+  (let [equipment (some-> (rf/subscribe [:items/equipment]) deref)
+        possessions (some-> (rf/subscribe [:items/possessions]) deref)
+        items (apply conj equipment possessions)]
+    [:> view {:style (tw "flex flex-col gap-1")}
+     (map-indexed (fn [i {:keys [name location]}]
+                    ^{:key (str "item-" i)}
+                    [row
+                     [underlined-input {:val name
+                                        :on-change-text #(debounce-and-dispatch [:items/update :equipment i % location] 500)}]
+                     [dropdown {:style (tw "flex-1")
+                                :placeholder-style (tw "text-right text-xs")
+                                :selected-style (tw "text-right")
+                                :on-change #() ;; #(rf/dispatch [:tech-level/update (get-in val->lvl [%])])
+                                :placeholder (get-in location-val->label [location])
+                                :data locations}]])
+                  (conj items empty-item))]))
 
 (defn character-items-page
   []
-  (r/with-let [counter (rf/subscribe [:get-counter])]
-    [:> view {:style {:flex 1
-                      :padding-vertical 50
-                      :padding-horizontal 20
-                      :justify-content :space-between
-                      :align-items :flex-start
-                      :background-color :white}}
-     [:> view {:style {:align-items :flex-start}}
-      [:> text {:style {:font-weight   :bold
-                        :font-size     54
-                        :margin-bottom 20}}
-       "About Gurps App"]
-      [:> text {:style {:font-weight   :bold
-                        :font-size     20
-                        :color         :blue
-                        :margin-bottom 20}}
-       (str "Counter is at: " @counter)]
-      [:> text {:style {:font-weight :normal
-                        :font-size   15
-                        :color       :blue}}
-       "Built with React Native, Expo, Reagent, re-frame, and React Navigation"]]
-     [:> StatusBar {:style "auto"}]]))
+  [:> view {:style (tw "flex flex-col bg-white flex-grow p-2")}
+   [:> text {:style (tw "font-bold text-center uppercase")} (i18n/label :t/armor-possessions)]
+
+   [header]
+
+   [items]
+
+   [:> StatusBar {:style "auto"}]])
+
+(def ks [:equipment :possessions])
+(doseq [k ks]
+  (rf/reg-sub
+   (keyword :items k)
+   (fn [db]
+     (get-in db [:items k]))))
+
+(rf/reg-event-fx
+ :items/update
+ (fn [{:keys [db]} [_ k i name location]]
+   {:db (assoc-in db [:items k i] {:name name :location location})}))
+    ;;:effects.async-storage/set {:k "blah" :value "blah"}}))

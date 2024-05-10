@@ -72,6 +72,11 @@
                :2 {:i 2 :name "" :spoken "broken", :written "broken", :native? false, :cost 0}
                :3 {:i 3 :name "" :spoken "broken", :written "broken", :native? false, :cost 0}}
 
+   :items {:equipment []
+           :possessions []
+           :melee-weapons []
+           :ranged-weapons []}
+
    :world {:tech-level 3}
 
    ;; for reloading state on app re-start
