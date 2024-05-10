@@ -24,7 +24,7 @@
     [:> view {:style (tw "w-full")}
      [tech-level-dropdown]]
 
-    [:> view
+    [:> view {:style (tw "w-full")}
      [reaction-modifiers-section]]
 
     [:> view {:style (tw "w-full")}

@@ -14,5 +14,5 @@
    (keyword :profile param)
    (fn [db _]
      (get-in db [:profile param]))))
-(doseq [i [:name :player :portrait :point-total :ht :wt :size-modifier :age :appearance :notes]]
+(doseq [i [:name :player :portrait :point-total :ht :wt :size-modifier :age :appearance :status :reputation :notes]]
   (generate-profile-sub i))

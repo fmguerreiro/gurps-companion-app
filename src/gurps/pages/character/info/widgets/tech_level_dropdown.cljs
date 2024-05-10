@@ -43,7 +43,7 @@
 (defn tech-level-dropdown []
   (let [val (some-> (rf/subscribe [:world/tech-level]) deref)]
     [:> view {:style (tw "flex flex-row gap-2")}
-     [:> text {:style (tw "capitalize my-auto")} (i18n/label :t/tech-level)]
+     [:> text {:style (tw "capitalize font-bold my-auto")} (i18n/label :t/tech-level)]
 
      [dropdown {:style (tw "flex-1")
                 :placeholder-style (tw "text-center text-xs")

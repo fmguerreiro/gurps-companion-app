@@ -19,9 +19,11 @@
 (rf/reg-event-fx
  :profile.notes/update
  (fn [{:keys [db]} [_ i v]]
-   (let [new-db (update-in db [:profile :notes] #(let [lines        (str/split-lines %)
-                                                       filled-lines (vec (concat lines (repeat (- n-lines (count lines)) "\n")))]
-                                                   (str/join "\n" (assoc-in filled-lines [i] v))))]
+   (let [new-db (update-in db
+                           [:profile :notes]
+                           #(let [lines        (str/split-lines %)
+                                  filled-lines (vec (concat lines (repeat (- n-lines (count lines)) "\n")))]
+                              (str/join "\n" (assoc-in filled-lines [i] v))))]
      {:db                        new-db
       :effects.async-storage/set {:k     :profile/notes
                                   :value (get-in new-db [:profile :notes])}})))
