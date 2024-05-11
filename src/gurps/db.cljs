@@ -72,8 +72,7 @@
                :2 {:i 2 :name "" :spoken "broken", :written "broken", :native? false, :cost 0}
                :3 {:i 3 :name "" :spoken "broken", :written "broken", :native? false, :cost 0}}
 
-   :items {:equipment []
-           :possessions []
+   :items {:possessions []
            :melee-weapons []
            :ranged-weapons []}
 

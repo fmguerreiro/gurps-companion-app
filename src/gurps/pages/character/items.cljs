@@ -35,37 +35,22 @@
 
 (def empty-item {:name "" :location "bag" :cost 0 :weight 0})
 
-(map-indexed (fn [i {:keys [name location]}]
-               ^{:key (str "item-" i)}
-               [row
-                [underlined-input {:val name
-                                   :on-change-text #(debounce-and-dispatch [:items/update :equipment % location] 500)}]
-                [dropdown {:style (tw "flex-1")
-                           :placeholder-style (tw "text-right text-xs")
-                           :selected-style (tw "text-right")
-                           :on-change #() ;; #(rf/dispatch [:tech-level/update (get-in val->lvl [%])])
-                           :placeholder (get-in location-val->label [location])
-                           :data locations}]])
-             [empty-item])
-
 (defn items
   []
-  (let [equipment (some-> (rf/subscribe [:items/equipment]) deref)
-        possessions (some-> (rf/subscribe [:items/possessions]) deref)
-        items (apply conj equipment possessions)]
+  (let [possessions (some-> (rf/subscribe [:items/possessions]) deref)]
     [:> view {:style (tw "flex flex-col gap-1")}
      (map-indexed (fn [i {:keys [name location]}]
                     ^{:key (str "item-" i)}
                     [row
                      [underlined-input {:val name
-                                        :on-change-text #(debounce-and-dispatch [:items/update :equipment i % location] 500)}]
+                                        :on-change-text #(debounce-and-dispatch [:items/update :possessions i % location] 500)}]
                      [dropdown {:style (tw "flex-1")
                                 :placeholder-style (tw "text-right text-xs")
                                 :selected-style (tw "text-right")
-                                :on-change #() ;; #(rf/dispatch [:tech-level/update (get-in val->lvl [%])])
+                                :on-change #(rf/dispatch [:items/update :possessions i name %])
                                 :placeholder (get-in location-val->label [location])
                                 :data locations}]])
-                  (conj items empty-item))]))
+                  (conj possessions empty-item))]))
 
 (defn character-items-page
   []
@@ -78,7 +63,7 @@
 
    [:> StatusBar {:style "auto"}]])
 
-(def ks [:equipment :possessions])
+(def ks [:possessions])
 (doseq [k ks]
   (rf/reg-sub
    (keyword :items k)
@@ -88,5 +73,7 @@
 (rf/reg-event-fx
  :items/update
  (fn [{:keys [db]} [_ k i name location]]
-   {:db (assoc-in db [:items k i] {:name name :location location})}))
-    ;;:effects.async-storage/set {:k "blah" :value "blah"}}))
+   (let [new-db (assoc-in db [:items k i] {:name name :location location})]
+     {:db                         new-db
+      :effects.async-storage/set {:k :items/possessions
+                                  :value (get-in new-db [:items :possessions])}})))
