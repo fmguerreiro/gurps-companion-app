@@ -3,7 +3,8 @@
             [re-frame.core :as rf]
             [gurps.widgets.base :refer [view text]]
             [gurps.widgets.underlined-input :refer [underlined-input]]
-            [gurps.utils.i18n :as i18n]))
+            [gurps.utils.i18n :as i18n]
+            [taoensso.timbre :as log]))
 
 (defn labelled-box
   [label & children]

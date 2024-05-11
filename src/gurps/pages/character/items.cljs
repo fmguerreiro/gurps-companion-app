@@ -52,7 +52,7 @@
                                         :input-mode "numeric"
                                         :max-length 2
                                         :text-align "center"
-                                        :on-change-text #(debounce-and-dispatch [:items/update :possessions i name location %] 500)}]
+                                        :on-change-text #(debounce-and-dispatch [:items/update :possessions i name location (js/parseInt %)] 500)}]
                      [dropdown {:style (tw "flex-1")
                                 :placeholder-style (tw "text-right text-xs")
                                 :selected-style (tw "text-right")
