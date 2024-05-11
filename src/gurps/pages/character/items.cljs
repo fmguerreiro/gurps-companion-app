@@ -37,7 +37,7 @@
 (def location-val->label
   (zipmap (map :value locations) (map :label locations)))
 
-(def empty-item {:name "" :location "bag" :cost 0 :weight 0 :dr nil})
+(def empty-item {:name "" :location "bag" :weight 0 :dr nil})
 
 (defn items
   []
