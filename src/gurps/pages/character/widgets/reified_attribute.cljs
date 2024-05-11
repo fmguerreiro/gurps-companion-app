@@ -1,6 +1,5 @@
 (ns gurps.pages.character.widgets.reified-attribute
-  (:require [reagent.core :as r]
-            [re-frame.core :as rf]
+  (:require [re-frame.core :as rf]
             [taoensso.timbre :refer [info]]
             [gurps.utils.helpers :refer [default-to]]
             [gurps.pages.character.widgets.helpers :refer [update-attribute]]

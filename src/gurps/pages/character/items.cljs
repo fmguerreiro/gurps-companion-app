@@ -11,18 +11,20 @@
             [gurps.utils.debounce :refer [debounce-and-dispatch]]))
 
 (defn row
-  [col1 col2 col3]
+  [col1 col2 col3 col4]
   [:> view {:style (tw "flex flex-row h-6 gap-2")}
    [:> view {:style (tw "w-3/4 flex flex-row h-6 gap-2")}
-    [:> view {:style (tw "w-11/12")} col1]
-    [:> view {:style (tw "w-1/12")} col2]]
-   [:> view {:style (tw "w-1/4 pr-2")} col3]])
+    [:> view {:style (tw "w-9/12")} col1]
+    [:> view {:style (tw "w-1/12")} col2]
+    [:> view {:style (tw "w-2/12")} col3]]
+   [:> view {:style (tw "w-1/4 pr-2")} col4]])
 
 (defn header
   []
   [row
    [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/item)]
    [:> text {:style (tw "font-bold uppercase")} (i18n/label :t/dr)]
+   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/weight)]
    [:> text {:style (tw "font-bold capitalize self-end")} (i18n/label :t/location)]])
 
 (def locations
@@ -39,24 +41,44 @@
 
 (def empty-item {:name "" :location "bag" :weight 0 :dr nil})
 
+(js/isNaN (js/parseInt ""))
+
+(defn- ->int
+  [n]
+  (let [ret (js/parseInt n)]
+    (if (js/isNaN ret)
+      0
+      ret)))
+
 (defn items
   []
   (let [possessions (some-> (rf/subscribe [:items/possessions]) deref)]
     [:> view {:style (tw "flex flex-col gap-1")}
-     (map-indexed (fn [i {:keys [name location dr]}]
+     (map-indexed (fn [i {:keys [name location dr weight]}]
                     ^{:key (str "item-" i)}
                     [row
+                     ;; name
                      [underlined-input {:val name
-                                        :on-change-text #(debounce-and-dispatch [:items/update :possessions i % location dr] 500)}]
-                     [underlined-input {:val dr
+                                        :on-change-text #(debounce-and-dispatch [:items/update :possessions i % location dr weight] 500)}]
+                     ;; dr
+                     (if (not= location "bag")
+                       [underlined-input {:val dr
+                                          :input-mode "numeric"
+                                          :max-length 2
+                                          :text-align "center"
+                                          :on-change-text #(debounce-and-dispatch [:items/update :possessions i name location (->int %) weight] 500)}]
+                       [:> text ""])
+                     ;; weight
+                     [underlined-input {:val weight
                                         :input-mode "numeric"
                                         :max-length 2
                                         :text-align "center"
-                                        :on-change-text #(debounce-and-dispatch [:items/update :possessions i name location (js/parseInt %)] 500)}]
+                                        :on-change-text #(debounce-and-dispatch [:items/update :possessions i name location dr (->int %)] 500)}]
+                     ;; location
                      [dropdown {:style (tw "flex-1")
                                 :placeholder-style (tw "text-right text-xs")
                                 :selected-style (tw "text-right")
-                                :on-change #(rf/dispatch [:items/update :possessions i name % dr])
+                                :on-change #(rf/dispatch [:items/update :possessions i name % dr weight])
                                 :placeholder (get-in location-val->label [location])
                                 :data locations}]])
                   (conj possessions empty-item))]))
@@ -84,8 +106,8 @@
 
 (rf/reg-event-fx
  :items/update
- (fn [{:keys [db]} [_ k i name location dr]]
-   (let [new-db (assoc-in db [:items k i] {:name name :location location :dr dr})]
+ (fn [{:keys [db]} [_ k i name location dr weight]]
+   (let [new-db (assoc-in db [:items k i] {:name name :location location :dr dr :weight weight})]
      {:db                         new-db
       :effects.async-storage/set {:k :items/possessions
                                   :value (get-in new-db [:items :possessions])}})))

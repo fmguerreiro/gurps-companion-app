@@ -35,7 +35,7 @@
  :attributes/basic-lift
  :<- [:attributes/str]
  (fn [str]
-   (js/Math.floor (/ (* str str) 5)))) ;; TODO: use a helper calc-basic-lift function instead
+   (js/Math.floor (/ (* str str) 5))))
 
 (defn move-column []
   (let [weight      (some-> (rf/subscribe [:items/weight]) deref)
@@ -57,7 +57,7 @@
  :<- [:attributes/ht]
  :<- [:attributes/dex]
  (fn [[ht dx]]
-   (js/Math.floor (/ (+ ht dx) 4)))) ;; TODO: use a helper calc-basic-move function instead
+   (js/Math.floor (/ (+ ht dx) 4))))
 
 (defn dodge-column []
   (let [weight       (some-> (rf/subscribe [:items/weight]) deref)
@@ -78,7 +78,7 @@
  :attributes/basic-dodge
  :<- [:attributes/basic-move]
  (fn [bm]
-   (+ 3 bm))) ;; TODO: use a helper calc-basic-dodge function instead
+   (+ 3 bm)))
 
 (defn encumbrance-table []
   [:> view {:style (tw "flex flex-row gap-2 border-2 border-black p-1")}
