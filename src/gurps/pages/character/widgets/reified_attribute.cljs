@@ -1,6 +1,5 @@
 (ns gurps.pages.character.widgets.reified-attribute
   (:require [re-frame.core :as rf]
-            [taoensso.timbre :refer [info]]
             [gurps.utils.helpers :refer [default-to]]
             [gurps.pages.character.widgets.helpers :refer [update-attribute]]
             [gurps.pages.character.widgets.attribute :refer [attribute-input]]))
@@ -29,5 +28,3 @@
     [attribute-input {:attr attr
                       :val val
                       :on-change-text on-change-text}]))
-
-(comment (js/isNaN (js/parseInt ##NaN)))

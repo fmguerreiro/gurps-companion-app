@@ -1,6 +1,7 @@
 (ns gurps.pages.character.widgets.encumbrance-table
   (:require [re-frame.core :as rf]
             [gurps.widgets.base :refer [text view]]
+            [gurps.utils.helpers :refer [positions]]
             ["twrnc" :refer [style] :rename {style tw}]
             [gurps.utils.i18n :as i18n]
             [taoensso.timbre :as log]))
@@ -12,24 +13,29 @@
    [:> text {:style (tw "flex-grow")} label]
    [:> text {:style (tw "underline grow-0 w-7 text-center")} value]]) ;; TODO: width should be 3 digits wide
 
-(defn- highlight-style
-  [weight a b]
-  (tw (if (<= a weight b) "bg-green-200" "")))
+(rf/reg-sub
+ :attributes/emcumbrance-weight-class
+ :<- [:items/weight]
+ :<- [:attributes/basic-lift]
+ (fn [[weight lift]]
+   (first (positions #{weight} (sort [weight lift (* 2 lift) (* 3 lift) (* 6 lift) (* 10 lift)])))))
+
+(def highlight-style (tw "bg-green-200"))
 
 (defn encumbrance-column []
-  (let [weight      (some-> (rf/subscribe [:items/weight]) deref)
-        basic-lift  (some-> (rf/subscribe [:attributes/basic-lift]) deref)
-        light-lift  (* 2 basic-lift)
-        medium-lift (* 3 basic-lift)
-        heavy-lift  (* 6 basic-lift)
+  (let [weight-class (some-> (rf/subscribe [:attributes/emcumbrance-weight-class]) deref)
+        basic-lift   (some-> (rf/subscribe [:attributes/basic-lift]) deref)
+        light-lift   (* 2 basic-lift)
+        medium-lift  (* 3 basic-lift)
+        heavy-lift   (* 6 basic-lift)
         x-heavy-lift (* 10 basic-lift)]
     [:> view {:style (tw "flex flex-col gap-1 ml-0 mt-0")}
      [:> text {:style (tw "uppercase text-center font-bold")} (i18n/label :t/encumbrance)]
-     [labeled-underlined-row {:label (i18n/label :t/encumbrance-none) :value basic-lift :style (highlight-style weight 0 basic-lift)}]
-     [labeled-underlined-row {:label (i18n/label :t/encumbrance-light) :value light-lift :style (highlight-style weight basic-lift light-lift)}]
-     [labeled-underlined-row {:label (i18n/label :t/encumbrance-medium) :value medium-lift :style (highlight-style weight light-lift medium-lift)}]
-     [labeled-underlined-row {:label (i18n/label :t/encumbrance-heavy) :value heavy-lift :style (highlight-style weight medium-lift heavy-lift)}]
-     [labeled-underlined-row {:label (i18n/label :t/encumbrance-x-heavy) :value x-heavy-lift :style (highlight-style weight heavy-lift x-heavy-lift)}]]))
+     [labeled-underlined-row {:label (i18n/label :t/encumbrance-none) :value basic-lift :style (when (= 0 weight-class) highlight-style)}]
+     [labeled-underlined-row {:label (i18n/label :t/encumbrance-light) :value light-lift :style (when (= 1 weight-class) highlight-style)}]
+     [labeled-underlined-row {:label (i18n/label :t/encumbrance-medium) :value medium-lift :style (when (= 2 weight-class) highlight-style)}]
+     [labeled-underlined-row {:label (i18n/label :t/encumbrance-heavy) :value heavy-lift :style (when (= 3 weight-class) highlight-style)}]
+     [labeled-underlined-row {:label (i18n/label :t/encumbrance-x-heavy) :value x-heavy-lift :style (when (>= weight-class 4) highlight-style)}]]))
 
 (rf/reg-sub
  :attributes/basic-lift
@@ -38,7 +44,7 @@
    (js/Math.floor (/ (* str str) 5))))
 
 (defn move-column []
-  (let [weight      (some-> (rf/subscribe [:items/weight]) deref)
+  (let [weight-class (some-> (rf/subscribe [:attributes/emcumbrance-weight-class]) deref)
         basic-move  (some-> (rf/subscribe [:attributes/basic-move]) deref)
         light-move  (- basic-move 1)
         medium-move (- basic-move 2)
@@ -46,11 +52,11 @@
         x-heavy-move (- basic-move 4)]
     [:> view {:style (tw "flex flex-col gap-1 ml-0 mt-0")}
      [:> text {:style (tw "uppercase text-center font-bold")} (i18n/label :t/move)]
-     [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-none) :value basic-move :style (highlight-style weight 0 basic-move)}]
-     [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-light) :value light-move :style (highlight-style weight basic-move light-move)}]
-     [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-medium) :value medium-move :style (highlight-style weight light-move medium-move)}]
-     [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-heavy) :value heavy-move :style (highlight-style weight medium-move heavy-move)}]
-     [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-x-heavy) :value x-heavy-move :style (highlight-style weight heavy-move x-heavy-move)}]]))
+     [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-none) :value basic-move :style (when (= 0 weight-class) highlight-style)}]
+     [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-light) :value light-move :style (when (= 1 weight-class) highlight-style)}]
+     [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-medium) :value medium-move :style (when (= 2 weight-class) highlight-style)}]
+     [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-heavy) :value heavy-move :style (when (= 3 weight-class) highlight-style)}]
+     [labeled-underlined-row {:label (i18n/label :t/move-encumbrance-x-heavy) :value x-heavy-move :style (when (>= weight-class 4) highlight-style)}]]))
 
 (rf/reg-sub
  :attributes/basic-move
@@ -60,7 +66,7 @@
    (js/Math.floor (/ (+ ht dx) 4))))
 
 (defn dodge-column []
-  (let [weight       (some-> (rf/subscribe [:items/weight]) deref)
+  (let [weight-class (some-> (rf/subscribe [:attributes/emcumbrance-weight-class]) deref)
         basic-dodge  (some-> (rf/subscribe [:attributes/basic-dodge]) deref)
         light-dodge  (- basic-dodge 1)
         medium-dodge (- basic-dodge 2)
@@ -68,11 +74,11 @@
         x-heavy-dodge (- basic-dodge 4)]
     [:> view {:style (tw "flex flex-col gap-1 ml-0 mt-0")}
      [:> text {:style (tw "uppercase text-center font-bold")} (i18n/label :t/dodge)]
-     [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-none) :value basic-dodge :style (highlight-style weight 0 basic-dodge)}]
-     [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-light) :value light-dodge :style (highlight-style weight basic-dodge light-dodge)}]
-     [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-medium) :value medium-dodge :style (highlight-style weight light-dodge medium-dodge)}]
-     [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-heavy) :value heavy-dodge :style (highlight-style weight medium-dodge heavy-dodge)}]
-     [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-x-heavy) :value x-heavy-dodge :style (highlight-style weight heavy-dodge x-heavy-dodge)}]]))
+     [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-none) :value basic-dodge :style (when (= 0 weight-class) highlight-style)}]
+     [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-light) :value light-dodge :style (when (= 1 weight-class) highlight-style)}]
+     [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-medium) :value medium-dodge :style (when (= 2 weight-class) highlight-style)}]
+     [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-heavy) :value heavy-dodge :style (when (= 3 weight-class) highlight-style)}]
+     [labeled-underlined-row {:label (i18n/label :t/dodge-encumbrance-x-heavy) :value x-heavy-dodge :style (when (>= weight-class 4) highlight-style)}]]))
 
 (rf/reg-sub
  :attributes/basic-dodge

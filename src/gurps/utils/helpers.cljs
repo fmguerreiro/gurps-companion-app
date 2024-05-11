@@ -20,3 +20,11 @@
    (if (some? (namespace key))
      (str (namespace key) "-" (name key))
      (str (name key)))))
+
+;; NOTE: because 'positions has vanished from clojure.contrib.seq
+(defn positions
+  [pred coll]
+  (keep-indexed (fn [idx x]
+                  (when (pred x)
+                    idx))
+                coll))
