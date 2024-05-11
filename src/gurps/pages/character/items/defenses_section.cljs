@@ -19,11 +19,14 @@
    [:> view {:style (tw "w-1/3")}
     [labelled-box (i18n/label :t/dr)
      (let [defenses (some-> (rf/subscribe [:profile/defenses]) deref)]
+       ^{:key "defenses-dr-view"}
        [:> view {:style (tw "flex flex-col")}
         (for [kv (seq defenses)]
-          ^{:key (str "defense-" (key kv))}
+          ^{:key (str "defense-dr-" (key kv))}
           [:> view {:style (tw "flex flex-row gap-2")}
+           ^{:key (str "defense-dr-label-" (key kv))}
            [:> text {:style (tw "w-2/4 text-right")} (i18n/label (keyword :t (key kv)))]
+           ^{:key (str "defense-dr-input-" (key kv))}
            [underlined-input {:val         (val kv)
                               :style       (tw "w-2/4")
                               :text-align  "center"
@@ -33,6 +36,7 @@
    [:> view {:style (tw "w-1/3")}
     [labelled-box (i18n/label :t/parry)
      (let [parry (some-> (rf/subscribe [:defenses/parry]) deref)]
+       ^{:key "defense-parry-label"}
        [:> text {:style (tw "text-3xl font-bold my-auto pb-2")} parry])]]
 
    ;; block
@@ -40,6 +44,7 @@
    [:> view {:style (tw "w-1/3 pr-2")}
     [labelled-box (i18n/label :t/block)
      (let [block (some-> (rf/subscribe [:defenses/block]) deref)]
+       ^{:key "defense-block-label"}
        [:> text {:style (tw "text-3xl font-bold my-auto pb-2")} block])]]])
 
 (defn- sum-dr

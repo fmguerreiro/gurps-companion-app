@@ -70,7 +70,8 @@
 
    [items]
 
-   [defenses-section]
+   [:> view {:style (tw "mt-6")}
+    [defenses-section]]
 
    [:> StatusBar {:style "auto"}]])
 
