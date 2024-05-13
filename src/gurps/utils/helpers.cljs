@@ -1,10 +1,18 @@
 (ns gurps.utils.helpers)
 
-(defn default-to [v default]
+(defn default-to
   "Returns the default value if the value is nil or empty"
+  [v default]
   (if (or (and (seqable? v) (empty? v)) (nil? v))
     default
     v))
+
+(defn ->int
+  [n]
+  (let [ret (js/parseInt n)]
+    (if (js/isNaN ret)
+      0
+      ret)))
 
 (defn str->key
   [str]

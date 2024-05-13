@@ -5,13 +5,13 @@
 (rf/reg-fx
  :effects.async-storage/set
  (fn [{k :k value :value}]
-   (info "effects.async-storage/set" k value)
+   ;; (info "effects.async-storage/set" k value)
    (async-storage/set-item! k value)))
 
 (rf/reg-fx
  :effects.async-storage/set-multiple
  (fn [{items :items}]
-   (info "effects.async-storage/set-multiple" items)
+   ;; (info "effects.async-storage/set-multiple" items)
    (doseq [{k :k value :value} items]
      (async-storage/set-item! k value))))
 

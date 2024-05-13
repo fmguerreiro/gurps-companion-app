@@ -95,8 +95,12 @@
              (.then #(js/console.log "clear" %)))
 
          (-> ^js async-storage
-             (.multiGet #js [":profile/name", ":navigation/root-state" ":non-existing-key"])
+             (.multiGet #js [":items/melee-weapons" ":non-existing-key"])
              (.then #(js/console.log "multi-get" %)))
+
+         (-> ^js async-storage
+             (.removeItem ":items/melee-weapons")
+             (.then #(js/console.log "set-item" %)))
 
          (-> ^js async-storage
              (.getItem ":languages/0")

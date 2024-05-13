@@ -1,21 +1,25 @@
 (ns gurps.widgets.underlined-input
   (:require [gurps.widgets.base :refer [view text input]]
             ["twrnc" :refer [style] :rename {style tw}]
+            ["react" :as react]
             [reagent.core :as r]
             [clojure.string :as str]))
 
 (defn underlined-input
-  [{:keys [val on-change-text disabled? style capitalize? input-mode max-length text-align]
-    :or   {disabled? false, capitalize? true, input-mode "text", max-length nil, text-align "left"}}]
-  [:> input {:style #js [(tw "border-b-2 flex-1"), style]
-             :onChangeText on-change-text
-             :placeholder (str val)
-             :editable (not disabled?)
-             :inputMode input-mode
-             :maxLength max-length
-             :textAlign text-align
-             :autoCapitalize (if capitalize? "sentences" "none")}
-   val])
+  [{:keys [val on-change-text disabled? style capitalize? input-mode max-length text-align clear-on-input?]
+    :or   {disabled? false, capitalize? true, input-mode "text", max-length nil, text-align "left", clear-on-input? false}}]
+  (let [input-ref (react/useRef)]
+    [:> input {:style #js [(tw "border-b-2 flex-1"), style]
+               :onChangeText #(do (on-change-text %))
+                                  ;; (when clear-on-input? (.-clear (.-current input-ref))))
+               ;; :ref input-ref
+               :placeholder (str val)
+               :editable (not disabled?)
+               :inputMode input-mode
+               :maxLength max-length
+               :textAlign text-align
+               :autoCapitalize (if capitalize? "sentences" "none")}
+     (when (not clear-on-input?) val)]))
 
 (defn multiline-underlined-input
   [{:keys [val on-change-text disabled? style n-lines]

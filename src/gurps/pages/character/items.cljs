@@ -1,11 +1,14 @@
 (ns gurps.pages.character.items
   (:require ["expo-status-bar" :refer [StatusBar]]
             ["twrnc" :refer [style] :rename {style tw}]
+            ["@react-navigation/native" :as rnn]
+            ["@expo/vector-icons/MaterialCommunityIcons" :default icon]
             [re-frame.core :as rf]
             [gurps.utils.i18n :as i18n]
+            [gurps.utils.helpers :refer [->int]]
             [gurps.widgets.underlined-input :refer [underlined-input]]
             [gurps.widgets.dropdown :refer [dropdown]]
-            [gurps.widgets.base :refer [view text]]
+            [gurps.widgets.base :refer [view text button]]
             [gurps.pages.character.items.defenses-section :refer [defenses-section]]
             [taoensso.timbre :as log]
             [gurps.utils.debounce :refer [debounce-and-dispatch]]))
@@ -40,15 +43,6 @@
   (zipmap (map :value locations) (map :label locations)))
 
 (def empty-item {:name "" :location "bag" :weight 0 :dr nil})
-
-(js/isNaN (js/parseInt ""))
-
-(defn- ->int
-  [n]
-  (let [ret (js/parseInt n)]
-    (if (js/isNaN ret)
-      0
-      ret)))
 
 (defn items
   []
@@ -85,17 +79,22 @@
 
 (defn character-items-page
   []
-  [:> view {:style (tw "flex flex-col bg-white gap-1 flex-grow p-2")}
-   [:> text {:style (tw "font-bold text-center uppercase")} (i18n/label :t/armor-possessions)]
+  (when-let [navigation (rnn/useNavigation)]
+    [:> view {:style (tw "flex flex-col bg-white gap-4 flex-grow p-2")}
+     [:> text {:style (tw "font-bold text-center uppercase")} (i18n/label :t/armor-possessions)]
 
-   [header]
+     [header]
 
-   [items]
+     [items]
 
-   [:> view {:style (tw "mt-6")}
-    [defenses-section]]
+     [:> view {:style (tw "mt-2")}
+      [defenses-section]]
 
-   [:> StatusBar {:style "auto"}]])
+     [:> button {:style (tw "w-full px-4 py-2 font-medium text-left rtl:text-right border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white")
+                 :onPress (fn [] (-> navigation (.navigate (i18n/label :t/melee-weapons))))}
+      [:> icon {:name "sword" :size 20}]]
+
+     [:> StatusBar {:style "auto"}]]))
 
 (def ks [:possessions])
 (doseq [k ks]

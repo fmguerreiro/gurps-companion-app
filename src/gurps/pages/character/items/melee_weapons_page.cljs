@@ -1,0 +1,106 @@
+(ns gurps.pages.character.items.melee-weapons-page
+  (:require ["expo-status-bar" :refer [StatusBar]]
+            ["twrnc" :refer [style] :rename {style tw}]
+            [re-frame.core :as rf]
+            [gurps.utils.i18n :as i18n]
+            [gurps.utils.helpers :refer [->int]]
+            [gurps.widgets.underlined-input :refer [underlined-input]]
+            [gurps.widgets.dropdown :refer [dropdown]]
+            [gurps.widgets.base :refer [view text]]
+            [taoensso.timbre :as log]
+            [gurps.utils.debounce :refer [debounce-and-dispatch]]
+            [clojure.string :as str]))
+
+(defn row
+  [col1 col2 col3 col4 col5 col6]
+  [:> view {:style (tw "flex flex-row h-6 gap-2")}
+   [:> view {:style (tw "w-3/12")} col1]
+   [:> view {:style (tw "w-2/12")} col2]
+   [:> view {:style (tw "w-2/12")} col3]
+   [:> view {:style (tw "w-2/12")} col4]
+   [:> view {:style (tw "w-2/12")} col5]
+   [:> view {:style (tw "w-1/12 pr-4")} col6]])
+
+(defn header
+  []
+  [row
+   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/weapon)]
+   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/dmg-thrust)]
+   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/dmg-swing)]
+   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/reach)]
+   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/parry)]
+   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/weight)]])
+
+;; TODO: notes?
+(def empty-weapon {:name "" :weight 0 :thr-mod 0 :swg-mod 0 :reach nil :parry 0 :notes ""})
+
+;; TODO: AI generated. has an off-by one error somewhere
+(defn dice-addition
+  [dice-roll n]
+  (let [roll-parts (re-find #"(\d+)d\+?(\d*)" dice-roll)
+        roll-dices (js/parseInt (nth roll-parts 1))
+        roll-addition (js/parseInt (nth roll-parts 2 0))
+        abs-n (abs n)]
+    (cond
+      (neg? n)
+      (let [dices (max 0 (- roll-dices (quot abs-n 3)))
+            remaining-addition (max 0 (- roll-addition (rem abs-n 3)))]
+        (str dices (when (pos? dices) "d") (when (pos? remaining-addition) (str "+" remaining-addition))))
+
+      (pos? n)
+      (loop [dices roll-dices
+             remaining n
+             addition roll-addition]
+        (cond
+          (>= remaining 7) (recur (+ dices 2) (- remaining 7) addition)
+          (>= remaining 4) (recur (+ dices 1) (- remaining 4) addition)
+          :else (let [total-dices (+ dices (quot (+ remaining 2) 3))
+                      remaining-addition (rem (+ remaining 2) 3)]
+                  (str total-dices "d" (when (pos? remaining-addition) (str "+" remaining-addition))))))
+
+      :else (str (when (pos? roll-dices) (str roll-dices "d")) (when (pos? roll-addition) (str "+" roll-addition))))))
+
+(defn melee-weapons-page
+  []
+  [:> view {:style (tw "flex flex-col gap-2 bg-white flex-1 pl-2 pr-10")}
+   [header]
+
+   (let [weapons (some-> (rf/subscribe [:items/melee-weapons]) deref)
+         thr     (some-> (rf/subscribe [:attributes/damage-thrust]) deref)
+         swg     (some-> (rf/subscribe [:attributes/damage-swing])  deref)]
+     ;; (log/info "melee-weapons-page" (conj (if (seq? weapons) weapons (vals weapons)) empty-weapon))
+     (map-indexed (fn [i {:keys [name thr-mod swg-mod weight reach parry]}]
+                    ^{:key (str "weapon-" i)}
+                    [row
+                     ;; name
+                     [underlined-input {:val name}]
+                     ;; damage-thr
+                     [underlined-input {:val (dice-addition thr thr-mod)
+                                        :on-change-text #(debounce-and-dispatch [:items.melee/update, i, :thr-mod, (->int %)] 500)
+                                        :input-mode "numeric"
+                                        :clear-on-input? true}]
+                     ;; damage-swg
+                     [underlined-input {:val (dice-addition swg swg-mod)
+                                        :on-change-text #(debounce-and-dispatch [:items.melee/update, i, :swg-mod, (->int %)] 500)
+                                        :input-mode "numeric"
+                                        :clear-on-input? true}]
+                     ;; reach
+                     [underlined-input {:val reach}]
+                     ;; parry
+                     [underlined-input {:val parry}]
+                     ;; weight
+                     [underlined-input {:val weight}]])
+                  (conj weapons empty-weapon)))])
+(rf/reg-sub
+ :items/melee-weapons
+ (fn [db]
+   (get-in db [:items :melee-weapons] [])))
+
+(rf/reg-event-fx
+ :items.melee/update
+ (fn [{:keys [db]} [_ i k v]]
+   (let [weapon (merge (get-in db [:items :melee-weapons i] empty-weapon) {k v})
+         new-db (update-in db [:items :melee-weapons] (fnil #(do (assoc-in % [i] weapon)) [weapon]))]
+     {:db new-db
+      :effects.async-storage/set {:k     :items/melee-weapons
+                                  :value (get-in new-db [:items :melee-weapons])}})))
