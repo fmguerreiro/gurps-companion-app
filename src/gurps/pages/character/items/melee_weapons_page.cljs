@@ -31,9 +31,6 @@
    [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/parry)]
    [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/weight)]])
 
-;; TODO: notes?
-(def empty-weapon {:name "" :weight 0 :thr-mod 0 :swg-mod 0 :reach nil :parry 0 :notes ""})
-
 ;; TODO: AI generated. has an off-by one error somewhere
 (defn dice-addition
   [dice-roll n]
@@ -60,6 +57,12 @@
 
       :else (str (when (pos? roll-dices) (str roll-dices "d")) (when (pos? roll-addition) (str "+" roll-addition))))))
 
+(def reaches [{:value 0, :label "C"}, {:value 1 :label "1"}]) ;; TODO: more? c,1 : 1,2 : 1-3 : 1-4 : 1-7
+(def reach-val->label {0 "C", 1 "1"})
+
+;; TODO: notes?
+(def empty-weapon {:name "" :weight 0 :thr-mod 0 :swg-mod 0 :reach nil :parry 0 :notes ""})
+
 (defn melee-weapons-page
   []
   [:> view {:style (tw "flex flex-col gap-2 bg-white flex-1 pl-2 pr-10")}
@@ -72,24 +75,39 @@
      (map-indexed (fn [i {:keys [name thr-mod swg-mod weight reach parry]}]
                     ^{:key (str "weapon-" i)}
                     [row
-                     ;; name
-                     [underlined-input {:val name}]
-                     ;; damage-thr
+                     ;; name TODO: truncate
+                     [underlined-input {:val name
+                                        :style "truncate"
+                                        :on-change-text #(debounce-and-dispatch [:items.melee/update, i, :name, %] 500)}]
+                     ;; damage-thr TODO: clear text, show placeholder with the calculated dice-addition
                      [underlined-input {:val (dice-addition thr thr-mod)
                                         :on-change-text #(debounce-and-dispatch [:items.melee/update, i, :thr-mod, (->int %)] 500)
                                         :input-mode "numeric"
+                                        :max-length 3
+                                        :text-align "center"
                                         :clear-on-input? true}]
                      ;; damage-swg
                      [underlined-input {:val (dice-addition swg swg-mod)
                                         :on-change-text #(debounce-and-dispatch [:items.melee/update, i, :swg-mod, (->int %)] 500)
                                         :input-mode "numeric"
+                                        :max-length 3
+                                        :text-align "center"
                                         :clear-on-input? true}]
                      ;; reach
-                     [underlined-input {:val reach}]
+                     [dropdown {:val reach
+                                :placeholder (get-in reach-val->label [reach])
+                                :placeholder-style (tw "text-right text-xs")
+                                :selected-style (tw "text-right")
+                                :on-change #(rf/dispatch [:items.melee/update, i, :reach, (->int %)])
+                                :data reaches}]
                      ;; parry
-                     [underlined-input {:val parry}]
+                     [underlined-input {:val parry}] ;; TODO (MELEE/2)+3; round down (do a dropdown for the skill, then show the value?)
                      ;; weight
-                     [underlined-input {:val weight}]])
+                     [underlined-input {:val weight
+                                        :input-mode "numeric"
+                                        :max-length 3
+                                        :text-align "center"
+                                        :on-change-text #(debounce-and-dispatch [:items.melee/update, i, :weight, (->int %)] 500)}]])
                   (conj weapons empty-weapon)))])
 (rf/reg-sub
  :items/melee-weapons
