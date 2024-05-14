@@ -48,34 +48,42 @@
 ;;             (= difficulty :vh) (- 3 modifier)))))
 
 (defn- row
-  [col1 col2 col3]
+  [col1 col2 col3 col4]
   [:> view {:style (tw "flex flex-row justify-between")}
     ;; name
-   [:> view {:style (tw "w-4/6 my-auto")} col1]
+   [:> view {:style (tw "w-3/6 my-auto")} col1]
     ;; difficulty
    [:> view {:style (tw "w-1/6 my-auto")} col2]
-    ;; default-lvl ;; TODO: explanation on default?
-   [:> view {:style (tw "w-1/6 my-auto")} col3]])
+    ;; default-lvl ;; TODO: explanation on which skill it's defaulting from?
+   [:> view {:style (tw "w-1/6 my-auto")} col3]
+   [:> view {:style (tw "w-1/6 my-auto")} col4]])
 
 (defn- skill-header
   []
   [row
    [:> text {:style (tw "font-bold")} (i18n/label :t/skill)]
    [:> text {:style (tw "font-bold text-center")} (i18n/label :t/difficulty)]
-   [:> text {:style (tw "font-bold text-center")} (i18n/label :t/default-lvl)]])
+   [:> text {:style (tw "font-bold text-center")} (i18n/label :t/default-lvl)]
+   [:> text {:style (tw "font-bold text-center")} (i18n/label :t/learn?)]])
 
 (defn skill-row
   "Add a row for a skill to the skill list"
-  [skill-key default-lvl]
-  (let [skill         (skill-key skills)]
+  [skill-key default-lvl disabled?]
+  (let [skill      (skill-key skills)
+        navigation (rnn/useNavigation)]
     (r/as-element
      [:> view {:style (tw "flex flex-col gap-2")}
       [skill-header]
 
-      [row
-       [:> text {:style (tw "capitalize")} (skill->txt skill-key)]
-       [:> text {:style (tw "text-center")} (i18n/label (keyword :t (str (symbol ((:diff skill) difficulties)) "-full")))]
-       [:> text {:style (tw "text-center")} default-lvl]]])))
+      [:> button {:onPress  #(do (rf/dispatch [:skills/add skill-key])
+                                 (-> navigation (.navigate (i18n/label :t/skills))))
+                  :style    (when disabled? (tw "bg-slate-200 py-1"))
+                  :disabled disabled?}
+       [row
+        [:> text {:style (tw "capitalize")} (skill->txt skill-key)]
+        [:> text {:style (tw "text-center")} (i18n/label (keyword :t (str (symbol ((:diff skill) difficulties)) "-full")))]
+        [:> text {:style (tw "text-center")} default-lvl]
+        (when (not disabled?) [:> text {:style (tw "text-center")} "+"])]]])))
 
 ;; (rf/reg-event-db
 ;;  :skills/inc-skill-lvl
@@ -111,7 +119,7 @@
 
      (if (not (= "sp" (name skill-key)))
        ;; pure skill - no specialization
-       [skill-row skill-key (get default-lvls skill-key)]
+       [skill-row skill-key (get default-lvls skill-key) (contains? skills skill-key)]
 
        ;; specializations
        (when specializations
@@ -130,12 +138,18 @@
                                                      (-> navigation (.navigate (i18n/label :t/skills))))}
                             [:> view {:style (tw (str "flex flex-row grow border-b"
                                                       (when disabled? " py-1 bg-slate-200")
-                                                      (when (not= spec last-spec) " border-slate-200")))} ;; TODO: border btw els not working
+                                                      (when (not= spec last-spec) " border-slate-200")))} ;; TODO: border between elems not working
                              [:> text {:style (tw "capitalize flex-1 text-left")} txt]
                              (when (not disabled?) [:> text {:style (tw "flex-1 text-right")} "+"])]])))))]]))
 
      ;; dependencies TODO
-     [:<>]]))
+     [:> view {:style (tw "flex flex-col gap-2 mt-2")}
+      [:> text {:style (tw "font-bold")} (i18n/label :t/dependencies)]
+
+      (map-indexed (fn [i [dep-key]]
+                     ^{:key (str "dependency-" i)}
+                     [:> text dep-key])
+                   (:dependencies skill))]]))
 
 (defn- ->db
   [skill-key spec]

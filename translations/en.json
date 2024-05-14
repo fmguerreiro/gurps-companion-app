@@ -113,8 +113,10 @@
   "very-hard": "VH",
   "very-hard-full": "Very Hard",
   "default-lvl": "Default Lvl",
+  "learn?": "Learn?",
 
   "description": "Description",
+  "dependencies": "Dependencies",
   "specializations": "Specializations",
   "skill-description-immovable-stance": "This skill allows the character to adopt a posture that makes them difficult to move or knock down.",
   "skill-description-lockpicking": "The skill of opening locks without the proper key or combination.",
