@@ -1,17 +1,14 @@
 (ns gurps.pages.character.items.melee-weapons-page
-  (:require ["expo-status-bar" :refer [StatusBar]]
-            ["twrnc" :refer [style] :rename {style tw}]
-            ["react" :as react]
+  (:require ["twrnc" :refer [style] :rename {style tw}]
             [re-frame.core :as rf]
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [->int]]
             [gurps.widgets.underlined-input :refer [underlined-input]]
             [gurps.widgets.dropdown :refer [dropdown]]
             [gurps.widgets.base :refer [view text]]
-            [taoensso.timbre :as log]
             [gurps.utils.debounce :refer [debounce-and-dispatch debounce]]))
 
-(defn row
+(defn- row
   [col1 col2 col3 col4 col5 col6]
   [:> view {:style (tw "flex flex-row h-6 gap-2")}
    [:> view {:style (tw "w-3/12")} col1]
@@ -21,7 +18,7 @@
    [:> view {:style (tw "w-2/12")} col5]
    [:> view {:style (tw "w-1/12 pr-4")} col6]])
 
-(defn header
+(defn- header
   []
   [row
    [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/weapon)]
@@ -85,7 +82,7 @@
                                           :on-change-text (debounce (fn [e]
                                                                       (rf/dispatch [:items.melee/update, i, :thr-mod, (->int e)])
                                                                       (.clear ^js @thr-ref))
-                                                                    500)
+                                                                    1000)
                                           :get-ref    #(reset! thr-ref %)
                                           :input-mode "numeric"
                                           :max-length 3
@@ -96,7 +93,7 @@
                                           :on-change-text (debounce (fn [e]
                                                                       (rf/dispatch [:items.melee/update, i, :swg-mod, (->int e)])
                                                                       (.clear ^js swg-ref))
-                                                                    500)
+                                                                    1000)
                                           :get-ref    #(reset! swg-ref %)
                                           :input-mode "numeric"
                                           :max-length 3

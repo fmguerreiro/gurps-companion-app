@@ -41,6 +41,9 @@
   "lang-lvl-broken": "Broken",
   "reaction-modifiers": "Reaction Modifiers",
   "tech-level": "Tech level",
+  "level": "Lvl",
+  "relative-level": "Relative Level",
+  "cost": "Cost",
   "status": "Status",
   "reputation": "Reputation",
   "stone-age": "Stone Age",
@@ -104,6 +107,8 @@
   "hard": "H",
   "very-hard": "VH",
 
+  "description": "Description",
+  "specializations": "Specializations",
   "skill-description-immovable-stance": "This skill allows the character to adopt a posture that makes them difficult to move or knock down.",
   "skill-description-lockpicking": "The skill of opening locks without the proper key or combination.",
   "skill-description-wrestling": "Hand-to-hand combat grappling and throwing techniques.",

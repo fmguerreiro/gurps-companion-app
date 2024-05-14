@@ -2,7 +2,8 @@
   (:require [reagent.core :as r]
             ["@react-navigation/native-stack" :as rnn-stack]
             [gurps.utils.i18n :as i18n]
-            [gurps.pages.character.skills :refer [character-skills-page character-add-skill-page]]
+            [gurps.pages.character.skills :refer [character-skills-page]]
+            [gurps.pages.character.skills.groups :refer [character-add-skill-page]]
             [gurps.pages.character.skills.specialization :refer [character-add-skill-spec-page]]))
 
 (defonce SkillStack (rnn-stack/createNativeStackNavigator))

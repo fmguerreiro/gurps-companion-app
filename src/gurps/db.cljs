@@ -65,6 +65,7 @@
    :attribute-current {:hp 0
                        :fp 0}
 
+   :skills []
    :skill-costs {:acrobatics 10}
 
    :languages {:0 {:i 0 :name "" :spoken "native", :written "native", :native? true , :cost 0}

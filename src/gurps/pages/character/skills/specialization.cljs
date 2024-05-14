@@ -7,7 +7,8 @@
             [gurps.utils.helpers :refer [str->key flatten-key]]
             [gurps.utils.i18n :as i18n]
             [gurps.pages.character.utils.skills :refer [skills skill->txt difficulties]]
-            ["twrnc" :refer [style] :rename {style tw}]))
+            ["twrnc" :refer [style] :rename {style tw}]
+            [taoensso.timbre :as log]))
 
 (defn next-cost
   [current-cost]
@@ -85,25 +86,62 @@
    (info "dec-skill-lvl" (str skill) (get-in db [:skill-costs skill]))
    (update-in db [:skill-costs skill] (fnil prev-cost 0))))
 
+(defn- header
+  [txt]
+  [:> text {:style (tw "text-xl font-bold capitalize")}
+   txt])
+
 (defn character-add-skill-spec-page
   [props]
-  (r/with-let [skill-key (-> props ->clj :route :params :id str->key)
-               skill (skill-key skills)
-               specializations (:specializations skill)
-               default-lvls @(rf/subscribe [:skills/defaults])]
-    [:> view
+  (let [skill-key       (-> props ->clj :route :params :id str->key)
+        skill           (skill-key skills)
+        specializations (:specializations skill)
+        default-lvls    (some-> (rf/subscribe [:skills/defaults]) deref)
+        skills          (some->> (rf/subscribe [:skills]) deref (map #(:key %)) set)]
+    [:> view {:style (tw "p-2 bg-white flex flex-col flex-grow")}
+     ;; description
+     [header (i18n/label :t/description)]
      [:> text {:style (tw "")}
-      (i18n/label (keyword "t" (str "skill-description-" (symbol (if (some? (namespace skill-key)) (namespace skill-key) (name skill-key))))))]
+      (i18n/label (keyword :t (str "skill-description-" (symbol (if (some? (namespace skill-key)) (namespace skill-key) (name skill-key))))))]
 
+     ;; TODO? this is main skill? should be either specializations or main skill i guess
      [add-skill-row skill-key (get default-lvls skill-key)]
 
-     (when (some? specializations)
-       [:> text {:style (tw "mt-4")} "Specializations:"]
-       (->> specializations
-            (map (fn [spec]
-                   (let [display-text (skill->txt spec)]
-                     [:> button {:key (str spec "-spec")
-                                 :onPress #()} ;; TODO
-                      [:> text display-text]])))))]))
+     ;; specializations
+     (when specializations
+       [:> view {:style (tw "flex flex-col gap-1")}
+        [header (i18n/label :t/specializations)]
+        [:> view {:style (tw "flex flex-col gap-1")}
+         (let [last-spec (last specializations)]
+           (->> specializations
+                (map (fn [spec]
+                       (let [txt       (skill->txt spec)
+                             disabled? (contains? skills (keyword (namespace skill-key) spec))]
+                         ^{:key (str spec "-spec-button")}
+                         [:> button {:key (str spec "-spec")
+                                     :disabled disabled?
+                                     :onPress #(rf/dispatch [:skills/add skill-key spec])} ;; TODO: navigate back to skill-list page
+                          [:> view {:style (tw (str "flex flex-row grow border-b"
+                                                    (when disabled? " py-1 bg-slate-200")
+                                                    (when (not= spec last-spec) " border-slate-200")))} ;; TODO: border btw els not working
+                           [:> text {:style (tw "capitalize flex-1 text-left")} txt]
+                           (when (not disabled?) [:> text {:style (tw "flex-1 text-right")} "+"])]])))))]])]))
 
 ;; TODO: add list of prerequisites (clickable)
+
+(defn- ->db
+  [skill spec]
+  {:name (str (skill->txt skill) (when spec (str " (" (skill->txt spec) ")")))
+   :key  (if spec (keyword (namespace skill) spec) skill)
+   :cost 1
+   :lvl 10
+   :rel-lvl 10}) ;; TODO: lvl, rel-lvl calculations
+
+(rf/reg-event-fx
+ :skills/add
+ (fn [{:keys [db]} [_ skill spec]]
+   (let [len    (count (get-in db [:skills]))
+         new-db (assoc-in db [:skills len] (->db skill spec))]
+     {:db new-db
+      :effects.async-storage/set {:k     :skills
+                                  :value (get-in new-db [:skills])}})))
