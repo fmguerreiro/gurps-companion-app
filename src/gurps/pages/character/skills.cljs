@@ -9,7 +9,6 @@
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
             [gurps.utils.helpers :refer [flatten-key]]
             [gurps.pages.character.utils.skills :refer [skills]]
-            [gurps.pages.character.skills.groups :refer [skill-groups]]
             ["twrnc" :refer [style] :rename {style tw}]))
 
 (defn- row
@@ -45,7 +44,7 @@
       [header]
 
       ;; skills
-      (map-indexed (fn [i {:keys [name lvl rel-lvl cost]}]
+      (map-indexed (fn [i {:keys [name diff attr rel-lvl cost]}]
                      ^{:key (str "skill-" i)}
                      [row
                       ;; name
@@ -53,8 +52,8 @@
                                          :style (tw "capitalize")
                                          :disabled? true
                                          :on-change-text #()}]
-                      ;; lvl
-                      [underlined-input {:val lvl
+                      ;; lvl TODO: this needs to be calculated based on diff and attr level
+                      [underlined-input {:val 10
                                          :text-align "center"
                                          :disabled? true
                                          :on-change-text #()}]
