@@ -1,18 +1,18 @@
 (ns gurps.widgets.underlined-input
   (:require [gurps.widgets.base :refer [view text input]]
             ["twrnc" :refer [style] :rename {style tw}]
-            ["react" :as react]
             [reagent.core :as r]
             [clojure.string :as str]))
 
 (defn underlined-input
-  [{:keys [val on-change-text disabled? style capitalize? input-mode max-length text-align clear-on-input?]
+  [{:keys [val on-change-text disabled? style capitalize? input-mode max-length text-align clear-on-input? get-ref]
     :or   {disabled? false, capitalize? true, input-mode "text", max-length nil, text-align "left", clear-on-input? false}}]
-  (let [input-ref (react/useRef)]
+  (let [ref (atom nil)]
     [:> input {:style #js [(tw "border-b-2 flex-1"), style]
-               :onChangeText #(do (on-change-text %))
-                                  ;; (when clear-on-input? (.-clear (.-current input-ref))))
-               ;; :ref input-ref
+               :onChangeText on-change-text
+               :ref (fn [r]
+                      (reset! ref r)
+                      (when get-ref (get-ref r)))
                :placeholder (str val)
                :editable (not disabled?)
                :inputMode input-mode

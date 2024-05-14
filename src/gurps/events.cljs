@@ -45,7 +45,7 @@
 (rf/reg-event-db
  :initialize-storage/set
  (fn [db [_ res]]
-   (info "initialize-storage" res)
+   ;; (info "initialize-storage" res)
    (merge db res)))
 
 (rf/reg-event-fx
