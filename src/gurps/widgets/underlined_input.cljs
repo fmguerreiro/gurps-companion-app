@@ -5,11 +5,12 @@
             [clojure.string :as str]))
 
 (defn underlined-input
-  [{:keys [val on-change-text disabled? style capitalize? input-mode max-length text-align clear-on-input? get-ref]
+  [{:keys [val on-change-text disabled? style capitalize? input-mode max-length text-align clear-on-input? get-ref on-press]
     :or   {disabled? false, capitalize? true, input-mode "text", max-length nil, text-align "left", clear-on-input? false}}]
   (let [ref (atom nil)]
     [:> input {:style #js [(tw "border-b-2 flex-1"), style]
                :onChangeText on-change-text
+               :onPressIn on-press
                :ref (fn [r]
                       (reset! ref r)
                       (when get-ref (get-ref r)))

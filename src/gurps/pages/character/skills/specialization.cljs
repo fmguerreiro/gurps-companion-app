@@ -110,7 +110,7 @@
         skill           (skill-key skills)
         specializations (:specializations skill)
         default-lvls    (some-> (rf/subscribe [:skills/defaults]) deref)
-        skills          (some->> (rf/subscribe [:skills]) deref (map #(:key %)) set)
+        skills          (some->> (rf/subscribe [:skills]) deref (map #(:k %)) set)
         navigation      (rnn/useNavigation)]
     [:> view {:style (tw "p-2 bg-white flex flex-col gap-2 flex-grow")}
      ;; description
@@ -150,19 +150,19 @@
                              (when (not disabled?) [:> text {:style (tw "flex-1 text-right")} "+"])]])))))]]))
 
      ;; dependencies TODO
-     (when (:dependencies skill)
+     (when (:prerequisites skill)
        [:> view {:style (tw "flex flex-col gap-2 mt-2")}
         [:> text {:style (tw "font-bold")} (i18n/label :t/dependencies)]
 
         (map-indexed (fn [i [dep-key]]
                        ^{:key (str "dependency-" i)}
                        [:> text dep-key])
-                     (:dependencies skill))])]))
+                     (:prerequisites skill))])]))
 
 (defn- ->db
   [skill-key spec]
-  {:name (str (skill->txt skill-key) (when spec (str " (" (skill->txt spec) ")")))
-   :key  (if spec (keyword (namespace skill-key) spec) skill-key)
+  {:name (str (skill->txt skill-key) (when spec (str "(" (skill->txt spec) ")")))
+   :k    (if spec (keyword (namespace skill-key) spec) skill-key)
    :cost 1})
 
 (rf/reg-event-fx

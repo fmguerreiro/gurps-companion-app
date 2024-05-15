@@ -1,15 +1,15 @@
 (ns gurps.pages.character.skills
   (:require ["react-native" :as rn]
             ["@react-navigation/native" :as rnn]
+            ["twrnc" :refer [style] :rename {style tw}]
             [re-frame.core :as rf]
-            [taoensso.timbre :refer [info]]
             [gurps.utils.i18n :as i18n]
+            [gurps.utils.helpers :refer [key->str flatten-key]]
             [gurps.widgets.base :refer [view text button]]
             [gurps.widgets.underlined-input :refer [underlined-input]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
-            [gurps.utils.helpers :refer [flatten-key]]
             [gurps.pages.character.utils.skills :refer [skills]]
-            ["twrnc" :refer [style] :rename {style tw}]))
+            [taoensso.timbre :as log]))
 
 (defn- row
   [col1 col2 col3 col4]
@@ -38,20 +38,22 @@
 
 (defn character-skills-page
   []
-  (let [skills (some-> (rf/subscribe [:skills]) deref)]
+  (let [skills (some-> (rf/subscribe [:skills]) deref)
+        navigation (rnn/useNavigation)]
     [:> view {:style (tw "flex flex-1 flex-col px-2 bg-white")}
      [:> rn/ScrollView {:style (tw "flex flex-1 flex-col bg-white flex-grow")}
       [header]
 
       ;; skills
-      (map-indexed (fn [i {:keys [name diff attr rel-lvl cost]}]
+      (map-indexed (fn [i {:keys [k name rel-lvl cost]}]
                      ^{:key (str "skill-" i)}
                      [row
                       ;; name
                       [underlined-input {:val name
                                          :style (tw "capitalize")
-                                         :disabled? true
-                                         :on-change-text #()}]
+                                         :on-press #(let [k' (if (namespace k) (keyword (namespace k) :sp) k)]
+                                                      (-> navigation (.navigate (i18n/label :t/add-skill-specialization) #js {:id (key->str k')})))
+                                         :disabled? true}]
                       ;; lvl TODO: this needs to be calculated based on diff and attr level
                       [underlined-input {:val 10
                                          :text-align "center"
