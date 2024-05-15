@@ -31,7 +31,9 @@
             :attribute-costs/ht
             :attribute-costs/hp
             :attribute-current/hp
+            :attributes/will
             :attribute-costs/will
+            :attributes/per
             :attribute-costs/per
             :attribute-costs/fp
             :attribute-costs/basic-speed])

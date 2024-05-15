@@ -9,6 +9,7 @@
             [gurps.widgets.underlined-input :refer [underlined-input]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
             [gurps.pages.character.utils.skills :refer [skills]]
+            [gurps.pages.character.widgets.attributes] ;; NOTE: makes sure the subs are registered
             [taoensso.timbre :as log]))
 
 (defn- row
@@ -35,6 +36,38 @@
      [:> button {:style (tw "p-0 w-14 h-14 bg-red-600 rounded-full hover:bg-red-700 active:shadow-lg shadow focus:outline-none align-middle justify-center items-center")
                  :onPress (fn [] (-> navigation (.navigate (i18n/label :t/add-skill))))}
       [:> text {:style (tw "text-white font-bold text-xl")} "+"]]]))
+(defn- generify-key
+  [k]
+  (if (namespace k) (keyword (namespace k) :sp) k))
+
+(defn- best-attr
+  "Get the highest attribute value"
+  [attrs attr]
+  (apply max (map (fn [attr] (get attrs attr)) attr)))
+
+(defn- difficulty-mod
+  [val diff]
+  (cond (= diff :e) val
+        (= diff :a) (dec val)
+        (= diff :h) (- 2 val)
+        (= diff :v) (- 3 val)))
+
+(defn- skill-lvl
+  [skill-key]
+  (let [skill (-> skill-key generify-key skills)
+        attr  (:attr skill)
+        attrs {:str   (some-> (rf/subscribe [:attributes/str]) deref)
+               :int   (some-> (rf/subscribe [:attributes/int]) deref)
+               :dex   (some-> (rf/subscribe [:attributes/dex]) deref)
+               :per   (some-> (rf/subscribe [:attributes/per]) deref)
+               :will  (some-> (rf/subscribe [:attributes/will]) deref)
+               :ht    (some-> (rf/subscribe [:attributes/ht]) deref)}
+        attr-lvl      (if (seq? attr) (best-attr attrs attr) (attr attrs))
+        diff          (:diff skill)
+        lvl           (difficulty-mod attr-lvl diff)]
+    [underlined-input {:val lvl
+                       :text-align "center"
+                       :disabled? true}]))
 
 (defn character-skills-page
   []
@@ -44,6 +77,10 @@
      [:> rn/ScrollView {:style (tw "flex flex-1 flex-col bg-white flex-grow")}
       [header]
 
+      ;; TODO: show which attribute it's based from
+      ;;       show difficulty!
+      ;;       remove relative lvl
+
       ;; skills
       (map-indexed (fn [i {:keys [k name rel-lvl cost]}]
                      ^{:key (str "skill-" i)}
@@ -51,14 +88,11 @@
                       ;; name
                       [underlined-input {:val name
                                          :style (tw "capitalize")
-                                         :on-press #(let [k' (if (namespace k) (keyword (namespace k) :sp) k)]
+                                         :on-press #(let [k' (generify-key k)]
                                                       (-> navigation (.navigate (i18n/label :t/add-skill-specialization) #js {:id (key->str k')})))
                                          :disabled? true}]
-                      ;; lvl TODO: this needs to be calculated based on diff and attr level
-                      [underlined-input {:val 10
-                                         :text-align "center"
-                                         :disabled? true
-                                         :on-change-text #()}]
+                      ;; lvl
+                      [skill-lvl k]
                       ;; relative-lvl
                       [underlined-input {:val rel-lvl
                                          :text-align "center"

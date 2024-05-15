@@ -39,68 +39,68 @@
   (fn [char] (- (get-in-any char keys) subtrahend)))
 
 (def skills
-  {:animal-handling/sp {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)] :specializations [:big-cats :dogs :equines :raptors]}
-   :falconry {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                           (calc-hoc [:skills :animal :animal-handling-raptor] 3)]}
-   :mimicry/animal-sounds {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
-   :mimicry/bird-calls {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
+  {:animal-handling/sp {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5)] :specializations [:big-cats :dogs :equines :raptors]}
+   :falconry {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                            (calc-hoc [:skills :animal :animal-handling-raptor] 3)]}
+   :mimicry/animal-sounds {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6)]}
+   :mimicry/bird-calls {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6)]}
    :mount {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5)]}
-   :naturalist {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
-                                             (calc-any-hoc [:skills :science :biology] 3),
-                                             (calc-any-hoc [:skills :plant :biology] 3)]}
-   :packing {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                          (calc-hoc [:skills :animal :animal-handling/equines] 5)]}
+   :naturalist {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6),
+                                              (calc-any-hoc [:skills :science :biology] 3),
+                                              (calc-any-hoc [:skills :plant :biology] 3)]}
+   :packing {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                           (calc-hoc [:skills :animal :animal-handling/equines] 5)]}
    :riding/sp {:diff :a :attr :dex :specializations [:horse :bovines :camel :elephant :dolphin :dragon :bear :pigs-or-hogs :rams :hadrosaur :sauropod-or-big-raptor :bird :gheap]
                :default [(calc-hoc [:attributes :dex] 5),
                          (calc-hoc [:skills :animal :animal-handling/same] 3)]}
-   :teamster/sp {:diff :a :attr :iq :specializations [:horse :bovines :camel :elephant :dolphin :dragon :bear :pigs-or-hogs :rams :hadrosaur :sauropod-or-big-raptor :bird :gheap]
+   :teamster/sp {:diff :a :attr :int :specializations [:horse :bovines :camel :elephant :dolphin :dragon :bear :pigs-or-hogs :rams :hadrosaur :sauropod-or-big-raptor :bird :gheap]
                  :default [(calc-hoc [:skills :animal :animal-handling/same] 4),
                            (calc-hoc [:skills :animal :riding/same] 2)]}
-   :veterinary {:diff :a :attr :iq :default [(calc-hoc [:skills :animal :animal-handling] 6),
-                                             (calc-hoc [:skills :medical :physician] 5),
-                                             (calc-hoc [:skills :medical :surgery] 5)]}
-   :artist/sp {:diff :h :attr :iq :specializations [:body-art :calligraphy :drawing :featherworking :illumination :illusion :interior-decorating :needlecraft :painting :pottery :scene-design :sculpting :sensie-interface :woodworking]
-               :default [(calc-hoc [:attributes :iq] 6)]}
-   :connoisseur/sp {:diff :a :attr :iq :specializations [:art :literature :music :visual-arts :weapons :luxuries]
-                    :default [(calc-hoc [:attributes :iq] 5)]}
-   :current-affairs/high-culture {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4), (calc-hoc [:skills :scholar :research] 4)]}
-   :current-affairs/popular-culture {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4), (calc-hoc [:skills :scholar :research] 4)]}
+   :veterinary {:diff :a :attr :int :default [(calc-hoc [:skills :animal :animal-handling] 6),
+                                              (calc-hoc [:skills :medical :physician] 5),
+                                              (calc-hoc [:skills :medical :surgery] 5)]}
+   :artist/sp {:diff :h :attr :int :specializations [:body-art :calligraphy :drawing :featherworking :illumination :illusion :interior-decorating :needlecraft :painting :pottery :scene-design :sculpting :sensie-interface :woodworking]
+               :default [(calc-hoc [:attributes :int] 6)]}
+   :connoisseur/sp {:diff :a :attr :int :specializations [:art :literature :music :visual-arts :weapons :luxuries]
+                    :default [(calc-hoc [:attributes :int] 5)]}
+   :current-affairs/high-culture {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4), (calc-hoc [:skills :scholar :research] 4)]}
+   :current-affairs/popular-culture {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4), (calc-hoc [:skills :scholar :research] 4)]}
    :dancing {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5)]}
-   :electronics-operation/sp {:diff :a :attr :iq
+   :electronics-operation/sp {:diff :a :attr :int
                               :specializations [:communications :electronic-warfare :force-shields :matter-transmitters :media :medical :parachronic :psychotronics :scientific :security :sensors :sonar :surveillance :temporal]
-                              :default [(calc-hoc [:attributes :iq] 5),
+                              :default [(calc-hoc [:attributes :int] 5),
                                         (calc-hoc [:skills :invention :engineer/electrical] 3),
                                         (calc-hoc [:skills :military :electronics-repair] 5),
                                         (calc-hoc [:skills :invention :engineer/electronics] 5)]}
    :fire-eating {:diff :a :attr :dex}
-   :group-performance/sp {:diff :a :attr :iq
+   :group-performance/sp {:diff :a :attr :int
                           :specializations [:choreography :conducting :directing :fight-choreography]
-                          :default [(calc-hoc [:attributes :iq] 5)]
+                          :default [(calc-hoc [:attributes :int] 5)]
                           :prerequisites {:and [{:or [:diplomacy :intimidation :leadership]} {:or [:choreography :conducting :directing :fight-choreography]}]}}
 
-   :makeup {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
-                                         (calc-hoc [:skills :criminal :disguise] 2)]}
-   :mimicry/sp {:diff :h :attr :iq
+   :makeup {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4),
+                                          (calc-hoc [:skills :criminal :disguise] 2)]}
+   :mimicry/sp {:diff :h :attr :int
                 :specializations [:animal-sounds :bird-calls :speech]
-                :default [(calc-hoc [:attributes :iq] 6)]}
-   :musical-composition {:diff :h :attr :iq :default [(calc-hoc [:skills :arts :musical-instrument] 2),
-                                                      (calc-hoc [:skills :arts :poetry] 2)]}
-   :musical-instrument/sp {:diff :h :attr :iq
+                :default [(calc-hoc [:attributes :int] 6)]}
+   :musical-composition {:diff :h :attr :int :default [(calc-hoc [:skills :arts :musical-instrument] 2),
+                                                       (calc-hoc [:skills :arts :poetry] 2)]}
+   :musical-instrument/sp {:diff :h :attr :int
                            :specializations [:brass :keyboard :percussion :string :wind]}
-   :performance {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                              (calc-hoc [:skills :social :acting] 2),
-                                              (calc-hoc [:skills :business :public-speaking] 2)]}
-   :photography {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                              (calc-hoc [:skills :arts :electronics-operation/media] 2)]}
-   :poetry {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                         (calc-hoc [:skills :arts :writing] 2)]}
+   :performance {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                               (calc-hoc [:skills :social :acting] 2),
+                                               (calc-hoc [:skills :business :public-speaking] 2)]}
+   :photography {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                               (calc-hoc [:skills :arts :electronics-operation/media] 2)]}
+   :poetry {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                          (calc-hoc [:skills :arts :writing] 2)]}
    :singing {:diff :e :attr :ht :default [(calc-hoc [:attributes :ht] 4)]}
    :sleight-of-hand {:diff :a :attr :dex :default [(calc-hoc [:skills :criminal :filch] 5)]}
    :stage-combat {:diff :a :attr :dex :default [(calc-hoc [:skills :athletic :combat-art] 2),
                                                 (calc-hoc [:skills :athletic :sports] 2),
                                                 (calc-hoc [:skills :arts :performance] 3)]}
-   :ventriloquism {:diff :h :attr :iq}
-   :writing {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :ventriloquism {:diff :h :attr :int}
+   :writing {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5)]}
 
    :acrobatics {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6)]}
    :aeronautics {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6)]}
@@ -120,45 +120,45 @@
    :lifting {:diff :a :attr :ht}
    :parachuting {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 4)]}
    :running {:diff :a :attr :ht :default [(calc-hoc [:attributes :ht] 5)]}
-   :scuba {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                        (calc-hoc [:skills :technical :diving-suit] 2)]
+   :scuba {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                         (calc-hoc [:skills :technical :diving-suit] 2)]
            :prerequisites {:and [:swimming]}}
    :sports/sp {:diff :a :attr :dex
                :specializations [:baseball :basketball :football :golf :hockey :soccer :tennis :track-and-field :bull-fighting :darts :skating :skiing :swimming]}
    :swimming {:diff :e :attr :ht :default [(calc-hoc [:attributes :ht] 4)]}
    :throwing {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 3)
                                             (calc-hoc [:skills :combat-ranged :dropping] 2)]}
-   :accounting {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
-                                             (calc-hoc [:skills :business :finance] 4),
-                                             (calc-hoc [:skills :business :mathematics/statistics] 5),
-                                             (calc-hoc [:skills :business :merchant] 5)]}
-   :administration {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                                 (calc-hoc [:skills :business :merchant] 3)]}
-   :current-affairs/business {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
-                                                           (calc-hoc [:skills :scholarly :research] 4)]}
-   :diplomacy {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
-                                            (calc-hoc [:skills :business :politics] 6)]}
-   :economics {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
-                                            (calc-hoc [:skills :business :finance] 3),
-                                            (calc-hoc [:skills :business :market-analysis] 5),
-                                            (calc-hoc [:skills :business :merchant] 6)]}
-   :finance {:diff :h :attr :iq :default [(calc-hoc [:skills :business :merchant] 6),
-                                          (calc-hoc [:skills :business :accounting] 4),
-                                          (calc-hoc [:skills :business :economics] 3)]}
-   :market-analysis {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
-                                                  (calc-hoc [:skills :business :economics] 5),
-                                                  (calc-hoc [:skills :business :merchant] 4)]}
-   :mathematics/statistics {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
-   :merchant {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                           (calc-hoc [:skills :business :finance] 6),
-                                           (calc-hoc [:skills :business :market-analysis] 4)]}
-   :politics {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                           (calc-hoc [:skills :business :diplomacy] 5)]}
-   :public-speaking {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                                  (calc-hoc [:skills :business :politics] 5),
-                                                  (calc-hoc [:skills :social :acting] 5),
-                                                  (calc-hoc [:skills :arts :performance] 2)]}
-   :savoir-faire/high-society {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]} ;; TODO: and others?
+   :accounting {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6),
+                                              (calc-hoc [:skills :business :finance] 4),
+                                              (calc-hoc [:skills :business :mathematics/statistics] 5),
+                                              (calc-hoc [:skills :business :merchant] 5)]}
+   :administration {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                                  (calc-hoc [:skills :business :merchant] 3)]}
+   :current-affairs/business {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4),
+                                                            (calc-hoc [:skills :scholarly :research] 4)]}
+   :diplomacy {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6),
+                                             (calc-hoc [:skills :business :politics] 6)]}
+   :economics {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6),
+                                             (calc-hoc [:skills :business :finance] 3),
+                                             (calc-hoc [:skills :business :market-analysis] 5),
+                                             (calc-hoc [:skills :business :merchant] 6)]}
+   :finance {:diff :h :attr :int :default [(calc-hoc [:skills :business :merchant] 6),
+                                           (calc-hoc [:skills :business :accounting] 4),
+                                           (calc-hoc [:skills :business :economics] 3)]}
+   :market-analysis {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6),
+                                                   (calc-hoc [:skills :business :economics] 5),
+                                                   (calc-hoc [:skills :business :merchant] 4)]}
+   :mathematics/statistics {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6)]}
+   :merchant {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                            (calc-hoc [:skills :business :finance] 6),
+                                            (calc-hoc [:skills :business :market-analysis] 4)]}
+   :politics {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                            (calc-hoc [:skills :business :diplomacy] 5)]}
+   :public-speaking {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                                   (calc-hoc [:skills :business :politics] 5),
+                                                   (calc-hoc [:skills :social :acting] 5),
+                                                   (calc-hoc [:skills :arts :performance] 2)]}
+   :savoir-faire/high-society {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)]} ;; TODO: and others?
 
    :axe-or-mace {:diff :a :attr :dex :default [(calc-hoc [:skills :combat-melee :flail] 4),
                                                (calc-hoc [:skills :combat-melee :two-handed-axe-or-mace] 3)]}
@@ -252,8 +252,8 @@
                                         (calc-hoc [:skills :combat-melee :kusari] 3)]}
    :wrestling {:diff :a :attr :dex}
 
-   :artillery/sp {:diff :a :attr :iq
-                  :default [(calc-hoc [:attributes :iq] 5)]
+   :artillery/sp {:diff :a :attr :int
+                  :default [(calc-hoc [:attributes :int] 5)]
                   :specializations [:beam :bomb :cannon :guided-missile :torpedo]}
    :beam-weapons/sp {:diff :e :attr :dex
                      :default [(calc-hoc [:attributes :dex] 4)]
@@ -286,112 +286,112 @@
                       :default [(calc-hoc [:attributes :dex] 4)]
                       :specializations [:axe-or-mace :dart :harpoon :knife :shuriken :spear :stick]}
 
-   :artist/pottery {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
-   :artist/sculpting {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
-   :artist/woodworking {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
+   :artist/pottery {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6)]}
+   :artist/sculpting {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6)]}
+   :artist/woodworking {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6)]}
    :bone-carving {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 2),
                                                 (calc-hoc [:skills :military :armoury] 2)]}
-   :carpentry {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
-   :jeweler {:diff :h :attr :iq
-             :default [(calc-hoc [:attributes :iq] 6),
+   :carpentry {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)]}
+   :jeweler {:diff :h :attr :int
+             :default [(calc-hoc [:attributes :int] 6),
                        (calc-hoc [:skills :craft :smith/copper] 4),
                        (calc-hoc [:skills :craft :smith/lead-and-tin] 4)]}
    :leatherworking {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 4)]}
-   :masonry {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
-   :smith/sp {:diff :a :attr :iq
-              :default [(calc-hoc [:attributes :iq] 5)]
+   :masonry {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)]}
+   :smith/sp {:diff :a :attr :int
+              :default [(calc-hoc [:attributes :int] 5)]
               :specializations [:copper :iron :lead-and-tin]}
 
    :carousing {:diff :e :attr :ht :default [(calc-hoc [:attributes :ht] 4)]}
-   :computer-hacking {:diff :v :attr :iq}
-   :counterfeiting {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
-                                                 (calc-hoc [:skills :criminal :forgery] 2)]}
-   :disguise/sp {:diff :a :attr :iq
+   :computer-hacking {:diff :v :attr :int}
+   :counterfeiting {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6),
+                                                  (calc-hoc [:skills :criminal :forgery] 2)]}
+   :disguise/sp {:diff :a :attr :int
                  :specializations []
-                 :default [(calc-hoc [:attributes :iq] 5),
+                 :default [(calc-hoc [:attributes :int] 5),
                            (calc-hoc [:skills :arts :makeup] 3)]}
-   :electronics-operation/security {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                                                 (calc-hoc [:skills :invention :engineer/electrical] 3),
-                                                                 (calc-hoc [:skills :repair :electronics-repair/security] 5),
-                                                                 (calc-hoc [:skills :invention :engineer/electronics] 5)]}
+   :electronics-operation/security {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                                                  (calc-hoc [:skills :invention :engineer/electrical] 3),
+                                                                  (calc-hoc [:skills :repair :electronics-repair/security] 5),
+                                                                  (calc-hoc [:skills :invention :engineer/electronics] 5)]}
    :escape {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6)]}
-   :explosives/demolition {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
-   :fast-talk {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                            (calc-hoc [:skills :social :acting] 5),
-                                            (calc-hoc [:skills :spy :acting] 5)]}
+   :explosives/demolition {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5)]}
+   :fast-talk {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                             (calc-hoc [:skills :social :acting] 5),
+                                             (calc-hoc [:skills :spy :acting] 5)]}
    :filch {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5),
                                          (calc-hoc [:skills :criminal :pickpocket] 4),
                                          (calc-hoc [:skills :criminal :sleight-of-hand] 4)]}
    :forced-entry {:diff :e :attr :dex}
-   :forgery {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
-                                          (calc-hoc [:skills :criminal :counterfeiting] 2)]}
-   :gambling {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                           (calc-hoc [:skills :science :mathematics/statistics] 5),
-                                           (calc-hoc [:skills :business :mathematics/statistics] 5)]}
-   :holdout {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                          (calc-hoc [:skills :criminal :sleight-of-hand] 3)]}
+   :forgery {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6),
+                                           (calc-hoc [:skills :criminal :counterfeiting] 2)]}
+   :gambling {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                            (calc-hoc [:skills :science :mathematics/statistics] 5),
+                                            (calc-hoc [:skills :business :mathematics/statistics] 5)]}
+   :holdout {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                           (calc-hoc [:skills :criminal :sleight-of-hand] 3)]}
    :intimidation {:diff :a :attr :will :default [(calc-hoc [:attributes :will] 5),
                                                  (calc-hoc [:skills :spy :acting] 3),
                                                  (calc-hoc [:skills :social :acting] 3)]}
-   :lockpicking {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :lockpicking {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5)]}
    :observation {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5),
                                                (calc-hoc [:skills :police :shadowing] 5),
                                                (calc-hoc [:skills :spy :shadowing] 5),
                                                (calc-hoc [:skills :criminal :shadowing] 5)]}
-   :panhandling {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
-                                              (calc-hoc [:skills :criminal :fast-talk] 2),
-                                              (calc-hoc [:skills :social :fast-talk] 2),
-                                              (calc-hoc [:skills :business :public-speaking] 3),
-                                              (calc-hoc [:skills :scholar :public-speaking] 3),
-                                              (calc-hoc [:skills :social :public-speaking] 3)]}
+   :panhandling {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4),
+                                               (calc-hoc [:skills :criminal :fast-talk] 2),
+                                               (calc-hoc [:skills :social :fast-talk] 2),
+                                               (calc-hoc [:skills :business :public-speaking] 3),
+                                               (calc-hoc [:skills :scholar :public-speaking] 3),
+                                               (calc-hoc [:skills :social :public-speaking] 3)]}
    :pickpocket {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6),
                                               (calc-hoc [:skills :criminal :filch] 5),
                                               (calc-hoc [:skills :criminal :sleight-of-hand] 4)]}
-   :poisons {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
-                                          (calc-hoc [:skills :science :chemistry] 5),
-                                          (calc-any-hoc [:skills :science :pharmacy] 3),
-                                          (calc-hoc [:skills :medical :physician] 3)]}
-   :savoir-faire/mafia {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]} ;; TODO: others
+   :poisons {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6),
+                                           (calc-hoc [:skills :science :chemistry] 5),
+                                           (calc-any-hoc [:skills :science :pharmacy] 3),
+                                           (calc-hoc [:skills :medical :physician] 3)]}
+   :savoir-faire/mafia {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)]} ;; TODO: others
    :scrounging {:diff :e :attr :per :default [(calc-hoc [:attributes :per] 4)]}
-   :shadowing {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                            (calc-hoc [:skills :military :observation] 5),
-                                            (calc-hoc [:skills :spy :observation] 5),
-                                            (calc-hoc [:skills :criminal :observation] 5),
-                                            (calc-hoc [:skills :criminal :stealth] 4),
-                                            (calc-hoc [:skills :police :stealth] 4),
-                                            (calc-hoc [:skills :spy :stealth] 4)]}
-   :streetwise {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
-   :traps {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                        (calc-hoc [:skills :police :lockpicking] 3),
-                                        (calc-hoc [:skills :criminal :lockpicking] 3),
-                                        (calc-hoc [:skills :spy :lockpicking] 3),
-                                        (calc-hoc [:skills :technical :lockpicking] 3)]}
+   :shadowing {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                             (calc-hoc [:skills :military :observation] 5),
+                                             (calc-hoc [:skills :spy :observation] 5),
+                                             (calc-hoc [:skills :criminal :observation] 5),
+                                             (calc-hoc [:skills :criminal :stealth] 4),
+                                             (calc-hoc [:skills :police :stealth] 4),
+                                             (calc-hoc [:skills :spy :stealth] 4)]}
+   :streetwise {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5)]}
+   :traps {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                         (calc-hoc [:skills :police :lockpicking] 3),
+                                         (calc-hoc [:skills :criminal :lockpicking] 3),
+                                         (calc-hoc [:skills :spy :lockpicking] 3),
+                                         (calc-hoc [:skills :technical :lockpicking] 3)]}
    :urban-survival {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5)]}
-   :architecture {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                               (calc-hoc [:skills :invention :engineer/civil] 5)]}
-   :bioengineering/sp {:diff :h :attr :iq
+   :architecture {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                                (calc-hoc [:skills :invention :engineer/civil] 5)]}
+   :bioengineering/sp {:diff :h :attr :int
                        :specializations [:cloning :genetic-engineering :tissue-regeneration]
                        :default [(calc-any-hoc [:skills :science :biology] 5),
                                  (calc-any-hoc [:skills :plant :biology] 5)]}
-   :computer-programming {:diff :h :attr :iq}
-   :engineer/sp {:diff :h :attr :iq
+   :computer-programming {:diff :h :attr :int}
+   :engineer/sp {:diff :h :attr :int
                  :specializations [:artillery :civil :clockwork :combat :electrical :materials :microtechnology :mining :nanotechnology :parachronic :psychothronics :robotics :small-arms :temporal :transportation]}
-   :pharmacy/sp {:diff :h :attr :iq
-                 :default [(calc-hoc [:attributes :iq] 6)]
+   :pharmacy/sp {:diff :h :attr :int
+                 :default [(calc-hoc [:attributes :int] 6)]
                  :specializations [:herbal :synthetic]}
-   :weird-science {:diff :v :attr :iq}
+   :weird-science {:diff :v :attr :int}
 
    :autohypnosis {:diff :h :attr :will :default [(calc-hoc [:skills :esoteric :meditation] 4)]}
    :blind-fighting {:diff :v :attr :per}
    :body-control {:diff :v, :attr :ht, :prerequisites {:and [:advantages/trained-by-a-master :breath-control :meditation]}}
-   :breaking-blow {:diff :h, :attr :iq :prerequisites {:and [:advantages/trained-by-a-master]}}
+   :breaking-blow {:diff :h, :attr :int :prerequisites {:and [:advantages/trained-by-a-master]}}
    :captivate {:diff :h :attr :will}
    :dreaming {:diff :h :attr :will :default [(calc-hoc [:attributes :will] 6)]}
    :enthrallment/sp {:diff :h :attr :will
                      :specializations []}
-   :flying-leap {:diff :h, :attr :iq, :prerequisites {:and [{:or [:advantages/trained-by-a-master :advantages/weapon-master]}, :jumping, :power-blow]}}
+   :flying-leap {:diff :h, :attr :int, :prerequisites {:and [{:or [:advantages/trained-by-a-master :advantages/weapon-master]}, :jumping, :power-blow]}}
    :immovable-stance {:diff :h :attr :dex, :prerequisites {:and [:advantages/trained-by-a-master]}}
-   :invisibility-art {:diff :v :attr :iq, :prerequisites {:and [:advantages/trained-by-a-master, {:hypnotism 14}, {:stealth 14}]}}
+   :invisibility-art {:diff :v :attr :int, :prerequisites {:and [:advantages/trained-by-a-master, {:hypnotism 14}, {:stealth 14}]}}
    :kiai {:diff :h :attr :ht, :prerequisites {:or [:advantages/trained-by-a-master, :advantages/weapon-master]}}
    :light-walk {:diff :h :attr :dex :prerequisites {:and [:advantages/trained-by-a-master, {:acrobatics 14}, {:stealth 14}]}}
    :meditation {:diff :h :attr :will :default [(calc-hoc [:attributes :will] 6),
@@ -399,173 +399,173 @@
    :mental-strength {:diff :e :attr :will :prerequisites {:or [:advantages/trained-by-a-master :advantages/weapon-master]}}
    :mind-block {:diff :a :attr :will :default [(calc-hoc [:attributes :will] 5),
                                                (calc-hoc [:skills :esoteric :meditation] 5)]}
-   :musical-influence {:diff :v :attr :iq :prerequisites {:and [{:talents/musical-ability 1}, {:or [{:musical-instrument/sp 12} {:singing 12}]}]}}
+   :musical-influence {:diff :v :attr :int :prerequisites {:and [{:talents/musical-ability 1}, {:or [{:musical-instrument/sp 12} {:singing 12}]}]}}
    :persuade {:diff :h :attr :will}
    :power-blow {:diff :h :attr :will :prerequisites {:or [:advantages/trained-by-a-master :advantages/weapon-master]}}
-   :pressure-points {:diff :h :attr :iq :prerequisites {:or [:advantages/trained-by-a-master :advantages/weapon-master]}}
-   :pressure-secrets {:diff :v :attr :iq :prerequisites {:and [:advantages/trained-by-a-master {:pressure-points 16}]}}
+   :pressure-points {:diff :h :attr :int :prerequisites {:or [:advantages/trained-by-a-master :advantages/weapon-master]}}
+   :pressure-secrets {:diff :v :attr :int :prerequisites {:and [:advantages/trained-by-a-master {:pressure-points 16}]}}
    :push {:diff :h :attr :dex :prerequisites {:and [:advantages/trained-by-a-master]}}
    :suggest {:diff :h :attr :will}
    :sway-emotions {:diff :h :attr :will}
-   :zen-archery {:diff :v :attr :iq :prerequisites {:and [{:or [:advantages/trained-by-a-master :advantages/weapon-master]},
-                                                          {:or [:meditation {:advantages/heroic-archer 18}]}]}}
-   :zen-marksmanship {:diff :v :attr :iq}
+   :zen-archery {:diff :v :attr :int :prerequisites {:and [{:or [:advantages/trained-by-a-master :advantages/weapon-master]},
+                                                           {:or [:meditation {:advantages/heroic-archer 18}]}]}}
+   :zen-marksmanship {:diff :v :attr :int}
 
-   :area-knowledge/sp {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
-                                                    (calc-hoc [:skills :humanities :geography/same] 3)]
+   :area-knowledge/sp {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4),
+                                                     (calc-hoc [:skills :humanities :geography/same] 3)]
                        :specializations [:city :country :region :world]}
-   :computer-operation {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
-   :cooking {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5), (calc-hoc [:skills :everyman :housekeeping] 5)]}
-   :housekeeping {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :computer-operation {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)]}
+   :cooking {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5), (calc-hoc [:skills :everyman :housekeeping] 5)]}
+   :housekeeping {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)]}
    :knot-tying {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 4),
                                               (calc-hoc [:skills :transportation :seamanship] 4),
                                               (calc-hoc [:skills :outdoor :climbing] 4),
                                               (calc-hoc [:skills :criminal :climbing] 4),
                                               (calc-hoc [:skills :athletic :climbing] 4)]}
-   :savoir-faire/servant {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :savoir-faire/servant {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)]}
    :sewing {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 4)]}
    :typing {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 4)]}
-   :weather-sense {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
-   :current-affairs/sp {:diff :e :attr :iq
-                        :default [(calc-hoc [:attributes :iq] 4),
+   :weather-sense {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5)]}
+   :current-affairs/sp {:diff :e :attr :int
+                        :default [(calc-hoc [:attributes :int] 4),
                                   (calc-hoc [:skills :spy :research] 4)
                                   (calc-hoc [:skills :scholar :research] 4)]
                         :specializations [:business :celebrities :crime :entertainment :politics :sports :war]}
-   :games/sp {:diff :e :attr :iq
-              :default [(calc-hoc [:attributes :iq] 4)]
+   :games/sp {:diff :e :attr :int
+              :default [(calc-hoc [:attributes :int] 4)]
               :specializations [:cards :chess :dice :go :mahjong :poker :shogi]}
-   :heraldry {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                           (calc-hoc [:skills :business :savoir-faire/high-society] 3),
-                                           (calc-hoc [:skills :knowledge :savoir-faire/high-society] 3)
-                                           (calc-hoc [:skills :social :savoir-faire/high-society] 3)]}
-   :hidden-lore/sp {:diff :a :attr :iq
+   :heraldry {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                            (calc-hoc [:skills :business :savoir-faire/high-society] 3),
+                                            (calc-hoc [:skills :knowledge :savoir-faire/high-society] 3)
+                                            (calc-hoc [:skills :social :savoir-faire/high-society] 3)]}
+   :hidden-lore/sp {:diff :a :attr :int
                     :specializations [:conspiracies :demon-lore :faerie-lore :spirit-lore]}
-   :hobby-skill/sp {:diff :e :attr [:iq :dex]
-                    :default [(calc-hoc [:attributes :iq] 4), (calc-hoc [:attributes :dex] 4)]
+   :hobby-skill/sp {:diff :e :attr [:int :dex]
+                    :default [(calc-hoc [:attributes :int] 4), (calc-hoc [:attributes :dex] 4)]
                     :specializations []}
-   :professional-skill/sp {:diff :e :attr [:iq :dex]
+   :professional-skill/sp {:diff :e :attr [:int :dex]
                            :specializations [:bartender :cooper :prostitute :distiller :dyer :florist :glassblower :sonar-imaging :tanning :weaver]}
-   :savoir-faire/sp {:diff :e :attr :iq
-                     :default [(calc-hoc [:attributes :iq] 4)]
+   :savoir-faire/sp {:diff :e :attr :int
+                     :default [(calc-hoc [:attributes :int] 4)]
                      :specializations [:dojo :high-society :military :mafia :police :servant]}
 
-   :diagnosis {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
-                                            (calc-hoc [:skills :medical :first-aid] 8),
-                                            (calc-hoc [:skills :medical :physician] 4),
-                                            (calc-hoc [:skills :medical :veterinary] 5),
-                                            (calc-hoc [:skills :animal :veterinary] 5)]}
-   :electronics-operation/medical {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                                                (calc-hoc [:skills :invention :engineer/electrical] 3),
-                                                                (calc-hoc [:skills :invention :engineer/electronics] 5),
-                                                                (calc-hoc [:skills :repair :electronics-repair/medical] 5)]}
+   :diagnosis {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6),
+                                             (calc-hoc [:skills :medical :first-aid] 8),
+                                             (calc-hoc [:skills :medical :physician] 4),
+                                             (calc-hoc [:skills :medical :veterinary] 5),
+                                             (calc-hoc [:skills :animal :veterinary] 5)]}
+   :electronics-operation/medical {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                                                 (calc-hoc [:skills :invention :engineer/electrical] 3),
+                                                                 (calc-hoc [:skills :invention :engineer/electronics] 5),
+                                                                 (calc-hoc [:skills :repair :electronics-repair/medical] 5)]}
    :esoteric-medicine {:diff :h :attr :per :default [(calc-hoc [:attributes :per] 6)]}
-   :expert-skill/epidemiology {:diff :h :attr :iq}
-   :first-aid {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
-                                            (calc-hoc [:skills :medical :esoteric-medicine] 0),
-                                            (calc-hoc [:skills :medical :physician] 0),
-                                            (calc-hoc [:skills :medical :veterinary] 4)]}
-   :hypnotism {:diff :h :attr :iq}
-   :physician {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 7),
-                                            (calc-hoc [:skills :medical :first-aid] 11),
-                                            (calc-hoc [:skills :medical :veterinary] 5),
-                                            (calc-hoc [:skills :animal :veterinary] 5)]}
-   :psychology {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
-                                             (calc-hoc [:skills :humanities :sociology] 4)]}
-   :surgery {:diff :v :attr :iq :default [(calc-hoc [:skills :medical :first-aid] 12),
-                                          (calc-hoc [:skills :medical :physician] 5),
-                                          (calc-hoc [:skills :science :physiology] 8),
-                                          (calc-hoc [:skills :medical :veterinary] 5),
-                                          (calc-hoc [:skills :animal :veterinary] 5)]
+   :expert-skill/epidemiology {:diff :h :attr :int}
+   :first-aid {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4),
+                                             (calc-hoc [:skills :medical :esoteric-medicine] 0),
+                                             (calc-hoc [:skills :medical :physician] 0),
+                                             (calc-hoc [:skills :medical :veterinary] 4)]}
+   :hypnotism {:diff :h :attr :int}
+   :physician {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 7),
+                                             (calc-hoc [:skills :medical :first-aid] 11),
+                                             (calc-hoc [:skills :medical :veterinary] 5),
+                                             (calc-hoc [:skills :animal :veterinary] 5)]}
+   :psychology {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6),
+                                              (calc-hoc [:skills :humanities :sociology] 4)]}
+   :surgery {:diff :v :attr :int :default [(calc-hoc [:skills :medical :first-aid] 12),
+                                           (calc-hoc [:skills :medical :physician] 5),
+                                           (calc-hoc [:skills :science :physiology] 8),
+                                           (calc-hoc [:skills :medical :veterinary] 5),
+                                           (calc-hoc [:skills :animal :veterinary] 5)]
              :prerequisites {:or [:first-aid :physician]}}
-   :armoury/sp {:diff :a :attr :iq
-                :default [(calc-hoc [:attributes :iq] 5),
+   :armoury/sp {:diff :a :attr :int
+                :default [(calc-hoc [:attributes :int] 5),
                           (calc-hoc [:skills :invention :engineer/same] 3)]
                 :specializations [:battlesuits :body-armor :force-shields :heavy-weapons :melee-weapons :missile-weapons :small-arms :vehicles]}
-   :brain-hacking {:diff :h :attr :iq} ;; TODO: special
-   :brainwashing {:diff :h :attr :iq} ;; TODO: special
-   :camouflage {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)
-                                             (calc-hoc [:skills :outdoor :survival] 2)]}
-   :cryptography {:diff :h :attr :iq :default [(calc-hoc [:attributes :science :mathematics/cryptology] 5)]}
-   :electronics-operation/electronic-warfare {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                                                           (calc-hoc [:skills :invention :engineer/electrical] 3),
-                                                                           (calc-hoc [:skills :invention :engineer/electronics] 5),
-                                                                           (calc-hoc [:skills :spy :electronics-repair/electronic-warfare] 3),
-                                                                           (calc-hoc [:skills :repair :electronics-repair/electronic-warfare] 3),
-                                                                           (calc-hoc [:skills :technical :electronics-repair/electronic-warfare] 3),
-                                                                           (calc-hoc [:skills :military :electronics-repair/electronic-warfare] 3)]}
-   :expert-skill/military-science {:diff :h :attr :iq}
-   :explosives/sp {:diff :a :attr :iq
+   :brain-hacking {:diff :h :attr :int} ;; TODO: special
+   :brainwashing {:diff :h :attr :int} ;; TODO: special
+   :camouflage {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)
+                                              (calc-hoc [:skills :outdoor :survival] 2)]}
+   :cryptography {:diff :h :attr :int :default [(calc-hoc [:attributes :science :mathematics/cryptology] 5)]}
+   :electronics-operation/electronic-warfare {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                                                            (calc-hoc [:skills :invention :engineer/electrical] 3),
+                                                                            (calc-hoc [:skills :invention :engineer/electronics] 5),
+                                                                            (calc-hoc [:skills :spy :electronics-repair/electronic-warfare] 3),
+                                                                            (calc-hoc [:skills :repair :electronics-repair/electronic-warfare] 3),
+                                                                            (calc-hoc [:skills :technical :electronics-repair/electronic-warfare] 3),
+                                                                            (calc-hoc [:skills :military :electronics-repair/electronic-warfare] 3)]}
+   :expert-skill/military-science {:diff :h :attr :int}
+   :explosives/sp {:diff :a :attr :int
                    :specializations [:demolition :explosive-ordnance-disposal :fireworks :nuclear-ordnance-disposal :underwater-demolition]
-                   :default [(calc-hoc [:attributes :iq] 5)]}
-   :forward-observer {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                                   (calc-hoc [:skills :combat-ranged :artillery] 5)]}
-   :intelligence-analysis {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
-                                                        (calc-any-hoc [:skills :military :strategy] 6)]}
-   :interrogation {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                                (calc-hoc [:skills :police :intimidation] 3),
-                                                (calc-hoc [:skills :social :intimidation] 3),
-                                                (calc-hoc [:skills :criminal :intimidation] 3),
-                                                (calc-hoc [:skills :humanities :psychology] 4),
-                                                (calc-hoc [:skills :medical :psychology] 4)]}
-   :leadership {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+                   :default [(calc-hoc [:attributes :int] 5)]}
+   :forward-observer {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                                    (calc-hoc [:skills :combat-ranged :artillery] 5)]}
+   :intelligence-analysis {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6),
+                                                         (calc-any-hoc [:skills :military :strategy] 6)]}
+   :interrogation {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                                 (calc-hoc [:skills :police :intimidation] 3),
+                                                 (calc-hoc [:skills :social :intimidation] 3),
+                                                 (calc-hoc [:skills :criminal :intimidation] 3),
+                                                 (calc-hoc [:skills :humanities :psychology] 4),
+                                                 (calc-hoc [:skills :medical :psychology] 4)]}
+   :leadership {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5)]}
    :nbc-suit {:diff :a :attr :dex :default [(calc-hoc [:skills :technical :battlesuit] 2),
                                             (calc-hoc [:skills :transportation :battlesuit] 2),
                                             (calc-hoc [:skills :technical :diving-suit] 4),
                                             (calc-hoc [:skills :technical :vacc-suit] 2)]}
-   :propaganda {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                             (calc-hoc [:skills :social :merchant] 5),
-                                             (calc-hoc [:skills :business :merchant] 5),
-                                             (calc-hoc [:skills :humanities :psychology] 4),
-                                             (calc-hoc [:skills :medical :psychology] 4)]}
-   :savoir-faire/military {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]} ;; TODO: and others
-   :soldier {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
-   :strategy/sp {:diff :h :attr :iq
+   :propaganda {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                              (calc-hoc [:skills :social :merchant] 5),
+                                              (calc-hoc [:skills :business :merchant] 5),
+                                              (calc-hoc [:skills :humanities :psychology] 4),
+                                              (calc-hoc [:skills :medical :psychology] 4)]}
+   :savoir-faire/military {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)]} ;; TODO: and others
+   :soldier {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5)]}
+   :strategy/sp {:diff :h :attr :int
                  :specializations [:naval :land :air :space :police :security]
-                 :default [(calc-hoc [:attributes :iq] 6),
+                 :default [(calc-hoc [:attributes :int] 6),
                            (calc-hoc [:skills :military :intelligence-analysis] 6),
                            (calc-hoc [:skills :spy :intelligence-analysis] 6),
                            (calc-hoc [:skills :military :tactics] 6),
                            (calc-hoc [:skills :police :tactics] 6)]}
-   :tactics {:diff :h :attr :iq
-             :default [(calc-hoc [:attributes :iq] 6),
+   :tactics {:diff :h :attr :int
+             :default [(calc-hoc [:attributes :int] 6),
                        (calc-any-hoc [:skills :military :strategy] 6)]}
-   :alchemy {:diff :v :attr :iq}
-   :astronomy {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]
+   :alchemy {:diff :v :attr :int}
+   :astronomy {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6)]
                :prerequisites {:and [:mathematics/sp]}}
-   :biology/sp {:diff :v :attr :iq
+   :biology/sp {:diff :v :attr :int
                 :specializations [:terrestrial]
-                :default [(calc-hoc [:attributes :iq] 6),
+                :default [(calc-hoc [:attributes :int] 6),
                           (calc-hoc [:skills :science :naturalist] 6),
                           (calc-hoc [:skills :outdoor :naturalist] 6),
                           (calc-hoc [:skills :plant :naturalist] 6),
                           (calc-hoc [:skills :animal :naturalist] 6)]}
-   :chemistry {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
-                                            (calc-hoc [:skills :science :alchemy] 3)]}
-   :expert-skill/hydrology {:diff :h :attr :iq}
-   :expert-skill/natural-philosofy {:diff :h :attr :iq}
-   :geology/sp {:diff :h :attr :iq
+   :chemistry {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6),
+                                             (calc-hoc [:skills :science :alchemy] 3)]}
+   :expert-skill/hydrology {:diff :h :attr :int}
+   :expert-skill/natural-philosofy {:diff :h :attr :int}
+   :geology/sp {:diff :h :attr :int
                 :specializations [:terrestrial :ice-giant :gas-giant :asteroid]
-                :default [(calc-hoc [:attributes :iq] 6),
+                :default [(calc-hoc [:attributes :int] 6),
                           (calc-hoc [:skills :humanities :geography/physical] 4),
                           (calc-hoc [:skills :outdoor :prospecting] 5)]}
-   :mathematics/sp {:diff :h :attr :iq
+   :mathematics/sp {:diff :h :attr :int
                     :specializations [:algebra :arithmetic :calculus :geometry :statistics :surveying :trigonometry]
-                    :default [(calc-hoc [:attributes :iq] 6)]}
-   :metallurgy {:diff :h :attr :iq :default [(calc-hoc [:skills :science :chemistry] 5),
-                                             (calc-hoc [:skills :craft :jeweller] 8),
-                                             (calc-any-hoc [:skills :craft :smith] 8)]}
-   :meteorology/sp {:diff :a :attr :iq
+                    :default [(calc-hoc [:attributes :int] 6)]}
+   :metallurgy {:diff :h :attr :int :default [(calc-hoc [:skills :science :chemistry] 5),
+                                              (calc-hoc [:skills :craft :jeweller] 8),
+                                              (calc-any-hoc [:skills :craft :smith] 8)]}
+   :meteorology/sp {:diff :a :attr :int
                     :specializations [:terrestrial :ice-giant :gas-giant :asteroid]
-                    :default [(calc-hoc [:attributes :iq] 5)]}
-   :paleontology/sp {:diff :h :attr :iq
+                    :default [(calc-hoc [:attributes :int] 5)]}
+   :paleontology/sp {:diff :h :attr :int
                      :specializations [:micropaleontology :paleoanthropology :paleobotany :paleozoology]
                      :default [(calc-any-hoc [:skills :science :biology] 4),
                                (calc-any-hoc [:skills :plant :biology] 4)]}
-   :physics {:diff :v :attr :iq :default [(calc-hoc [:attributes :iq] 6)]
+   :physics {:diff :v :attr :int :default [(calc-hoc [:attributes :int] 6)]
              :prerequisites {:and [:mathematics/sp]}}
-   :physiology/sp {:diff :h :attr :iq
+   :physiology/sp {:diff :h :attr :int
                    :specializations [:terrestrial :demon :faerie :undead :elemental :cyborg :mutant :psionic :spiritual :astral :ethereal :celestial]
-                   :default [(calc-hoc [:attributes :iq] 6),
+                   :default [(calc-hoc [:attributes :int] 6),
                              (calc-hoc [:skills :medical :diagnosis] 5),
                              (calc-hoc [:skills :medical :physician] 5),
                              (calc-hoc [:skills :medical :surgery] 5)]}
@@ -573,35 +573,35 @@
                                              (calc-any-hoc [:skills :occult :religious-ritual] 3),
                                              (calc-any-hoc [:skills :occult :religious-magic] 3),
                                              (calc-any-hoc [:skills :humanities :theology] 3)]}
-   :expert-skill/psionics {:diff :h :attr :iq}
-   :herb-lore {:diff :v :attr :iq, :prerequisites {:and [:naturalist]}}
-   :hidden-lore/demon-lore {:diff :a :attr :iq}
-   :hidden-lore/faerie-lore {:diff :a :attr :iq}
-   :hidden-lore/spirit-lore {:diff :a :attr :iq}
-   :occultism {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
-   :religious-ritual/sp {:diff :h :attr :iq
+   :expert-skill/psionics {:diff :h :attr :int}
+   :herb-lore {:diff :v :attr :int, :prerequisites {:and [:naturalist]}}
+   :hidden-lore/demon-lore {:diff :a :attr :int}
+   :hidden-lore/faerie-lore {:diff :a :attr :int}
+   :hidden-lore/spirit-lore {:diff :a :attr :int}
+   :occultism {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5)]}
+   :religious-ritual/sp {:diff :h :attr :int
                          :specializations [:christian :islamic :jewish :hindu :buddhist :shinto :taoist :zoroastrian :pagan :druid :shaman]
                          :default [(calc-hoc [:skills :occult :religious-magic/same] 6)
                                    (calc-hoc [:skills :humanities :theology/same] 4)]}
-   :ritual-magic/sp {:diff :v :attr :iq
+   :ritual-magic/sp {:diff :v :attr :int
                      :specializations [:christian :islamic :jewish :hindu :buddhist :shinto :taoist :zoroastrian :pagan :druid :shaman]
                      :default [(calc-hoc [:skills :occult :religious-ritual/same] 6)]}
-   :symbol-drawing/sp {:diff :h :attr :iq
+   :symbol-drawing/sp {:diff :h :attr :int
                        :specializations []
                        :default []}
-   :thaumatology {:diff :v :attr :iq :default [(calc-hoc [:attributes :iq] 7)]}
-   :cartography {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)
-                                              (calc-any-hoc [:skills :humanities :geography] 2),
-                                              (calc-hoc [:skills :science :mathematics/surveying] 2),
-                                              (calc-hoc [:skills :technical :mathematics/surveying] 2),
-                                              (calc-any-hoc [:skills :outdoor :navigation] 4),
-                                              (calc-any-hoc [:skills :technical :navigation] 4)]}
+   :thaumatology {:diff :v :attr :int :default [(calc-hoc [:attributes :int] 7)]}
+   :cartography {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5)
+                                               (calc-any-hoc [:skills :humanities :geography] 2),
+                                               (calc-hoc [:skills :science :mathematics/surveying] 2),
+                                               (calc-hoc [:skills :technical :mathematics/surveying] 2),
+                                               (calc-any-hoc [:skills :outdoor :navigation] 4),
+                                               (calc-any-hoc [:skills :technical :navigation] 4)]}
    :fishing {:diff :e :attr :per :default [(calc-hoc [:attributes :per] 4)]}
-   :navigation/sp {:diff :a :attr :iq
+   :navigation/sp {:diff :a :attr :int
                    :specializations [:sea :air :land :space :hyperspace]
                    :default []}
-   :prospecting {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                              (calc-any-hoc [:skills :science :geology] 4)]}
+   :prospecting {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                               (calc-any-hoc [:skills :science :geology] 4)]}
    :skating {:diff :h :attr :ht :default [(calc-hoc [:attributes :ht] 6)]}
    :skiing {:diff :h :attr :ht :default [(calc-hoc [:attributes :ht] 6)]}
    :survival/sp {:diff :a :attr :per
@@ -614,52 +614,52 @@
                                             (calc-hoc [:skills :science :naturalist] 5),
                                             (calc-hoc [:skills :outdoor :naturalist] 5)
                                             (calc-hoc [:skills :animal :naturalist] 5)]}
-   :farming {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                          (calc-any-hoc [:skills :plant :biology] 5),
-                                          (calc-any-hoc [:skills :science :biology] 5),
-                                          (calc-hoc [:skills :plant :gardening] 3)]}
-   :gardening {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
-                                            (calc-hoc [:skills :plant :farming] 3)]}
-   :paleontology/paleobotany {:diff :h :attr :iq :default [(calc-any-hoc [:skills :plant :biology] 4),
-                                                           (calc-any-hoc [:skills :science :biology] 4)]}
-   :pharmacy/herbal {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
+   :farming {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                           (calc-any-hoc [:skills :plant :biology] 5),
+                                           (calc-any-hoc [:skills :science :biology] 5),
+                                           (calc-hoc [:skills :plant :gardening] 3)]}
+   :gardening {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4),
+                                             (calc-hoc [:skills :plant :farming] 3)]}
+   :paleontology/paleobotany {:diff :h :attr :int :default [(calc-any-hoc [:skills :plant :biology] 4),
+                                                            (calc-any-hoc [:skills :science :biology] 4)]}
+   :pharmacy/herbal {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6)]}
 
    :body-language {:diff :a :attr :per :default [(calc-hoc [:skills :police :detect-lies] 4),
                                                  (calc-hoc [:skills :social :detect-lies] 4),
                                                  (calc-hoc [:skills :spy :detect-lies] 4),
                                                  (calc-hoc [:skills :humanities :psychology] 4),
                                                  (calc-hoc [:skills :medical :psychology] 4)]}
-   :criminology {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                              (calc-hoc [:skills :humanities :psychology] 4),
-                                              (calc-hoc [:skills :medical :psychology] 4)]}
+   :criminology {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                               (calc-hoc [:skills :humanities :psychology] 4),
+                                               (calc-hoc [:skills :medical :psychology] 4)]}
    :detect-lies {:diff :h :attr :per :default [(calc-hoc [:attributes :per] 6),
                                                (calc-hoc [:skills :police :body-language] 4),
                                                (calc-hoc [:skills :social :body-language] 4),
                                                (calc-hoc [:skills :spy :body-language] 4),
                                                (calc-hoc [:skills :humanities :psychology] 4),
                                                (calc-hoc [:skills :medical :psychology] 4)]}
-   :electronics-operation/surveillance {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                                                     (calc-hoc [:skills :invention :engineer/electrical] 3),
-                                                                     (calc-hoc [:skills :repair :electronics-repair/surveillance] 5),
-                                                                     (calc-hoc [:skills :invention :engineer/electronics] 5)]}
-   :explosives/explosive-ordnance-disposal {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
-   :forensics {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
-                                            (calc-hoc [:skills :police :criminology] 4),
-                                            (calc-hoc [:skills :humanities :criminology] 4)]}
-   :law/sp {:diff :h :attr :iq
+   :electronics-operation/surveillance {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                                                      (calc-hoc [:skills :invention :engineer/electrical] 3),
+                                                                      (calc-hoc [:skills :repair :electronics-repair/surveillance] 5),
+                                                                      (calc-hoc [:skills :invention :engineer/electronics] 5)]}
+   :explosives/explosive-ordnance-disposal {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5)]}
+   :forensics {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6),
+                                             (calc-hoc [:skills :police :criminology] 4),
+                                             (calc-hoc [:skills :humanities :criminology] 4)]}
+   :law/sp {:diff :h :attr :int
             :specializations [:criminal :corporate :family :international :military :tax :tort :traffic]
-            :default [(calc-hoc [:attributes :iq] 6)]}
-   :savoir-faire/police {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]} ;; TODO others
+            :default [(calc-hoc [:attributes :int] 6)]}
+   :savoir-faire/police {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)]} ;; TODO others
    :search {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5),
                                           (calc-hoc [:skills :police :criminology] 5),
                                           (calc-hoc [:skills :humanities :criminology] 5)]}
-   :stealth {:diff :a :attrb :dex :default [(calc-hoc [:attributes :iq] 5),
+   :stealth {:diff :a :attrb :dex :default [(calc-hoc [:attributes :int] 5),
                                             (calc-hoc [:attributes :dex] 5)]}
-   :electrician {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                              (calc-hoc [:skills :invention :engineer/electrical] 3)]}
-   :electronics-repair/sp {:diff :a :attr :iq
+   :electrician {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                               (calc-hoc [:skills :invention :engineer/electrical] 3)]}
+   :electronics-repair/sp {:diff :a :attr :int
                            :specializations [:audio :communications :computers :control-systems :electronic-warfare :medical :military :power :sensors :surveillance :video :weapons]
-                           :default [(calc-hoc [:attributes :iq] 5),
+                           :default [(calc-hoc [:attributes :int] 5),
                                      (calc-hoc [:skills :arts :electronics-operation/same] 3),
                                      (calc-hoc [:skills :spy :electronics-operation/same] 3),
                                      (calc-hoc [:skills :technical :electronics-operation/same] 3),
@@ -671,71 +671,71 @@
    :flint-knapping {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 2),
                                                   (calc-hoc [:skills :repair :armoury] 1),
                                                   (calc-hoc [:skills :humanities :anthropology] 4)]}
-   :machinist {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                            (calc-any-hoc [:skills :repair :mechanic] 5)]}
-   :mechanic/sp {:diff :a :attr :iq
+   :machinist {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                             (calc-any-hoc [:skills :repair :mechanic] 5)]}
+   :mechanic/sp {:diff :a :attr :int
                  :specializations [:machine :motive-system :power-plant :vehicle]
-                 :default [(calc-hoc [:attributes :iq] 5),
+                 :default [(calc-hoc [:attributes :int] 5),
                            (calc-hoc [:skills :invention :engineer/same] 4)
                            (calc-hoc [:skills :repair :machinist] 5)]}
-   :expert-skill/sp {:diff :h :attr :iq
+   :expert-skill/sp {:diff :h :attr :int
                      :specializations [:computer-security :conspiracy-theory :egyptology :epidemiology :hydrology :military-science :natural-philosophy :political-science :psionics :thanatology :xenology]}
-   :literature {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
-   :research {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                           (calc-hoc [:skills :scholar :writing] 3),
-                                           (calc-hoc [:skills :arts :writing] 3)]}
-   :speed-reading {:diff :a :attr :iq}
-   :teaching {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
-   :acting {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                         (calc-hoc [:skills :arts :performance] 2),
-                                         (calc-hoc [:skills :business :public-speaking] 5),
-                                         (calc-hoc [:skills :scholar :public-speaking] 5),
-                                         (calc-hoc [:skills :social :public-speaking] 5)]}
+   :literature {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6)]}
+   :research {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                            (calc-hoc [:skills :scholar :writing] 3),
+                                            (calc-hoc [:skills :arts :writing] 3)]}
+   :speed-reading {:diff :a :attr :int}
+   :teaching {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5)]}
+   :acting {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
+                                          (calc-hoc [:skills :arts :performance] 2),
+                                          (calc-hoc [:skills :business :public-speaking] 5),
+                                          (calc-hoc [:skills :scholar :public-speaking] 5),
+                                          (calc-hoc [:skills :social :public-speaking] 5)]}
    :erotic-art {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5),
                                               (calc-hoc [:skills :athletics :accrobatics] 5)]}
-   :fortune-telling/sp {:diff :a :attr :iq
+   :fortune-telling/sp {:diff :a :attr :int
                         :specializations [:astrology :cartomancy :crystal-gazing :dream-interpretation :numerology :palmistry :phrenology :psychometry :rune-casting :tarot-reading :tea-leaf-reading :tasseography :yarrow-sticks]
-                        :default [(calc-hoc [:attributes :iq] 5),
+                        :default [(calc-hoc [:attributes :int] 5),
                                   (calc-hoc [:skills :social :fast-talk] 3),
                                   (calc-hoc [:skills :spy :fast-talk] 3),
                                   (calc-hoc [:skills :criminal :fast-talk] 3),
                                   (calc-hoc [:skills :occultist :occultism] 3)]}
-   :gesture {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :gesture {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)]}
    :sex-appeal {:diff :a :attr :ht :default [(calc-hoc [:attributes :ht] 3)]}
-   :anthropology/sp {:diff :h :attr :iq
+   :anthropology/sp {:diff :h :attr :int
                      :specializations [:african-american :african :american :ancient :asian :european :latin-american :middle-eastern :native-american :prehistoric :contemporary-art :asian-art :design-history :natural-history :us-postal-service]
-                     :default [(calc-hoc [:attributes :iq] 6),
+                     :default [(calc-hoc [:attributes :int] 6),
                                (calc-hoc [:skills :humanities :sociology] 3),
                                (calc-hoc [:skills :sciences :paleontology/paleoanthropology] 2),
                                (calc-hoc [:skills :humanities :paleontology/paleoanthropology] 2)]}
-   :archaeology {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
-   :expert-skill/egyptology {:diff :h :attr :iq}
-   :expert-skill/political-science {:diff :h :attr :iq}
-   :expert-skill/thanatology {:diff :h :attr :iq}
-   :expert-skill/xenology {:diff :h :attr :iq}
-   :geography/sp {:diff :h :attr :iq
+   :archaeology {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6)]}
+   :expert-skill/egyptology {:diff :h :attr :int}
+   :expert-skill/political-science {:diff :h :attr :int}
+   :expert-skill/thanatology {:diff :h :attr :int}
+   :expert-skill/xenology {:diff :h :attr :int}
+   :geography/sp {:diff :h :attr :int
                   :specializations [:physical :political :regional]
-                  :default [(calc-hoc [:attributes :iq] 6)]}
-   :history/sp {:diff :h :attr :iq
+                  :default [(calc-hoc [:attributes :int] 6)]}
+   :history/sp {:diff :h :attr :int
                 :specializations [:ancient :medieval :modern :contemporary :american :asian :european :latin-american :middle-eastern :native-american :prehistoric]
-                :default [(calc-hoc [:attributes :iq] 6)]}
-   :linguistics {:diff :h :attr :iq}
-   :paleontology/paleoanthropology {:diff :h :attr :iq :default [(calc-any-hoc [:skills :science :biology] 3),
-                                                                 (calc-any-hoc [:skills :plant :biology] 3)]}
-   :philosophy/sp {:diff :h :attr :iq
+                :default [(calc-hoc [:attributes :int] 6)]}
+   :linguistics {:diff :h :attr :int}
+   :paleontology/paleoanthropology {:diff :h :attr :int :default [(calc-any-hoc [:skills :science :biology] 3),
+                                                                  (calc-any-hoc [:skills :plant :biology] 3)]}
+   :philosophy/sp {:diff :h :attr :int
                    :specializations [:aesthetics :epistemology :ethics :logic :metaphysics :philosophy-of-science :political-philosophy :social-philosophy]
-                   :default [(calc-hoc [:attributes :iq] 6)]}
-   :sociology {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6),
-                                            (calc-hoc [:skills :humanities :anthropology] 3),
-                                            (calc-hoc [:skills :humanities :psychology] 4),
-                                            (calc-hoc [:skills :medical :psychology] 4)]}
-   :theology/sp {:diff :h :attr :iq
+                   :default [(calc-hoc [:attributes :int] 6)]}
+   :sociology {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6),
+                                             (calc-hoc [:skills :humanities :anthropology] 3),
+                                             (calc-hoc [:skills :humanities :psychology] 4),
+                                             (calc-hoc [:skills :medical :psychology] 4)]}
+   :theology/sp {:diff :h :attr :int
                  :specializations [:christian :islamic :jewish :hindu :buddhist :shinto :taoist :zoroastrian :pagan :druid :shaman]
-                 :default [(calc-hoc [:attributes :iq] 6),
+                 :default [(calc-hoc [:attributes :int] 6),
                            (calc-hoc [:skills :occultist :religious-ritual/same] 4)]}
-   :expert-skill/computer-security {:diff :h :attr :iq}
+   :expert-skill/computer-security {:diff :h :attr :int}
    :lip-reading {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 10)]}
-   :smuggling {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
+   :smuggling {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5)]}
    :battlesuit {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5),
                                               (calc-hoc [:skills :technical :diving-suit] 4),
                                               (calc-hoc [:skills :technical :vacc-suit] 2),
@@ -745,36 +745,36 @@
                                                (calc-hoc [:skills :technical :scuba] 2),
                                                (calc-hoc [:skills :technical :vacc-suit] 4),
                                                (calc-hoc [:skills :technical :nbc-suit] 4)]}
-   :freight-handling {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5)]}
-   :hazardous-materials/sp {:diff :a :attr :iq
+   :freight-handling {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5)]}
+   :hazardous-materials/sp {:diff :a :attr :int
                             :specializations [:biological :chemical :nuclear :radiological :toxicological :explosives :flammables :gases :liquids :solids :corrosives :oxidizers :poisons]
-                            :default [(calc-hoc [:attributes :iq] 5)]}
-   :mathematics/surveying {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
+                            :default [(calc-hoc [:attributes :int] 5)]}
+   :mathematics/surveying {:diff :h :attr :int :default [(calc-hoc [:attributes :int] 6)]}
    :vacc-suit {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5),
                                              (calc-hoc [:skills :technical :battlesuit] 2),
                                              (calc-hoc [:skills :technical :diving-suit] 4),
                                              (calc-hoc [:skills :technical :nbc-suit] 2)]}
 
-   :airshipman {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+   :airshipman {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)]}
    :boating/sp {:diff :a :attr :dex
                 :specializations [:large-powerboat :motorboat :sailboat :unpowered]
                 :default [(calc-hoc [:attributes :dex] 5),
-                          (calc-hoc [:attributes :iq] 5)]}
-   :crewman {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+                          (calc-hoc [:attributes :int] 5)]}
+   :crewman {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)]}
    :driving/sp {:diff :a :attr :dex
                 :specializations [:automobile :construction-equipment :half-track :heavy-wheeled :hovercraft :locomotive :mecha :motorcycle :tracked]
                 :default [(calc-hoc [:attributes :dex] 5),
-                          (calc-hoc [:attributes :iq] 5)]}
+                          (calc-hoc [:attributes :int] 5)]}
    :piloting/sp {:diff :a :attr :dex
                  :specializations [:aerospace :autogyro :contragravity :flight-pack :glider :heavy-airplane :helicopter :spacecraft :lightsail :ornithopter :vertol]
                  :default [(calc-hoc [:attributes :dex] 6)]}
-   :seamanship {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
-   :shiphandling/sp {:diff :h :attr :iq
+   :seamanship {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)]}
+   :shiphandling/sp {:diff :h :attr :int
                      :specializations [:airship :ship :spaceship :starship :submarine]
-                     :default [(calc-hoc [:attributes :iq] 6)]}
-   :spacer {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}
+                     :default [(calc-hoc [:attributes :int] 6)]}
+   :spacer {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)]}
    :submarine {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6)]}
-   :submariner {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4)]}})
+   :submariner {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4)]}})
 
 ;; TODO: modifiers, like, riding (+5 if the animal knows and likes you)
 ;; TODO: techlevel
