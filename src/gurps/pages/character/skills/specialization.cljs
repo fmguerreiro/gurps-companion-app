@@ -1,5 +1,6 @@
 (ns gurps.pages.character.skills.specialization
   (:require [cljs-bean.core :refer [->clj]]
+            [clojure.string :as str]
             [reagent.core :as r]
             [re-frame.core :as rf]
             [gurps.widgets.base :refer [view text button]]
@@ -105,6 +106,7 @@
 (defn character-add-skill-spec-page
   [props]
   (let [skill-key       (-> props ->clj :route :params :id str->key)
+        skill-name      (if (some? (namespace skill-key)) (namespace skill-key) (name skill-key))
         skill           (skill-key skills)
         specializations (:specializations skill)
         default-lvls    (some-> (rf/subscribe [:skills/defaults]) deref)
@@ -112,10 +114,15 @@
         navigation      (rnn/useNavigation)]
     [:> view {:style (tw "p-2 bg-white flex flex-col gap-2 flex-grow")}
      ;; description
-     [spec-header
-      (i18n/label :t/description)]
+     [spec-header (i18n/label :t/description)]
      [:> text
-      (i18n/label (keyword :t (str "skill-description-" (symbol (if (some? (namespace skill-key)) (namespace skill-key) (name skill-key))))))]
+      (i18n/label (keyword :t (str "skill-description-" (symbol skill-name))))]
+
+     ;; modifiers
+     (when (not (str/starts-with? (i18n/label (keyword :t (str "skill-modifiers-" (symbol skill-name)))) "[missing"))
+       [:> view {:style (tw "flex flex-col gap-1")}
+        [:> text {:style (tw "font-bold")} (i18n/label :t/modifiers)]
+        [:> text (i18n/label (keyword :t (str "skill-modifiers-" (symbol skill-name))))]])
 
      (if (not (= "sp" (name skill-key)))
        ;; pure skill - no specialization
@@ -143,13 +150,14 @@
                              (when (not disabled?) [:> text {:style (tw "flex-1 text-right")} "+"])]])))))]]))
 
      ;; dependencies TODO
-     [:> view {:style (tw "flex flex-col gap-2 mt-2")}
-      [:> text {:style (tw "font-bold")} (i18n/label :t/dependencies)]
+     (when (:dependencies skill)
+       [:> view {:style (tw "flex flex-col gap-2 mt-2")}
+        [:> text {:style (tw "font-bold")} (i18n/label :t/dependencies)]
 
-      (map-indexed (fn [i [dep-key]]
-                     ^{:key (str "dependency-" i)}
-                     [:> text dep-key])
-                   (:dependencies skill))]]))
+        (map-indexed (fn [i [dep-key]]
+                       ^{:key (str "dependency-" i)}
+                       [:> text dep-key])
+                     (:dependencies skill))])]))
 
 (defn- ->db
   [skill-key spec]

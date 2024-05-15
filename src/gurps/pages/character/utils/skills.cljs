@@ -75,7 +75,9 @@
    :fire-eating {:diff :a :attr :dex}
    :group-performance/sp {:diff :a :attr :iq
                           :specializations [:choreography :conducting :directing :fight-choreography]
-                          :default [(calc-hoc [:attributes :iq] 5)]}
+                          :default [(calc-hoc [:attributes :iq] 5)]
+                          :prerequisites {:and [{:or [:diplomacy :intimidation :leadership]} {:or [:choreography :conducting :directing :fight-choreography]}]}}
+
    :makeup {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
                                          (calc-hoc [:skills :criminal :disguise] 2)]}
    :mimicry/sp {:diff :h :attr :iq
@@ -119,7 +121,8 @@
    :parachuting {:diff :e :attr :dex :default [(calc-hoc [:attributes :dex] 4)]}
    :running {:diff :a :attr :ht :default [(calc-hoc [:attributes :ht] 5)]}
    :scuba {:diff :a :attr :iq :default [(calc-hoc [:attributes :iq] 5),
-                                        (calc-hoc [:skills :technical :diving-suit] 2)]}
+                                        (calc-hoc [:skills :technical :diving-suit] 2)]
+           :prerequisites {:and [:swimming]}}
    :sports/sp {:diff :a :attr :dex
                :specializations [:baseball :basketball :football :golf :hockey :soccer :tennis :track-and-field :bull-fighting :darts :skating :skiing :swimming]}
    :swimming {:diff :e :attr :ht :default [(calc-hoc [:attributes :ht] 4)]}
@@ -278,7 +281,7 @@
    :sling {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6)]}
    :spear-thrower {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5),
                                                  (calc-hoc [:skills :combat-ranged :thrown-weapon/spear] 4)]}
-   :throwing-art {:diff :h :attr :dex}
+   :throwing-art {:diff :h :attr :dex :prerequisites {:or [:advantages/trained-by-a-master :advantages/weapon-master]}}
    :thrown-weapon/sp {:diff :e :attr :dex
                       :default [(calc-hoc [:attributes :dex] 4)]
                       :specializations [:axe-or-mace :dart :harpoon :knife :shuriken :spear :stick]}
@@ -380,31 +383,32 @@
 
    :autohypnosis {:diff :h :attr :will :default [(calc-hoc [:skills :esoteric :meditation] 4)]}
    :blind-fighting {:diff :v :attr :per}
-   :body-control {:diff :v :attr :ht}
-   :breaking-blow {:diff :h :attr :iq}
+   :body-control {:diff :v, :attr :ht, :prerequisites {:and [:advantages/trained-by-a-master :breath-control :meditation]}}
+   :breaking-blow {:diff :h, :attr :iq :prerequisites {:and [:advantages/trained-by-a-master]}}
    :captivate {:diff :h :attr :will}
    :dreaming {:diff :h :attr :will :default [(calc-hoc [:attributes :will] 6)]}
    :enthrallment/sp {:diff :h :attr :will
                      :specializations []}
-   :flying-leap {:diff :h :attr :iq}
-   :immovable-stance {:diff :h :attr :dex}
-   :invisibility-art {:diff :v :attr :iq}
-   :kiai {:diff :h :attr :ht}
-   :light-walk {:diff :h :attr :dex}
+   :flying-leap {:diff :h, :attr :iq, :prerequisites {:and [{:or [:advantages/trained-by-a-master :advantages/weapon-master]}, :jumping, :power-blow]}}
+   :immovable-stance {:diff :h :attr :dex, :prerequisites {:and [:advantages/trained-by-a-master]}}
+   :invisibility-art {:diff :v :attr :iq, :prerequisites {:and [:advantages/trained-by-a-master, {:hypnotism 14}, {:stealth 14}]}}
+   :kiai {:diff :h :attr :ht, :prerequisites {:or [:advantages/trained-by-a-master, :advantages/weapon-master]}}
+   :light-walk {:diff :h :attr :dex :prerequisites {:and [:advantages/trained-by-a-master, {:acrobatics 14}, {:stealth 14}]}}
    :meditation {:diff :h :attr :will :default [(calc-hoc [:attributes :will] 6),
                                                (calc-hoc [:skills :esoteric :autohypnosis] 4)]}
-   :mental-strength {:diff :e :attr :will}
+   :mental-strength {:diff :e :attr :will :prerequisites {:or [:advantages/trained-by-a-master :advantages/weapon-master]}}
    :mind-block {:diff :a :attr :will :default [(calc-hoc [:attributes :will] 5),
                                                (calc-hoc [:skills :esoteric :meditation] 5)]}
-   :musical-influence {:diff :v :attr :iq}
+   :musical-influence {:diff :v :attr :iq :prerequisites {:and [{:talents/musical-ability 1}, {:or [{:musical-instrument/sp 12} {:singing 12}]}]}}
    :persuade {:diff :h :attr :will}
-   :power-blow {:diff :h :attr :will}
-   :pressure-points {:diff :h :attr :iq}
-   :pressure-secrets {:diff :v :attr :iq}
-   :push {:diff :h :attr :dex}
+   :power-blow {:diff :h :attr :will :prerequisites {:or [:advantages/trained-by-a-master :advantages/weapon-master]}}
+   :pressure-points {:diff :h :attr :iq :prerequisites {:or [:advantages/trained-by-a-master :advantages/weapon-master]}}
+   :pressure-secrets {:diff :v :attr :iq :prerequisites {:and [:advantages/trained-by-a-master {:pressure-points 16}]}}
+   :push {:diff :h :attr :dex :prerequisites {:and [:advantages/trained-by-a-master]}}
    :suggest {:diff :h :attr :will}
    :sway-emotions {:diff :h :attr :will}
-   :zen-archery {:diff :v :attr :iq}
+   :zen-archery {:diff :v :attr :iq :prerequisites {:and [{:or [:advantages/trained-by-a-master :advantages/weapon-master]},
+                                                          {:or [:meditation {:advantages/heroic-archer 18}]}]}}
    :zen-marksmanship {:diff :v :attr :iq}
 
    :area-knowledge/sp {:diff :e :attr :iq :default [(calc-hoc [:attributes :iq] 4),
@@ -471,7 +475,8 @@
                                           (calc-hoc [:skills :medical :physician] 5),
                                           (calc-hoc [:skills :science :physiology] 8),
                                           (calc-hoc [:skills :medical :veterinary] 5),
-                                          (calc-hoc [:skills :animal :veterinary] 5)]}
+                                          (calc-hoc [:skills :animal :veterinary] 5)]
+             :prerequisites {:or [:first-aid :physician]}}
    :armoury/sp {:diff :a :attr :iq
                 :default [(calc-hoc [:attributes :iq] 5),
                           (calc-hoc [:skills :invention :engineer/same] 3)]
@@ -525,7 +530,8 @@
              :default [(calc-hoc [:attributes :iq] 6),
                        (calc-any-hoc [:skills :military :strategy] 6)]}
    :alchemy {:diff :v :attr :iq}
-   :astronomy {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
+   :astronomy {:diff :h :attr :iq :default [(calc-hoc [:attributes :iq] 6)]
+               :prerequisites {:and [:mathematics/sp]}}
    :biology/sp {:diff :v :attr :iq
                 :specializations [:terrestrial]
                 :default [(calc-hoc [:attributes :iq] 6),
@@ -555,7 +561,8 @@
                      :specializations [:micropaleontology :paleoanthropology :paleobotany :paleozoology]
                      :default [(calc-any-hoc [:skills :science :biology] 4),
                                (calc-any-hoc [:skills :plant :biology] 4)]}
-   :physics {:diff :v :attr :iq :default [(calc-hoc [:attributes :iq] 6)]}
+   :physics {:diff :v :attr :iq :default [(calc-hoc [:attributes :iq] 6)]
+             :prerequisites {:and [:mathematics/sp]}}
    :physiology/sp {:diff :h :attr :iq
                    :specializations [:terrestrial :demon :faerie :undead :elemental :cyborg :mutant :psionic :spiritual :astral :ethereal :celestial]
                    :default [(calc-hoc [:attributes :iq] 6),
@@ -567,7 +574,7 @@
                                              (calc-any-hoc [:skills :occult :religious-magic] 3),
                                              (calc-any-hoc [:skills :humanities :theology] 3)]}
    :expert-skill/psionics {:diff :h :attr :iq}
-   :herb-lore {:diff :v :attr :iq}
+   :herb-lore {:diff :v :attr :iq, :prerequisites {:and [:naturalist]}}
    :hidden-lore/demon-lore {:diff :a :attr :iq}
    :hidden-lore/faerie-lore {:diff :a :attr :iq}
    :hidden-lore/spirit-lore {:diff :a :attr :iq}
@@ -771,7 +778,6 @@
 
 ;; TODO: modifiers, like, riding (+5 if the animal knows and likes you)
 ;; TODO: techlevel
-;; TODO: prerequisites
 ;; TODO: same-type default
 ;; (def skills {:animal animal-skills
 ;;              :arts art-skills

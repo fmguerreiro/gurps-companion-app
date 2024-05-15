@@ -12,8 +12,6 @@
   (set! (.-locale i18n) default-device-language)
   (set! (.-translations i18n) translations-by-locale))
 
-(.-translations i18n)
-
 (defn get-translations [] (.-translations i18n))
 
 (defn set-language [lang] (set! (.-locale i18n) lang))
