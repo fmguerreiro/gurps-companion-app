@@ -99,7 +99,7 @@
              (.then #(js/console.log "multi-get" %)))
 
          (-> ^js async-storage
-             (.removeItem ":skills")
+             (.removeItem ":items/ranged-weapons")
              (.then #(js/console.log "remove-item" %)))
 
          (-> ^js async-storage

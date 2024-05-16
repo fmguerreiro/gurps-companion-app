@@ -62,7 +62,7 @@
 
 (defn melee-weapons-page
   []
-  [:> view {:style (tw "flex flex-col gap-2 bg-white flex-1 pl-2 pr-10")}
+  [:> view {:style (tw "flex flex-col gap-2 bg-white flex-grow p-2")}
    [header]
 
    (let [weapons (some-> (rf/subscribe [:items/melee-weapons]) deref)
@@ -107,7 +107,8 @@
                                   :on-change #(rf/dispatch [:items.melee/update, i, :reach, (->int %)])
                                   :data reaches}]
                       ;; parry
-                       [underlined-input {:val parry}] ;; TODO (MELEE/2)+3; round down (do a dropdown for the skill, then show the value?)
+                       [underlined-input {:val parry
+                                          :text-align "center"}] ;; TODO (MELEE/2)+3; round down (do a dropdown for the skill, then show the value?)
                       ;; weight
                        [underlined-input {:val weight
                                           :input-mode "numeric"
