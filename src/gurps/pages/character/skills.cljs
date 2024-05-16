@@ -4,7 +4,8 @@
             ["twrnc" :refer [style] :rename {style tw}]
             [re-frame.core :as rf]
             [gurps.utils.i18n :as i18n]
-            [gurps.utils.helpers :refer [key->str flatten-key]]
+            [gurps.utils.helpers :refer [key->str ->int flatten-key]]
+            [gurps.utils.debounce :refer [debounce-and-dispatch]]
             [gurps.widgets.base :refer [view text button]]
             [gurps.widgets.underlined-input :refer [underlined-input]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
@@ -52,9 +53,21 @@
         (= diff :h) (- 2 val)
         (= diff :v) (- 3 val)))
 
+(defn cost-mod [base n]
+  (let [increment (cond
+                    (<= n 1) 0
+                    (<= n 3) 1
+                    (<= n 4) 2
+                    (<= n 8) 3
+                    (<= n 12) 4
+                    (<= n 16) 5
+                    :else (+ 5 (quot (- n 16) 4)))]
+    (+ base increment)))
+
 (defn- skill-lvl
-  [skill-key]
+  [skill-key idx]
   (let [skill (-> skill-key generify-key skills)
+        cost  (some-> (rf/subscribe [:skill idx]) deref :cost)
         attr  (:attr skill)
         attrs {:str   (some-> (rf/subscribe [:attributes/str]) deref)
                :int   (some-> (rf/subscribe [:attributes/int]) deref)
@@ -65,7 +78,7 @@
         attr-lvl      (if (seq? attr) (best-attr attrs attr) (attr attrs))
         diff          (:diff skill)
         lvl           (difficulty-mod attr-lvl diff)]
-    [underlined-input {:val lvl
+    [underlined-input {:val (cost-mod lvl cost)
                        :text-align "center"
                        :disabled? true}]))
 
@@ -92,7 +105,7 @@
                                                       (-> navigation (.navigate (i18n/label :t/add-skill-specialization) #js {:id (key->str k')})))
                                          :disabled? true}]
                       ;; lvl
-                      [skill-lvl k]
+                      [skill-lvl k i]
                       ;; relative-lvl
                       [underlined-input {:val rel-lvl
                                          :text-align "center"
@@ -100,7 +113,9 @@
                                          :on-change-text #()}]
                       ;; cost
                       [bracketed-numeric-input {:val cost
-                                                :on-change-text #()}]])
+                                                :input-mode "numeric"
+                                                :max-length 2
+                                                :on-change-text #(debounce-and-dispatch [:skills.update/cost i (->int %)] 500)}]])
                    skills)]
 
      ;; add-skill button
@@ -121,3 +136,17 @@
  :skills
  (fn [db]
    (get-in db [:skills] [])))
+
+(rf/reg-sub
+ :skill
+ :<- [:skills]
+ (fn [skills [_ idx]]
+   (get-in skills [idx])))
+
+(rf/reg-event-fx
+ :skills.update/cost
+ (fn [{:keys [db]} [_ idx cost]]
+   (let [new-db (assoc-in db [:skills idx :cost] cost)]
+     {:db new-db
+      :effects.async-storage/set {:k     :skills
+                                  :value (get-in new-db [:skills])}})))
