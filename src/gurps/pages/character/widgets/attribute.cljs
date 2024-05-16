@@ -48,7 +48,8 @@
    :will :will
    :per :perception})
 
-(defn key->i18n-label [key]
+(defn key->i18n-label
+  [key]
   (keyword :t (str "attr-" (symbol (long-attr key)))))
 
 (defn attribute-input

@@ -104,6 +104,7 @@
   "add-skill": "Add Skill",
   "add-skill-specialization": "Add Specialization",
   "difficulty": "Difficulty",
+  "diff": "Diff",
   "easy": "E",
   "easy-full": "Easy",
   "average": "A",
@@ -113,6 +114,8 @@
   "very-hard": "VH",
   "very-hard-full": "Very Hard",
   "default-lvl": "Default Lvl",
+  "attr": "Attr",
+  "attribute": "Attribute",
   "learn?": "Learn?",
 
   "description": "Description",

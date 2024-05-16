@@ -9,24 +9,28 @@
             [gurps.widgets.base :refer [view text button]]
             [gurps.widgets.underlined-input :refer [underlined-input]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
-            [gurps.pages.character.utils.skills :refer [skills]]
+            [gurps.pages.character.utils.skills :refer [skills difficulties] :rename {skills skill-map}]
+            [gurps.pages.character.widgets.attribute :refer [key->i18n-label]]
             [gurps.pages.character.widgets.attributes] ;; NOTE: makes sure the subs are registered
-            [taoensso.timbre :as log]))
+
+            [clojure.string :as str]))
 
 (defn- row
-  [col1 col2 col3 col4]
-  [:> view {:style (tw "flex flex-row gap-1 h-6")}
+  [col1 col2 col3 col4 col5]
+  [:> view {:style (tw "flex flex-row gap-1 h-8")}
    [:> view {:style (tw "w-5/12 my-auto bg-red-100")} col1]
    [:> view {:style (tw "w-1/12 my-auto bg-blue-100")} col2]
-   [:> view {:style (tw "w-3/12 my-auto bg-green-100")} col3]
-   [:> view {:style (tw "w-3/12 my-auto bg-indigo-100")} col4]])
+   [:> view {:style (tw "w-2/12 my-auto bg-green-100")} col3]
+   [:> view {:style (tw "w-1/12 my-auto bg-green-100")} col4]
+   [:> view {:style (tw "w-3/12 my-auto bg-indigo-100 pr-3")} col5]])
 
 (defn- header
   []
   [row
    [:> text {:style (tw "font-bold text-left capitalize")} (i18n/label :t/name)]
    [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/level)]
-   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/relative-level)]
+   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/attribute)]
+   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/diff)]
    [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/cost)]])
 
 (defn- add-skill-button
@@ -66,7 +70,7 @@
 
 (defn- skill-lvl
   [skill-key idx]
-  (let [skill (-> skill-key generify-key skills)
+  (let [skill (-> skill-key generify-key skill-map)
         cost  (some-> (rf/subscribe [:skill idx]) deref :cost)
         attr  (:attr skill)
         attrs {:str   (some-> (rf/subscribe [:attributes/str]) deref)
@@ -82,6 +86,16 @@
                        :text-align "center"
                        :disabled? true}]))
 
+(defn- attr->label
+  [attr]
+  (str/join ","
+            (map #(i18n/label (key->i18n-label %))
+                 (if (seq? attr) attr [attr]))))
+
+(defn- diff->label
+  [diff]
+  (i18n/label (keyword :t (diff difficulties))))
+
 (defn character-skills-page
   []
   (let [skills (some-> (rf/subscribe [:skills]) deref)
@@ -90,32 +104,32 @@
      [:> rn/ScrollView {:style (tw "flex flex-1 flex-col bg-white flex-grow")}
       [header]
 
-      ;; TODO: show which attribute it's based from
-      ;;       show difficulty!
-      ;;       remove relative lvl
-
       ;; skills
-      (map-indexed (fn [i {:keys [k name rel-lvl cost]}]
-                     ^{:key (str "skill-" i)}
-                     [row
-                      ;; name
-                      [underlined-input {:val name
-                                         :style (tw "capitalize")
-                                         :on-press #(let [k' (generify-key k)]
-                                                      (-> navigation (.navigate (i18n/label :t/add-skill-specialization) #js {:id (key->str k')})))
-                                         :disabled? true}]
-                      ;; lvl
-                      [skill-lvl k i]
-                      ;; relative-lvl
-                      [underlined-input {:val rel-lvl
-                                         :text-align "center"
-                                         :disabled? true
-                                         :on-change-text #()}]
-                      ;; cost
-                      [bracketed-numeric-input {:val cost
-                                                :input-mode "numeric"
-                                                :max-length 2
-                                                :on-change-text #(debounce-and-dispatch [:skills.update/cost i (->int %)] 500)}]])
+      (map-indexed (fn [i {:keys [k name cost]}]
+                     (let [{:keys [diff attr]} (-> k generify-key skill-map)]
+                       ^{:key (str "skill-" i)}
+                       [row
+                        ;; name
+                        [underlined-input {:val name
+                                           :style (tw "capitalize")
+                                           :on-press #(let [k' (generify-key k)]
+                                                        (-> navigation (.navigate (i18n/label :t/add-skill-specialization) #js {:id (key->str k')})))
+                                           :disabled? true}]
+                        ;; lvl
+                        [skill-lvl k i]
+                        ;; main attr(s)
+                        [underlined-input {:val (attr->label attr)
+                                           :text-align "center"
+                                           :disabled? true}]
+                        ;; difficulty
+                        [underlined-input {:val (diff->label diff)
+                                           :text-align "center"
+                                           :disabled? true}]
+                        ;; cost
+                        [bracketed-numeric-input {:val cost
+                                                  :input-mode "numeric"
+                                                  :max-length 2
+                                                  :on-change-text #(debounce-and-dispatch [:skills.update/cost i (->int %)] 500)}]]))
                    skills)]
 
      ;; add-skill button
@@ -123,7 +137,7 @@
       [add-skill-button]]]))
 
 ;; register all skill-cost subs
-(doseq [skill (keys skills)]
+(doseq [skill (keys skill-map)]
   (when (not (= "sp" (name skill)))
     (let [skill-key (flatten-key skill)]
       ;; (info "registering sub" (str (keyword :skill-costs skill-key)))
