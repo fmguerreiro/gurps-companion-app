@@ -12,7 +12,6 @@
             [gurps.pages.character.utils.skills :refer [skills difficulties] :rename {skills skill-map}]
             [gurps.pages.character.widgets.attribute :refer [key->i18n-label]]
             [gurps.pages.character.widgets.attributes] ;; NOTE: makes sure the subs are registered
-
             [clojure.string :as str]))
 
 (defn- row

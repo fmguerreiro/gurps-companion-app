@@ -22,10 +22,10 @@
   []
   [row
    [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/weapon)]
-   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/dmg-thrust)]
-   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/dmg-swing)]
-   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/reach)]
-   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/parry)]
+   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/dmg-thrust)]
+   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/dmg-swing)]
+   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/reach)]
+   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/parry)]
    [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/weight)]])
 
 ;; TODO: AI generated. has an off-by one error somewhere

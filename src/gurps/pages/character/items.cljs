@@ -90,9 +90,14 @@
      [:> view {:style (tw "mt-2")}
       [defenses-section]]
 
+     ;; TODO: remove in favor of top tab navigation
      [:> button {:style (tw "w-full px-4 py-2 font-medium text-left rtl:text-right border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white")
                  :onPress (fn [] (-> navigation (.navigate (i18n/label :t/melee-weapons))))}
       [:> icon {:name "sword" :size 20}]]
+
+     [:> button {:style (tw "w-full px-4 py-2 font-medium text-left rtl:text-right border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white")
+                 :onPress (fn [] (-> navigation (.navigate (i18n/label :t/ranged-weapons))))}
+      [:> icon {:style (tw "self-end") :name "bow-arrow" :size 20}]]
 
      [:> StatusBar {:style "auto"}]]))
 

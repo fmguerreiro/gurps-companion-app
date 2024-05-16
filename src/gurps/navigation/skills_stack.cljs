@@ -15,11 +15,10 @@
                character-add-skill-spec-component (fn [props] (r/as-element [character-add-skill-spec-page props]))]
     [:> SkillStack.Navigator
      [:> SkillStack.Screen {:name      (i18n/label :t/skills)
-                            :component character-skills-component
-                            :options   {:headerShown false}}]
+                            :component character-skills-component}]
+
      [:> SkillStack.Screen {:name      (i18n/label :t/add-skill)
-                            :component character-add-skill-component
-                            :options   {:headerShown false}}]
+                            :component character-add-skill-component}]
+
      [:> SkillStack.Screen {:name      (i18n/label :t/add-skill-specialization)
-                            :component character-add-skill-spec-component
-                            :options   {:headerShown false}}]]))
+                            :component character-add-skill-spec-component}]]))

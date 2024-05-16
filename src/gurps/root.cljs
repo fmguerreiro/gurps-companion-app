@@ -48,11 +48,13 @@
                           :component skill-stack-component
                           :options   {:title (i18n/label :t/skills)
                                       :tabBarIcon (tab-bar-icon "dice-multiple")
+                                      :headerShown false
                                       :headerTitleStyle header-title-style}}]
       [:> RootTab.Screen {:name      (str (i18n/label :t/items) "Stack")
                           :component items-stack-component
                           :options   {:title (i18n/label :t/items)
                                       :tabBarIcon (tab-bar-icon "shield-sword")
+                                      :headerShown false
                                       :headerTitleStyle header-title-style}}]
       [:> RootTab.Screen {:name      (str (i18n/label :t/info))
                           :component (fn [props] (r/as-element [character-info-page props]))
