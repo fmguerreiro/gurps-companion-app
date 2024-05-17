@@ -7,8 +7,7 @@
             [gurps.widgets.dropdown :refer [dropdown]]
             [gurps.widgets.base :refer [view text]]
             [gurps.pages.character.utils.skills :refer [grouped-skills]]
-            [gurps.utils.debounce :refer [debounce-and-dispatch debounce]]
-            [taoensso.timbre :as log]))
+            [gurps.utils.debounce :refer [debounce-and-dispatch debounce]]))
 
 (defn- row
   [col1 col2 col3 col4 col5 col6]
@@ -60,10 +59,7 @@
 
       :else (str (when (pos? roll-dices) (str roll-dices "d")) (when (pos? roll-addition) (str "+" roll-addition))))))
 
-(def reaches [{:value 0, :label "C"}, {:value 1 :label "1"}]) ;; TODO: more? c,1 : 1,2 : 1-3 : 1-4 : 1-7
-(def reach-val->label {0 "C", 1 "1"})
-
-(def empty-weapon {:name "" :weight 0 :thr-mod 0 :swg-mod 0 :reach nil :parry nil})
+(def empty-weapon {:name "" :weight 0 :thr-mod 0 :swg-mod 0 :reach "" :parry nil})
 
 ;; NOTE (MELEE/2)+3; round down
 (defn lvl->parry
@@ -117,12 +113,10 @@
                               :text-align "center"
                               :clear-on-input? true}]
            ;; reach
-           [dropdown {:val reach
-                      :placeholder (get-in reach-val->label [reach])
-                      :placeholder-style (tw "text-right text-xs")
-                      :selected-style (tw "text-right")
-                      :on-change #(rf/dispatch [:items.melee/update, i, :reach, (->int %)])
-                      :data reaches}]
+           [underlined-input {:val reach
+                              :text-align "center"
+                              :on-change-text #(rf/dispatch [:items.melee/update, i, :reach, %])}]
+
            ;; parry
            [dropdown {:val parry
                       :placeholder (when parry (str ((keyword parry) weapon-parries)))
