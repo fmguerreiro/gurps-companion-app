@@ -1,8 +1,6 @@
 (ns gurps.pages.character.items
   (:require ["expo-status-bar" :refer [StatusBar]]
             ["twrnc" :refer [style] :rename {style tw}]
-            ["@react-navigation/native" :as rnn]
-            ["@expo/vector-icons/MaterialCommunityIcons" :default icon]
             [re-frame.core :as rf]
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [->int]]
@@ -79,27 +77,17 @@
 
 (defn character-items-page
   []
-  (when-let [navigation (rnn/useNavigation)]
-    [:> view {:style (tw "flex flex-col bg-white gap-4 flex-grow p-2")}
-     [:> text {:style (tw "font-bold text-center uppercase")} (i18n/label :t/armor-possessions)]
+  [:> view {:style (tw "flex flex-col bg-white gap-4 flex-grow p-2")}
+   [:> text {:style (tw "font-bold text-center uppercase")} (i18n/label :t/armor-possessions)]
 
-     [header]
+   [header]
 
-     [items]
+   [items]
 
-     [:> view {:style (tw "mt-2")}
-      [defenses-section]]
+   [:> view {:style (tw "mt-2")}
+    [defenses-section]]
 
-     ;; TODO: remove in favor of top tab navigation
-     [:> button {:style (tw "w-full px-4 py-2 font-medium text-left rtl:text-right border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white")
-                 :onPress (fn [] (-> navigation (.navigate (i18n/label :t/melee-weapons))))}
-      [:> icon {:name "sword" :size 20}]]
-
-     [:> button {:style (tw "w-full px-4 py-2 font-medium text-left rtl:text-right border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white")
-                 :onPress (fn [] (-> navigation (.navigate (i18n/label :t/ranged-weapons))))}
-      [:> icon {:style (tw "self-end") :name "bow-arrow" :size 20}]]
-
-     [:> StatusBar {:style "auto"}]]))
+   [:> StatusBar {:style "auto"}]])
 
 (def ks [:possessions])
 (doseq [k ks]

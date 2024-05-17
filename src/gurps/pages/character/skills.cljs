@@ -12,7 +12,8 @@
             [gurps.pages.character.utils.skills :refer [skills difficulties] :rename {skills skill-map}]
             [gurps.pages.character.widgets.attribute :refer [key->i18n-label]]
             [gurps.pages.character.widgets.attributes] ;; NOTE: makes sure the subs are registered
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [taoensso.timbre :as log]))
 
 (defn- row
   [col1 col2 col3 col4 col5]
@@ -40,7 +41,11 @@
      [:> button {:style (tw "p-0 w-14 h-14 bg-red-600 rounded-full hover:bg-red-700 active:shadow-lg shadow focus:outline-none align-middle justify-center items-center")
                  :onPress (fn [] (-> navigation (.navigate (i18n/label :t/add-skill))))}
       [:> text {:style (tw "text-white font-bold text-xl")} "+"]]]))
+
 (defn- generify-key
+  "Generates a generic keyword from the given keyword.
+   If the input keyword has a namespace, it returns a keyword with the same namespace and the symbol :sp.
+   Otherwise, it returns the input keyword unchanged."
   [k]
   (if (namespace k) (keyword (namespace k) :sp) k))
 
@@ -50,13 +55,16 @@
   (apply max (map (fn [attr] (get attrs attr)) attr)))
 
 (defn- difficulty-mod
+  "Adjusts the value based on the difficulty level"
   [val diff]
   (cond (= diff :e) val
         (= diff :a) (dec val)
         (= diff :h) (- 2 val)
         (= diff :v) (- 3 val)))
 
-(defn cost-mod [base n]
+(defn cost-mod
+  "Adjusts the value based on the cost"
+  [base n]
   (let [increment (cond
                     (<= n 1) 0
                     (<= n 3) 1
@@ -67,6 +75,7 @@
                     :else (+ 5 (quot (- n 16) 4)))]
     (+ base increment)))
 
+;; TODO: refactor this to use :skill/lvl subscription instead
 (defn- skill-lvl
   [skill-key idx]
   (let [skill (-> skill-key generify-key skill-map)
@@ -155,6 +164,24 @@
  :<- [:skills]
  (fn [skills [_ idx]]
    (get-in skills [idx])))
+
+(rf/reg-sub
+ :skill/lvl
+ :<- [:skills]
+ :<- [:attributes/str]
+ :<- [:attributes/int]
+ :<- [:attributes/dex]
+ :<- [:attributes/per]
+ :<- [:attributes/will]
+ :<- [:attributes/ht]
+ (fn [[skills str int dex per will ht] [_ k]]
+   (log/info "skill/lvl" (->> skills (filter #(= k (:k %))) first))
+   (let [{:keys [cost]}      (->> skills (filter #(= k (:k %))) first)
+         {:keys [attr diff]} (k skill-map)
+         attrs               {:str str :int int :dex dex :per per :will will :ht ht}
+         attr-lvl            (if (seq? attr) (best-attr attrs attr) (attr attrs))
+         diff-lvl            (difficulty-mod attr-lvl diff)]
+     (cost-mod diff-lvl cost))))
 
 (rf/reg-event-fx
  :skills.update/cost

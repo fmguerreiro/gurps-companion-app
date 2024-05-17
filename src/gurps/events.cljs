@@ -1,6 +1,6 @@
 (ns gurps.events
   (:require [re-frame.core :as rf]
-            [taoensso.timbre :refer [info]]
+            [taoensso.timbre :refer [error]]
             [cljs.spec.alpha :as s]
             [gurps.events.profile]
             [gurps.db :as db :refer [app-db]]))
@@ -9,7 +9,7 @@
   "Throws an exception if `db` doesn't match the Spec `a-spec`."
   [a-spec db]
   (when-not (s/valid? a-spec db)
-    (info (ex-info (str "spec check failed: " (s/explain-str a-spec db)) {}))))
+    (error (ex-info (str "spec check failed: " (s/explain-str a-spec db)) {}))))
 
 (def check-spec-interceptor (rf/after (partial check-and-throw :gurps.db/db)))
 
