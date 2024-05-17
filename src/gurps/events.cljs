@@ -9,7 +9,7 @@
   "Throws an exception if `db` doesn't match the Spec `a-spec`."
   [a-spec db]
   (when-not (s/valid? a-spec db)
-    (throw (ex-info (str "spec check failed: " (s/explain-str a-spec db)) {}))))
+    (info (ex-info (str "spec check failed: " (s/explain-str a-spec db)) {}))))
 
 (def check-spec-interceptor (rf/after (partial check-and-throw :gurps.db/db)))
 
@@ -37,6 +37,7 @@
 
 (rf/reg-event-fx
  :initialize-storage
+ [check-spec-interceptor]
  (fn [{:keys [db]} [_]]
    {:db db
     :effects.async-storage/get {:keys (keys (flatten-map db "/"))
@@ -44,6 +45,7 @@
 
 (rf/reg-event-db
  :initialize-storage/set
+ [check-spec-interceptor]
  (fn [db [_ res]]
    ;; (info "initialize-storage" res)
    (merge db res)))

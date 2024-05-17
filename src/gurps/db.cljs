@@ -13,10 +13,10 @@
 ;; TODO: finish writing spec
 (s/def ::name string?)
 (s/def ::player string?)
-(s/def ::portrait string?)
+(s/def ::portrait (s/or :s string? :nil nil?))
 (s/def ::point-total number?)
-(s/def ::ht string?)
-(s/def ::wt string?)
+(s/def ::ht (s/or :s string? :nil nil?))
+(s/def ::wt (s/or :s string? :nil nil?))
 (s/def ::size-modifier number?)
 (s/def ::unspent-points number?)
 (s/def ::age number?)
@@ -36,9 +36,9 @@
              :point-total 0
              :ht nil
              :wt nil
-             :size-modifier nil
+             :size-modifier 0
              :unspent-points 150
-             :age nil
+             :age 20
              :appearance ""
              :status ""
              :reputation ""
