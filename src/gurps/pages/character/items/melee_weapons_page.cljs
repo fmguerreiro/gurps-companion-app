@@ -7,7 +7,8 @@
             [gurps.widgets.dropdown :refer [dropdown]]
             [gurps.widgets.base :refer [view text]]
             [gurps.pages.character.utils.skills :refer [grouped-skills]]
-            [gurps.utils.debounce :refer [debounce-and-dispatch debounce]]))
+            [gurps.utils.debounce :refer [debounce-and-dispatch debounce]]
+            [taoensso.timbre :as log]))
 
 (defn- row
   [col1 col2 col3 col4 col5 col6]
@@ -76,10 +77,7 @@
          thr     (some-> (rf/subscribe [:attributes/damage-thrust]) deref)
          swg     (some-> (rf/subscribe [:attributes/damage-swing])  deref)
          weapon-skills  (some-> (rf/subscribe [:skills/weapons]) deref)
-         weapon-parries (doall (some->> weapon-skills
-                                        (map #(:k %))
-                                        (map #(do {% (lvl->parry @(rf/subscribe [:skill/lvl %]))}))
-                                        (into {})))]
+         weapon-parries (some-> (rf/subscribe [:defenses/parries]) deref)]
      ;; (log/info "melee-weapons-page" weapon-parries)
      (map-indexed
       (fn [i {:keys [name thr-mod swg-mod weight reach parry]}]
@@ -145,6 +143,16 @@
  :<- [:skills]
  (fn [skills]
    (filter #(some? ((:k %) (:combat-melee grouped-skills))) skills)))
+
+(rf/reg-sub
+ :defenses/parries
+ :<- [:skills/weapons]
+ :<- [:skills/lvls]
+ (fn [[skills skill-lvls]]
+   (some->> skills
+            (map #(:k %))
+            (map #(do {% (lvl->parry (:lvl (% skill-lvls)))}))
+            (into {}))))
 
 (rf/reg-event-fx
  :items.melee/update

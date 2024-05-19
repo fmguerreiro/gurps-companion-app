@@ -51,8 +51,8 @@
 
 (defn- best-attr
   "Get the highest attribute value"
-  [attrs attr]
-  (apply max (map (fn [attr] (get attrs attr)) attr)))
+  [attr-map attrs]
+  (apply max (map (fn [attr] (get attr-map attr)) (if (seqable? attrs) attrs [attrs]))))
 
 (defn- difficulty-mod
   "Adjusts the value based on the difficulty level"
@@ -166,7 +166,7 @@
    (get-in skills [idx])))
 
 (rf/reg-sub
- :skill/lvl
+ :skills/lvls
  :<- [:skills]
  :<- [:attributes/str]
  :<- [:attributes/int]
@@ -174,14 +174,15 @@
  :<- [:attributes/per]
  :<- [:attributes/will]
  :<- [:attributes/ht]
- (fn [[skills str int dex per will ht] [_ k]]
-   (log/info "skill/lvl" (->> skills (filter #(= k (:k %))) first))
-   (let [{:keys [cost]}      (->> skills (filter #(= k (:k %))) first)
-         {:keys [attr diff]} (k skill-map)
-         attrs               {:str str :int int :dex dex :per per :will will :ht ht}
-         attr-lvl            (if (seq? attr) (best-attr attrs attr) (attr attrs))
-         diff-lvl            (difficulty-mod attr-lvl diff)]
-     (cost-mod diff-lvl cost))))
+ (fn [[skills str int dex per will ht]]
+   ;; => {:k :staff, :lvl 17, ...}
+   (let [attrs {:str str :int int :dex dex :per per :will will :ht ht}]
+     (->> skills
+          (map #(merge % ((generify-key (:k %)) skill-map)))
+          (map #(merge % {:attr-lvl (best-attr attrs (:attr %))}))
+          (map #(merge % {:diff-lvl (difficulty-mod (:attr-lvl %) (:diff %))}))
+          (map #(merge % {:lvl (cost-mod (:diff-lvl %) (:cost %))}))
+          (reduce #(assoc %1 (:k %2) %2) {})))))
 
 (rf/reg-event-fx
  :skills.update/cost

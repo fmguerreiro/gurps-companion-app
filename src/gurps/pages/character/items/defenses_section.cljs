@@ -36,7 +36,7 @@
    ^{:key "defenses-parry"}
    [:> view {:style (tw "w-1/3")}
     [labelled-box (i18n/label :t/parry)
-     (let [parry (some-> (rf/subscribe [:defenses/parry]) deref)]
+     (let [parry (some-> (rf/subscribe [:defenses/highest-parry]) deref)]
        ^{:key "defense-parry-label"}
        [:> text {:style (tw "text-3xl font-bold my-auto pb-2")} parry])]]
 
@@ -65,8 +65,11 @@
 
 ;; TODO (MELEE-skill/2)+3; round down
 (rf/reg-sub
- :defenses/parry
- (fn [] 0))
+ :defenses/highest-parry
+ :<- [:defenses/parries]
+ (fn [parries]
+   (log/info "parries" parries)
+   0))
 
 ;; TODO: Blocking is an is 3 + half Shield or Cloak skill, dropping all fractions
 (rf/reg-sub
