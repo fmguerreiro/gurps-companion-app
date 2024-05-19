@@ -44,7 +44,7 @@
    ^{:key "defenses-block"}
    [:> view {:style (tw "w-1/3 pr-2")}
     [labelled-box (i18n/label :t/block)
-     (let [block (some-> (rf/subscribe [:defenses/block]) deref)]
+     (let [block (some-> (rf/subscribe [:defenses/highest-block]) deref)]
        ^{:key "defense-block-label"}
        [:> text {:style (tw "text-3xl font-bold my-auto pb-2")} block])]]])
 
@@ -63,15 +63,32 @@
     :leg (sum-dr possessions "leg")
     :foot (sum-dr possessions "foot")}))
 
-;; TODO (MELEE-skill/2)+3; round down
 (rf/reg-sub
  :defenses/highest-parry
  :<- [:defenses/parries]
  (fn [parries]
-   (log/info "parries" parries)
-   0))
+   (or (apply max (vals parries)) 0)))
 
-;; TODO: Blocking is an is 3 + half Shield or Cloak skill, dropping all fractions
+(defn lvl->block
+  "Blocking is an is 3 + half Shield or Cloak skill, dropping all fractions"
+  [lvl]
+  (-> lvl
+      (/ 2)
+      (Math/floor)
+      (+ 3)))
+
 (rf/reg-sub
- :defenses/block
- (fn [] 0))
+ :defenses/blocks
+ :<- [:skills/shields]
+ :<- [:skills/lvls]
+ (fn [[skills skill-lvls]]
+   (some->> skills
+            (map #(:k %))
+            (map #(do {% (lvl->block (:lvl (% skill-lvls)))}))
+            (into {}))))
+
+(rf/reg-sub
+ :defenses/highest-block
+ :<- [:defenses/blocks]
+ (fn [blocks]
+   (or (apply max (vals blocks)) 0)))

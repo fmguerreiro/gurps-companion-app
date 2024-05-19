@@ -6,6 +6,7 @@
             [gurps.widgets.underlined-input :refer [underlined-input]]
             [gurps.widgets.dropdown :refer [dropdown]]
             [gurps.widgets.base :refer [view text]]
+            [gurps.pages.character.widgets.helpers :refer [generify-key]]
             [gurps.pages.character.utils.skills :refer [grouped-skills]]
             [gurps.utils.debounce :refer [debounce-and-dispatch debounce]]
             [taoensso.timbre :as log]))
@@ -139,10 +140,18 @@
    (get-in db [:items :melee-weapons] [])))
 
 (rf/reg-sub
+ :skills/shields
+ :<- [:skills/weapons]
+ (fn [skills]
+   (filter #(or (= :cloak (:k %))
+                (= :shield (keyword (namespace (:k %)))))
+           skills)))
+
+(rf/reg-sub
  :skills/weapons
  :<- [:skills]
  (fn [skills]
-   (filter #(some? ((:k %) (:combat-melee grouped-skills))) skills)))
+   (filter #(some? ((generify-key (:k %)) (:combat-melee grouped-skills))) skills)))
 
 (rf/reg-sub
  :defenses/parries

@@ -9,6 +9,7 @@
             [gurps.widgets.base :refer [view text button]]
             [gurps.widgets.underlined-input :refer [underlined-input]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
+            [gurps.pages.character.widgets.helpers :refer [generify-key]]
             [gurps.pages.character.utils.skills :refer [skills difficulties] :rename {skills skill-map}]
             [gurps.pages.character.widgets.attribute :refer [key->i18n-label]]
             [gurps.pages.character.widgets.attributes] ;; NOTE: makes sure the subs are registered
@@ -41,13 +42,6 @@
      [:> button {:style (tw "p-0 w-14 h-14 bg-red-600 rounded-full hover:bg-red-700 active:shadow-lg shadow focus:outline-none align-middle justify-center items-center")
                  :onPress (fn [] (-> navigation (.navigate (i18n/label :t/add-skill))))}
       [:> text {:style (tw "text-white font-bold text-xl")} "+"]]]))
-
-(defn- generify-key
-  "Generates a generic keyword from the given keyword.
-   If the input keyword has a namespace, it returns a keyword with the same namespace and the symbol :sp.
-   Otherwise, it returns the input keyword unchanged."
-  [k]
-  (if (namespace k) (keyword (namespace k) :sp) k))
 
 (defn- best-attr
   "Get the highest attribute value"
