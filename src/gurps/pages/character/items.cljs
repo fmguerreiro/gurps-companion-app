@@ -63,8 +63,9 @@
                      ;; weight
                      [underlined-input {:val weight
                                         :input-mode "numeric"
-                                        :max-length 2
+                                        :max-length 3
                                         :text-align "center"
+                                        :style (tw "mr-2")
                                         :on-change-text #(debounce-and-dispatch [:items/update :possessions i name location dr (->int %)] 500)}]
                      ;; location
                      [dropdown {:style (tw "flex-1")
