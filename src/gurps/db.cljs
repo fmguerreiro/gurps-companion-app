@@ -66,7 +66,6 @@
                        :fp 0}
 
    :skills []
-   :skill-costs {}
 
    :languages []
 

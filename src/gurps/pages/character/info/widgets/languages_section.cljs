@@ -49,8 +49,8 @@
 
 (def ^:private lang-skill-cost {:native 3, :accented 2, :broken 1})
 (defn- lang-cost
-  [{:keys [native? spoken written]}]
-  (if native?
+  [{:keys [native? spoken written name]}]
+  (if (or native? (empty? name))
     0
     (+ ((keyword spoken) lang-skill-cost)
        ((keyword written) lang-skill-cost))))
@@ -89,9 +89,9 @@
    ;; turn native button
    [native-icon {:i idx :native? native?}]
 
-   ;; cost (0 if native)
+   ;; cost (0 if native) or not yet filled in
    [bracketed-numeric-input {:max-length 2
-                             :val        (lang-cost {:native? native? :written written :spoken spoken})
+                             :val        (lang-cost {:native? native? :written written :spoken spoken :name name})
                              :editable?  false}]])
 
 (defn- header
@@ -127,7 +127,7 @@
  (fn [{:keys [db]} [_ i k v]]
    (let [existing-language (get-in db [:languages i] default-lang)
          new-language      (merge existing-language {k v})
-         new-db            (assoc-in db [:languages i] new-language)]
+         new-db            (assoc-in db [:languages i] (merge new-language {:cost (lang-cost new-language)}))]
      {:db                        new-db
       :effects.async-storage/set {:k     :languages
                                   :value (get-in new-db [:languages])}})))

@@ -10,9 +10,10 @@
 (rf/reg-sub
  :profile/point-total
  (fn [db]
-   (let [costs (vals (merge (:skill-costs db)
-                            (:attribute-costs db)))] ;; TODO: other costs
-     (or (reduce + costs) 0))))
+   (let [costs (+ (->> db :attribute-costs vals (reduce +))
+                  (->> db :skills (map :cost) (reduce +))
+                  (->> db :languages (filter #(not (:native? %))) (map :cost) (reduce +)))]
+     (or costs 0))))
 
 (defn unspent-points-field
   [style]
