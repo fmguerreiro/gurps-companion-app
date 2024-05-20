@@ -37,11 +37,10 @@
 (defn- add-skill-button
   []
   (when-let [navigation (rnn/useNavigation)]
-    [:> view {:style (tw "")}
-     ;; TODO: put this button into a design library and use it here
-     [:> button {:style (tw "p-0 w-14 h-14 bg-red-600 rounded-full hover:bg-red-700 active:shadow-lg shadow focus:outline-none align-middle justify-center items-center")
-                 :onPress (fn [] (-> navigation (.navigate (i18n/label :t/add-skill))))}
-      [:> text {:style (tw "text-white font-bold text-xl")} "+"]]]))
+    ;; TODO: put this button into a design library and use it here
+    [:> button {:style (tw "p-0 w-14 h-14 bg-red-600 rounded-full hover:bg-red-700 active:shadow-lg shadow focus:outline-none align-middle justify-center items-center")
+                :onPress (fn [] (-> navigation (.navigate (i18n/label :t/add-skill))))}
+     [:> text {:style (tw "text-white font-bold text-xl")} "+"]]))
 
 (defn- best-attr
   "Get the highest attribute value"
@@ -69,22 +68,11 @@
                     :else (+ 5 (quot (- n 16) 4)))]
     (+ base increment)))
 
-;; TODO: refactor this to use :skill/lvl subscription instead
 (defn- skill-lvl
-  [skill-key idx]
-  (let [skill (-> skill-key generify-key skill-map)
-        cost  (some-> (rf/subscribe [:skill idx]) deref :cost)
-        attr  (:attr skill)
-        attrs {:str   (some-> (rf/subscribe [:attributes/str]) deref)
-               :int   (some-> (rf/subscribe [:attributes/int]) deref)
-               :dex   (some-> (rf/subscribe [:attributes/dex]) deref)
-               :per   (some-> (rf/subscribe [:attributes/per]) deref)
-               :will  (some-> (rf/subscribe [:attributes/will]) deref)
-               :ht    (some-> (rf/subscribe [:attributes/ht]) deref)}
-        attr-lvl      (if (seq? attr) (best-attr attrs attr) (attr attrs))
-        diff          (:diff skill)
-        lvl           (difficulty-mod attr-lvl diff)]
-    [underlined-input {:val (cost-mod lvl cost)
+  [skill-key]
+  (let [skills (some-> (rf/subscribe [:skills/lvls]) deref)
+        skill  (skill-key skills)]
+    [underlined-input {:val (:lvl skill)
                        :text-align "center"
                        :disabled? true}]))
 
@@ -118,7 +106,7 @@
                                                         (-> navigation (.navigate (i18n/label :t/add-skill-specialization) #js {:id (key->str k')})))
                                            :disabled? true}]
                         ;; lvl
-                        [skill-lvl k i]
+                        [skill-lvl k]
                         ;; main attr(s)
                         [underlined-input {:val (attr->label attr)
                                            :text-align "center"
