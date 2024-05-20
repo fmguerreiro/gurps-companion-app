@@ -9,10 +9,8 @@
     :effects.async-storage/set {:k     (keyword :profile k)
                                 :value v}}))
 
-(defn- generate-profile-sub [param]
+(doseq [idx [:name :player :portrait :point-total :ht :wt :size-modifier :age :appearance :status :reputation :notes]]
   (rf/reg-sub
-   (keyword :profile param)
+   (keyword :profile idx)
    (fn [db _]
-     (get-in db [:profile param]))))
-(doseq [i [:name :player :portrait :point-total :ht :wt :size-modifier :age :appearance :status :reputation :notes]]
-  (generate-profile-sub i))
+     (get-in db [:profile idx]))))

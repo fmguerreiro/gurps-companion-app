@@ -9,10 +9,11 @@
             ["@expo/vector-icons/MaterialIcons" :default icon]
             ["twrnc" :refer [style] :rename {style tw}]
             [re-frame.core :as rf]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [taoensso.timbre :as log]))
 
-;; TODO: written may be less if TL is low (less than 3?)
-;; TODO: dyslexia makes you illiterate
+;; TODO: "written" skill may be less if TL is low (less than 3?)
+;; TODO: dyslexia makes you illiterate ??
 
 (def dropdown-data
   [{:label (i18n/label :t/lang-lvl-native)   :value "native"},
@@ -32,14 +33,11 @@
     col4
     col5]])
 
-(def num->key
-  (comp keyword str))
-
 (defn- native-icon
   [{:keys [i native?]}]
   (let [color (-> (tw (if native? "text-black" "text-slate-400")) .-color)]
     [:> button {:style (tw "items-center justify-center")
-                :onPress #(rf/dispatch [:languages/update, (num->key i), :native?, (not native?)])}
+                :onPress #(rf/dispatch [:languages/update, i, :native?, (not native?)])}
      [:> icon {:name "hourglass-bottom" :size 20 :color color}]]))
 
 (defn- get-lang-skill-label
@@ -49,8 +47,8 @@
        first
        :label))
 
-(def lang-skill-cost {:native 3, :accented 2, :broken 1})
-(defn lang-cost
+(def ^:private lang-skill-cost {:native 3, :accented 2, :broken 1})
+(defn- lang-cost
   [{:keys [native? spoken written]}]
   (if native?
     0
@@ -58,7 +56,7 @@
        ((keyword written) lang-skill-cost))))
 
 (defn- language-row
-  [{:keys [i name spoken written native?]}]
+  [{:keys [name spoken written native?]} idx]
   [row
    ;; language name underline (adds a "(Native)" to the right if native button is pressed)
    [underlined-input {:val (str name (when (and native?
@@ -66,37 +64,37 @@
                                        (str " (" (i18n/label :t/lang-lvl-native) ")")))
                       :style (when native? (tw "text-slate-400"))
                       :disabled? native?
-                      :on-change-text #(debounce-and-dispatch [:languages/update, (num->key i), :name, %] 500)}]
+                      :on-change-text #(debounce-and-dispatch [:languages/update, idx, :name, %] 500)}]
 
    ;; spoken skill dropdown
-   ^{:key (str i "-spoken")}
+   ^{:key (str idx "-spoken")}
    [dropdown {:style (tw "flex-1")
               :placeholder-style (tw "text-center text-xs")
               :selected-style (tw "text-center")
-              :on-change #(rf/dispatch [:languages/update, (num->key i), :spoken, %])
+              :on-change #(rf/dispatch [:languages/update, idx, :spoken, %])
               :placeholder (get-lang-skill-label spoken)
               :disabled? native?
               :data dropdown-data}]
 
    ;; written skill dropdown
-   ^{:key (str i "-written")}
+   ^{:key (str idx "-written")}
    [dropdown {:style (tw "flex-1")
               :placeholder-style (tw "text-center text-xs")
               :selected-style (tw "text-center")
-              :on-change #(rf/dispatch [:languages/update, (num->key i), :written, %])
+              :on-change #(rf/dispatch [:languages/update, idx, :written, %])
               :placeholder (get-lang-skill-label written)
               :disabled? native?
               :data dropdown-data}]
 
    ;; turn native button
-   [native-icon {:i i :native? native?}]
+   [native-icon {:i idx :native? native?}]
 
    ;; cost (0 if native)
    [bracketed-numeric-input {:max-length 2
                              :val        (lang-cost {:native? native? :written written :spoken spoken})
                              :editable?  false}]])
 
-(defn header
+(defn- header
   []
   [row
    [:> text {:style (tw "flex-1 font-bold")} (i18n/label :t/languages)]
@@ -105,37 +103,34 @@
    [:> view {:style (tw "w-5")}]
    [:> view {:style (tw "w-10")}]])
 
+(def ^:private default-lang {:name "" :spoken "broken" :written "broken" :native? false})
+
 (defn languages-section []
-  (let [languages (some-> (rf/subscribe [:languages]) deref)
-        lang-array (vec (sort-by :i (filter map? (apply concat languages))))]
+  (let [languages (some-> (rf/subscribe [:languages]) deref)]
     [:> view {:style (tw "flex flex-col gap-1")}
 
      [header]
 
-     (for [lang lang-array]
-       ^{:key (str (:i lang) "-lang")}
-       [language-row lang])]))
-
-     ;; TODO: dynamic number of languages, for now just keep 4 (because we set the keys we want to fetch statically from app-db)
-     ;; (when (or (empty? languages)
-     ;;           (not-any? #(seq (:name %)) lang-array)) ;; or all filled-in
-     ;;   ^{:key (str (:i (count lang-array)) "-lang")}
-     ;;   [language-row (merge default-lang {:i (count lang-array)})])
+     (map-indexed
+      (fn [idx lang]
+        ^{:key (str idx "-lang")}
+        [language-row (conj lang {:i idx}) idx])
+      (conj languages default-lang))]))
 
 (rf/reg-sub
  :languages
  (fn [db _]
-   (get-in db [:languages])))
+   (get-in db [:languages] [])))
 
-(def lang-keys [:spoken :native? :i :name :cost :written])
 (rf/reg-event-fx
  :languages/update
  (fn [{:keys [db]} [_ i k v]]
-   (let [new-db (update-in db [:languages i] #(merge % {k v}))]
-     {:db                                 new-db
-      :effects.async-storage/set-multiple {:items (for [k' lang-keys]
-                                                    {:k     (keyword (str "languages/" (symbol i) "/" (symbol k')))
-                                                     :value (get-in new-db [:languages i k'])})}})))
+   (let [existing-language (get-in db [:languages i] default-lang)
+         new-language      (merge existing-language {k v})
+         new-db            (assoc-in db [:languages i] new-language)]
+     {:db                        new-db
+      :effects.async-storage/set {:k     :languages
+                                  :value (get-in new-db [:languages])}})))
 
 (comment
 

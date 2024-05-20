@@ -66,12 +66,9 @@
                        :fp 0}
 
    :skills []
-   :skill-costs {:acrobatics 10}
+   :skill-costs {}
 
-   :languages {:0 {:i 0 :name "" :spoken "native", :written "native", :native? true , :cost 0}
-               :1 {:i 1 :name "" :spoken "broken", :written "broken", :native? false, :cost 0}
-               :2 {:i 2 :name "" :spoken "broken", :written "broken", :native? false, :cost 0}
-               :3 {:i 3 :name "" :spoken "broken", :written "broken", :native? false, :cost 0}}
+   :languages []
 
    :items {:possessions []
            :melee-weapons []

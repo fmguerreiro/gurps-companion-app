@@ -95,11 +95,11 @@
              (.then #(js/console.log "clear" %)))
 
          (-> ^js async-storage
-             (.multiGet #js [":items/melee-weapons" ":non-existing-key"])
+             (.multiGet #js [":languages"])
              (.then #(js/console.log "multi-get" %)))
 
          (-> ^js async-storage
-             (.removeItem ":items/melee-weapons")
+             (.removeItem ":languages")
              (.then #(js/console.log "remove-item" %)))
 
          (-> ^js async-storage
