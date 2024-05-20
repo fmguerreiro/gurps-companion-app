@@ -13,7 +13,7 @@
 
 (defn character-stats-page
   []
-  [:> rn/ScrollView
+  [:> rn/ScrollView {:style (tw "bg-white")}
    [:> view {:style (tw "flex flex-col gap-4 py-4 bg-white items-center justify-between px-4")}
 
     [:> view {:style (tw "w-full")}

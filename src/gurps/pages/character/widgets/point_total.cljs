@@ -1,6 +1,5 @@
 (ns gurps.pages.character.widgets.point-total
-  (:require [taoensso.timbre :refer [info]]
-            [re-frame.core :as rf]
+  (:require [re-frame.core :as rf]
             [gurps.pages.character.widgets.summary-field :refer [summary-field]]))
 
 (defn point-total-field
@@ -27,7 +26,6 @@
 (rf/reg-event-fx
  :profile.update/unspent-points
  (fn [{:keys [db]} [_ diff]]
-   (info "Updating unspent points" diff (get-in db [:profile :unspent-points]))
    (let [new-db (update-in db [:profile :unspent-points] #(- % diff))]
      {:db new-db
       :effects.async-storage/set {:k     :profile/unspent-points
