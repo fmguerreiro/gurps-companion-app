@@ -1,10 +1,11 @@
 (ns gurps.pages.character.widgets.point-total
   (:require [re-frame.core :as rf]
+            [gurps.utils.helpers :refer [->int]]
             [gurps.pages.character.widgets.summary-field :refer [summary-field]]))
 
 (defn point-total-field
   []
-  [summary-field {:key :point-total, :editable? false}])
+  [summary-field {:key :point-total, :editable? false, :on-change-text ->int}])
 
 (rf/reg-sub
  :profile/point-total
@@ -16,7 +17,7 @@
 
 (defn unspent-points-field
   [style]
-  [summary-field {:key :unspent-points, :style style}])
+  [summary-field {:key :unspent-points, :style style, :on-change-text ->int}])
 
 (rf/reg-sub
  :profile/unspent-points

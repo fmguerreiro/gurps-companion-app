@@ -24,7 +24,7 @@
     ^{:key "summary-unspent-points"} [unspent-points-field]]
 
    [input-group {:key "summary-3"}
-    ^{:key "summary-unspent-points"} [summary-field {:key :age, :style (tw "max-w-14")}]
+    ^{:key "summary-age"} [summary-field {:key :age, :style (tw "max-w-14")}]
     ^{:key "summary-appearance"} [summary-field {:key :appearance}]]])
 
 ;; [input-group [:<>

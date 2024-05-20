@@ -25,8 +25,24 @@
 (s/def ::reputation string?)
 (s/def ::notes string?)
 (s/def ::profile (s/keys :req-un [(or ::name ::player ::portrait ::point-total ::ht ::wt ::size-modifier ::unspent-points ::age ::appearance ::status ::reputation ::notes)]))
+
+(s/def ::str number?)
+(s/def ::dex number?)
+(s/def ::int number?)
+(s/def ::ht-attr number?) ;; NOTE: ht is already used above in ::profile
+(s/def ::per number?)
+(s/def ::will number?)
+(s/def ::attributes (s/keys :opt-un [::str ::dex ::int ::ht-attr ::per ::will]))
+(s/def ::attribute-costs (s/keys :opt-un [::str ::dex ::int ::ht-attr ::per ::will ::fp ::hp ::basic-move ::basic-speed]))
+(s/def ::attribute-current (s/keys :opt-un [::hp ::fp]))
+
+(s/def ::k keyword?)
+(s/def ::cost number?)
+(s/def ::skill (s/keys :req-un [::name ::k ::cost]))
+(s/def ::skills (s/coll-of ::skill))
+
 (s/def ::db
-  (s/keys :req-un [::profile ::attributes ::attribute-costs ::attribute-current ::languages ::navigation]))
+  (s/keys :req-un [::profile ::attributes ::attribute-costs ::attribute-current ::skills ::languages ::navigation]))
 
 ;; initial state of app-db
 (defonce app-db

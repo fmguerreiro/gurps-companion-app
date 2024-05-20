@@ -13,4 +13,5 @@
   (rf/reg-sub
    (keyword :profile idx)
    (fn [db _]
+     (info "sub" (get-in db [:skills]))
      (get-in db [:profile idx]))))
