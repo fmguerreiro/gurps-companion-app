@@ -24,15 +24,11 @@
  (fn [db]
    (get-in db [:profile :unspent-points] 0)))
 
-(comment
-  ;; TODO: move this somewhere else/delete?
-  (def a {:profile {:unspent-points nil, :age nil, :name "Asdasd", :ht nil, :point-total nil, :size-modifier nil, :wt nil, :appearance nil, :player nil},
-          :attributes {:ht nil, :dex nil, :int nil, :str 10},
-          :attribute-costs {:will "10", :int nil, :per nil, :ht nil, :str 0, :dex nil, :hp "10", :basic-move nil, :basic-speed nil, :fp nil},
-          :skill-costs {:acrobatics nil},
-          :navigation {:root-state #js {:type "state",
-                                        :data #js {:state #js {:stale false, :type "tab", :key "tab-48xoJewgDG1DKnKo-Xzg9", :index 1,
-                                                               :routeNames #js ["Skills-Root" "Stats" "Items"],
-                                                               :history #js [#js {:type "route", :key "Skills-Root-c6IFb-EXfL9_8qotdOyxi"} #js {:type "route", :key "Stats-a_jDJsn-UzSBjCiXZ2k7X"}], :routes #js [#js {:name "Skills-Root", :key "Skills-Root-c6IFb-EXfL9_8qotdOyxi", :params nil} #js {:name "Stats", :key "Stats-a_jDJsn-UzSBjCiXZ2k7X", :params nil} #js {:name "Items", :key "Items-cCU-vLH2pap8WNOLpELRH", :params nil}]}}}}})
-
-  (reduce + (map js/parseInt (filter number? (vals (:attribute-costs a))))))
+(rf/reg-event-fx
+ :profile.update/unspent-points
+ (fn [{:keys [db]} [_ diff]]
+   (info "Updating unspent points" diff (get-in db [:profile :unspent-points]))
+   (let [new-db (update-in db [:profile :unspent-points] #(- % diff))]
+     {:db new-db
+      :effects.async-storage/set {:k     :profile/unspent-points
+                                  :value (get-in new-db [:profile :unspent-points])}})))

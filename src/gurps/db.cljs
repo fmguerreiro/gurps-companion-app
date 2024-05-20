@@ -26,7 +26,7 @@
 (s/def ::notes string?)
 (s/def ::profile (s/keys :req-un [(or ::name ::player ::portrait ::point-total ::ht ::wt ::size-modifier ::unspent-points ::age ::appearance ::status ::reputation ::notes)]))
 (s/def ::db
-  (s/keys :req-un [::profile ::attributes ::attribute-costs ::attribute-current ::skill-costs ::languages ::navigation]))
+  (s/keys :req-un [::profile ::attributes ::attribute-costs ::attribute-current ::languages ::navigation]))
 
 ;; initial state of app-db
 (defonce app-db
@@ -77,5 +77,3 @@
 
    ;; for reloading state on app re-start
    :navigation {:root-state #js {}}})
-
-(comment (reduce + (vals (merge (:skill-costs app-db) (:attribute-costs app-db)))))

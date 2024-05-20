@@ -4,7 +4,8 @@
             [gurps.widgets.base :refer [view]]
             [gurps.pages.character.widgets.reified-attribute :refer [reified-attribute]]
             [gurps.pages.character.widgets.reified-secondary-attribute :refer [reified-secondary-attribute]]
-            ["twrnc" :refer [style] :rename {style tw}]))
+            ["twrnc" :refer [style] :rename {style tw}]
+            [clojure.string :as str]))
 
 (defn attribute-group []
   [:> view {:style (tw "flex flex-row gap-0 mt-2")} ;; NOTE: mt-2 to account for out-of-bounds "current" label
@@ -47,17 +48,10 @@
  :attrs/update
  (fn [{:keys [db]} [_ k v]]
    (info "update attr" k v)
-   (let [old-val (get-in db [(keyword (namespace k)) (keyword (name k))])
-         diff    (- v old-val)]
-     {:db (-> db
-              (update-in [:profile :unspent-points] #(- % diff))
-              (assoc-in [(keyword (namespace k)) (keyword (name k))] v))
-
-      ;; TODO: for unspent-points, should just call profile/update :unspent-points (- v diff)
-      :effects.async-storage/set-multiple {:items [{:k     :profile/unspent-points
-                                                    :value (- (get-in db [:profile :unspent-points] 0) diff)}
-                                                   {:k     k
-                                                    :value v}]}})))
+   (let [old-v (get-in db [(keyword (namespace k)) (keyword (name k))])]
+     {:db (-> db (assoc-in [(keyword (namespace k)) (keyword (name k))] v))
+      :fx [(when (str/includes? (namespace k) "costs") [:dispatch [:profile.update/unspent-points (- v old-v)]])]
+      :effects.async-storage/set {:k k :value v}})))
 
 (def currents [:attribute-current/hp :attribute-current/fp])
 (doseq [current currents]

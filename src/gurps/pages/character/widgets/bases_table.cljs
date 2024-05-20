@@ -6,7 +6,8 @@
             ;; NOTE: referenced because of events registered there we depend on, this is kinda jank, need to refactor so we dont need to do this
             [gurps.pages.character.widgets.encumbrance-table]
             ["twrnc" :refer [style] :rename {style tw}]
-            [re-frame.core :as rf]))
+            [re-frame.core :as rf]
+            [taoensso.timbre :as log]))
 
 (defn bases-table
   []
@@ -32,9 +33,11 @@
 (rf/reg-event-fx
  :attribute-costs/update
  (fn [{:keys [db]} [_ k v]]
-   {:db (assoc-in db [:attribute-costs k] v)
-    :effects.async-storage/set {:k     (keyword :attribute-costs k)
-                                :value v}}))
+   (let [old-v (get-in db [:attribute-costs k] 0)]
+     {:db (assoc-in db [:attribute-costs k] v)
+      :fx [[:dispatch [:profile.update/unspent-points (- v old-v)]]]
+      :effects.async-storage/set {:k     (keyword :attribute-costs k)
+                                  :value v}})))
 
 (rf/reg-sub
  :attributes/basic-speed

@@ -126,9 +126,12 @@
  :languages/update
  (fn [{:keys [db]} [_ i k v]]
    (let [existing-language (get-in db [:languages i] default-lang)
+         old-cost          (lang-cost existing-language)
          new-language      (merge existing-language {k v})
-         new-db            (assoc-in db [:languages i] (merge new-language {:cost (lang-cost new-language)}))]
+         new-db            (assoc-in db [:languages i] (merge new-language {:cost (lang-cost new-language)}))
+         cost              (get-in new-db [:languages i :cost])]
      {:db                        new-db
+      :fx [[:dispatch [:profile.update/unspent-points (- cost old-cost)]]]
       :effects.async-storage/set {:k     :languages
                                   :value (get-in new-db [:languages])}})))
 

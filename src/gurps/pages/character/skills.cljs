@@ -169,7 +169,7 @@
  :<- [:attributes/will]
  :<- [:attributes/ht]
  (fn [[skills str int dex per will ht]]
-   ;; => {:k :staff, :lvl 17, ...}
+   ;; => [{:k :staff, :lvl 17, ...}]
    (let [attrs {:str str :int int :dex dex :per per :will will :ht ht}]
      (->> skills
           (map #(merge % ((generify-key (:k %)) skill-map)))
@@ -181,7 +181,9 @@
 (rf/reg-event-fx
  :skills.update/cost
  (fn [{:keys [db]} [_ idx cost]]
-   (let [new-db (assoc-in db [:skills idx :cost] cost)]
+   (let [old-c  (get-in db [:skills idx :cost] 0)
+         new-db (assoc-in db [:skills idx :cost] cost)]
      {:db new-db
+      :fx [[:dispatch [:profile.update/unspent-points (- cost old-c)]]]
       :effects.async-storage/set {:k     :skills
                                   :value (get-in new-db [:skills])}})))

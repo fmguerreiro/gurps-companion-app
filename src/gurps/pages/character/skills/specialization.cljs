@@ -11,43 +11,6 @@
             ["@react-navigation/native" :as rnn]
             [taoensso.timbre :as log]))
 
-;; (defn next-cost
-;;   [current-cost]
-;;   (cond (= 0 current-cost) 1
-;;         (= 1 current-cost) 2
-;;         (= 2 current-cost) 4
-;;         (= 4 current-cost) 8
-;;         :else (+ 4 current-cost)))
-
-;; (defn prev-cost
-;;   [current-cost]
-;;   (cond (= 0 current-cost) 0
-;;         (= 1 current-cost) 0
-;;         (= 2 current-cost) 1
-;;         (= 4 current-cost) 2
-;;         :else (- current-cost 4)))
-
-;; (defn- cost->lvl-mod
-;;   "Converts a cost to a level modifier
-;;   e.g. 1 -> 0, 2 -> 1, 4 -> 2, 8 -> 3, 12 -> 4, etc."
-;;   [cost]
-;;   (cond (= 0 cost) 0
-;;         (= 1 cost) 0
-;;         (= 2 cost) 1
-;;         (= 4 cost) 2
-;;         :else (js/Math.floor (inc (/ cost 4)))))
-
-;; (defn- diff+cost->lvl-mod
-;;   "Converts a skill cost to a level modifier based on difficulty"
-;;   [skill cost]
-;;   (when (some? cost)
-;;     (let [difficulty (:diff skill)
-;;           modifier (cost->lvl-mod cost)]
-;;       (cond (= difficulty :e) modifier
-;;             (= difficulty :a) (dec modifier)
-;;             (= difficulty :h) (- 2 modifier)
-;;             (= difficulty :vh) (- 3 modifier)))))
-
 (defn- row
   [col1 col2 col3 col4]
   [:> view {:style (tw "flex flex-row justify-between")}
@@ -85,18 +48,6 @@
         [:> text {:style (tw "text-center")} (i18n/label (keyword :t (str (symbol ((:diff skill) difficulties)) "-full")))]
         [:> text {:style (tw "text-center")} default-lvl]
         (when (not disabled?) [:> text {:style (tw "text-center")} "+"])]]])))
-
-;; (rf/reg-event-db
-;;  :skills/inc-skill-lvl
-;;  (fn [db [_ skill]]
-;;    (info "inc-skill-lvl" (str skill) (get-in db [:skill-costs skill]))
-;;    (update-in db [:skill-costs skill] (fnil next-cost 0))))
-
-;; (rf/reg-event-db
-;;  :skills/dec-skill-lvl
-;;  (fn [db [_ skill]]
-;;    (info "dec-skill-lvl" (str skill) (get-in db [:skill-costs skill]))
-;;    (update-in db [:skill-costs skill] (fnil prev-cost 0))))
 
 (defn- spec-header
   [txt]
@@ -171,5 +122,6 @@
    (let [len    (count (get-in db [:skills]))
          new-db (assoc-in db [:skills len] (->db skill-key spec))]
      {:db new-db
+      :fx [[:dispatch [:profile.update/unspent-points 1]]]
       :effects.async-storage/set {:k     :skills
                                   :value (get-in new-db [:skills])}})))
