@@ -4,6 +4,7 @@
             [gurps.widgets.base :refer [view]]
             [gurps.pages.character.widgets.reified-attribute :refer [reified-attribute]]
             [gurps.pages.character.widgets.reified-secondary-attribute :refer [reified-secondary-attribute]]
+            [gurps.pages.character.widgets.helpers :refer [cost->points]]
             ["twrnc" :refer [style] :rename {style tw}]
             [clojure.string :as str]))
 
@@ -23,18 +24,15 @@
     [reified-secondary-attribute {:attr :fp,   :based-on :ht,  :has-current? true}]]])
 
 (def attrs [:attributes/str
-            :attribute-costs/str
             :attributes/dex
-            :attribute-costs/dex
             :attributes/int
-            :attribute-costs/int
             :attributes/ht
+            :attribute-costs/str
+            :attribute-costs/dex
+            :attribute-costs/int
             :attribute-costs/ht
             :attribute-costs/hp
-            :attribute-current/hp
-            :attributes/will
             :attribute-costs/will
-            :attributes/per
             :attribute-costs/per
             :attribute-costs/fp
             :attribute-costs/basic-speed])
@@ -43,6 +41,15 @@
    attr
    (fn [db _]
      (get-in db [(keyword (namespace attr)) (keyword (name attr))] 0))))
+
+(def cost-based-attrs [:attributes/hp :attributes/fp :attributes/per :attributes/will])
+(doseq [attr cost-based-attrs]
+  (rf/reg-sub
+   attr
+   (fn [db]
+     (let [cost (get-in db [:attribute-costs (keyword (name attr))] 0)
+           incr (get-in cost->points [(keyword (name attr)) :incr])]
+       (+ 10 (js/Math.floor (/ cost incr)))))))
 
 (rf/reg-event-fx
  :attrs/update

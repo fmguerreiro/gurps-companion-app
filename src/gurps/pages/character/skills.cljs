@@ -52,8 +52,8 @@
   [val diff]
   (cond (= diff :e) val
         (= diff :a) (dec val)
-        (= diff :h) (- 2 val)
-        (= diff :v) (- 3 val)))
+        (= diff :h) (- val 2)
+        (= diff :v) (- val 3)))
 
 (defn cost-mod
   "Adjusts the value based on the cost"

@@ -1,30 +1,16 @@
 (ns gurps.pages.character.widgets.attribute
-  (:require [cljs-bean.core :refer [->clj]]
-            [taoensso.timbre :refer [info]]
-            [gurps.utils.i18n :as i18n]
+  (:require [gurps.utils.i18n :as i18n]
             [gurps.utils.debounce :as debounce]
-            [gurps.utils.helpers :refer [default-to]]
+            [gurps.utils.helpers :refer [->int default-to]]
             [gurps.widgets.base :refer [view text input]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
+            [gurps.pages.character.widgets.helpers :refer [cost->points]]
             ["twrnc" :refer [style] :rename {style tw}]
             [re-frame.core :as rf]))
 
-;; TODO: apply modifier functions
-(def value-per-lvl
-  {;; primary
-   :str {:incr 10 :modifier (fn [size] (js/Math.max -0.8 (* -0.1 size)))}
-   :dex {:incr 20}
-   :int {:incr 20}
-   :ht  {:incr 10}
-   ;; secondary
-   :hp   {:incr 2}
-   :will {:incr 5}
-   :per  {:incr 5}
-   :fp   {:incr 3}})
-
 (defn- calc-cost [label value]
   ;; (info "calc-cost" label value)
-  (let [incr (:incr (label value-per-lvl))
+  (let [incr (:incr (label cost->points))
         val  (default-to value 10)]
     (* incr (- val 10))))
 
@@ -67,7 +53,7 @@
                             :style (tw "text-2xl")
                             :maxLength 3
                             :keyboardType "numeric"
-                            :onChangeText (debounce/debounce #(on-change-text %) 500)
+                            :onChangeText (debounce/debounce #(on-change-text (->int %)) 500)
                             :placeholder (str val)}]))
 
    (when current
@@ -78,7 +64,7 @@
                   ^{:key (str attr "-current")}
                   [:> input {:style (tw "text-2xl pb-1")
                              :keyboardType "numeric"
-                             :onChangeText (debounce/debounce #(rf/dispatch [:attribute-current/update (keyword :attribute-current attr) (js/parseInt %)]) 500)
+                             :onChangeText (debounce/debounce #(rf/dispatch [:attribute-current/update (keyword :attribute-current attr) (->int %)]) 500)
                              :placeholder (str (if current current val))}])])
 
    (when (and secondary? (nil? current))

@@ -13,3 +13,16 @@
    Otherwise, it returns the input keyword unchanged."
   [k]
   (if (namespace k) (keyword (namespace k) :sp) k))
+
+;; TODO: apply modifier functions
+(def cost->points
+  {;; primary
+   :str {:incr 10 :modifier (fn [size] (js/Math.max -0.8 (* -0.1 size)))}
+   :dex {:incr 20}
+   :int {:incr 20}
+   :ht  {:incr 10}
+   ;; secondary
+   :hp   {:incr 2}
+   :will {:incr 5}
+   :per  {:incr 5}
+   :fp   {:incr 3}})

@@ -44,10 +44,12 @@
              :reputation ""
              :notes ""}
 
-   :attributes {:str 10
-                :dex 10
-                :int 10
-                :ht 10}
+   :attributes {:str  10
+                :dex  10
+                :int  10
+                :ht   10
+                :per  10
+                :will 10}
 
    :attribute-costs {:hp 0
                      :will 0
