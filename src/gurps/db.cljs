@@ -41,6 +41,8 @@
 (s/def ::skill (s/keys :req-un [::name ::k ::cost]))
 (s/def ::skills (s/coll-of ::skill))
 
+(s/def ::languages (s/keys :req-un [])) ;; TODO
+
 (s/def ::db
   (s/keys :req-un [::profile ::attributes ::attribute-costs ::attribute-current ::skills ::languages ::navigation]))
 
