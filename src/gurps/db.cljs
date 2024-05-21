@@ -62,7 +62,7 @@
 (s/def ::dmg (s/or :s string? :n number?))
 (s/def ::acc number?)
 (s/def ::rof number?)
-(s/def ::shots string?)
+(s/def ::shots (s/or :s string? :n number?))
 (s/def ::ranged-weapon (s/keys :req-un [::name ::weight ::dmg ::acc ::rof ::shots]))
 (s/def ::ranged-weapons (s/coll-of ::ranged-weapon))
 
