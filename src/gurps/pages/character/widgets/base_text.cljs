@@ -23,7 +23,7 @@
         :or   {upgradable? false}}]
   (let [value (or (some-> (rf/subscribe [(keyword :attributes attr)]) deref) 0)
         cost  (if upgradable? (some-> (rf/subscribe [(keyword :attribute-costs attr)]) deref) 0)]
-    [:> view {:style (tw "flex flex-row flex-grow items-center gap-1 bg-indigo-100")}
+    [:> view {:style (tw "flex flex-row flex-grow items-center gap-1")}
      [:> text {:style (tw "text-lg font-bold")} (i18n/label (keyword :t attr))]
      [:> text {:style (tw "text-lg underline")} (if upgradable? (calc-val attr value cost) value)]
      (when upgradable?

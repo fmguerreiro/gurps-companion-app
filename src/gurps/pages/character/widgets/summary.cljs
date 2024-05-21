@@ -6,7 +6,7 @@
 
 (defn- input-group
   [{:keys [key]} & children]
-  [:> view {:key key :style (tw "flex flex-row flex-1 bg-green-100 gap-2")}
+  [:> view {:key key :style (tw "flex flex-row flex-1 gap-2")}
    children])
 
 (defn summary-group

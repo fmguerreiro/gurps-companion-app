@@ -19,11 +19,11 @@
 (defn- row
   [col1 col2 col3 col4 col5]
   [:> view {:style (tw "flex flex-row gap-1 h-8")}
-   [:> view {:style (tw "w-5/12 my-auto bg-red-100")} col1]
-   [:> view {:style (tw "w-1/12 my-auto bg-blue-100")} col2]
-   [:> view {:style (tw "w-2/12 my-auto bg-green-100")} col3]
-   [:> view {:style (tw "w-1/12 my-auto bg-green-100")} col4]
-   [:> view {:style (tw "w-3/12 my-auto bg-indigo-100 pr-3")} col5]])
+   [:> view {:style (tw "w-5/12 my-auto")} col1]
+   [:> view {:style (tw "w-1/12 my-auto")} col2]
+   [:> view {:style (tw "w-2/12 my-auto")} col3]
+   [:> view {:style (tw "w-1/12 my-auto")} col4]
+   [:> view {:style (tw "w-3/12 my-auto pr-3")} col5]])
 
 (defn- header
   []

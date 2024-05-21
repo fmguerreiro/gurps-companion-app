@@ -13,11 +13,11 @@
     :or   {editable? true, on-change-text identity}}]
   (let [val (some-> (rf/subscribe [(keyword :profile key)]) deref)]
     [:> view {:key key
-              :style #js [style, (tw (str/join " " ["flex-row gap-1 bg-green-100" (if editable? "flex-1" "flex-initial")]))]}
+              :style #js [style, (tw (str/join " " ["flex-row gap-1" (if editable? "flex-1" "flex-initial")]))]}
 
      ;; label
      [:> text {:key (str key "-label")
-               :style (tw "font-bold bg-red-100")}
+               :style (tw "font-bold")}
       (i18n/label (keyword :t key))]
 
      ;; input
