@@ -515,7 +515,7 @@ This project is protected under the MIT License. For more details, refer to the 
 
 ##  Acknowledgments
 
-- List any resources, contributors, inspiration, etc. here.
+- The creators of the [template](https://github.com/PEZ/rn-rf-shadow) for react native + shadow cljs template for which the framework of this app was built upon.
 
 [**Return**](#-overview)
 
