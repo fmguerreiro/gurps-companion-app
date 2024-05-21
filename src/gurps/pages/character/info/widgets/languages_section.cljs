@@ -1,12 +1,11 @@
 (ns gurps.pages.character.info.widgets.languages-section
-  (:require [taoensso.timbre :refer [info]]
-            [gurps.widgets.base :refer [view text button]]
+  (:require [gurps.widgets.base :refer [view text button]]
             [gurps.widgets.dropdown :refer [dropdown]]
             [gurps.widgets.underlined-input :refer [underlined-input]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
             [gurps.utils.i18n :as i18n]
             [gurps.utils.debounce :refer [debounce-and-dispatch]]
-            ["@expo/vector-icons/MaterialIcons" :default icon]
+            ["@expo/vector-icons/FontAwesome" :default icon]
             ["twrnc" :refer [style] :rename {style tw}]
             [re-frame.core :as rf]
             [clojure.string :as str]
@@ -20,25 +19,21 @@
    {:label (i18n/label :t/lang-lvl-accented) :value "accented"},
    {:label (i18n/label :t/lang-lvl-broken)   :value "broken"}])
 
-(defn row
+(defn- row
   [col1 col2 col3 col4 col5]
-  [:> view {:style (tw "flex flex-row grow w-full")}
-   col1
-
-   [:> view {:style (tw "flex-1 flex flex-row")}
-    col2
-    col3]
-
-   [:> view {:style (tw "flex flex-row")}
-    col4
-    col5]])
+  [:> view {:style (tw "flex flex-row grow gap-2 w-full h-6")}
+   [:> view {:style (tw "w-4/12")} col1]
+   col2
+   col3
+   col4
+   col5])
 
 (defn- native-icon
   [{:keys [i native?]}]
   (let [color (-> (tw (if native? "text-black" "text-slate-400")) .-color)]
     [:> button {:style (tw "items-center justify-center")
                 :onPress #(rf/dispatch [:languages/update, i, :native?, (not native?)])}
-     [:> icon {:name "hourglass-bottom" :size 20 :color color}]]))
+     [:> icon {:style (tw "align-middle mt-1") :name "language" :size 20 :color color}]]))
 
 (defn- get-lang-skill-label
   [skill]
@@ -69,8 +64,8 @@
    ;; spoken skill dropdown
    ^{:key (str idx "-spoken")}
    [dropdown {:style (tw "flex-1")
-              :placeholder-style (tw "text-center text-xs")
-              :selected-style (tw "text-center")
+              :placeholder-style (tw "text-right text-xs")
+              :selected-style (tw "text-right")
               :on-change #(rf/dispatch [:languages/update, idx, :spoken, %])
               :placeholder (get-lang-skill-label spoken)
               :disabled? native?
@@ -79,8 +74,8 @@
    ;; written skill dropdown
    ^{:key (str idx "-written")}
    [dropdown {:style (tw "flex-1")
-              :placeholder-style (tw "text-center text-xs")
-              :selected-style (tw "text-center")
+              :placeholder-style (tw "text-right text-xs")
+              :selected-style (tw "text-right")
               :on-change #(rf/dispatch [:languages/update, idx, :written, %])
               :placeholder (get-lang-skill-label written)
               :disabled? native?
@@ -136,7 +131,6 @@
                                   :value (get-in new-db [:languages])}})))
 
 (comment
-
   (def a {:0 {:i 0 :name "a" :spoken "broken", :written "broken", :native? false, :cost 0}
           :1 {:i 1 :name "" :spoken "broken", :written "broken", :native? false, :cost 0}})
 
