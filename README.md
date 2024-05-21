@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" alt="project-logo">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4vwnHTjJKy5leS5auAbkAvPbD7688rdqOiTu-TB_5dg&s" width="100" alt="project-logo">
 </p>
 <p align="center">
     <h1 align="center">GURPS-COMPANION-APP</h1>
