@@ -41,7 +41,11 @@
 (s/def ::skill (s/keys :req-un [::name ::k ::cost]))
 (s/def ::skills (s/coll-of ::skill))
 
-(s/def ::languages (s/keys :req-un [])) ;; TODO
+(s/def ::spoken  #{"native" "accented" "broken"})
+(s/def ::written #{"native" "accented" "broken"})
+(s/def ::native? boolean?)
+(s/def ::language (s/keys :req-un [::name ::spoken ::written ::native?] :opt-un [::cost]))
+(s/def ::languages (s/coll-of ::language))
 
 (s/def ::db
   (s/keys :req-un [::profile ::attributes ::attribute-costs ::attribute-current ::skills ::languages ::navigation]))

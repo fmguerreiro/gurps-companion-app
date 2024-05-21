@@ -13,5 +13,5 @@
   (rf/reg-sub
    (keyword :profile idx)
    (fn [db _]
-     (info "sub" (get-in db [:skills]))
+     ;; (info "sub" (get-in db [:languages])) ;; TODO remove
      (get-in db [:profile idx]))))
