@@ -87,13 +87,17 @@
    (+ 3 bm)))
 
 (defn encumbrance-table []
-  [:> view {:style (tw "flex flex-row gap-2 border-2 border-black p-1")}
+  [:> view {:style (tw "flex flex-row gap-2 border-2 border-black")}
    [encumbrance-column]
    [move-column]
    [dodge-column]])
 
 (rf/reg-sub
  :items/weight
- :<- [:items/possessions] ;; TODO: add melee + ranged weapons
- (fn [possessions]
-   (reduce (fn [acc item] (+ acc (:weight item))) 0 possessions)))
+ :<- [:items/possessions]
+ :<- [:items/melee-weapons]
+ :<- [:items/ranged-weapons]
+ (fn [[possessions melee-weapons ranged-weapons]]
+   (reduce (fn [acc item] (+ acc (:weight item)))
+           0
+           (concat possessions melee-weapons ranged-weapons))))
