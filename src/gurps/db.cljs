@@ -10,7 +10,6 @@
 ;;     :active                                                 ;; only todos whose :done is false
 ;;     :done})                                                   ;; only todos whose :done is true
 
-;; TODO: finish writing spec
 (s/def ::name string?)
 (s/def ::player string?)
 (s/def ::portrait (s/or :s string? :nil nil?))
@@ -47,8 +46,33 @@
 (s/def ::language (s/keys :req-un [::name ::spoken ::written ::native?] :opt-un [::cost]))
 (s/def ::languages (s/coll-of ::language))
 
+(s/def ::location #{"bag", "head", "torso", "arm", "hand", "leg", "foot"})
+(s/def ::dr (s/or :n number? :nil nil?))
+(s/def ::weight (s/or :n number? :nil nil?))
+(s/def ::possession (s/keys :req-un [::name ::location ::dr] :opt-un [::weight]))
+(s/def ::possessions (s/coll-of ::possession))
+
+(s/def ::swg-mod number?)
+(s/def ::thr-mod number?)
+(s/def ::reach (s/or :s string? :nil nil?))
+(s/def ::parry (s/or :s string? :nil nil?))
+(s/def ::melee-weapon (s/keys :req-un [::name ::weight ::thr-mod ::swg-mod ::reach ::parry]))
+(s/def ::melee-weapons (s/coll-of ::melee-weapon))
+
+(s/def ::dmg (s/or :s string? :n number?))
+(s/def ::acc number?)
+(s/def ::rof number?)
+(s/def ::shots string?)
+(s/def ::ranged-weapon (s/keys :req-un [::name ::weight ::dmg ::acc ::rof ::shots]))
+(s/def ::ranged-weapons (s/coll-of ::ranged-weapon))
+
+(s/def ::items (s/keys :req-un [::possessions ::melee-weapons ::ranged-weapons]))
+
+(s/def ::tech-level number?)
+(s/def ::world (s/keys :req-un [::tech-level]))
+
 (s/def ::db
-  (s/keys :req-un [::profile ::attributes ::attribute-costs ::attribute-current ::skills ::languages ::navigation]))
+  (s/keys :req-un [::profile ::attributes ::attribute-costs ::attribute-current ::skills ::languages ::items ::world ::navigation]))
 
 ;; initial state of app-db
 (defonce app-db
