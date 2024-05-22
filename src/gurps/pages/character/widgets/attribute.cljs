@@ -68,9 +68,10 @@
                              :placeholder (str (if current current val))}])])
 
    (when (and secondary? (nil? current))
-     (box {} [:<>]))
+     (box {:style (tw "w-12")}
+          [:<>]))
 
-   (box {:style (tw "")}
+   (box (when secondary? {:style (tw "w-12")})
         [bracketed-numeric-input {:on-change-text on-change-text
                                   :editable? secondary?
                                   :val (if secondary? (str cost) (calc-cost attr val))}])])
