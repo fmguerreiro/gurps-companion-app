@@ -9,7 +9,7 @@
             [clojure.string :as str]))
 
 (defn attribute-group []
-  [:> view {:style (tw "flex flex-row gap-0 mt-2")} ;; NOTE: mt-2 to account for out-of-bounds "current" label
+  [:> view {:style (tw "flex flex-row justify-between mt-1")} ;; NOTE: mt to account for out-of-bounds "current" label
 
    [:> view {:style (tw "flex flex-col")}
     [reified-attribute {:attr :str}]

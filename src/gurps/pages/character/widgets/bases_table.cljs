@@ -1,6 +1,5 @@
 (ns gurps.pages.character.widgets.bases-table
-  (:require [taoensso.timbre :refer [info]]
-            [gurps.widgets.base :refer [view]]
+  (:require [gurps.widgets.base :refer [view]]
             [gurps.pages.character.widgets.base-text :refer [base-text]]
             [gurps.pages.character.utils.damage-table :refer [damage-table]]
             ;; NOTE: referenced because of events registered there we depend on, this is kinda jank, need to refactor so we dont need to do this
@@ -11,16 +10,16 @@
 
 (defn bases-table
   []
-  [:> view {:style (tw "flex flex-col gap-2")}
+  [:> view {:style (tw "flex flex-col w-full gap-2")}
 
-   [:> view {:style (tw "flex flex-row gap-2 items-stretch")}
+   [:> view {:style (tw "flex flex-row flex-grow gap-2 justify-between")}
     [base-text {:attr :basic-lift}]
-    [base-text {:attr :damage-thrust}]
-    [base-text {:attr :damage-swing}]]
+    [base-text {:attr :damage-thrust, :style (tw "justify-center")}]
+    [base-text {:attr :damage-swing, :style (tw "justify-end")}]]
 
-   [:> view {:style (tw "flex flex-row gap-2")}
+   [:> view {:style (tw "flex flex-row flex-grow gap-2 justify-between")}
     [base-text {:attr :basic-speed, :upgradable? true}]
-    [base-text {:attr :basic-move,  :upgradable? true}]]])
+    [base-text {:attr :basic-move,  :upgradable? true, :style (tw "justify-end")}]]])
 
 (def attrs [:basic-move
             :basic-speed])

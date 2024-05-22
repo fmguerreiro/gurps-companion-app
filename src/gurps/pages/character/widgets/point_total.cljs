@@ -16,8 +16,8 @@
      (or costs 0))))
 
 (defn unspent-points-field
-  [style]
-  [summary-field {:key :unspent-points, :style style, :on-change-text ->int}])
+  [{:keys [style input-style text-align]}]
+  [summary-field {:key :unspent-points, :on-change-text ->int, :style style, :input-style input-style, :text-align text-align}])
 
 (rf/reg-sub
  :profile/unspent-points

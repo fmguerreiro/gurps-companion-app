@@ -15,13 +15,13 @@
     (* incr (- val 10))))
 
 (defn- box
-  [children]
-  [:> view {:style (tw "h-14 w-14 items-center justify-center flex-row")}
+  [{:keys [style]} children]
+  [:> view {:style #js [(tw "h-12 items-center justify-center flex-row"), (if style style (tw "w-12"))]}
    children])
 
 (defn- box-border
   [^js {:keys [style key]} & children]
-  [:> view {:key key :style #js [(tw "h-14 w-14 align-middle border-2 items-center justify-center"), style]}
+  [:> view {:key key :style #js [(tw "h-12 w-12 align-middle border-2 items-center justify-center"), style]}
    children])
 
 (def long-attr
@@ -39,18 +39,18 @@
   (keyword :t (str "attr-" (symbol (long-attr key)))))
 
 (defn attribute-input
-  [^js {:keys [attr val cost current on-change-text secondary?]
+  [^js {:keys [attr val cost current on-change-text secondary? style]
         :or   {secondary? false}}]
-  [:> view {:style (tw "flex flex-row gap-0")}
-   (box
-    [:> text {:style (tw "text-2xl font-bold")}
-     (i18n/label (key->i18n-label attr))])
+  [:> view {:style #js [(tw "flex flex-row flex-grow gap-1"), style]}
+   (box {:style (tw (str "justify-start ") (if secondary? "w-10" "w-8"))}
+        [:> text {:style (tw "text-xl font-bold")}
+         (i18n/label (key->i18n-label attr))])
 
    (if secondary?
-     (box-border {:key attr} [:> text {:key attr :style (tw "text-2xl")} val])
+     (box-border {:key attr} [:> text {:key attr :style (tw "text-xl")} val])
      (box-border {:style (tw "bg-slate-100")}
                  [:> input {:key attr
-                            :style (tw "text-2xl")
+                            :style (tw "text-xl")
                             :maxLength 3
                             :keyboardType "numeric"
                             :onChangeText (debounce/debounce #(on-change-text (->int %)) 500)
@@ -58,7 +58,7 @@
 
    (when current
      [:> view
-      [:> text {:style (tw "text-xs text-center w-14 capitalize font-bold absolute -top-4")}
+      [:> text {:style (tw "text-xs text-center w-12 capitalize font-bold absolute -top-4")}
        (i18n/label :t/current)]
       (box-border {:style (tw "bg-slate-100")}
                   ^{:key (str attr "-current")}
@@ -68,8 +68,9 @@
                              :placeholder (str (if current current val))}])])
 
    (when (and secondary? (nil? current))
-     (box [:<>]))
+     (box {} [:<>]))
 
-   (box [bracketed-numeric-input {:on-change-text on-change-text
+   (box {:style (tw "")}
+        [bracketed-numeric-input {:on-change-text on-change-text
                                   :editable? secondary?
                                   :val (if secondary? (str cost) (calc-cost attr val))}])])

@@ -9,7 +9,7 @@
             [clojure.string :as str]))
 
 (defn summary-field
-  [{:keys [key editable? style on-change-text]
+  [{:keys [key editable? style input-style text-align on-change-text]
     :or   {editable? true, on-change-text identity}}]
   (let [val (some-> (rf/subscribe [(keyword :profile key)]) deref)]
     [:> view {:key key
@@ -23,5 +23,7 @@
      ;; input
      (if editable?
        [underlined-input {:val val
-                          :on-change-text #(debounce/debounce-and-dispatch [:profile/update key (on-change-text %)] 800)}]
+                          :on-change-text #(debounce/debounce-and-dispatch [:profile/update key (on-change-text %)] 800)
+                          :style input-style
+                          :text-align text-align}]
        [:> text val])]))

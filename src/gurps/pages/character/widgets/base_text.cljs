@@ -19,11 +19,11 @@
         (+ (js/parseFloat val) added-val)))))
 
 (defn base-text
-  [^js {:keys [attr upgradable?]
+  [^js {:keys [attr upgradable? style]
         :or   {upgradable? false}}]
   (let [value (or (some-> (rf/subscribe [(keyword :attributes attr)]) deref) 0)
         cost  (if upgradable? (some-> (rf/subscribe [(keyword :attribute-costs attr)]) deref) 0)]
-    [:> view {:style (tw "flex flex-row flex-grow items-center gap-1")}
+    [:> view {:style #js [(tw "flex flex-row flex-grow items-center gap-1"), style]}
      [:> text {:style (tw "text-lg font-bold")} (i18n/label (keyword :t attr))]
      [:> text {:style (tw "text-lg underline")} (if upgradable? (calc-val attr value cost) value)]
      (when upgradable?

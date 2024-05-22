@@ -1,5 +1,6 @@
 (ns gurps.pages.character.widgets.reified-secondary-attribute
-  (:require [re-frame.core :as rf]
+  (:require ["twrnc" :refer [style] :rename {style tw}]
+            [re-frame.core :as rf]
             [gurps.utils.helpers :refer [default-to]]
             [gurps.pages.character.widgets.helpers :refer [update-attribute]]
             [gurps.pages.character.widgets.attribute :refer [attribute-input]]))
@@ -29,4 +30,5 @@
                       :val val
                       :secondary? true
                       :on-change-text on-change-text
-                      :current current}]))
+                      :current current
+                      :style (tw "justify-end")}]))

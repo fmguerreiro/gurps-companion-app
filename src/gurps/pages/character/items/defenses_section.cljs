@@ -17,24 +17,25 @@
   [:> view {:style (tw "flex flex-row gap-1")}
    ;; dr
    ^{:key "defenses-dr"}
-   [:> view {:style (tw "w-1/3")}
+   [:> view {:style (tw "flex-1")}
     [labelled-box (i18n/label :t/dr)
      (let [defenses (some-> (rf/subscribe [:profile/defenses]) deref)]
        ^{:key "defenses-dr-view"}
        [:> view {:style (tw "flex flex-col")}
         (for [kv (seq defenses)]
           ^{:key (str "defense-dr-" (key kv))}
-          [:> view {:style (tw "flex flex-row gap-2")}
+          [:> view {:style (tw "flex flex-row gap-2 justify-center")}
            ^{:key (str "defense-dr-label-" (key kv))}
-           [:> text {:style (tw "w-2/4 text-right")} (i18n/label (keyword :t (key kv)))]
+           [:> text {:style (tw "w-1/2 mr-1.5 text-right justify-end")} ;; NOTE: mr-1.5 to prevent cutoff of text (a bit hacky)
+            (i18n/label (keyword :t (key kv)))]
            ^{:key (str "defense-dr-input-" (key kv))}
            [underlined-input {:val         (val kv)
-                              :style       (tw "w-2/4")
+                              :style       (tw "w-1/2 justify-start")
                               :text-align  "center"
                               :disabled?   true}]])])]]
    ;; parry
    ^{:key "defenses-parry"}
-   [:> view {:style (tw "w-1/3")}
+   [:> view {:style (tw "flex-1")}
     [labelled-box (i18n/label :t/parry)
      (let [parry (some-> (rf/subscribe [:defenses/highest-parry]) deref)]
        ^{:key "defense-parry-label"}
@@ -42,7 +43,7 @@
 
    ;; block
    ^{:key "defenses-block"}
-   [:> view {:style (tw "w-1/3 pr-2")}
+   [:> view {:style (tw "flex-1")}
     [labelled-box (i18n/label :t/block)
      (let [block (some-> (rf/subscribe [:defenses/highest-block]) deref)]
        ^{:key "defense-block-label"}

@@ -1,6 +1,6 @@
 (ns gurps.pages.character.widgets.reified-attribute
   (:require [re-frame.core :as rf]
-            [gurps.utils.helpers :refer [default-to]]
+            [gurps.utils.helpers :refer [default-to ->int]]
             [gurps.pages.character.widgets.helpers :refer [update-attribute]]
             [gurps.pages.character.widgets.attribute :refer [attribute-input]]))
 
@@ -20,11 +20,8 @@
   (let [key      (keyword :attributes attr)
         key-cost (keyword :attribute-costs attr)
         val      (some-> (rf/subscribe [key]) deref)
-        on-change-text (fn [text]
-                         (let [parsed (js/parseInt text)
-                               v (if (js/isNaN parsed) 10 parsed)]
-                           (update-attribute key v)
-                           (update-attribute key-cost (calc-cost attr v))))]
+        on-change-text #(do (update-attribute key (or (->int %) 10))
+                            (update-attribute key-cost (calc-cost attr (or (->int %) 10))))]
     [attribute-input {:attr attr
                       :val val
                       :on-change-text on-change-text}]))
