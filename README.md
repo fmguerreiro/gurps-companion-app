@@ -46,7 +46,7 @@ The gurps-companion-app is a comprehensive mobile application supporting GURPS 4
 
 | Stats                                     | Items                                     | Skills                                     | Information                              |
 | ----------------------------------------- | ----------------------------------------- | ------------------------------------------ | ---------------------------------------- |
-| <img src="/assets/images/stats_screen.png" width="150" /> | <img src="/assets/images/items_screen.png" width="150" /> | <img src="/assets/images/skills_screen.png" width="150" /> | <img src="/assets/images/info_screen.png" width="150" /> |
+| <img src="/assets/images/stats_screen.png" width="200" /> | <img src="/assets/images/items_screen.png" width="200" /> | <img src="/assets/images/skills_screen.png" width="200" /> | <img src="/assets/images/info_screen.png" width="200" /> |
 
 ---
 
