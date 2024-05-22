@@ -8,6 +8,7 @@
             ["twrnc" :refer [style] :rename {style tw}]
             [gurps.utils.i18n :as i18n]
             [gurps.widgets.base :refer [view]]
+            [gurps.widgets.character-icon :refer [character-icon]]
             [gurps.pages.character.stats :refer [character-stats-page]]
             [gurps.pages.character.info :refer [character-info-page]]
             [gurps.navigation.items-stack :refer [items-stack]]
@@ -17,7 +18,7 @@
 
 (def icon-color (.-color (tw "text-slate-400")))
 
-(def header-title-style {:textTransform "uppercase"}) ;; TODO: headerTitleStyle doesnt work here
+(def header-title-style {:textTransform "uppercase"})
 
 ;; (clj->js {:navigation {:root-state {"type" "state", "data" {"state" nil}}}})
 ;; => #js {:navigation #js {:root-state #js {:type "state", :data #js {:state nil}}}}
@@ -25,6 +26,11 @@
 (defn tab-bar-icon
   [icon]
   (fn [] (r/as-element [:> material-icon {:name icon :size 20 :color icon-color}])))
+
+(defn header-icon
+  []
+  (fn [] (r/as-element [:> view {:style (tw "mx-4")}
+                        [character-icon]])))
 
 (defn- safe-view
   [component]
@@ -52,19 +58,21 @@
                            :component (fn [props] (r/as-element [character-stats-page props]))
                            :options   {:title (i18n/label :t/stats)
                                        :tabBarIcon (tab-bar-icon "arm-flex")
-                                       :headerTitleStyle header-title-style}}]
+                                       :headerTitleStyle header-title-style
+                                       :headerRight (header-icon)}}]
+
        [:> RootTab.Screen {:name      (str (i18n/label :t/skills) "Stack")
                            :component skill-stack-component
                            :options   {:title (i18n/label :t/skills)
                                        :tabBarIcon (tab-bar-icon "dice-multiple")
-                                       :headerShown false
-                                       :headerTitleStyle header-title-style}}]
+                                       :headerShown false}}]
+
        [:> RootTab.Screen {:name      (str (i18n/label :t/items) "Stack")
                            :component items-stack-component
                            :options   {:title (i18n/label :t/items)
                                        :tabBarIcon (tab-bar-icon "shield-sword")
-                                       :headerShown false
-                                       :headerTitleStyle header-title-style}}]
+                                       :headerShown false}}]
+                                       
        [:> RootTab.Screen {:name      (str (i18n/label :t/info))
                            :component (fn [props] (r/as-element [character-info-page props]))
                            :options   {:title (i18n/label :t/info)
