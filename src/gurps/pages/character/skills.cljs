@@ -6,7 +6,8 @@
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [key->str ->int flatten-key]]
             [gurps.utils.debounce :refer [debounce-and-dispatch]]
-            [gurps.widgets.base :refer [view text button]]
+            [gurps.widgets.base :refer [view text]]
+            [gurps.widgets.add-button :refer [add-button]]
             [gurps.widgets.underlined-input :refer [underlined-input]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
             [gurps.pages.character.widgets.helpers :refer [generify-key]]
@@ -37,10 +38,7 @@
 (defn- add-skill-button
   []
   (when-let [navigation (rnn/useNavigation)]
-    ;; TODO: put this button into a design library and use it here
-    [:> button {:style (tw "p-0 w-14 h-14 bg-red-600 rounded-full hover:bg-red-700 active:shadow-lg shadow focus:outline-none align-middle justify-center items-center")
-                :onPress (fn [] (-> navigation (.navigate (i18n/label :t/add-skill))))}
-     [:> text {:style (tw "text-white font-bold text-xl")} "+"]]))
+    [add-button {:on-click (fn [] (-> navigation (.navigate (i18n/label :t/add-skill))))}]))
 
 (defn- best-attr
   "Get the highest attribute value"
