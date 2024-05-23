@@ -43,8 +43,8 @@
 (s/def ::possession (s/keys :req-un [::name ::location ::dr] :opt-un [::weight]))
 (s/def ::possessions (s/coll-of ::possession))
 
-(s/def ::swg-mod number?)
-(s/def ::thr-mod number?)
+(s/def ::swg-mod string?)
+(s/def ::thr-mod string?)
 (s/def ::reach (s/or :s string? :nil nil?))
 (s/def ::parry (s/or :s string? :nil nil?))
 (s/def ::melee-weapon (s/keys :req-un [::name ::weight ::thr-mod ::swg-mod ::reach ::parry]))

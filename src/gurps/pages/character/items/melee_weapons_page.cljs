@@ -61,7 +61,7 @@
 
       :else (str (when (pos? roll-dices) (str roll-dices "d")) (when (pos? roll-addition) (str "+" roll-addition))))))
 
-(def empty-weapon {:name "" :weight 0 :thr-mod 0 :swg-mod 0 :reach "" :parry nil})
+(def empty-weapon {:name "" :weight 0 :thr-mod "1d" :swg-mod "1d" :reach "" :parry nil})
 
 ;; NOTE (MELEE/2)+3; round down
 (defn lvl->parry
@@ -90,25 +90,30 @@
            [underlined-input {:val name
                               :on-change-text #(debounce-and-dispatch [:items.melee/update, i, :name, %] 500)}]
            ;; damage-thr
-           [underlined-input {:val (dice-addition thr thr-mod)
+           [underlined-input {:val thr-mod ;; (dice-addition thr thr-mod)
                               :on-change-text (debounce (fn [e]
-                                                          (rf/dispatch [:items.melee/update, i, :thr-mod, (->int e)])
-                                                          (.clear ^js @thr-ref))
+                                                          (rf/dispatch [:items.melee/update, i, :thr-mod, e])
+                                                          ;; TODO: review this dice addition logic
+                                                          ;; (rf/dispatch [:items.melee/update, i, :thr-mod, (->int e)])
+                                                          ;; (.clear ^js @thr-ref)
+                                                          )
                                                         1000)
                               :get-ref    #(reset! thr-ref %)
-                              :input-mode "numeric"
-                              :max-length 3
+                              ;; :input-mode "numeric"
+                              ;; :max-length 3
                               :text-align "center"
                               :clear-on-input? true}]
            ;; damage-swg
-           [underlined-input {:val (dice-addition swg swg-mod)
+           [underlined-input {:val swg-mod ;; (dice-addition swg swg-mod)
                               :on-change-text (debounce (fn [e]
-                                                          (rf/dispatch [:items.melee/update, i, :swg-mod, (->int e)])
-                                                          (.clear ^js swg-ref))
+                                                          (rf/dispatch [:items.melee/update, i, :swg-mod, e])
+                                                          ;; (rf/dispatch [:items.melee/update, i, :swg-mod, (->int e)])
+                                                          ;; (.clear ^js swg-ref)
+                                                          )
                                                         1000)
                               :get-ref    #(reset! swg-ref %)
-                              :input-mode "numeric"
-                              :max-length 3
+                              ;; :input-mode "numeric"
+                              ;; :max-length 3
                               :text-align "center"
                               :clear-on-input? true}]
            ;; reach
