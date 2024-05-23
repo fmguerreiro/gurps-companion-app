@@ -19,11 +19,11 @@
 (defn- row
   [col1 col2 col3 col4 col5]
   [:> view {:style (tw "flex flex-row gap-1 h-8")}
-   [:> view {:style (tw "w-5/12 my-auto")} col1]
-   [:> view {:style (tw "w-1/12 my-auto")} col2]
-   [:> view {:style (tw "w-2/12 my-auto")} col3]
-   [:> view {:style (tw "w-1/12 my-auto")} col4]
-   [:> view {:style (tw "w-3/12 my-auto pr-3")} col5]])
+   [:> view {:style (tw "flex-5 my-auto")} col1]
+   [:> view {:style (tw "flex-1 my-auto")} col2]
+   [:> view {:style (tw "flex-2 my-auto")} col3]
+   [:> view {:style (tw "flex-1 my-auto")} col4]
+   [:> view {:style (tw "flex-1 my-auto")} col5]])
 
 (defn- header
   []
@@ -90,8 +90,9 @@
   []
   (let [skills (some-> (rf/subscribe [:skills]) deref)
         navigation (rnn/useNavigation)]
-    [:> view {:style (tw "flex flex-1 flex-col px-2 bg-white")}
-     [:> rn/ScrollView {:style (tw "flex flex-1 flex-col bg-white flex-grow")}
+    [:> view {:style (tw "flex flex-1 flex-col")}
+     [:> rn/ScrollView {:style (tw "flex flex-1 flex-col bg-white flex-grow px-2")}
+
       [header]
 
       ;; skills

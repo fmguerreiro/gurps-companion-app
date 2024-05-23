@@ -18,7 +18,7 @@
 
 (def icon-color (.-color (tw "text-slate-400")))
 
-(def header-title-style (tw "text-2xl font-bold text-center capitalize"))
+(def header-title-style (tw "text-xl font-bold text-center capitalize"))
 
 ;; (clj->js {:navigation {:root-state {"type" "state", "data" {"state" nil}}}})
 ;; => #js {:navigation #js {:root-state #js {:type "state", :data #js {:state nil}}}}

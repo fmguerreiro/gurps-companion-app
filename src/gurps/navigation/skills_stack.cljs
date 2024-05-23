@@ -11,7 +11,7 @@
 
 (defonce SkillStack (rnn-stack/createNativeStackNavigator))
 
-(def header-title-style (tw "text-2xl font-bold text-center capitalize"))
+(def header-title-style (tw "text-xl font-bold text-center capitalize"))
 
 (defn header-icon
   []
