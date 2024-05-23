@@ -65,7 +65,7 @@
    ^{:key (str idx "-spoken")}
    [dropdown {:style (tw "flex-1")
               :placeholder-style (tw "text-right text-xs")
-              :selected-style (tw "text-right")
+              :selected-style (tw "text-right text-xs")
               :on-change #(rf/dispatch [:languages/update, idx, :spoken, %])
               :placeholder (get-lang-skill-label spoken)
               :disabled? native?
@@ -75,7 +75,7 @@
    ^{:key (str idx "-written")}
    [dropdown {:style (tw "flex-1")
               :placeholder-style (tw "text-right text-xs")
-              :selected-style (tw "text-right")
+              :selected-style (tw "text-right text-xs")
               :on-change #(rf/dispatch [:languages/update, idx, :written, %])
               :placeholder (get-lang-skill-label written)
               :disabled? native?

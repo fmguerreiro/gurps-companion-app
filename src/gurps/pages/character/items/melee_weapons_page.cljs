@@ -122,7 +122,7 @@
                       :list-style (tw "w-26 left-70")
                       :placeholder-style (tw "text-center text-xs")
                       :item-style (tw "capitalize")
-                      :selected-style (tw "capitalize text-center")
+                      :selected-style (tw "capitalize text-center text-xs")
                       :on-change #(rf/dispatch [:items.melee/update, i, :parry, %])
                       :data (->> parriable-weapons (map #(do {:label (:name %) :value (:k %)})))}]
 
