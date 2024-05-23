@@ -46,7 +46,7 @@
                                   :value (get-in new-db [:profile :reputation])}})))
 
 (defn reaction-modifiers-section []
-  [:> view {:style (tw "flex flex-col gap-1")}
+  [:> view {:style (tw "flex flex-col gap-2")}
    [:> text {:style (tw "text-center font-bold capitalize")} (i18n/label :t/reaction-modifiers)]
 
    [appearance-input]
