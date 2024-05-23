@@ -1,24 +1,29 @@
 (ns gurps.navigation.items-stack
-  (:require [reagent.core :as r]
-            ["@react-navigation/material-top-tabs" :as rnn-top-tabs]
+  (:require ["@react-navigation/material-top-tabs" :as rnn-top-tabs]
+            ["twrnc" :refer [style] :rename {style tw}]
+            [reagent.core :as r]
             [gurps.utils.i18n :as i18n]
             [gurps.pages.character.items :refer [character-items-page]]
             [gurps.pages.character.items.melee-weapons-page :refer [melee-weapons-page]]
             [gurps.pages.character.items.ranged-weapons-page :refer [ranged-weapons-page]]))
 
-(defonce Stack (rnn-top-tabs/createMaterialTopTabNavigator))
+(defonce Tab (rnn-top-tabs/createMaterialTopTabNavigator))
+
+(def header-title-style (tw "font-bold text-center capitalize"))
 
 (defn items-stack
   []
   (r/with-let [possessions-component (fn [props] (r/as-element [character-items-page props]))
                melee-weapons-component (fn [props] (r/as-element [melee-weapons-page props]))
                ranged-weapons-component (fn [props] (r/as-element [ranged-weapons-page props]))]
-    [:> Stack.Navigator {:initialRouteName (i18n/label :t/items)}
-     [:> Stack.Screen {:name      (i18n/label :t/melee-weapons)
-                       :component melee-weapons-component}]
+    [:> Tab.Navigator {:initialRouteName (i18n/label :t/items)
+                       :screenOptions {:tabBarLabelStyle header-title-style}}
 
-     [:> Stack.Screen {:name      (i18n/label :t/items)
-                       :component possessions-component}]
+     [:> Tab.Screen {:name      (i18n/label :t/melee-weapons)
+                     :component melee-weapons-component}]
 
-     [:> Stack.Screen {:name      (i18n/label :t/ranged-weapons)
-                       :component ranged-weapons-component}]]))
+     [:> Tab.Screen {:name      (i18n/label :t/items)
+                     :component possessions-component}]
+
+     [:> Tab.Screen {:name      (i18n/label :t/ranged-weapons)
+                     :component ranged-weapons-component}]]))

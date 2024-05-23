@@ -18,7 +18,7 @@
 
 (def icon-color (.-color (tw "text-slate-400")))
 
-(def header-title-style {:textTransform "uppercase"})
+(def header-title-style (tw "text-2xl font-bold text-center capitalize"))
 
 ;; (clj->js {:navigation {:root-state {"type" "state", "data" {"state" nil}}}})
 ;; => #js {:navigation #js {:root-state #js {:type "state", :data #js {:state nil}}}}
@@ -75,6 +75,6 @@
                                        
        [:> RootTab.Screen {:name      (str (i18n/label :t/info))
                            :component (fn [props] (r/as-element [character-info-page props]))
-                           :options   {:title (i18n/label :t/info)
+                           :options   {:title (i18n/label :t/information)
                                        :tabBarIcon (tab-bar-icon "information-outline")
                                        :headerTitleStyle header-title-style}}]]]]))
