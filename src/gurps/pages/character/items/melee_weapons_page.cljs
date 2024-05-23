@@ -77,8 +77,8 @@
    (let [weapons (some-> (rf/subscribe [:items/melee-weapons]) deref)
          thr     (some-> (rf/subscribe [:attributes/damage-thrust]) deref)
          swg     (some-> (rf/subscribe [:attributes/damage-swing])  deref)
-         weapon-skills  (some-> (rf/subscribe [:skills/weapons]) deref)
-         weapon-parries (some-> (rf/subscribe [:defenses/parries]) deref)]
+         weapon-parries    (some-> (rf/subscribe [:defenses/parries]) deref)
+         parriable-weapons (some-> (rf/subscribe [:skills/parriable-weapons]) deref)]
      ;; (log/info "melee-weapons-page" weapon-parries)
      (map-indexed
       (fn [i {:keys [name thr-mod swg-mod weight reach parry]}]
@@ -124,7 +124,7 @@
                       :item-style (tw "capitalize")
                       :selected-style (tw "capitalize text-center")
                       :on-change #(rf/dispatch [:items.melee/update, i, :parry, %])
-                      :data (->> weapon-skills (map #(do {:label (:name %) :value (:k %)})))}]
+                      :data (->> parriable-weapons (map #(do {:label (:name %) :value (:k %)})))}]
 
            ;; weight
            [underlined-input {:val weight
@@ -153,6 +153,13 @@
  :<- [:skills]
  (fn [skills]
    (filter #(some? ((generify-key (:k %)) (:combat-melee grouped-skills))) skills)))
+
+(rf/reg-sub
+ :skills/parriable-weapons
+ :<- [:skills/weapons]
+ (fn [weapons]
+   (->> weapons
+        (filter #(not (or (= :cloak (:k %)) (= :shield (keyword (namespace (:k %))))))))))
 
 (rf/reg-sub
  :defenses/parries
