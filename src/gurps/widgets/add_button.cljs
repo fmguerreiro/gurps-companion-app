@@ -5,6 +5,6 @@
 (defn add-button
   [{:keys [txt on-click]
     :or   {txt "+"}}]
-  [:> button {:style (tw "p-0 w-14 h-14 bg-red-600 rounded-full hover:bg-red-700 active:shadow-lg shadow focus:outline-none align-middle justify-center items-center")
+  [:> button {:style (tw "p-0 w-14 h-14 bg-slate-600 rounded-full hover:bg-slate-400 active:shadow-lg shadow focus:outline-none align-middle justify-center items-center")
               :onPress on-click}
    [:> text {:style (tw "text-white font-bold text-xl")} txt]])

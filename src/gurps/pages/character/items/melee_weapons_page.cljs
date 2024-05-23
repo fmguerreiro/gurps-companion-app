@@ -119,6 +119,7 @@
            ;; parry
            [dropdown {:val parry
                       :placeholder (when parry (str ((keyword parry) weapon-parries)))
+                      :list-style (tw "w-26 left-70")
                       :placeholder-style (tw "text-center text-xs")
                       :item-style (tw "capitalize")
                       :selected-style (tw "capitalize text-center")

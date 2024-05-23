@@ -53,17 +53,18 @@
 
 (defn skill-groups
   []
-  (r/with-let [sections (->> grouped-skills
-                             (map (fn [x]
-                                    #js {:title (-> x key key->str)
-                                         :data  (->> x val keys (map key->str) vec->js-array)})))
-               default-lvls @(rf/subscribe [:skills/defaults])]
+  (r/with-let [sections     (->> grouped-skills
+                                 (map (fn [x]
+                                        #js {:title (-> x key key->str)
+                                             :data  (->> x val keys (map key->str) vec->js-array)})))
+               default-lvls (some-> (rf/subscribe [:skills/defaults]) deref)
+               render-item  #(skill-row % default-lvls)]
     (r/create-element
      section-list
      #js {:sections (vec->js-array sections)
           :renderSectionHeader skill-header
           :keyExtractor (fn [item] (str item "-key"))
-          :renderItem #(skill-row % default-lvls)})))
+          :renderItem render-item})))
 
 (rf/reg-sub
  :skills/defaults

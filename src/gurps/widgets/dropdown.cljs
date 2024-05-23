@@ -6,9 +6,10 @@
 
 (defn dropdown
   "Receives data in the format {:value 'hello' :label 'Hello', ...}"
-  [{:keys [data placeholder style item-style selected-style placeholder-style on-change disabled?]
+  [{:keys [data placeholder style list-style item-style selected-style placeholder-style on-change disabled?]
     :or   {disabled? false, placeholder (some-> data first :label)}}]
   [:> Dropdown {:style #js [(tw "bg-white") style]
+                :containerStyle #js [list-style]
                 :search false
                 :placeholder placeholder
                 :placeholderStyle #js [(tw "text-slate-400"), placeholder-style]
