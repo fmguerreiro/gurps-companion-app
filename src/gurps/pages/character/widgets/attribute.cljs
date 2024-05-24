@@ -61,7 +61,7 @@
        (i18n/label :t/current)]
       (box-border {:style (tw "bg-slate-100")}
                   ^{:key (str attr "-current")}
-                  [:> input {:style (tw "text-2xl pb-1")
+                  [:> input {:style (tw "text-xl pb-1")
                              :keyboardType "numeric"
                              :textAlign "center"
                              :onChangeText #(debounce/debounce-and-dispatch [:attribute-current/update (keyword :attribute-current attr) (->int %)] 500)
