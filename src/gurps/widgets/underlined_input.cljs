@@ -37,7 +37,7 @@
 (defn labelled-underlined-input
   [{:keys [label val on-change-text disabled? style label-style input-style capitalize? text-align]
     :or   {disabled? false, capitalize? true}}]
-  [:> view {:style #js [(tw "flex flex-row gap-1"), style]}
+  [:> view {:style #js [(tw "flex flex-row gap-1 items-end h-5"), style]}
    [:> text {:style #js [(tw "capitalize font-bold"), label-style]} label]
    [underlined-input {:val            val
                       :on-change-text on-change-text

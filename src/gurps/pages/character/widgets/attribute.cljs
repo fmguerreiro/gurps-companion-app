@@ -5,8 +5,7 @@
             [gurps.widgets.base :refer [view text input]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
             [gurps.pages.character.widgets.helpers :refer [cost->points]]
-            ["twrnc" :refer [style] :rename {style tw}]
-            [re-frame.core :as rf]))
+            ["twrnc" :refer [style] :rename {style tw}]))
 
 (defn- calc-cost [label value]
   ;; (info "calc-cost" label value)
@@ -64,7 +63,8 @@
                   ^{:key (str attr "-current")}
                   [:> input {:style (tw "text-2xl pb-1")
                              :keyboardType "numeric"
-                             :onChangeText (debounce/debounce #(rf/dispatch [:attribute-current/update (keyword :attribute-current attr) (->int %)]) 500)
+                             :textAlign "center"
+                             :onChangeText #(debounce/debounce-and-dispatch [:attribute-current/update (keyword :attribute-current attr) (->int %)] 500)
                              :placeholder (str (if current current val))}])])
 
    (when (and secondary? (nil? current))

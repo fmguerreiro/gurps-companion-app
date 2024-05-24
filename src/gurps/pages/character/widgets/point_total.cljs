@@ -5,7 +5,7 @@
 
 (defn point-total-field
   []
-  [summary-field {:key :point-total, :editable? false, :on-change-text ->int}])
+  [summary-field {:key :point-total, :text-align "center", :editable? false, :on-change-text ->int}])
 
 (rf/reg-sub
  :profile/point-total
