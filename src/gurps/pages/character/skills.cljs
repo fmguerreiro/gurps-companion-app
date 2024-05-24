@@ -3,10 +3,11 @@
             ["@react-navigation/native" :as rnn]
             ["twrnc" :refer [style] :rename {style tw}]
             [re-frame.core :as rf]
+            [react-native.platform :refer [ios?]]
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [key->str ->int flatten-key]]
             [gurps.utils.debounce :refer [debounce-and-dispatch]]
-            [gurps.widgets.base :refer [view text]]
+            [gurps.widgets.base :refer [view text button]]
             [gurps.widgets.add-button :refer [add-button]]
             [gurps.widgets.underlined-input :refer [underlined-input]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
@@ -84,10 +85,31 @@
   [diff]
   (i18n/label (keyword :t (diff difficulties))))
 
+(defn- platform-dependent-name-row
+  "This row behaves differently between android and ios.
+  On android, the on-press event for a text input doesnt work, so we wrap it in a button.
+  This causes problems on ios, so we keep the two implementations separate."
+  [name on-press]
+  (if ios?
+    [underlined-input {:val name
+                       :style (tw "capitalize")
+                       :placeholder-color "#FFF"
+                       :on-press on-press
+                       :disabled? true}]
+    ;; android
+    [:> button {:style (tw "flex-1")
+                :onPress on-press}
+     [underlined-input {:val name
+                        :style (tw "capitalize")
+                        :placeholder-color "#FFF"
+                        :disabled? true}]]))
+
 (defn character-skills-page
   []
-  (let [skills (some-> (rf/subscribe [:skills]) deref)
-        navigation (rnn/useNavigation)]
+  (let [skills     (some-> (rf/subscribe [:skills]) deref)
+        navigation (rnn/useNavigation)
+        on-press   #(-> navigation (.navigate (i18n/label :t/add-skill-specialization)
+                                              #js {:id (key->str (generify-key %))}))]
     [:> view {:style (tw "flex flex-1 flex-col")}
      [:> rn/ScrollView {:style (tw "flex flex-1 flex-col bg-white flex-grow px-2")}
 
@@ -99,11 +121,19 @@
                        ^{:key (str "skill-" i)}
                        [row
                         ;; name
-                        [underlined-input {:val name
-                                           :style (tw "capitalize")
-                                           :on-press #(let [k' (generify-key k)]
-                                                        (-> navigation (.navigate (i18n/label :t/add-skill-specialization) #js {:id (key->str k')})))
-                                           :disabled? true}]
+                        (if ios?
+                          [underlined-input {:val name
+                                             :style (tw "capitalize")
+                                             :placeholder-color "#FFF"
+                                             :on-press #(on-press k)
+                                             :disabled? true}]
+
+                          [:> button {:style (tw "flex-1")
+                                      :onPress #(on-press k)}
+                           [underlined-input {:val name
+                                              :style (tw "capitalize")
+                                              :placeholder-color "#FFF"
+                                              :disabled? true}]])
                         ;; lvl
                         [skill-lvl k]
                         ;; main attr(s)

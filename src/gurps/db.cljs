@@ -57,7 +57,7 @@
 (s/def ::ranged-weapon (s/keys :req-un [::name ::weight ::dmg ::acc ::rof ::shots]))
 (s/def ::ranged-weapons (s/coll-of ::ranged-weapon))
 
-(s/def ::items (s/keys :req-un [::possessions ::melee-weapons ::ranged-weapons]))
+(s/def ::items (s/keys :opt-un [::possessions ::melee-weapons ::ranged-weapons]))
 
 (s/def ::tech-level number?)
 (s/def ::world (s/keys :req-un [::tech-level]))

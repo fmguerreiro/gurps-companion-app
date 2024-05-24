@@ -2,6 +2,7 @@
   (:require [gurps.utils.debounce :as debounce]
             [react-native.platform :refer [ios?]]
             [gurps.widgets.base :refer [view text input]]
+            [gurps.utils.helpers :refer [->int]]
             ["twrnc" :refer [style] :rename {style tw}]))
 
 (defn bracketed-numeric-input
@@ -15,7 +16,7 @@
                 :maxLength max-length
                 :keyboardType "numeric"
                 :textAlign "center"
-                :onChangeText (debounce/debounce #(on-change-text (js/parseInt %)) 500)
+                :onChangeText (debounce/debounce #(on-change-text (->int %)) 500)
                 :placeholder (str val)}]
      [:> text {:style (tw "text-xl font-bold min-w-6 text-center h-7")} val])
 
