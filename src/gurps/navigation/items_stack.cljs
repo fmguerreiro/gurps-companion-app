@@ -17,7 +17,8 @@
                melee-weapons-component (fn [props] (r/as-element [melee-weapons-page props]))
                ranged-weapons-component (fn [props] (r/as-element [ranged-weapons-page props]))]
     [:> Tab.Navigator {:initialRouteName (i18n/label :t/items)
-                       :screenOptions {:tabBarLabelStyle header-title-style}}
+                       :screenOptions {:tabBarLabelStyle header-title-style
+                                       :headerTitleAlign "center"}}
 
      [:> Tab.Screen {:name      (i18n/label :t/melee-weapons)
                      :component melee-weapons-component}]

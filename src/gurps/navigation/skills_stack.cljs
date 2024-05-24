@@ -27,14 +27,17 @@
      [:> SkillStack.Screen {:name      (i18n/label :t/skills)
                             :component character-skills-component
                             :options   {:headerRight (header-icon)
-                                        :headerTitleStyle header-title-style}}]
+                                        :headerTitleStyle header-title-style
+                                        :headerTitleAlign "center"}}]
 
      [:> SkillStack.Screen {:name      (i18n/label :t/add-skill)
                             :component character-add-skill-component
                             :options   {:headerRight (header-icon)
-                                        :headerTitleStyle header-title-style}}]
+                                        :headerTitleStyle header-title-style
+                                        :headerTitleAlign "center"}}]
 
      [:> SkillStack.Screen {:name      (i18n/label :t/add-skill-specialization)
                             :component character-add-skill-spec-component
                             :options   {:headerRight (header-icon)
-                                        :headerTitleStyle header-title-style}}]]))
+                                        :headerTitleStyle header-title-style
+                                        :headerTitleAlign "center"}}]]))

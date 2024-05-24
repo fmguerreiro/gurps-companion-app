@@ -58,23 +58,27 @@
                            :component (fn [props] (r/as-element [character-stats-page props]))
                            :options   {:title (i18n/label :t/stats)
                                        :tabBarIcon (tab-bar-icon "arm-flex")
+                                       :headerTitleAlign "center"
                                        :headerTitleStyle header-title-style
                                        :headerRight (header-icon)}}]
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/skills) "Stack")
                            :component skill-stack-component
                            :options   {:title (i18n/label :t/skills)
+                                       :headerTitleAlign "center"
                                        :tabBarIcon (tab-bar-icon "dice-multiple")
                                        :headerShown false}}]
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/items) "Stack")
                            :component items-stack-component
                            :options   {:title (i18n/label :t/items)
+                                       :headerTitleAlign "center"
                                        :tabBarIcon (tab-bar-icon "shield-sword")
                                        :headerShown false}}]
                                        
        [:> RootTab.Screen {:name      (str (i18n/label :t/info))
                            :component (fn [props] (r/as-element [character-info-page props]))
                            :options   {:title (i18n/label :t/information)
+                                       :headerTitleAlign "center"
                                        :tabBarIcon (tab-bar-icon "information-outline")
                                        :headerTitleStyle header-title-style}}]]]]))
