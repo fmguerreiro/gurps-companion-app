@@ -25,11 +25,11 @@
       (.push arr x))
     arr))
 
-(defn skill-row [props default-lvls]
+(defn row [props default-lvls]
   (let [navigation (rnn/useNavigation)
-        item-txt (.-item props)
-        item-key (str->key item-txt)
-        skill (item-key skills)
+        item-txt   (.-item props)
+        item-key   (str->key item-txt)
+        skill      (item-key skills)
         difficulty (i18n/label (keyword "t" ((:diff skill) difficulties)))
         needs-specialization? (= "sp" (name item-key))]
     (r/as-element
@@ -44,26 +44,30 @@
         [:> text {:style (tw "text-left")} difficulty]
         [:> text {:style (tw "text-right")} (item-key default-lvls)]]]])))
 
-(defn skill-header
+(defn section-header
   [props]
   (let [title (-> ^js props .-section .-title str->key keyword->title)]
     (r/as-element
      [:> view {:style (tw "h-8 bg-white")}
       [:> text {:style (tw "font-bold my-auto capitalize")} title]])))
 
+(defn- get-sections
+  [grouped-skills]
+  (->> grouped-skills
+       (map (fn [x]
+              #js {:title (-> x key key->str)
+                   :data  (->> x val keys (map key->str) vec->js-array)}))))
+
 (defn skill-groups
   []
-  (r/with-let [sections     (->> grouped-skills
-                                 (map (fn [x]
-                                        #js {:title (-> x key key->str)
-                                             :data  (->> x val keys (map key->str) vec->js-array)})))
+  (r/with-let [sections     (get-sections grouped-skills)
                default-lvls (some-> (rf/subscribe [:skills/defaults]) deref)
-               render-item  #(skill-row % default-lvls)]
+               render-item  #(row % default-lvls)]
     (r/create-element
      section-list
      #js {:sections (vec->js-array sections)
-          :renderSectionHeader skill-header
-          :keyExtractor (fn [item] (str item "-key"))
+          :renderSectionHeader section-header
+          :keyExtractor (fn [item idx] (str item "-" idx))
           :renderItem render-item})))
 
 (rf/reg-sub

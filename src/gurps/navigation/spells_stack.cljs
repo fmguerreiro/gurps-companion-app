@@ -13,8 +13,7 @@
 
 (defn header-icon
   []
-  (fn [] (r/as-element [:> view
-                        [character-icon]])))
+  (fn [] (r/as-element [:> view [character-icon]])))
 
 (defn spells-stack
   []
