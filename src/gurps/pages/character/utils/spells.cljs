@@ -2274,16 +2274,6 @@
              {:name :infiltrate, :prerequisites [:body-of-fluid], :prerequisite_count 0, :college :water, :ref "Magical Styles: Dungeon Magic, p. 9"}
              {:name :mass-coolness, :prerequisites [[:attributes/int 12] :coolness], :prerequisite_count 0, :college :water, :ref "Pyramid 3/76: Dungeon Fantasy IV, p. 14"}])
 
-(defn kebab-case [s]
-  (when s
-    (-> s
-        str
-        (clojure.string/replace #"([a-z])([A-Z])" "$1-$2")
-        (clojure.string/replace #"([A-Z]+)([A-Z][a-z])" "$1-$2")
-        clojure.string/lower-case
-        (clojure.string/replace #"\s+" "-")
-        (clojure.string/replace #"[-]+$" ""))))
-
 (def spells-by-college
   {:fire #{:flameturning :warmth :resist-fire :high-explosive-fireball :seek-fire :detonate :flaming-missiles :hellfire-rain :snuff-life's-flame :cremate :rain-of-fire :summon-fire-elemental :puff :explosive-fireball :summon-lava-lizard :towering-inferno :hellfire-orb :oven-mitts :slow-fire :fire-swarm :deflect-energy :balor's-eye-fire :explosive-hellfire-orb :fire-cloud :phantom-flame :shape-fire :shaped-charge-fireball :hellfire-breath :improved-explosive-fireball :ember :control-lava-lizard :blast-ball :fireproof :great-deflect-energy :ignite-fire :flaming-armor :create-fire-elemental :heat :resist-cold :hellfire-jet :cold :control-fire-elemental :create-fire :burning-death :smoke :fireball :self-destruct :mass-detonate :essential-flame :body-of-flames :flame-jet :fast-fire :flaming-weapon :extinguish-fire :burning-touch :breathe-fire :mass-resist-fire}
    :necromantic #{:slow-healing :awaken-craft-spirit :astral-vision :soul-prison :animation :age :pestilence :bind-spirit :banish :animate-shadow :soul-jar :plant-zombie :repel-spirits :astral-block :death-vision :final-rest :entrap-spirit :sense-spirit :dramatic-departure :reverie-of-ruin :control-zombie :solidify :hellspawn :mass-zombie :materialize :evisceration :skull-spirit :grasping-doom :invoke :burning-death :self-destruct :rotting-death :command-spirit :punishment-circle :resurrection :lich :affect-spirits}
@@ -2308,6 +2298,16 @@
    :technological #{:sense-nano :awaken-building :confound-firearm :upgrade-computer :blind-sensor :mad-machine :malfunction :awaken-computer :animate-machine :essential-paper :sequence-dna :purify-signal :wizardly-workshop :create-mana-co-processor :seek-machine :reckless-reconstitution :reveal-function :rebuild :machine-control :televisomancy :manipulate-dna :glitch :ley-vehicle :delete-commercials :schematic :machine-summoning :remote-start :permanent-machine-possession :program :magnetic-finger :machine-speech :machine-possession :spoof-sensor :guide-missile}})
 
 (comment
+
+  (defn kebab-case [s]
+    (when s
+      (-> s
+          str
+          (clojure.string/replace #"([a-z])([A-Z])" "$1-$2")
+          (clojure.string/replace #"([A-Z]+)([A-Z][a-z])" "$1-$2")
+          clojure.string/lower-case
+          (clojure.string/replace #"\s+" "-")
+          (clojure.string/replace #"[-]+$" ""))))
 
   (->> spells
        (group-by :college)

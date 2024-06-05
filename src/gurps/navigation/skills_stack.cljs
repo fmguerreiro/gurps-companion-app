@@ -13,10 +13,14 @@
 
 (def header-title-style (tw "text-xl font-bold text-center capitalize"))
 
-(defn header-icon
+(defn- header-icon
   []
-  (fn [] (r/as-element [:> view
-                        [character-icon]])))
+  (fn [] (r/as-element [:> view [character-icon]])))
+
+(def options
+  {:headerRight (header-icon)
+   :headerTitleStyle header-title-style
+   :headerTitleAlign "center"})
 
 (defn skills-stack
   []
@@ -26,18 +30,12 @@
     [:> SkillStack.Navigator
      [:> SkillStack.Screen {:name      (i18n/label :t/skills)
                             :component character-skills-component
-                            :options   {:headerRight (header-icon)
-                                        :headerTitleStyle header-title-style
-                                        :headerTitleAlign "center"}}]
+                            :options   options}]
 
      [:> SkillStack.Screen {:name      (i18n/label :t/add-skill)
                             :component character-add-skill-component
-                            :options   {:headerRight (header-icon)
-                                        :headerTitleStyle header-title-style
-                                        :headerTitleAlign "center"}}]
+                            :options   options}]
 
      [:> SkillStack.Screen {:name      (i18n/label :t/add-skill-specialization)
                             :component character-add-skill-spec-component
-                            :options   {:headerRight (header-icon)
-                                        :headerTitleStyle header-title-style
-                                        :headerTitleAlign "center"}}]]))
+                            :options   options}]]))
