@@ -8,13 +8,28 @@
             [gurps.utils.helpers :refer [str->key]]
             [gurps.widgets.base :refer [view text button]]
             [gurps.pages.character.utils.spells :refer [spells-by-name]]
-            [gurps.utils.i18n :as i18n]))
+            [gurps.utils.i18n :as i18n]
+            [clojure.string :as str]))
+
+(defn- lvl-prerequisite
+  [prereq]
+  (let [[skill level] prereq]
+    [:> view {:style (tw "flex flex-row flex-grow justify-between")}
+     [:> text {:style (tw "capitalize")} (-> skill name (str/replace #"-" " "))]
+     [:> text level]]))
+
+(defn- spell-prerequisite
+  [prereq nav]
+  [:> button {:onPress #(-> nav (.push (i18n/label :t/spell-details) #js {:id (str prereq)}))}
+   [:> view {:style (tw "flex flex-row flex-grow justify-between")}
+    [:> text (i18n/label (str "spell-" (symbol prereq)))]
+    [:> text {:style "font-bold"} ">"]]])
 
 (defn- prerequisite
   [prereq nav]
-  (cond (keyword? prereq) [:> button {:onPress #(-> nav (.navigate (i18n/label :t/spell-details) #js {:id (str prereq)}))}
-                           [:> text (i18n/label (str "spell-" (symbol prereq)))]]
-        :else [:<>]))
+  (cond (keyword? prereq) [spell-prerequisite prereq nav]
+        (vector? prereq)  [lvl-prerequisite prereq]
+        :else             [:<>]))
 
 (defn- section
   [label children]
