@@ -20,13 +20,8 @@ Duration: Works instantly. Purification is permanent.
 Base cost: 1. Cannot be maintained;
 must be recast.
 
-Item
-Staff, wand, or jewelry. Energy cost
-to create: 50.
-
 Seek Air
 Information
-
 Tells the caster the direction and
 approximate distance of the nearest
 significant amount of air. Use the
@@ -38,10 +33,6 @@ excluded if the caster specifically
 mentions it before beginning.
 Cost: 1.
 
-Item
-A forked stick (usually of bird
-bone). Cost to create: 60 energy and a
-$200 onyx.
 
 Create Air
 Area
@@ -69,7 +60,7 @@ Base cost: 1. Cannot be maintained;
 must be recast.
 Prerequisite: Purify Air or Seek Air.
 
-Item
+
 Staff, wand, or jewelry. Energy cost
 to create: 200.
 
@@ -85,7 +76,7 @@ Duration: 1 hour.
 Cost: 2 to cast. 2 to maintain.
 Prerequisite: Purify Air.
 
-Item
+
 Jewelry; only affects the wearer.
 Cost to create: 150 energy and $300.
 
@@ -125,7 +116,6 @@ HT roll. Any beings with the Body of
 Air meta-trait (p. B262) take 2d damage. In certain situations (e.g., in an
 airtight room) this spell can be much
 deadlier, leaving no air to breathe.
-
 Duration: Lasts only an instant, but
 destroyed air stays gone.
 Base cost: 2.
@@ -181,8 +171,6 @@ Shoot a thin jet of air from one finger. Each turn, the caster rolls versus
 DX-4 or Innate Attack skill to hit. This
 attack may be dodged or blocked, but
 not parried. The jet does 2d knockback damage for every point of energy
-
-
 put into the spell, and has a range in
 yards equal to the number of dice in
 the attack. The jet does injury damage
@@ -240,7 +228,7 @@ along with the subject, allowing the
 subject to maintain the spell longer
 than 1 minute. It loses any other
 magic powers it might have while in
-vaporous form. Energy cost to create:
+vaporous form.Energy cost to create:
 1,500.
 
 Devitalize Air
@@ -272,33 +260,6 @@ Prerequisite: Destroy Air.
 Item
 Staff, wand, or jewelry. Cost to create: 300 energy and a $200 onyx.
 
-the height (double for 8 yards high,
-triple for 12 yards high, and so on).
-Low-tech missiles are buffeted off
-course as they cross it, and suffer a -10
-penalty to hit for every yard of wall
-they pass through. High-tech bullets
-suffer a -2 penalty to hit for every yard
-of the wall of wind they pass through.
-Beings standing within the wall’s thickness are at -3 DX and suffer 2d of
-knockback in a random direction
-every second.
-The wall also churns up loose
-ground material, such as dust, small
-leaves, insects, and twigs. Each second, beings crossing the wall or standing in it must either shut their eyes or
-roll vs. HT to avoid being blinded, as
-per a one-point Sand Jet (p. 52) (unless
-the GM rules that the area is very
-clean, with no debris to circulate).
-Duration: 1 minute.
-Base cost: 2. Half that to maintain.
-Time to cast: The wall appears as
-soon as the casting starts, initially surrounding a one-yard-radius area; the
-caster may move the perimeter outward at a rate of one yard of radius
-per second of concentration.
-Prerequisite: Shape Air.
-
-Item
 
 Walk on Air
 Regular
@@ -328,6 +289,32 @@ roiling air that impedes movement.
 The wall is one yard thick and four
 yards high, but may be made higher by
 multiplying the cost as you multiply
+the height (double for 8 yards high,
+triple for 12 yards high, and so on).
+Low-tech missiles are buffeted off
+course as they cross it, and suffer a -10
+penalty to hit for every yard of wall
+they pass through. High-tech bullets
+suffer a -2 penalty to hit for every yard
+of the wall of wind they pass through.
+Beings standing within the wall’s thickness are at -3 DX and suffer 2d of
+knockback in a random direction
+every second.
+The wall also churns up loose
+ground material, such as dust, small
+leaves, insects, and twigs. Each second, beings crossing the wall or standing in it must either shut their eyes or
+roll vs. HT to avoid being blinded, as
+per a one-point Sand Jet (p. 52) (unless
+the GM rules that the area is very
+clean, with no debris to circulate).
+Duration: 1 minute.
+Base cost: 2. Half that to maintain.
+Time to cast: The wall appears as
+soon as the casting starts, initially surrounding a one-yard-radius area; the
+caster may move the perimeter outward at a rate of one yard of radius
+per second of concentration.
+Prerequisite: Shape Air.
+
 
 Staff, wand, or jewelry. Usable only
 by mages. Cost to create: 400 energy
@@ -355,8 +342,6 @@ For double energy cost, the caster
 may create a more powerful windstorm, like a tornado. ST rolls to
 remain standing in such a gale are at
 -5, ranged attacks through it are
-
-
 impossible, and visibility inside it is a
 yard at best. This powerful windstorm
 physically lifts and hurls objects up to
@@ -397,62 +382,9 @@ by mages. The item must touch the
 stone to be transformed. Cost to create:
 750 energy and $1,000 in jewels.
 
-Clouds
-Area
-As listed under Weather Spells,
-p. 194.
-
-Predict Weather
-Information
-As listed under Weather Spells,
-p. 193.
-
-Wind
-Special; Area
-As listed under Weather Spells,
-p. 195.
-
-Rain
-
-Item
-Area
-
-As listed under Weather Spells,
-p. 195.
-
-Breathe Water
-
-Snow
-Area
-As listed under Weather Spells,
-p. 195.
-
-Regular
-As listed under Water Spells, p. 189.
-
-Missile
-The caster creates a ball of highly
-pressurized air in his hand. When the
-air strikes a target, it explodes. The
-blast is extremely loud; anyone within
-10 yards must roll against HT-3 or be
-stunned. Stunned people may roll
-against HT-3 every second to recover.
-Protected Hearing gives a +5 bonus to
-this roll. Concussion has 1/2D 20, Max
-40, Acc 1; roll vs. Innate Attack skill to
-hit.
-This is also a Sound spell.
-Cost: Any amount up to twice your
-Magery level per second, for three seconds. For every 2 energy put into the
-spell, the missile does 1d crushing
-damage. See Explosions, p. B414, for a
-full treatment of explosive damage.
-Time to cast: 1 to 3 seconds.
-Prerequisites: Shape Air and
-Thunderclap (p. 171).
 
 Essential Air
+Area
 Creates the magical essence of Air.
 Essential Air is “purer” and can be
 used (breathed or consumed) three
@@ -479,7 +411,6 @@ Usable only by mages. Cost to create:
 1,000 energy and a $400 onyx.
 
 Resist Lightning
-
 Regular
 Breathe air as though it were
 water; the spell also prevents water
@@ -497,44 +428,14 @@ Destroy Air.
 Staff. Usable only by mages. Cost to
 create: 1200 energy and an $800 onyx.
 
-Explosive Lightning
-Missile
-As listed under Weather Spells,
-p. 196.
-
-Lightning Whip
-Regular
-As listed under Weather Spells,
-p. 196.
-
-Shocking Touch
-Melee
-As listed under Weather Spells,
-p. 196.
-
-Spark Cloud
-Area
-As listed under Weather Spells,
-p. 196.
-
-As listed under Weather Spells,
-p. 196.
-
-Spark Storm
-Area
-
-Lightning
-Missile
-As listed under Weather Spells,
-p. 197.
-
 Breathe Air
 Regular
-Duration: 10 seconds.
-Base cost: 8 to cast. 3 to maintain.
-Time to cast: 2 seconds.
-Prerequisites: Magery 2, Body of
-Air, and Windstorm.
+Breathe air as though it were water; the spell also prevents water creatures from dehydrating in air. This spell is primarily useful for keeping fish, mermen, etc., alive out of water. The subject can also still breathe water normally.
+This is also a Water spell.
+Duration: 1 minute.
+Cost: 3 to cast. 1 to maintain.
+Prerequisites: Create Water and Destroy Air.
+
 
 Concussion
 Missile
@@ -548,12 +449,6 @@ Staff, wand, jewelry, or clothing;
 only affects the wearer. Energy cost to
 create: 150.
 
-As listed under Weather Spells,
-p. 196.
-
-Atmosphere Dome
-Area
-As listed under Protection & Warning Spells, p. 169.
 
 Air Vortex
 Area; Resisted by HT or DX
@@ -567,51 +462,14 @@ higher of their HT and DX scores.
 Those whisked away by the Vortex
 are rendered temporarily vaporous, as
 per the Body of Air spell (p. 24). The
+Vortex may not penetrate solid objects.
+This is also a Movement spell.
+Duration: 10 seconds.
+Base cost: 8 to cast. 3 to maintain. Time to cast: 2 seconds.
+Prerequisites: Magery 2, Body of
+Air, and Windstorm.
 
 
-Wall of Lightning
-Area
-As listed under Weather Spells,
-p. 197.
-
-Warm
-Area
-As listed under Weather Spells,
-p. 195.
-
-Cool
-Area
-As listed under Weather Spells,
-p. 195.
-
-Ball of Lightning
-Missile
-As listed under Weather Spells,
-p. 197.
-
-Lightning Stare
-Regular
-As listed under Weather Spells,
-p. 198.
-
-Storm
-Area
-As listed under Weather Spells,
-p. 195.
-
-Body of Lightning
-Regular; Resisted by HT
-As listed under Weather Spells,
-p. 198.
-
-Lightning Weapon
-Regular
-As listed under Weather Spells,
-p. 198.
-
-Regular
-As listed under Weather Spells,
-p. 198.
 
 Sandstorm
 Area
@@ -641,10 +499,6 @@ Staff, wand, or jewelry. Usable only
 by mages. Energy cost to create: 1,000.
 
 
-Regular
-As listed under Weather Spells,
-p. 198.
-
 Body of Wind
 Regular; Resisted by HT
 The subject’s body becomes a
@@ -653,7 +507,6 @@ yards (caster’s choice). In this form, he
 has a variant form of the Body of Air
 meta-trait (p. B262); he lacks the
 listed Vulnerability to vacuum and
-
 wind-based attacks, he has No Fine
 Manipulators rather than the usual
 No Manipulators, and he has effective
@@ -695,15 +548,8 @@ it might have while solid. Cost to
 create: 3,500 energy and a $2,500
 onyx.
 
-ELEMENTAL SPIRIT SPELLS
-These spells deal with spirits
-embodying the four classical elements
-– air, earth, fire, and water. There are
-different spells for each of the four elements, but in general they conform to
-the spells given here for air elementals.
 
-Summon (Air)
-Elemental
+Summon (Air) Elemental
 Special
 This is a different spell for each of
 the four elements. It allows the caster
@@ -714,8 +560,6 @@ if the location is appropriate, unless
 the scenario or situation requires that
 elementals are opportunely absent.
 The caster determines the elemental’s
-
-
 power level by the amount of energy
 he spends on the spell, but the GM
 determines the elemental’s precise
@@ -727,14 +571,9 @@ that a dismissal does not guarantee
 the elemental will leave. If it is hostile,
 or simply curious, it may choose to
 stay!
-
 a noncumulative +2 bonus to any
 attempt to use the spell. Cost to create:
 1,000 energy, $1,300 gold and platinum.
-
-Create (Air) Elemental
-Special
-
 The caster may question the summoned elemental, request a service,
 etc. The elemental immediately makes
 a reaction roll to see how it feels about
@@ -744,6 +583,26 @@ longer – and then vanishes. An elemental’s opinion may be swayed with
 appropriate enticements, assuming a
 wizard can figure out what an
 elemental might desire.
+
+
+Small Air Elemental
+This basic air elemental is summoned by casting Summon Air
+Elemental at the minimum energy cost of 4. More energy put into the
+spell summons a more powerful elemental. Usually, this simply means a
+larger elemental; 1 point of energy is equal to 1 additional point of ST, 5
+HP, or 2 points of DR. However, the GM may choose to build a more exotic elemental, adding unusual traits to the following template, or working
+one up from scratch.
+
+Small Air Elemental
+40 points
+Attribute Modifiers: ST-4 [-40]; DX-1 [-20]; IQ-2 [-40]; HT-3 [-30].
+Secondary Characteristic Modifiers: SM -1; HP+2 [4].
+Advantages: Doesn’t Breathe [20]; Doesn’t Eat or Drink [10]; Doesn’t
+Sleep [20]; Flight (Lighter Than Air, -10%) [36]; Immunity to
+Metabolic Hazards [30]; Injury Tolerance (Diffuse) [100].
+Disadvantages: No Fine Manipulators [-30]; No Legs (Aerial) [0];
+Vulnerability (Vacuum and wind-based attacks ¥2) [-20].
+
 Duration: One hour. May not be
 maintained.
 Cost: 1 point per 10 character
@@ -758,44 +617,9 @@ or four spells of the appropriate
 element and another Summon
 Elemental spell.
 
-Item
-Staff, wand, or jewelry decorated
-with appropriate elemental images – a
-different enchantment is required for
-each of the four types. Cost to create:
-800 energy, $1,300 gold and platinum.
 
-Control (Air) Elemental
-Regular; Resisted by
-higher of ST and Will
-Control all actions of a single elemental while the spell continues. For
-direct control, the elemental must
-remain within the caster’s view. If the
-elemental is simply told to leave, it
-does so. If the elemental is sent to do a
-task, rather than controlled directly,
-
-its IQ must be sufficient (GM’s decision) to comprehend its instructions!
-This spell can also be used as an
-information spell, to judge the four
-attributes of that type of elemental
-(within 15 feet). A successful roll is
-required, but there is no energy cost.
-Duration: 1 minute.
-Cost: 1 point per 10 character
-points used to build the elemental.
-Half that (round up) to maintain.
-Time to cast: 2 seconds.
-Prerequisite: Summon Elemental
-for the appropriate element.
-
-Item
-Staff, wand, or jewelry decorated
-with appropriate elemental images – a
-different enchantment is required for
-each of the four types. This item does
-not let the user cast the spell, but gives
-
+Create (Air) Elemental
+Special
 Create a spirit of the appropriate
 element. The caster may determine the
 capabilities of the created elemental by
@@ -824,25 +648,44 @@ elemental.
 Prerequisites: Magery 2 and Control
 Elemental for the appropriate element.
 
-Small Air Elemental
-This basic air elemental is summoned by casting Summon Air
-Elemental at the minimum energy cost of 4. More energy put into the
-spell summons a more powerful elemental. Usually, this simply means a
-larger elemental; 1 point of energy is equal to 1 additional point of ST, 5
-HP, or 2 points of DR. However, the GM may choose to build a more exotic elemental, adding unusual traits to the following template, or working
-one up from scratch.
 
-Small Air Elemental
-40 points
-Attribute Modifiers: ST-4 [-40]; DX-1 [-20]; IQ-2 [-40]; HT-3 [-30].
-Secondary Characteristic Modifiers: SM -1; HP+2 [4].
-Advantages: Doesn’t Breathe [20]; Doesn’t Eat or Drink [10]; Doesn’t
-Sleep [20]; Flight (Lighter Than Air, -10%) [36]; Immunity to
-Metabolic Hazards [30]; Injury Tolerance (Diffuse) [100].
-Disadvantages: No Fine Manipulators [-30]; No Legs (Aerial) [0];
-Vulnerability (Vacuum and wind-based attacks ¥2) [-20].
+Item
+Staff, wand, or jewelry decorated
+with appropriate elemental images – a
+different enchantment is required for
+each of the four types. Cost to create:
+800 energy, $1,300 gold and platinum.
 
-ANIMAL SPELLS
+Control (Air) Elemental
+Regular; Resisted by
+higher of ST and Will
+Control all actions of a single elemental while the spell continues. For
+direct control, the elemental must
+remain within the caster’s view. If the
+elemental is simply told to leave, it
+does so. If the elemental is sent to do a
+task, rather than controlled directly,
+its IQ must be sufficient (GM’s decision) to comprehend its instructions!
+This spell can also be used as an
+information spell, to judge the four
+attributes of that type of elemental
+(within 15 feet). A successful roll is
+required, but there is no energy cost.
+Duration: 1 minute.
+Cost: 1 point per 10 character
+points used to build the elemental.
+Half that (round up) to maintain.
+Time to cast: 2 seconds.
+Prerequisite: Summon Elemental
+for the appropriate element.
+
+Item
+Staff, wand, or jewelry decorated
+with appropriate elemental images – a
+different enchantment is required for
+each of the four types. This item does
+not let the user cast the spell, but gives
+
 
 Beast-Soother
 Regular
@@ -858,13 +701,6 @@ Item
 Staff, wand, or jewelry. Energy cost
 to create: 600.
 
-Sample Animal Control Energy Costs
-Spell
-Vermin Control
-Fish Control
-Reptile Control
-Bird Control
-Mammal Control
 
 Beast-Rouser
 Regular
@@ -917,9 +753,6 @@ swarm (see Swarm Attacks, p. B461).
 Remember, however, that subjects
 larger than SM 0 increase the casting
 cost. Concentration is required. The
-
-30
-
 caster must know all the Control spells
 relevant to the hybrid (controlling a
 gryphon would require knowledge of
@@ -964,13 +797,6 @@ ends before they arrive, they will turn
 and go about their business.
 Prerequisite: Beast-Soother.
 
-Cost
-1/1
-2/1
-2/1
-3/2
-5/3
-
 Item
 Staff, wand, or jewelry. Energy cost
 to create: 400 for an item that summons one particular species, or 800
@@ -978,8 +804,7 @@ for an item that can summon any
 beast.
 
 Master
-Regular or Blocking;
-Resisted by IQ
+Regular or Blocking; Resisted by IQ
 Holds any beast motionless and
 quiet as long as the caster maintains
 eye contact and concentration. Note
@@ -1026,7 +851,9 @@ Beast Speech
 Regular
 Communicate with any animal in the creature’s own “language.” The amount of information exchanged depends on the animal’s intelligence; no creature below the level of a bird is likely to know much of interest. An ant may crawl over gold, but it knows only that the material is hard and inedible. Each minute of the spell allows one question and answer.
 Duration: 1 minute.
-Cost: 4 to cast. 2 to maintain. Prerequisite: Beast Summoning.
+Cost: 4 to cast. 2 to maintain.
+Prerequisite: Beast Summoning.
+
 Item
 Staff, wand, or jewelry. Energy cost to create: 1,000 for an item that talks to one particular species, or 4,000 for an item that can talk to any creature.
 
@@ -1083,9 +910,13 @@ would-be rider actually mounts it. If
 the rider dismounts, the creature will
 remain docile for about a minute
 before fleeing or attacking (whichever
-is its nature). Energy cost to create: 800
-for an item that controls one particular species, or 3,000 for an item that
-can control any creature.
+is its nature).
+Duration: 5 minutes.
+Cost: 2 to cast. 1 to maintain.
+Prerequisite: At least one (Animal)
+Control spell. You cannot use the Rider spell on a beast unless you know the appropriate Control spell and cast it first.
+
+Item
 
 Rider Within
 Regular
@@ -1123,6 +954,7 @@ enchantment. Energy cost to create:
 1,000 (for the pair). Each of the pair
 must contain an opal worth $100.
 
+Beast Seeker
 Information
 This spell is similar to Seeker
 (p. 105), but it works only on animals.
@@ -1184,13 +1016,6 @@ mages. The item must bear a picture
 of a spider. The strand is shot from the
 item’s tip. Energy cost to create: 400.
 
-Beast Seeker
-Information
-This spell is similar to Seeker (p. 105), but it works only on animals. It may be cast for any species of animal, an individual, or simply any animal.
-Cost: 3. One try per week per species.
-Prerequisites: Either Beast Summoning and at least two other Seek spells, or Seeker.
-
-
 Beast Possession
 Regular; Resisted by Will
 Like Rider Within – except caster is
@@ -1216,8 +1041,7 @@ As for Rider Within, but more costly. Energy cost to create: 1,500 (for the
 pair). Each of the pair must include an
 opal worth $200.
 
-Permanent Beast
-Possession (VH)
+Permanent Beast Possession (VH)
 Regular; Resisted by Will
 Like Beast Possession, but the caster’s consciousness remains in the body
 of the subject until he chooses to leave
@@ -1274,7 +1098,6 @@ Shapeshifting (VH)
 Special
 Change to the form of an animal.
 Each animal form is a different spell,
-
 to be learned separately. The caster
 may only learn the form of an animal
 with which he is familiar. Many
@@ -1357,8 +1180,7 @@ it is taken off by Remove Curse; the
 item may then be reused. Energy cost
 to create: 3,000.
 
-Permanent
-Shapeshifting (VH)
+Permanent Shapeshifting (VH)
 Regular
 Like Shapeshifting, but the subject
 remains in animal form until he
@@ -1642,26 +1464,6 @@ Cost: 1.
 Prerequisite:
 Vitality.
 
-Spasm
-
-or
-
-Lend
-
-35
-
-Item
-
-Item
-
-(a) Staff or wand, decorated in a
-snake pattern. Usable only by a mage
-or a nonmage with Physician-15 or
-higher. Energy cost to create: 400. (b)
-Any item. Always on. The item prevents
-its wearer from suffering seizures
-(grants a bonus of +5 when resisting
-Spasm). Energy cost to create: 750.
 
 (a) Staff or wand; usable only by
 mages. The item must touch the victim. Energy cost to create: 400. (b) Any
@@ -1937,13 +1739,11 @@ Nauseate
 Regular; Resisted by HT
 The subject becomes nauseated
 (see Irritating Conditions, p. B428).
-
-
 Duration: 10 seconds.
-Cost: 3 to cast. 1 to maintain.
-Prerequisite: Spasm.
-
-Item
+Cost: 2. Same cost to maintain.
+Time to cast: 4 seconds.
+Prerequisites: Perfume and at least
+one other Body Control spell.
 
 Staff or wand. Usable only by
 mages; the item must touch the
@@ -1954,22 +1754,12 @@ subject. Energy cost to create: 100.
 mages; the item must touch the
 subject. Energy cost to create: 2,500.
 
-be recovered by a day of rest and adequate nourishment (see Starvation,
-p. B426).
-This is also a Food spell.
-Cost: 2.
-Time to cast: 5 seconds.
-Prerequisites: Magery 1, Debility,
-and Decay.
-
 
 Strike Dumb
 Regular; Resisted by HT
 The subject cannot speak. This
 makes it impossible to cast any spell
 that requires speaking (p. 8).
-
-Duration: 10 seconds.
 Duration: 10 seconds.
 Cost: 3 to cast. 1 to maintain.
 Prerequisite: Spasm.
@@ -1985,7 +1775,8 @@ Strike Blind
 Regular; Resisted by HT
 The subject is temporarily blinded. See Blindness, p. B124, for a full description of the effects; the most important is that he is at -10 to attack anyone physically, and cannot see to target spells.
 Duration: 10 seconds.
-Cost: 4 to cast. 2 to maintain. Prerequisite: Spasm and at least
+Cost: 4 to cast. 2 to maintain.
+Prerequisite: Spasm and at least
 two Light and Darkness spells.
 
 Retch
@@ -2095,13 +1886,16 @@ Hold Breath
 Regular
 Temporarily eliminates the caster’s need for air, as if he had Doesn’t Breathe (p. B49). He could thus stay underwater, or in a room full of poison gas, without trouble. This spell does not actually provide air; it simply delays suffocation while the caster seeks (or creates) a safer environment. This spell does not supply pressure support against vacuum or deep sea pressure.
 Duration: 1 minute.
-Cost: 4 to cast. 2 to maintain. Prerequisites: Magery 1 and Vigor.
+Cost: 4 to cast. 2 to maintain.
+Prerequisites: Magery 1 and Vigor.
 
 Reflexes
 Regular
 The subject gains Combat Reflexes (p. B43) for the duration of the spell. The spell has no effect on beings that already have the advantage.
 Duration: 1 minute.
-Cost: 5 to cast. 3 to maintain. Prerequisites: Grace and Haste.
+Cost: 5 to cast. 3 to maintain.
+Prerequisites: Grace and Haste.
+
 Item
 (a) Any item. Always on; the wear- er gains the Combat Reflexes advan- tage. Rare item! Energy cost to create: 1,200. (b) Staff or wand. Usable only by mages. Energy cost to create: 800.
 
@@ -2110,7 +1904,9 @@ Ambidexterity
 Regular
 Subject gains Ambidexterity (p. B39) for the duration of the spell. The spell has no effect on beings that already have the advantage. It also only affects a single pair of limbs; beings with more than two limbs require multiple castings of the spell.
 Duration: 1 minute.
-Cost: 3 to cast. 2 to maintain. Prerequisite: Grace.
+Cost: 3 to cast. 2 to maintain.
+Prerequisite: Grace.
+
 Item
 (a) Any. Always on; the wearer becomes ambidextrous. A rare item! Energy cost to create: 1,500. (b) Staff or wand. Usable only by mages. Energy cost to create: 500.
 
@@ -2125,13 +1921,10 @@ or improves a handmade object can be
 assisted by this spell; magical craft
 work (such as scroll writing or
 enchantment) cannot.
-
-Hair Growth
-Regular; Resisted by HT
-Causes the subject’s hair and nails to grow at a million times the usual rate (meaning an inch of hair every five seconds and an inch of nails every 30 seconds). If left unchecked, such growth interferes with vision (as hair falls in the eyes), movement (as the subject trips on his beard) and handling ability (as nails get in the way). Some bald people appreciate this spell, while it lasts (baldness returns within about a month as the hair falls out naturally).
-Duration: 5 seconds.
-Cost: 1 to cast. 1 to maintain.
-Prerequisites: At least five Body Control spells.
+Duration: 1 hour. The spell is bro- ken if the subject interrupts his work. Cost: 5 to cast. 3 to maintain. The
+spell costs the subject an equal amount of energy every hour, unless it is the caster himself.
+Time to cast: 10 seconds.
+Prerequisites: Grace and Haste.
 
 
 
@@ -2149,7 +1942,6 @@ Some bald people appreciate this
 spell, while it lasts (baldness returns
 within about a month as the hair falls
 out naturally).
-
 Duration: 1 minute.
 Cost: 5 to cast. 3 to maintain.
 Prerequisite: Grace.
@@ -2372,11 +2164,6 @@ mages; the item must touch the subject. Energy cost to create: 200. (b) Any
 item. Always on; the wearer is infertile/barren while the item is worn.
 Energy cost to create: 800.
 
-Sickness
-Regular; Resisted by HT
-As listed under Mind Control Spells
-p. 138.
-
 Deathtouch
 Melee
 The caster must strike the subject
@@ -2535,8 +2322,7 @@ telling its body where to walk . . .
 The spell, once cast, is permanent
 until somebody puts the head back in
 the proper place and wills it to attach
-(if the head is unwilling, proceed to a
-Regular Contest of Wills). If it is cast
+(if the head is unwilling, proceed to a Regular Contest of Wills). If it is cast
 on a foe, who then regains the head
 and reattaches it, the caster has no say
 in the matter, although he can
@@ -3317,11 +3103,6 @@ Item
 Torc or heavy necklace; the wearer
 cannot lie. Energy cost to create: 600.
 
-Compel Lie
-Regular; Resisted by Will
-As listed under Mind Control Spells,
-p. 137.
-
 Insignificance
 Regular; Special Resistance
 Causes all beings with whom the
@@ -3429,21 +3210,13 @@ Always on; the wearer attracts attention. Energy cost to create: 700. (b)
 Wand or staff; usable only by mages.
 Energy cost to create: 450.
 
-Message
-Regular; Resisted by spells that
-block sound
-As listed under Sound Spells, p. 174.
-
-Machine Speech/TL
-Regular
-As listed under Technological Spells,
-p. 176.
-
 Possession (VH)
 Regular; Resisted by Will
 Like Control Person – except the victim is unconscious throughout the “possession,” and the caster has full access to the subject’s memories, skills, and spells. While in the subject’s body, the caster has his own skills and spells, and may use all the subject’s skills, spells, and memories as though they were his own (the subject’s phys- ical skills are at -1). The caster’s own body lies unconscious during the spell, and must be safeguarded.
 Duration: 1 minute.
-Cost: 10 to cast. 4 to maintain. Time to cast: 1 minute. Prerequisite: Magery 1 and either
+Cost: 10 to cast. 4 to maintain.
+Time to cast: 1 minute.
+Prerequisite: Magery 1 and either
 Control Person or Beast Possession.
 
 Soul Rider
@@ -3700,10 +3473,6 @@ good earth (minimum 1).
 Prerequisite: Earth to Stone.
 
 Item
-
-Earth to Air
-Regular
-As listed under Air Spells p. 25.
 
 Earth Vision
 Regular
@@ -4005,10 +3774,6 @@ Prerequisites: Create Earth and Plant Growth.
 Item
 Staff. Energy cost to create: 400.
 
-Sandstorm
-Area
-As listed under Air Spells, p. 27.
-
 Earthquake
 Area
 Shakes the affected area. The caster probably won’t want the area to
@@ -4214,8 +3979,7 @@ invisible armor – it would never wear
 off. He could give the armor the ability to cast the Invisibility spell on itself
 at normal energy and duration costs.
 Temporary Enchantment cannot
-be used in conjunction with any
-Enchantment college or Meta-Spell
+be used in conjunction with any Enchantment college or Meta-Spell
 college spells except the following:
 Hex, Limit, Link, Name, Power, and
 Speed. Temporary Enchantment
@@ -5889,16 +5653,6 @@ $20,000) gives +2.
 Energy cost to create: 1,000.
 Prerequisite: Divination (CrystalGazing).
 
-Lich (VH)
-Enchantment
-As listed under Necromantic Spells,
-p. 159.
-
-Wraith (VH)
-Enchantment
-As listed under Necromantic Spells,
-p. 160.
-
 Ignite Fire
 Regular
 Produces a single spot of heat, and is
@@ -6642,20 +6396,6 @@ Cost: 3 per meal.
 Prerequisite: Purify Food.
 
 
-Hunger
-Regular; Resisted by HT
-As listed under Body Control Spells,
-p. 38.
-
-Thirst
-Regular; Resisted by HT
-As listed under Body Control Spells,
-p. 38.
-
-Foul Water
-Area
-As listed under Water Spells, p. 185.
-
 Preserve Food
 Regular
 Keeps any organic material from
@@ -6732,32 +6472,6 @@ Resist Pain.
 
 Item
 
-Scents of the Past
-Regular
-As listed under Knowledge Spells,
-p. 107.
-
-
-
-Teleport
-Special
-As listed under Movement Spells,
-p. 147.
-
-Teleport Other
-Regular; Resisted by Will+1
-As listed under Movement Spells,
-p. 147.
-
-Blink
-Blocking
-As listed under Movement Spells,
-p. 148.
-
-Blink Other
-Blocking
-As listed under Movement Spells,
-p. 148.
 
 Timeport (VH)
 Special
@@ -7207,14 +6921,8 @@ He must roll a 7 (succeeding by 5), to
 win the contest and divert Severin.
 Whether he does so or not, the calculated cost is 3 energy, so Elsdon must
 pay the minimum cost of 3.
-
 Cost: As described above; minimum cost 3.
 Prerequisites: Magery 3 and Trace Teleport.
-
-Teleport Shield
-Area
-As listed under Protection Spells,
-p. 170.
 
 Create Door
 Regular
@@ -7673,11 +7381,6 @@ Item
 Headgear or jewelry. Works only
 on wearer. Energy cost to create: 200.
 
-Detect Poison
-Area; Information
-As listed under Protection and
-Warning Spells, p. 166.
-
 Final Rest
 Regular
 When cast on a dead body, this
@@ -7874,10 +7577,6 @@ Base cost: 3.
 Time to cast: 2 seconds.
 Prerequisite: Decay, Clean, or Cure
 Disease.
-
-Stop Spasm
-Regular
-As listed under Body Control Spells, p. 35.
 
 Item
 
@@ -8308,11 +8007,6 @@ pattern. Usable only by mages. The
 item must touch the subject. Energy
 cost to create: 4,000.
 
-Cure Radiation
-Regular
-As listed under Technological Spells,
-p. 182.
-
 Cleansing
 Regular; Special Resistance
 Cleanses the subject of any foreign
@@ -8479,11 +8173,6 @@ Base cost: 1 to cast. Half that to
 maintain.
 Prerequisites: Caster must be able
 to see and have IQ 11 or better.
-
-Phantom Flame
-Area
-As listed under Fire Spells, p. 73.
-
 
 Complex Illusion
 Area
@@ -8744,8 +8433,7 @@ with which the caster is familiar – e.g.,
 a robe, a sword, a cup. It cannot create
 a magical item or a living creature.
 Limitations: Food created this way
-will seem nourishing, but in fact is not.
-Information cannot be created; a book
+will seem nourishing, but in fact is not. Information cannot be created; a book
 could not be created unless the caster
 knew all its contents by heart. A work
 of art will be only as good as the caster
@@ -9033,11 +8721,6 @@ Gloves or jewelry. Affects only the
 wearer. Energy cost to create: 200.
 
 
-Small Vision
-Regular
-As listed under Light and Darkness
-Spells, p. 111.
-
 Find Direction
 Information
 Tells the caster which direction is
@@ -9047,13 +8730,6 @@ have more than one true home, and a
 wanderer may have none!
 Cost: 2.
 Prerequisite: Magery 1.
-
-Earth Vision
-Regular
-As listed under Earth Spells, p. 51.
-
-Air Vision
-As listed under Air Spells, p. 24.
 
 Detect Magic
 Regular
@@ -9111,9 +8787,6 @@ Cost: 3.
 Time to cast: 5 seconds.
 Prerequisite: Detect Magic.
 
-Item
-Regular
-
 Aura
 Information
 Creates a glowing halo, or “aura,”
@@ -9143,12 +8816,6 @@ Item
 Staff, wand, or jewelry. Usable only
 by mages. Energy cost to create: 100.
 
-Identify Spell
-Information
-Identifies what spell or spells have just been cast (within the last five sec- onds), or are being cast at the moment, on or by the subject. It does not identify the spells on a perma- nently enchanted item. One casting identifies all spells cast on or by the subject. However, if any of these spells are totally unknown to the caster – not just spells he doesn’t know, but spells he has never heard of – the GM should provide only a vague description; e.g., “Some kind of physical protection.” Wizards have heard of every spell in this book (unless the GM rules that some are secret) but not new spells created by the GM or players.
-Cost: 2.
-Prerequisite: Detect Magic.
-
 Mage Sense
 Information
 Detect all magical items in your field of vision. Each such item will have a glow or “aura,” similar to the aura of a living being. This glow is vis- ible through clothes, armor, or up to 1/2” of solid material.
@@ -9157,42 +8824,10 @@ Duration: 1 minute.
 Cost: 3 to cast. 2 to maintain.
 Prerequisite: Detect Magic.
 
+Identify Spell
 Information
-
-Identifies what spell or spells have
-just been cast (within the last five seconds), or are being cast at the
-moment, on or by the subject. It does
-not identify the spells on a permanently enchanted item. One casting
-identifies all spells cast on or by the
-subject. However, if any of these spells
-are totally unknown to the caster – not
-just spells he doesn’t know, but spells
-he has never heard of – the GM should
-provide only a vague description; e.g.,
-“Some kind of physical protection.”
-Wizards have heard of every spell in
-this book (unless the GM rules that
-some are secret) but not new spells
-created by the GM or players.
-
-Tells the caster whether some
-unseen magical item or creature is
-nearby. The caster may specify that he
-is looking for any unseen item, or he
-may specify a certain object.
-
+Identifies what spell or spells have just been cast (within the last five sec- onds), or are being cast at the moment, on or by the subject. It does not identify the spells on a perma- nently enchanted item. One casting identifies all spells cast on or by the subject. However, if any of these spells are totally unknown to the caster – not just spells he doesn’t know, but spells he has never heard of – the GM should provide only a vague description; e.g., “Some kind of physical protection.” Wizards have heard of every spell in this book (unless the GM rules that some are secret) but not new spells created by the GM or players.
 Cost: 2.
-Prerequisite: Detect Magic.
-
-Skill modifier: the distance in yards
-to the object sought. Use the closest
-distance if the caster moves around
-during the spell’s duration, and roll at
-the end of that time. At the GM’s
-option, some very powerful magic
-items may be easier to sense.
-Duration: 1 minute.
-Cost: 3 to cast. 2 to maintain.
 Prerequisite: Detect Magic.
 
 Item
@@ -9233,8 +8868,6 @@ Item
 Staff, wand, or jewelry. Energy cost
 to create: 800.
 
-102
-
 Seek Magic
 Information
 Determines the direction and
@@ -9256,8 +8889,7 @@ Staff, wand, or jewelry. Energy cost
 to create: 1,200.
 
 Analyze Magic
-Information; Resisted by spells
-that conceal magic
+Information; Resisted by spells that conceal magic
 Identifies exactly what spells are on
 the subject. If the subject has more than
 one spell on it, Analyze Magic identifies
@@ -9342,23 +8974,6 @@ Knowledge spells or Earth Vision.
 Item
 Staff, wand, or jewelry. Energy cost
 to create: 600.
-
-Far-Tasting
-Regular
-As listed under Food Spells, p. 77.
-
-Far-Hearing
-Regular
-As listed under Sound Spells,
-p. 173.
-
-Water Vision
-Information
-As listed under Water Spells, p. 187.
-
-Plant Vision
-Regular
-As listed under Plant Spells, p. 162.
 
 Know Location
 Information
@@ -10261,7 +9876,8 @@ flashlight. It gives good illumination for
 10 yards in the direction it is pointed, and some vision will be possible up to 30 yards away. It can be used as a signal for up to a mile if visibility is good.
 Can be used in combat to blind foes within 10 yards, but only in relative darkness (e.g., when the combat penal- ty is at least -5). Each turn, the caster rolls against Innate Attack skill or DX- 4, with a -5 penalty to hit the face. This attack can be dodged or blocked, but not parried. If the target is hit, he will be at a -4 penalty to combat skills on his next turn, and at a -1 penalty for the remainder of the combat. This effect is not cumulative. Foes with Night Vision double these penalties.
 Duration: 1 minute.
-Cost: 2 to cast. 1 to maintain. Prerequisite: Continual Light or
+Cost: 2 to cast. 1 to maintain.
+Prerequisite: Continual Light or
 Shape Light.
 
 Flash
@@ -12012,22 +11628,9 @@ Time to cast: 1 second for each
 energy point spent.
 Prerequisite: Dispel Magic.
 
-Item
-(a) Staff, wand, or jewelry. Usable
-only by mages. Energy cost to create:
-500. (b) May be cast permanently on
-an enchanted item or area to make it
-harder to tamper with; it then hampers
-Suspend Enchantment and Remove
-Enchantment as well. Energy cost to
-cast: 100 times normal cost.
-
 Remove Aura
-Regular; Special Resistance;
-Resists Information spells
-Like False Aura, but removes the
-magical emanations of the subject
-entirely. When cast on an inanimate
+Regular; Special Resistance; Resists Information spells Like False Aura, but removes the magical emanations of the subject entirely.
+When cast on an inanimate
 object, this spell turns it into a blank
 slate for spells such as Ancient
 History, History, See Secrets, or
@@ -12662,8 +12265,7 @@ Energy cost to cast: 200.
 Reflex
 Special
 This spell is cast on another spell. It
-converts that spell to function as a
-Blocking spell for one time only, then
+converts that spell to function as a Blocking spell for one time only, then
 disappear. Unlike Delay or Link, a
 Reflexed spell is triggered by the will
 of the caster, not by an external event.
@@ -14132,9 +13734,7 @@ Deflect Missile
 Blocking
 Deflects one missile about to hit the
 subject – including any Missile spell.
-Counts as a parry for combat purposes. If the caster is not the subject,
-apply distance modifiers as for a
-Regular spell. Deflected attacks may
+Counts as a parry for combat purposes. If the caster is not the subject,apply distance modifiers as for a Regular spell. Deflected attacks may
 still hit a target beyond the subject.
 This is also a Protection and
 Warning spell.
@@ -17523,7 +17123,8 @@ within this area can hear anything,
 and nothing that happens in this area
 makes any sound. It is the area that is affected and not the people in it; any- one moving out will be able to speak. Note that an area of silence will prevent spoken spells from working!
 Duration: 1 minute.
-Base cost: 2 to cast. 1 to maintain. Prerequisite: Sound.
+Base cost: 2 to cast. 1 to maintain.
+Prerequisite: Sound.
 
 
 Voices
@@ -20191,10 +19792,6 @@ Jewelry. Usable only by mages.
 Cost to create: 400 energy and a $500
 sapphire.
 
-Jewelry. Usable only by mages.
-Cost to create: 1,000 energy and a $500
-carnelian.
-
 Spit Acid (VH)
 Regular
 Similar to Acid Jet, except that the
@@ -20218,8 +19815,7 @@ Prerequisites: Magery 3, Acid Jet,
 and Resist Acid.
 
 Item
-Jewelry. Usable only by mages.
-Energy cost to create: 400.
+
 
 Essential Acid (VH)
 Regular
@@ -20239,8 +19835,6 @@ Prerequisites: Magery 3 and all six
 Acid spells.
 
 Item
-Staff, wand, or jewelry. Usable only
-by mages. Energy cost to create: 1,100.
 
 
 Breathe Steam (VH)
@@ -20265,6 +19859,7 @@ Time to cast: 2 seconds.
 Prerequisites: Magery 1, Steam Jet,
 and Resist Fire.
 
+Item
 
 
 Frost
@@ -20288,6 +19883,8 @@ Duration: The frost lasts until it
 melts naturally.
 Base cost: 1.
 Prerequisite: Create Water or Cold.
+
+Item
 
 
 Predict Weather
@@ -20831,7 +20428,8 @@ This is also an Air spell.
 Duration: 1 minute.
 Base cost: 2 to 6 to cast. Same cost to
 maintain. Each turn, the Wall inflicts
-1d-1 burning damage for every two points of energy put into its base cost. Prerequisite: Lightning.
+1d-1 burning damage for every two points of energy put into its base cost.
+Prerequisite: Lightning.
 
 Ball of Lightning
 Missile
@@ -20999,7 +20597,7 @@ least $300 must be spent in platinum
 and opal decorations.
 
 Lightning Missiles
-Regular
+Missile
 Like Lightning Weapon, but cast on
 a missile weapon. The weapon itself
 becomes surrounded with an electric
