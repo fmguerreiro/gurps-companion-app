@@ -55,6 +55,11 @@
 
 (def label (memoize label-fn))
 
+(defn has-label?
+  [path]
+  (-> i18n
+      (.lookup (name path))))
+
 (defn label-pluralize
   [amount path & options]
   (if (exists? (.t i18n))
