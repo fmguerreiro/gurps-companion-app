@@ -4,6 +4,7 @@
 (ns gurps.pages.character.spells.details
   (:require ["twrnc" :refer [style] :rename {style tw}]
             ["@react-navigation/native" :as rnn]
+            ["react-native" :as rn]
             [cljs-bean.core :refer [->clj]]
             [gurps.utils.helpers :refer [str->key]]
             [gurps.widgets.base :refer [view text button]]
@@ -20,7 +21,7 @@
 
 (defn- spell-prerequisite
   [prereq nav]
-  [:> button {:onPress #(-> nav (.push (i18n/label :t/spell-details) #js {:id (str prereq)}))}
+  [:> button {:onPress #(-> nav (.push (i18n/label :t/spell-details) #js {:id (str (symbol prereq))}))}
    [:> view {:style (tw "flex flex-row flex-grow justify-between")}
     [:> text (i18n/label (str "spell-" (symbol prereq)))]
     [:> text {:style "font-bold"} ">"]]])
@@ -42,18 +43,35 @@
   (let [navigation (rnn/useNavigation)
         k          (-> props ->clj :route :params :id str->key)
         {:keys [ref prerequisites]} (k spells-by-name)]
-    [:> view {:style (tw "bg-white p-2 flex flex-col gap-2 flex-grow")}
-     [section (i18n/label :t/description)
-      [:> text (i18n/label (keyword :t (str "spell-" (symbol k) "-description")))]]
-     [section (i18n/label :t/cost)
-      [:> text (i18n/label (keyword :t (str "spell-" (symbol k) "-base-cost")))]]
-     [section (i18n/label :t/time-to-cast)
-      [:> text (i18n/label (keyword :t (str "spell-" (symbol k) "-time-to-cast")))]]
-     (when (seq ref)
-       [section (i18n/label :t/reference) [:> text ref]])
-     (when (seq prerequisites)
-       [section (i18n/label :t/dependencies)
-        (map-indexed (fn [idx prereq]
-                       ^{:key (str "prereq-" idx)}
-                       [prerequisite prereq navigation])
-                     prerequisites)])]))
+    [:> rn/ScrollView {:style (tw "bg-white")}
+     [:> view {:style (tw "bg-white p-2 flex flex-col gap-2 flex-grow")}
+      [section (i18n/label :t/description)
+       [:> text (i18n/label (keyword :t (str "spell-" (symbol k) "-description")))]]
+
+      [section (i18n/label :t/type)
+       [:> text (i18n/label (keyword :t (str "spell-" (symbol k) "-type")))]]
+
+      (let [cost-key (keyword :t (str "spell-" (symbol k) "-cost"))]
+        (when (i18n/has-label? cost-key)
+          [section (i18n/label :t/cost)
+           [:> text (i18n/label cost-key)]]))
+
+      (let [time-key (keyword :t (str "spell-" (symbol k) "-time"))]
+        (when (i18n/has-label? time-key)
+          [section (i18n/label :t/time-to-cast)
+           [:> text (i18n/label time-key)]]))
+
+      (let [duration-key (keyword :t (str "spell-" (symbol k) "-duration"))]
+        (when (i18n/has-label? duration-key)
+          [section (i18n/label :t/duration)
+           [:> text (i18n/label duration-key)]]))
+
+      (when (seq ref)
+        [section (i18n/label :t/reference) [:> text ref]])
+
+      (when (seq prerequisites)
+        [section (i18n/label :t/dependencies)
+         (map-indexed (fn [idx prereq]
+                        ^{:key (str "prereq-" idx)}
+                        [prerequisite prereq navigation])
+                      prerequisites)])]]))

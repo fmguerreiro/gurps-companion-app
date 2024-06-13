@@ -71,6 +71,7 @@
                        vec->js-array)}))
    grouped-map))
 
+(+ 1 2)
 (defn spell-groups
   []
   (let [sections       (get-sections spells-by-college)
