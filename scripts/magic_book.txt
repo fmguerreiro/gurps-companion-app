@@ -1,5 +1,3 @@
-CHAPTER THREE
-
 Purify Air
 Area
 Removes all impurities from the
@@ -15,10 +13,10 @@ a one-yard radius, if not renewed from
 the outside, lasts 45 minutes for one
 person at rest, or less for multiple persons or someone violently exercising
 (GM’s discretion).
-
 Duration: Works instantly. Purification is permanent.
 Base cost: 1. Cannot be maintained;
 must be recast.
+Prerequisites:
 
 Seek Air
 Information
@@ -32,6 +30,7 @@ air. Any known source of air may be
 excluded if the caster specifically
 mentions it before beginning.
 Cost: 1.
+Prerequisites:
 
 
 Create Air
@@ -61,10 +60,6 @@ must be recast.
 Prerequisite: Purify Air or Seek Air.
 
 
-Staff, wand, or jewelry. Energy cost
-to create: 200.
-
-
 No-Smell
 Regular
 Removes the subject’s odor and
@@ -75,10 +70,6 @@ properties of the subject.
 Duration: 1 hour.
 Cost: 2 to cast. 2 to maintain.
 Prerequisite: Purify Air.
-
-
-Jewelry; only affects the wearer.
-Cost to create: 150 energy and $300.
 
 Stench
 Area
@@ -99,10 +90,6 @@ windy areas.
 Base cost: 1. Cannot be maintained;
 must be recast.
 Prerequisite: Purify Air.
-
-Item
-Staff, wand, or jewelry. Energy cost
-to create: 60.
 
 Destroy Air
 Area
@@ -134,11 +121,6 @@ Duration: 1 hour.
 Base cost: 1. Cannot be maintained.
 Prerequisite: No-Smell.
 
-Item
-Jewelry that constantly surrounds
-the wearer with one scent (set at time
-of casting). Energy cost to create: 40.
-
 Shape Air
 Regular
 Create movements of air over a
@@ -161,10 +143,6 @@ more a violent blast. Same cost to
 maintain.
 Prerequisite: Create Air.
 
-Item
-Staff, wand, or jewelry. Energy cost
-to create: 200.
-
 Air Jet
 Regular
 Shoot a thin jet of air from one finger. Each turn, the caster rolls versus
@@ -180,12 +158,6 @@ Duration: 1 second.
 Cost: 1 to 3. Same cost to maintain.
 Prerequisite: Shape Air.
 
-Item
-Staff, wand, or jewelry. Usable only
-by mages; if the item is a staff or
-wand, the air jet comes from its tip.
-Energy cost to create: 200.
-
 Air Vision
 Regular
 See clearly through smoke, fog,
@@ -197,9 +169,6 @@ Duration: 1 minute.
 Cost: 1 per mile to cast. Half that to
 maintain.
 Prerequisite: Shape Air.
-
-Item
-Any. Energy cost to create: 200.
 
 Body of Air
 Regular; Resisted by HT
@@ -214,22 +183,6 @@ Duration: 1 minute.
 Cost: 4 to cast. 1 to maintain.
 Time to cast: 5 seconds.
 Prerequisite: Shape Air.
-
-Item
-(a) Staff, wand, or jewelry; only
-affects the wearer. Unfortunately, as
-soon as it is activated, the item falls
-through the user’s hand – thus, a spell
-cast with this item lasts only a minute.
-Energy cost to create: 800. (b) Staff,
-wand, or jewelry. Unlike the previous
-item, this item becomes vaporous
-along with the subject, allowing the
-subject to maintain the spell longer
-than 1 minute. It loses any other
-magic powers it might have while in
-vaporous form.Energy cost to create:
-1,500.
 
 Devitalize Air
 Area
@@ -257,9 +210,6 @@ Base cost: 2. Cannot be maintained;
 must be recast.
 Prerequisite: Destroy Air.
 
-Item
-Staff, wand, or jewelry. Cost to create: 300 energy and a $200 onyx.
-
 
 Walk on Air
 Regular
@@ -276,11 +226,6 @@ pit, too bad!
 Duration: 1 minute.
 Cost: 3 to cast. 2 to maintain.
 Prerequisite: Shape Air.
-
-Item
-Staff, wand, jewelry, or shoes; only
-affects the wearer. Cost to create: 500
-energy and $1,000.
 
 Wall of Wind
 Area
@@ -314,11 +259,6 @@ soon as the casting starts, initially surrounding a one-yard-radius area; the
 caster may move the perimeter outward at a rate of one yard of radius
 per second of concentration.
 Prerequisite: Shape Air.
-
-
-Staff, wand, or jewelry. Usable only
-by mages. Cost to create: 400 energy
-and a $500 onyx.
 
 Windstorm
 Area
@@ -376,12 +316,6 @@ Time to cast: 2 seconds.
 Prerequisites: Create Air and Shape
 Earth.
 
-Item
-Staff, wand, or jewelry. Usable only
-by mages. The item must touch the
-stone to be transformed. Cost to create:
-750 energy and $1,000 in jewels.
-
 
 Essential Air
 Area
@@ -400,16 +334,6 @@ Base cost: 2.
 Time to cast: 3 seconds.
 Prerequisites: At least six Air spells.
 
-Item
-Staff, wand, or jewelry. Usable only
-by mages. Cost to create: 800 energy
-and a $400 onyx.
-
-Staff or wand – the missile is
-thrown from the end of the item.
-Usable only by mages. Cost to create:
-1,000 energy and a $400 onyx.
-
 Resist Lightning
 Regular
 Breathe air as though it were
@@ -424,9 +348,6 @@ Duration: 1 minute.
 Cost: 3 to cast. 1 to maintain.
 Prerequisites: Create Water and
 Destroy Air.
-
-Staff. Usable only by mages. Cost to
-create: 1200 energy and an $800 onyx.
 
 Breathe Air
 Regular
@@ -444,10 +365,6 @@ This is also a Sound spell.
 Cost: Any amount up to twice your Magery level per second, for three sec- onds. For every 2 energy put into the spell, the missile does 1d crushing damage. See Explosions, p. B414, for a full treatment of explosive damage.
 Time to cast: 1 to 3 seconds.
 Prerequisites: Shape Air and Thunderclap (p. 171).
-
-Staff, wand, jewelry, or clothing;
-only affects the wearer. Energy cost to
-create: 150.
 
 
 Air Vortex
@@ -494,10 +411,6 @@ bring the storm to full strength.
 Prerequisites: Windstorm and
 Create Earth.
 
-Item
-Staff, wand, or jewelry. Usable only
-by mages. Energy cost to create: 1,000.
-
 
 Body of Wind
 Regular; Resisted by HT
@@ -531,23 +444,6 @@ upon completion of the spell.
 Prerequisites: Magery 3; Body of Air
 and Windstorm at 16+ each; and one
 spell from each of five different colleges besides Air.
-
-Item
-(a) Staff, wand, or jewelry; only
-affects the wearer. As soon as it is activated, the item falls through the user’s
-hand; thus, a spell cast with this item
-lasts only a minute. Cost to create:
-1,700 energy and a $1,000 onyx. (b)
-Staff, wand, or jewelry; only affects
-the wearer. Unlike the previous item,
-this item turns to wind along with the
-wearer, allowing him to maintain the
-spell longer than a minute. While
-vaporous, it loses any magical powers
-it might have while solid. Cost to
-create: 3,500 energy and a $2,500
-onyx.
-
 
 Summon (Air) Elemental
 Special
@@ -649,16 +545,8 @@ Prerequisites: Magery 2 and Control
 Elemental for the appropriate element.
 
 
-Item
-Staff, wand, or jewelry decorated
-with appropriate elemental images – a
-different enchantment is required for
-each of the four types. Cost to create:
-800 energy, $1,300 gold and platinum.
-
 Control (Air) Elemental
-Regular; Resisted by
-higher of ST and Will
+Regular; Resisted by higher of ST and Will
 Control all actions of a single elemental while the spell continues. For
 direct control, the elemental must
 remain within the caster’s view. If the
@@ -679,13 +567,6 @@ Time to cast: 2 seconds.
 Prerequisite: Summon Elemental
 for the appropriate element.
 
-Item
-Staff, wand, or jewelry decorated
-with appropriate elemental images – a
-different enchantment is required for
-each of the four types. This item does
-not let the user cast the spell, but gives
-
 
 Beast-Soother
 Regular
@@ -696,10 +577,6 @@ Duration: Permanent, until something disturbs the animal.
 Cost: 1 to 3.
 Prerequisite: Persuasion or the
 Animal Empathy advantage.
-
-Item
-Staff, wand, or jewelry. Energy cost
-to create: 600.
 
 
 Beast-Rouser
@@ -712,10 +589,6 @@ called for or an hour passes.
 Cost: 1 to 3. Cannot be maintained.
 Prerequisite: Vexation or the
 Animal Empathy advantage.
-
-Item
-Staff, wand, or jewelry. Energy cost
-to create: 500.
 
 (Animal) Control
 Regular; Resisted by Will
@@ -734,16 +607,6 @@ to the racial IQ of the most intelligent
 species within the category. Half that
 to maintain.
 Prerequisite: Beast-Soother.
-
-Item
-(a) Staff, wand, or jewelry. Allows
-the user to control a single species of
-animal. Energy cost to create: 100 energy per point of target species’ racial
-IQ. (b) Staff, wand, or jewelry. Allows
-the user to control any animal within
-a category. Energy cost to create: 200
-energy times the cost to cast for that
-category.
 
 Hybrid Control (VH)
 Regular; Resisted by Will
@@ -766,11 +629,6 @@ Duration: 1 minute.
 Cost: 6 to cast. 3 to maintain.
 Prerequisites: At least two (Animal)
 Control spells.
-
-Item
-Staff, wand, or jewelry. Energy cost
-to create: 800 (will control only one
-particular type of hybrid).
 
 Beast Summoning
 Regular
@@ -797,12 +655,6 @@ ends before they arrive, they will turn
 and go about their business.
 Prerequisite: Beast-Soother.
 
-Item
-Staff, wand, or jewelry. Energy cost
-to create: 400 for an item that summons one particular species, or 800
-for an item that can summon any
-beast.
-
 Master
 Regular or Blocking; Resisted by IQ
 Holds any beast motionless and
@@ -814,10 +666,6 @@ with the caster – e.g., to attack.
 Duration: Indefinite.
 Cost: 2.
 Prerequisite: Beast-Soother.
-
-Item
-Staff, wand, or jewelry. Energy cost
-to create: 800.
 
 Beast Link
 Regular
@@ -839,23 +687,12 @@ Cost: 3.
 Time to cast: 5 seconds.
 Prerequisite: Beast Summoning.
 
-Item
-Matched amulets. The gold one is
-worn by the human, the silver one by
-the animal. This gives the human the
-power to cast the Beast Link, or (if
-self-powered) creates the link automatically. Energy cost to create: 500 for
-the pair.
-
 Beast Speech
 Regular
 Communicate with any animal in the creature’s own “language.” The amount of information exchanged depends on the animal’s intelligence; no creature below the level of a bird is likely to know much of interest. An ant may crawl over gold, but it knows only that the material is hard and inedible. Each minute of the spell allows one question and answer.
 Duration: 1 minute.
 Cost: 4 to cast. 2 to maintain.
 Prerequisite: Beast Summoning.
-
-Item
-Staff, wand, or jewelry. Energy cost to create: 1,000 for an item that talks to one particular species, or 4,000 for an item that can talk to any creature.
 
 Repel (Animal)
 Area
@@ -867,9 +704,6 @@ Base cost: Equal to the cost to cast
 (Animal) Control for the affected animal type.
 Time to cast: 10 seconds.
 Prerequisite: The (Animal) Control spell appropriate to the type of animal to be repelled.
-
-Item
-An area can be made permanently repellent at an energy cost of 100 times normal.
 
 
 Repel Hybrids (VH)
@@ -893,11 +727,6 @@ Base cost: 6 to cast. 3 to maintain.
 Time to cast: 10 seconds.
 Prerequisite: Hybrid Control.
 
-Item
-An area can be made permanently
-repellent at an energy cost of 100
-times normal.
-
 Rider
 Regular
 Mount and ride a subject creature
@@ -913,10 +742,7 @@ before fleeing or attacking (whichever
 is its nature).
 Duration: 5 minutes.
 Cost: 2 to cast. 1 to maintain.
-Prerequisite: At least one (Animal)
-Control spell. You cannot use the Rider spell on a beast unless you know the appropriate Control spell and cast it first.
-
-Item
+Prerequisite: At least one (Animal) Control spell. You cannot use the Rider spell on a beast unless you know the appropriate Control spell and cast it first.
 
 Rider Within
 Regular
@@ -940,20 +766,6 @@ must also know the (Animal) Control
 spell for the type of animal being “ridden” before he can use this spell on
 that type of animal.
 
-Item
-A pair of identical pieces of jewelry
-– one gold, one silver. The gold one
-must be worn by the caster, the silver
-one by the subject (e.g., on a collar).
-The spell can then be cast at any time,
-regardless of distance. Usable only by
-a mage. If a Powerstone is included in
-the item, it is in the gold one. If either
-item is broken, the other loses its
-enchantment. Energy cost to create:
-1,000 (for the pair). Each of the pair
-must contain an opal worth $100.
-
 Beast Seeker
 Information
 This spell is similar to Seeker
@@ -968,8 +780,6 @@ Either
 Beast
 Summoning and at least two other
 Seek spells, or Seeker.
-
-Item
 
 Spider Silk
 Special; Missile
@@ -999,22 +809,14 @@ used to build a web by anchoring successive strands between two surfaces.
 This web creates an area that will
 grapple anyone who passes through it;
 mechanically, this is similar to a
-Binding attack with the Sticky and
-Area Effect enhancements (p. B40).
+Binding attack with the Sticky and Area Effect enhancements (p. B40).
 The web has ST 10 and DR 3, plus 1
 ST for each additional strand.
 Duration: 1 minute.
 Cost: 1 to cast per 5 yards of strand
 length (maximum 100 yards). Half
 that to maintain.
-Prerequisites: Magery 1 and two
-Animal spells.
-
-Item
-Staff or wand. Usable only by
-mages. The item must bear a picture
-of a spider. The strand is shot from the
-item’s tip. Energy cost to create: 400.
+Prerequisites: Magery 1 and two Animal spells.
 
 Beast Possession
 Regular; Resisted by Will
@@ -1033,13 +835,7 @@ safeguarded.
 Duration: 1 minute.
 Cost: 6 to cast. 2 to maintain.
 Time to cast: 5 seconds.
-Prerequisite: Rider Within or
-Possession.
-
-Item
-As for Rider Within, but more costly. Energy cost to create: 1,500 (for the
-pair). Each of the pair must include an
-opal worth $200.
+Prerequisite: Rider Within or Possession.
 
 Permanent Beast Possession (VH)
 Regular; Resisted by Will
@@ -1071,12 +867,6 @@ Cost: 20.
 Time to cast: 1 minute.
 Prerequisites: Magery 2 and Beast
 Possession.
-
-Item
-Cap, crown, helmet, or other headgear. The item must bear a picture of
-the animal form it is usable on. Usable
-only by mages. Energy cost to create:
-2,000.
 
 Protect Animal
 Area
@@ -1139,21 +929,6 @@ Time to cast: 3 seconds.
 Prerequisite: Magery 1, and at least
 six other spells of any type.
 
-Item
-(a) Jewelry. The item must bear the
-likeness of the shape to be taken; usable
-only by a mage, or by someone descended from a natural were. It remains with
-the caster when the spell is cast – therefore, a collar or necklace is most convenient. There is no cost to maintain the
-spell, but the caster cannot change back
-
-unless he still has the item; otherwise, a
-Remove Curse spell must be used if he is
-to regain normal form. Energy cost to
-create: 1,500. (b) Skin of the shape to be
-taken. As above, but merges into the
-subject and so cannot be lost! Energy
-cost to create: 3,000.
-
 Shapeshift Others (VH)
 Special; Resisted by Will
 As Shapeshifting, but usable on
@@ -1170,16 +945,6 @@ Time to cast: 30 seconds.
 Prerequisite: Magery 2 and
 Shapeshifting for that form.
 
-Item
-(a) Staff or wand. Usable only by a
-mage; the item must touch the subject. Energy cost to create: 3,000. (b)
-Skin of the shape to be taken. Always
-on. Placed on the subject, it puts the
-spell on him permanently (soon causing IQ loss as per Shapeshifting) until
-it is taken off by Remove Curse; the
-item may then be reused. Energy cost
-to create: 3,000.
-
 Permanent Shapeshifting (VH)
 Regular
 Like Shapeshifting, but the subject
@@ -1192,20 +957,6 @@ Cost: 5 times the cost of the corresponding Shapeshifting spell.
 Time to cast: 1 minute.
 Prerequisites: Magery 3 and
 Shapeshifting for that form.
-
-Item
-(a) Jewelry. The item must bear a
-picture of the form to be taken. Usable
-only by a mage or a descendant of a
-natural were. It remains with the subject when the spell is cast; note that
-the subject cannot end the spell if he
-loses the item while in beast form (if
-he does, only Remove Curse can turn
-him back!). Energy cost to create:
-3,000. (b) Skin of the shape to be
-taken. As above, but merges into the
-subject and cannot be lost. Energy cost
-to create: 4,500.
 
 Partial Shapeshifting (VH)
 Regular; Resisted by Will
@@ -1244,7 +995,6 @@ Colorblindness as side effects.
 Feathered Arms (3 to cast): The
 subject’s arms transform into wings,
 giving him Flight (Winged) (p. B56).
-
 Fish Tail (3 to cast): The subject’s
 legs fuse into a single powerful fluke,
 giving him Enhanced Move 1 (Water)
@@ -1303,17 +1053,6 @@ Prerequisites: Magery 3, Shapeshift
 Others for the appropriate animal,
 and Alter Body.
 
-Item
-The item’s form depends on the
-body part affected – gloves to
-shapeshift the hands, boots for the
-feet, a mask for the face, and so on. It
-must bear a likeness of the shape to be
-taken. There is no cost to maintain;
-the spell ends when the user mimics
-pulling off the item. Energy cost to create: 1,000 plus 250 per point of casting
-cost.
-
 Great Shapeshift (VH)
 Special
 Perform multiple, fast, repeated
@@ -1356,12 +1095,6 @@ Prerequisites: Magery 3, Alter Body,
 four types of Shapeshifting, and at
 least 10 other spells of any kind.
 
-Item
-Jewelry, decorated with an abundance of animal motifs. Usable only
-by mages. The item vanishes when the
-spell is cast, to reappear when it
-lapses. Energy cost to create: 5,000.
-
 
 Climbing
 Regular
@@ -1372,14 +1105,6 @@ Cost: 1 to 3 to cast. Same cost to
 maintain. The increase in the subject’s
 Climbing skill is equal to twice the
 energy put into the spell.
-
-Item
-Shoes, gloves, clothing, or jewelry;
-only affects the wearer. Energy cost to
-create: 250 times the maximum
-
-Climbing bonus (no more than 5) the
-item can give.
 
 Itch
 Regular; Resisted by HT
@@ -1394,13 +1119,6 @@ to scratch.
 Cost: 2. Cannot be maintained;
 must be recast.
 
-Item
-(a) Staff or wand; usable only by
-mages. The item must touch the victim. Energy cost to create: 100. (b) Any
-item; always on. The wearer itches
-constantly, and remains at -2 DX while
-item is worn. Energy cost to create: 60.
-
 Touch
 Regular
 The subject feels a light touch at a
@@ -1412,10 +1130,6 @@ pain or discomfort, but it is very likely
 to distract him.
 Cost: 1.
 
-Item
-Staff, wand, or jewelry. Energy cost
-to create: 50.
-
 Perfume
 Regular; Resisted by HT
 The subject smells strongly of any
@@ -1426,11 +1140,6 @@ regardless of its nature.
 Duration: 10 minutes.
 Cost: 2 to cast. 1 to maintain.
 Prerequisite: Odor (p. 24).
-
-Item
-Staff or wand. The item must
-touch the subject. Energy cost to
-create: 200.
 
 Spasm
 Regular; Resisted by HT
@@ -1445,15 +1154,6 @@ Duration: Instant.
 Cost: 2. Cannot be maintained.
 Prerequisite: Itch.
 
-Item
-(a) Staff or wand; usable only by
-mages. The item must touch the victim. Energy cost to create: 300. (b) Any
-item; always on. The wearer must roll
-vs. HT each time he does something
-delicate (e.g., pick a lock, cast a spell)
-or suffer a spasm as above. Energy cost
-to create: 100.
-
 Stop Spasm
 Regular
 Stops any seizure the subject is
@@ -1463,14 +1163,6 @@ This is also a Healing spell.
 Cost: 1.
 Prerequisite:
 Vitality.
-
-
-(a) Staff or wand; usable only by
-mages. The item must touch the victim. Energy cost to create: 400. (b) Any
-item; always on. The wearer feels stabbing pain, as above, continuing until
-he makes a HT roll. The wearer can do
-nothing until he succeeds at the roll!
-Energy cost to create: 300.
 
 Tickle
 Regular; Resisted by Will
@@ -1535,26 +1227,12 @@ Cost: 3. Cannot be maintained;
 must be recast.
 Prerequisite: Hinder.
 
-Item
-(a) Staff or wand. Usable only by
-mages; the item must touch the subject. Energy cost to create: 400. (b) Any
-item. Always on; the wearer must
-make a (ST-5) roll every turn in order
-to move. A failed roll means he cannot
-move. Energy cost to create: 600.
-
 Tanglefoot
 Regular; Resisted by DX
 The subject trips and falls down.
 Duration: Instantaneous.
 Cost: 2.
 Prerequisite: Clumsiness.
-
-Item
-Staff or wand. Usable only by
-mages; the item must be pointed at
-(but not necessarily touching) the
-subject. Energy cost to create: 600.
 
 Roundabout
 Regular; Resisted by HT
@@ -1581,15 +1259,6 @@ of playability.
 Duration: 1 minute.
 Cost: 1 for every point of ST reduction (maximum 5). Half that amount
 (round up) to maintain.
-
-Item
-(a) Staff or wand. Usable only by
-mages; the item must be pointed at
-(but not necessarily touch) subject.
-Energy cost to create: 900. (b) Any
-item. Always on; reduces wearer’s ST.
-Energy cost to create: 100 for every
-point by which wearer’s ST is reduced.
 
 Frailty
 Regular; Resisted by HT
@@ -1627,14 +1296,6 @@ increase (maximum of 5). Same cost
 to maintain.
 Prerequisite: Lend Energy.
 
-Item
-(a) Any item. Always on; the wearer’s ST is raised while item is worn.
-Energy cost to create: 1,500 per point of
-increase (maximum 5). (b) Staff or
-wand. Usable only by mages; the item
-must touch the subject. Energy cost to
-create: 1,000.
-
 Grace
 Regular
 Raises the subject’s DX
@@ -1650,15 +1311,6 @@ Cost: 4 for every point
 of DX increase (maximum
 of 5). Same cost to maintain.
 Prerequisite: Clumsiness.
-
-Item
-(a) Any item. Always on; the wearer’s DX is raised while item is worn!
-This is a very rare item. Energy cost to
-create: 2,000 per point of increase
-(maximum 5). (b) Staff or wand.
-Usable only by mages; the item must
-touch the subject. Energy cost to
-create: 2,000.
 
 Vigor
 Regular
@@ -1694,8 +1346,7 @@ one attribute check, delivering a blow,
 readying a weapon, resisting a spell,
 throwing an object, etc. It cannot be
 used to increase a roll that represents
-several seconds of effort, such as a
-Regular Contest. The boosted attribute
+several seconds of effort, such as a Regular Contest. The boosted attribute
 affects all secondary characteristics
 except HP and FP. High skill does not
 reduce the cost to cast this spell.
@@ -2732,8 +2383,7 @@ told any lies in the last five minutes.
 subject said was a lie.
 May also give an indication of how
 great the lie is. If caster is not touching
-subject, calculate range as for a
-Regular spell.
+subject, calculate range as for a Regular spell.
 Cost: 2.
 Prerequisite: Sense Emotion.
 
@@ -3264,8 +2914,7 @@ Cap, crown, helmet, or other headgear. Usable only by mages. Energy
 cost to create: 2,500.
 
 Dispel Possession
-Regular; Resisted by spell on
-subject
+Regular; Resisted by spell on subject
 Ends any Soul Rider, Control, or
 Possession spell (or their animal
 equivalents) affecting the subject.
@@ -3929,8 +3578,7 @@ cost to create: 3,000.
 
 Enchant (VH)
 Enchantment
-A prerequisite for all other
-Enchantment spells except Scroll. To
+A prerequisite for all other Enchantment spells except Scroll. To
 enchant an item, the caster must also
 know this spell. The caster rolls
 against the lower of his skill with this
@@ -4382,8 +4030,7 @@ Enchantment
 Seeker (p. 105) and related spells
 require an object associated with the
 item or person sought in order to
-work. The Impression Blocker
-Enchantment creates a container that
+work. The Impression Blocker Enchantment creates a container that
 allows people to carry items without
 them becoming “associated” with the
 carrier.
@@ -4549,8 +4196,7 @@ A spell stone must be made from a
 jewel worth $10¥P2 + $40¥P, where P
 is the maximum energy of the spell
 that may be contained.
-Any spell except a Blocking or
-Enchantment spell may be stored in a
+Any spell except a Blocking or Enchantment spell may be stored in a
 spell stone. Limiting Enchantments
 may be put on the stone. If the spell
 stored in the stone requires that the
@@ -4701,8 +4347,7 @@ of water, a mound of earth, a sudden
 rush of flames) and the personal
 possession.
 It is very difficult to detect the
-trickery. Whenever the GM judges an
-Information spell does not altogether
+trickery. Whenever the GM judges an Information spell does not altogether
 fail to tell the copy from the original,
 he should let the Doppelgänger spell
 resist. The Aura spell and the
@@ -4758,8 +4403,7 @@ a combined DX and IQ of 30+.
 
 Bane
 Enchantment
-This is also considered a Limiting
-Enchantment (p. 68). It is used to
+This is also considered a Limiting Enchantment (p. 68). It is used to
 make a magical weapon with powers
 that work only against one type of foe.
 Successfully cast before any offensive
@@ -5131,7 +4775,6 @@ Any spell that can be enchanted into a magic item can be placed in a spell arrow
 The only decision the archer can make is what he’s aiming at. If the spell requires a subject, whatever the arrow hits is the subject. (If it is not a legal subject – e.g., a wooden wall for Strike Blind – the spell is wasted.) What constitutes a “solid object” may require the GM’s judgment (for exam- ple, drops of rain are not enough to trigger the spell). If it is an Area spell, the point of impact is the center of the area. If it is a Missile spell, the effect is as if the missile hit the target, in addi- tion to the arrow (the missile does not launch itself from the point of impact). If the spell creates an object, the object appears as close as possible to the point of impact. If the spell would normally affect both a subject and the caster (e.g., (Animal) Control) the archer is treated as the caster. If the spell requires a human target, the spell still works even if the arrow hits clothing instead of skin. The enchanter specifies everything else: duration, area, precise effect, etc.
 Analyze Magic can reveal what spell a spell arrow contains, how much energy was invested, and so on (one question per casting). Arrows intended for the consumer market are usually color-coded.
 Energy cost to cast: 30 times the contained spell’s casting cost, includ- ing maintenance cost if desired, so long as the item is an arrow or cross- bow bolt.
-EnchantmentMay be recast at a higher level, as per Accuracy (p. 65).
 Prerequisites: Enchant and at least five Earth spells.
 The GM may decide this spell can work on other kinds of missiles (e.g., bullets). If so, for those missiles, mul- tiply the contained spell’s casting cost by 1/10 the missile’s Max range, instead of 30. If the missile should pass beyond the Max range (for exam- ple, if fired from a more powerful gun) the spell is wasted. (This last rules does not apply to actual arrows and bolts.) Note that the need for a jewel still applies to bullets!
 Prerequisite: Spell Stone.
@@ -5340,8 +4983,7 @@ is that, when the item is used against
 enchant the affected spell is halved.
 other targets, they get a +5 to
 The enchanter must possess sometheir resistance roll. An Attune
-thing connected to the target. The
-Enchantment cannot be removed
+thing connected to the target. The Enchantment cannot be removed
 accuracy of the symbolic representafrom an item unless the enchantment
 tion determines the penalty to the
 or enchantments it controls are
@@ -6864,8 +6506,7 @@ Item
 Any. Energy cost to create: 100.
 
 Divert Teleport (VH)
-Blocking; Resisted by
-subject spell
+Blocking; Resisted by subject spell
 When cast on the turn someone or
 something teleports, timeports, or
 plane-shifts out, this spell allows the
@@ -7021,7 +6662,6 @@ Control Gate
 Regular; Resisted by the Gate
 Forces an open gate to close, a
 closed gate to open, or tilts and
-
 displaces the subject gate as the caster
 wishes. Closing a permanent gate does
 not destroy it; closing a temporary one
@@ -7681,6 +7321,7 @@ nonmages with Physician skill 20 or
 higher. Energy cost to create: 1,500.
 
 Minor Healing
+Regular
 Restores up to 3 HP to the subject. Does not eliminate disease or poison, but will cure damage caused by these things.
 This spell is risky if used more than once per day by the same caster on the same subject. If you try, roll at -3 for the first repetition, -6 for the second, and so on.
 If you have the Physician skill at level 15 or higher, a critical failure with this spell counts only as an ordi- nary failure – unless you are trying the spell more than once per day on the same subject.
@@ -7699,6 +7340,7 @@ Prerequisites: Magery 3 and Major Healing.
 
 
 Major Healing (VH)
+Regular
 Restores up to 8 HP to the subject. Does not eliminate disease or poison, but will cure damage caused by these things.
 Otherwise, this spell functions just like Minor Healing: it is at -3 per cast- ing on the same subject in one day, and Physician skill at level 15 or high- er will mitigate the effects of a critical failure.
 The penalties for repeated casting accrue separately for Minor Healing and Major Healing. For instance, a caster could cast both spells on the same subject in the same day at no penalty.
@@ -8292,8 +7934,7 @@ Prerequisite: Perfect Illusion.
 
 
 Dispel Illusion
-Regular; Resisted by
-subject spell
+Regular; Resisted by subject spell
 Dispels any Illusion or Illusion
 Disguise. Does not affect creations.
 Cost: 1.
@@ -8610,8 +8251,7 @@ Prerequisites: Magery 3 and Create
 Animal.
 
 Control Creation
-Regular; Resisted by
-subject spell
+Regular; Resisted by subject spell
 Takes control of a living Creation
 cast by someone else. On a success,
 further energy costs are necessary to
@@ -8624,8 +8264,7 @@ Create Servant.
 
 
 Dispel Creation
-Regular; Resisted by
-subject spell
+Regular; Resisted by subject spell
 Destroys any sort of Creation. Does
 not affect illusions.
 Cost: 1 to dispel a nonliving subject, or 3 to dispel a living creation.
@@ -8984,8 +8623,7 @@ expressed in terms of the nearest
 named features that the caster has
 heard of (if in doubt as to whether or
 not the caster has heard of the feature,
-the GM should roll against the caster’s
-Area Knowledge). For example, “You are in the Sahara Desert, roughly 30 miles north of Timbuktu.”
+the GM should roll against the caster’s Area Knowledge). For example, “You are in the Sahara Desert, roughly 30 miles north of Timbuktu.”
 Cost: 2.
 Time to cast: 10 seconds. On successive castings, the spell repeats its last answer (right or wrong) until the caster moves a mile or so from the location.
 Prerequisites: Magery 1 and Tell Position.
@@ -10798,8 +10436,7 @@ Weaken and Shatter.
 Magic weapons resist the melding
 with their Power. If the subject wishes
 to activate any of the enchantments on
-the magic weapon, he must win a
-Regular Contest of his Will against the
+the magic weapon, he must win a Regular Contest of his Will against the
 weapon’s Power.
 Duration: 1 minute.
 Cost: 8 to cast. 4 to maintain.
@@ -11020,8 +10657,7 @@ Prerequisite: Magery 1.
 
 
 Scrywall
-Area; Resists any
-Information spells
+Area; Resists any Information spells
 As Scryguard, but to protect a
 whole area and everything in it.
 Duration: 10 hours.
@@ -11030,8 +10666,7 @@ Time to cast: Seconds equal to energy cost.
 Prerequisite: Scryguard.
 
 Ward
-Blocking; Resisted by
-subject spell
+Blocking; Resisted by subject spell
 When cast immediately after a
 spell is thrown at its subject, this spell
 can prevent the opposed spell from
@@ -11093,8 +10728,7 @@ cast: 100 times the cost above – e.g.,
 detect or identify.
 
 Reflect
-Blocking; Resisted by
-subject spell
+Blocking; Resisted by subject spell
 This spell is an improved version
 of Ward, and works like it. The difference is that it will reflect the opposed
 spell instead of negating it. Thus, if
@@ -11122,8 +10756,7 @@ Energy cost to cast: 300 per yard
 radius.
 
 Great Ward
-Blocking; Resisted by
-subject spell
+Blocking; Resisted by subject spell
 As Ward, but – if it works – protects
 any number of those who would have
 been affected by the attacking spell.
@@ -11131,9 +10764,7 @@ Cost: 1 per subject protected (minimum cost 4).
 Prerequisites: Magery 2 and Ward.
 
 False Aura
-Regular, Area; Special
-Resistance; Resists Information
-spells
+Regular, Area; Special Resistance; Resists Information spells
 Replaces the magical emanations
 of a being, area, or object with false
 ones; the term “aura” is only literal for
@@ -11144,8 +10775,7 @@ enchanted with Dancing Weapon, an
 area could appear to be under linked
 Create Fire and Glue spells, etc. Roll a
 Quick Contest between the False Aura
-and any spell (Information or
-Regular) that can see or detect the
+and any spell (Information or Regular) that can see or detect the
 emanations (such as Aura, Mage
 Sight, or Analyze Magic). If the False
 Aura wins, the other spell is fooled.
@@ -11484,8 +11114,7 @@ which can be re-enchanted later . . . if
 its owner survives.)
 
 Dispel Magic
-Area; Resisted by
-subject spells
+Area; Resisted by subject spells
 Negates other spells within the
 area if successful. It has no effect on
 enchantments, but dispels any temporary, lasting, or permanent spell
@@ -11511,8 +11140,7 @@ may pass it along to yet another recipient, whether or not either is a mage.
 Energy cost to create: 1,000.
 
 Remove Curse
-Regular; Resisted by
-subject spell
+Regular; Resisted by subject spell
 Nullifies any one of the following
 spells: Alter (any type), Curse, Enlarge
 Other, Ensorcelment (any type), Flesh
@@ -11605,8 +11233,7 @@ Time to cast: 10 minutes.
 Prerequisites: Magery 3, Powerstone, and Lend Energy.
 
 Spellguard (VH)
-Regular; Resists attempts to
-tamper with its subject spell
+Regular; Resists attempts to tamper with its subject spell
 This spell is cast on another spell to
 protect it from tampering attempts.
 Twice the energy put into the spell (up
@@ -11707,8 +11334,7 @@ Suspend Mana.
 
 
 Steal Spell (VH)
-Regular; Resisted by
-subject spell
+Regular; Resisted by subject spell
 Steal control of an already-cast
 maintainable spell from its original
 caster. Note that it is cast at the other
@@ -11894,8 +11520,7 @@ Thrown spells have 1/2D n/a, Max 80,
 Acc 1; roll against DX-4 or Innate
 Attack skill to hit.
 All thrown spells take effect at the
-moment they hit something. Thrown
-Area spells center on their point of
+moment they hit something. Thrown Area spells center on their point of
 impact. Jet spells take effect at the
 point of impact, in the direction they
 were going (treat them as Wild Swings,
@@ -11906,8 +11531,7 @@ thrown Sense Emotion, for instance,
 or Minor Healing. This spell allows
 spells that normally require touch to
 be applied at a distance (Deathtouch,
-for instance). Missile spells and
-Blocking spells may not be thrown.
+for instance). Missile spells and Blocking spells may not be thrown.
 Thrown spells may be blocked or
 dodged, but not parried. However,
 they can be caught using Catch Spell –
@@ -12107,7 +11731,6 @@ victim must make an IQ roll to
 respond before the linked spell is fully
 activated – Combat Reflexes gives +6
 to this roll.
-
 Both the Delay and the linked spell
 count as “on” for spellcasting purposes; if an Information spell has been
 added, it is also on. The linked spell
@@ -12121,8 +11744,7 @@ A Delay may also be set to “turn
 off” an ongoing spell when a triggering
 event occurs. In that case, the linked
 spell lasts only while the caster maintains it, but the Delay itself requires no
-maintenance.
-Blocking and Missile spells cannot
+maintenance. Blocking and Missile spells cannot
 be Delayed – all other spells can. An
 “instantaneous” spell like Thunderclap
 will happen once, when activated; then
@@ -12199,9 +11821,7 @@ If the subject of a linked spell is not
 present at the casting, and has Magic
 Resistance, refer to the original die roll
 to determine the results. If the original
-die roll of the linked spell is not recorded, reroll the spell for this purpose only.
-Blocking and missile spells cannot
-be Linked – other spells can. An
+die roll of the linked spell is not recorded, reroll the spell for this purpose only. Blocking and missile spells cannot be Linked – other spells can. An
 “instantaneous” spell like Thunderclap will happen once, when activated;
 then the spell will be gone. A continuing spell like Voices will start when
 activated, and then operate until it
@@ -12230,8 +11850,7 @@ stop one or more spells when a triggering event occurs. In that case, the
 linked spell will last only while the
 caster maintains it, but the Link itself
 requires no maintenance.
-Link can also be used for Limiting
-Enchantments (see pp. 68-69).
+Link can also be used for Limiting Enchantments (see pp. 68-69).
 Duration: Until triggered, and its
 linked spells expire.
 Base cost: 8; linked spells cannot be
@@ -12269,8 +11888,7 @@ converts that spell to function as a Blocking spell for one time only, then
 disappear. Unlike Delay or Link, a
 Reflexed spell is triggered by the will
 of the caster, not by an external event.
-This means that while Reverse
-Missiles may be Reflexed to activate if
+This means that while Reverse Missiles may be Reflexed to activate if
 the caster sees someone shoot at him,
 it will not be triggered by a shot in the
 back. It is treated as an active defense,
@@ -12382,8 +12000,7 @@ while Felix rests. The Reflexed BeastSoother spell no longer exists. If
 Rudolph meets another animal, he’s
 on his own, though Felix may still be
 observing any action with his Wizard
-Eye.
-Blocking spells and Missile spells
+Eye. Blocking spells and Missile spells
 cannot be Reflexed; other spells can
 be.
 Duration: 1 hour.
@@ -13074,8 +12691,7 @@ must be aware they are being circled –
 if they are not, the Will Lock has no
 effect on them.
 Each being trapped inside has one
-chance to escape each day; roll a
-Regular Contest between the being’s
+chance to escape each day; roll a Regular Contest between the being’s
 (ST+Will)/2 and the Will Lock’s
 Endurance (p. 10). Each being that
 escapes weakens the Will Lock’s
@@ -15761,8 +15377,7 @@ item, required constantly, for -150
 points), and shrivels and dies if it is
 removed or destroyed. This item isn’t
 Hexed; the victim can remove it and
-die if he wishes. Only Remove
-Enchantment can reverse the Wraith
+die if he wishes. Only Remove Enchantment can reverse the Wraith
 spell without harm.
 Each Wraith item can sustain one
 wraith at a time. Once a given item
@@ -16544,8 +16159,7 @@ Armor spell – adds to the Damage
 Resistance of the subject for one
 attack. This spell is not cumulative
 with Armor – only the stronger spell
-applies. Remember that only one
-Blocking spell may be cast in a turn. A
+applies. Remember that only one Blocking spell may be cast in a turn. A
 mage cannot follow up a failed Iron
 Arm with a Hardiness spell, for
 instance.
@@ -16598,8 +16212,7 @@ Sense Observation
 Area
 Alerts the caster if someone or
 something spies or scries upon the subject area, by means magical or otherwise. A Quick Contest is rolled between
-the spy’s IQ or the effective skill of the
-Information spell’s caster (Trace,
+the spy’s IQ or the effective skill of the Information spell’s caster (Trace,
 Seeker, Crystal Ball, any of the “Sense”
 spells . . .) and the effective skill of the
 Sense Observation spell’s caster; if the
@@ -16766,8 +16379,7 @@ Cost: 2.
 Prerequisite: Deflect Missile.
 
 Reflect Gaze (VH)
-Blocking;
-Resists gaze attacks
+Blocking; Resists gaze attacks
 Resists one gaze attack (includes
 Lightning Stare, Fascinate, and any
 power which requires eye contact)
@@ -16789,8 +16401,7 @@ must include a tiny mirror.
 
 Reverse Missiles
 Regular
-Turns any ranged attack (including
-Missile spells) back upon the attacker.
+Turns any ranged attack (including Missile spells) back upon the attacker.
 If the attacker’s “to hit” roll is successful, he hits himself – if not, he sees the
 missile fly back toward him and miss.
 The game effect is as though the missile had bounced straight back from
@@ -17037,8 +16648,7 @@ Prerequisites: Magery 2, Force
 Dome, and Spell Shield.
 
 Utter Wall
-Regular;
-Resists intruding spells
+Regular; Resists intruding spells
 As Force Wall, but protects against
 physical and magical attack; has the
 effect of a combination Force Wall
@@ -19859,7 +19469,6 @@ Time to cast: 2 seconds.
 Prerequisites: Magery 1, Steam Jet,
 and Resist Fire.
 
-Item
 
 
 Frost
@@ -19884,30 +19493,18 @@ melts naturally.
 Base cost: 1.
 Prerequisite: Create Water or Cold.
 
-Item
-
 
 Predict Weather
 Information
-Forecasts the weather accurately
-for a given location over a given time.
+Forecasts the weather accurately for a given location over a given time.
 This forecast does not take magical
 meddling into account, or predict the
 actions of other wizards!
 This is also an Air spell.
-Cost: 2 times the length of the forecast, in days. Double the cost for a
-location outside the general area (say,
-over the horizon). Quadruple the cost
-for a place on another continent. This
-spell cannot predict weather on planets or planes other than the one where
-the caster currently is.
-Time to cast: 5 seconds per day
-forecast.
-Prerequisites: At least four Air
-spells.
+Cost: 2 times the length of the forecast, in days. Double the cost for a location outside the general area (say, over the horizon). Quadruple the cost for a place on another continent. This spell cannot predict weather on planets or planes other than the one where the caster currently is.
+Time to cast: 5 seconds per day forecast.
+Prerequisites: At least four Air spells.
 
-Item
-Staff, wand, or jewelry. Cost to create: 200 energy, $350 blue gem.
 
 Fog
 Area
@@ -19926,10 +19523,6 @@ Duration: 1 minute.
 Base cost: 2 to cast. Half that to
 maintain.
 Prerequisite: Shape Water.
-
-
-Staff, wand, or jewelry. Energy cost
-to create: 300.
 
 
 
@@ -19978,22 +19571,6 @@ cost to maintain.
 Time to cast: 1 minute.
 Prerequisite: Shape Water.
 
-
-Item
-Staff, wand, or jewelry. Energy cost
-to create: 300.
-
-
-
-
-Item
-Staff, wand, or jewelry. Energy cost
-to create: 300.
-
-
-Item
-Staff, wand, or jewelry. Energy cost
-to create: 300.
 
 Current
 Special; Area

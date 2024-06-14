@@ -3,7 +3,7 @@
 import re
 
 spell_type_matcher = re.compile(
-    r"^(Special|Regular|Information|Area|Blocking|Missile|Enchantment|Regular or Blocking|Melee);?"
+    r"^(Special|Regular|Information|Area|Blocking|Missile|Enchantment|Melee)(\n|; .*)$"
 )
 section_end_matcher = re.compile(
     r"^(Duration:|Base cost:|Cost:|Energy cost to create:|Energy cost to cast:|Energy cost to activate:|Time to build body:|Energy Cost:|Time to cast:|Prerequisites?:|Item\n|As listed under )"
@@ -13,6 +13,8 @@ cost_start_matcher = re.compile(
 )
 time_start_matcher = re.compile(r"^(Time to cast:|Time to build body:)")
 duration_start_matcher = re.compile(r"^Duration:")
+
+# should return 837 spells
 
 
 def str_replace(s):
@@ -29,72 +31,79 @@ def str_replace(s):
 
 
 def scrape_gurps_magic_book():
-    with open("../../Downloads/GURPS 4th Magic.txt") as f:
+    path = "./magic_book.txt"
+    output = "./magic_book_out.txt"
+
+    # first (re-)create the output file
+    with open(output, "w"):
+        pass
+
+    with open(path) as f:
         lines = f.readlines()
         i = 0
         try:
             while i < len(lines):
                 line = lines[i]
-                next_line = lines[i + 1]
-                j = 2
-                if spell_type_matcher.match(next_line):
-                    name = line.strip()
-                    is_vh = "true" if "(VH)" in line else ""
+                j = 1
+                print(line)
+                if spell_type_matcher.match(line):
+                    name = lines[i - 1].strip()
+                    is_vh = "true" if "(VH)" in name else ""
 
-                    # if name == "Essential Acid (VH)":
-                    # print(f"{name}")
+                    was_p = False
+                    if name == "Fog":
+                        was_p = True
+                        print(name)
+                        print(
+                            str_replace(name.lower())
+                            .replace("/tl", "")
+                            .replace(" ", "-")
+                        )
+                        print(str_replace(line))
 
                     name = str_replace(name.lower()).replace("/tl", "")
                     hyphenated_name = name.lower().replace(" ", "-")
-                    type = str_replace(next_line)
+                    type = str_replace(line)
 
-                    next_line = lines[i + j]
                     description = ""
-                    # continue fetching the next lines until the `^Duration:`
+                    # continue fetching the next lines until the `^Duration:|Cost:|...`
                     # line is found. that will be the description
-                    while not section_end_matcher.match(next_line):
-                        description += next_line
+                    while not section_end_matcher.match(lines[i + j]):
+                        description += lines[i + j]
                         j += 1
-                        next_line = lines[i + j]
                     description = str_replace(description)
 
                     duration = ""
-                    if duration_start_matcher.match(next_line):
-                        duration += next_line
+                    if duration_start_matcher.match(lines[i + j]):
+                        duration += lines[i + j]
                         j += 1
-                        next_line = lines[i + j]
-                        while not section_end_matcher.match(next_line):
-                            duration += next_line
+                        while not section_end_matcher.match(lines[i + j]):
+                            duration += lines[i + j]
                             j += 1
-                            next_line = lines[i + j]
                     duration = str_replace(duration)
 
                     cost = ""
-                    if cost_start_matcher.match(next_line):
-                        cost += next_line
+                    if cost_start_matcher.match(lines[i + j]):
+                        cost += lines[i + j]
                         j += 1
-                        next_line = lines[i + j]
-                        while not section_end_matcher.match(next_line):
-                            cost += next_line
+                        while not section_end_matcher.match(lines[i + j]):
+                            cost += lines[i + j]
                             j += 1
-                            next_line = lines[i + j]
                     cost = str_replace(cost)
 
                     time = ""
-                    if time_start_matcher.match(next_line):
-                        time += next_line
+                    if time_start_matcher.match(lines[i + j]):
+                        time += lines[i + j]
                         j += 1
-                        next_line = lines[i + j]
-                        while not section_end_matcher.match(next_line):
-                            time += next_line
+                        while not section_end_matcher.match(lines[i + j]):
+                            time += lines[i + j]
                             j += 1
-                            next_line = lines[i + j]
                     time = str_replace(time)
 
-                    if is_vh:
-                        print(f"{hyphenated_name}")
+                    # if is_vh:
+                    #     print(f"{hyphenated_name}")
 
-                    with open("spells.txt", "a") as file:
+                    with open(output, "a") as file:
                         print(f'"spell-{hyphenated_name}-type": "{type}",', file=file)
                         print(
                             f'"spell-{hyphenated_name}-description": "{description}",',
