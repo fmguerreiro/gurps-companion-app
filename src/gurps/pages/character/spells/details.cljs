@@ -19,6 +19,19 @@
      [:> text {:style (tw "capitalize")} (-> skill name (str/replace #"-" " "))]
      [:> text level]]))
 
+(defn- num-spells-prerequisite
+  [prereq]
+  (let [[num college] prereq]
+    [:> view {:style (tw "flex flex-row flex-grow justify-between")}
+     [:> text (i18n/label :t/num-spells {:college college :count num})]])) ;; TODO: add navigation button to college page
+
+(defn- vec-prerequisite
+  [prereq]
+  (let [[first] prereq]
+    (if (number? first)
+      [num-spells-prerequisite prereq]
+      [lvl-prerequisite prereq])))
+
 (defn- spell-prerequisite
   [prereq nav]
   [:> button {:onPress #(-> nav (.push (i18n/label :t/spell-details) #js {:id (str (symbol prereq))}))}
@@ -29,7 +42,7 @@
 (defn- prerequisite
   [prereq nav]
   (cond (keyword? prereq) [spell-prerequisite prereq nav]
-        (vector? prereq)  [lvl-prerequisite prereq]
+        (vector? prereq)  [vec-prerequisite prereq]
         :else             [:<>]))
 
 (defn- section

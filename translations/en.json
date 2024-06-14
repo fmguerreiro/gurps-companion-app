@@ -489,6 +489,12 @@
   "body-control": "Body Control",
   "technological": "Technological",
 
+  "num-spells": {
+    "zero": "",
+    "one": "Requires 1 %{college} spell",
+    "other": "Requires %{count} %{college} spells"
+  },
+
   "spell-description-fire": "Manipulation and control of fire and heat",
   "spell-description-necromantic": "Control and manipulation of death, spirits, and the undead",
   "spell-description-movement": "Ability to manipulate and control movement and motion",
