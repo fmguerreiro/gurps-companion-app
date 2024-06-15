@@ -37,12 +37,25 @@
   [:> button {:onPress #(-> nav (.push (i18n/label :t/spell-details) #js {:id (str (symbol prereq))}))}
    [:> view {:style (tw "flex flex-row flex-grow justify-between")}
     [:> text (i18n/label (str "spell-" (symbol prereq)))]
-    [:> text {:style "font-bold"} ">"]]])
+    [:> text {:style (tw "font-bold")} ">"]]])
+
+(declare prerequisite) ;; used by or-prerequisite recursively
+
+(defn- or-prerequisite
+  [prereqs nav]
+  [:> view {:style (tw "flex flex-col flex-grow gap-2")}
+   [:> text {:style (tw "capitalize")} "Requires either:"]
+   [:> view {:style (tw "flex flex-col gap-2 ml-2")}
+    (map-indexed (fn [idx prereq]
+                   ^{:key (str "prereq-" idx)}
+                   [prerequisite prereq nav])
+                 prereqs)]])
 
 (defn- prerequisite
   [prereq nav]
   (cond (keyword? prereq) [spell-prerequisite prereq nav]
         (vector? prereq)  [vec-prerequisite prereq]
+        (set? prereq)     [or-prerequisite prereq nav]
         :else             [:<>]))
 
 (defn- section
