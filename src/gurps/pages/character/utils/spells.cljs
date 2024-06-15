@@ -52,15 +52,15 @@
    {:name :move-terrain, :prerequisites [:alter-terrain :hide-object], :ref "Magic, p. 55"}
    {:name :repel-hybrids, :prerequisites [:hybrid-control], :ref "Magic p. 31"}
    {:name :permanent-madness, :prerequisites [[:advantages/magery 2] :madness [:attributes/int 13]], :ref "Magic p. 139"}
-   {:name :suspend-magery, :prerequisites [[:advantages/magery 2] :2-each-from-10-colleges], :ref "Magic p. 130"}
-   {:name :transfer-pregnancy, :prerequisites [[:advantages/magery 2] :remove-fetus], :ref "GURPS Bio-Tech, p. 32"}
+   {:name :suspend-magery, :prerequisites [[:advantages/magery 2] :2-spell-from-10-colleges], :ref "Magic p. 130"}
+   ;;{:name :transfer-pregnancy, :prerequisites [[:advantages/magery 2] :remove-fetus], :ref "GURPS Bio-Tech, p. 32"}
    {:name :cloud-walking, :prerequisites [:walk-on-air :walk-on-water], :ref "Magic p. 148"}
    {:name :dehydrate, :prerequisites [[5 :water] :destroy-water], :ref "Magic p. 188"}
-   {:name :counterspell, :prerequisites [[:advantages/magery 1] :spell-being-countered], :ref "Basic Set, p. 250}; Magic p. 121"}
+   {:name :counterspell, :prerequisites [[:advantages/magery 1]], :ref "Basic Set, p. 250}; Magic p. 121"}
    {:name :hang-spell, :prerequisites [:delay], :ref "Magic p. 128}; Pyramid 3/60: Dungeon Fantasy III, p. 6; Thaumatology: Urban Magics"}
    {:name :predict-weather, :prerequisites [[4 :air]], :ref "Basic Set p. 243}; Magic p. 193"}
    {:name :alter-body, :prerequisites [:alter-visage], :ref "Magic, p. 41"}
-   {:name :transmogrification, :prerequisites [[:advantages/magery 3] :transform-other :transform-object :flesh-to-stone.], :ref "Magic, p. 43"}
+   {:name :transmogrification, :prerequisites [[:advantages/magery 3] :transform-other :transform-object :flesh-to-stone], :ref "Magic, p. 43"}
    {:name :copy, :prerequisites [:dye :1-written-language-at-accented], :ref "Magic p. 116"}
    {:name :far-hearing, :prerequisites [[:advantages/magery 1] [4 :sound]], :ref "Magic, p. 173"}
    {:name :condense-steam, :prerequisites [#{:boil-water :cold}], :ref "Magic p. 189"}
@@ -95,7 +95,7 @@
    {:name :nightingale, :prerequisites [:sense-danger], :ref "Magic p. 167"}
    {:name :mass-suggestion, :prerequisites [:suggestion], :ref "Magic p. 141"}
    {:name :recover-energy, :prerequisites [[:advantages/magery 1] :lend-energy], :ref "Basic Set, p. 248}; Magic p. 89"}
-   {:name :simple-illusion, :prerequisites [:no-blindness [:attributes/int 11]], :ref "Magic p. 95}; Fantasy, p. 170; 'Social Engineering: Back to School, p. 24"}
+   {:name :simple-illusion, :prerequisites [[:attributes/int 11]], :ref "Magic p. 95}; Fantasy, p. 170; 'Social Engineering: Back to School, p. 24"}
    {:name :manipulate, :prerequisites [:locksmith], :ref "Magic p. 145"}
    {:name :transform-body, :prerequisites [:alter-body [3 :shapeshifting]], :ref "Magic, p. 43"}
    {:name :invisible-wizard-ear, :prerequisites [:wizard-ear :invisibility], :ref "Magic p. 174"}
@@ -115,7 +115,7 @@
    {:name :shapeshift-others, :prerequisites [[:advantages/magery 2] :shapeshifting], :ref "Magic p. 33"}
    {:name :purify-earth, :prerequisites [:apportation :shape-earth], :ref "Magic, p. 54}; GURPS Fantasy, p. 169"}
    {:name :freeze, :prerequisites [:shape-water], :ref "Magic p. 185"}
-   {:name :remove-contagion, :prerequisites [:decay :clean :or-cure-disease], :ref "Magic p. 90"}
+   {:name :remove-contagion, :prerequisites [#{:decay :clean :cure-disease}], :ref "Magic p. 90"}
    {:name :beast-summoning, :prerequisites [:beast-soother], :ref "Magic p. 30"}
    {:name :frostbite, :prerequisites [:frost :freeze], :ref "Magic p. 189"}
    {:name :lesser-wish, :prerequisites [:enchant], :ref "Magic p. 61"}
@@ -129,7 +129,7 @@
    {:name :dye, :prerequisites [:restore :colors], :ref "Magic p. 116"}
    {:name :essential-food, :prerequisites [:create-food [6 :food]], :ref "GURPS Magic, p. 79}; Pyramid 3/60: Dungeon Fantasy III, p. 6"}
    {:name :ruin, :prerequisites [[:advantages/magery 1] :weaken :decay], :ref "Magic p. 118"}
-   {:name :wisdom, :prerequisites [[6 :other]], :ref "Magic p. 135}; Social Engineering: Back to School, p. 24"}
+   {:name :wisdom, :prerequisites [[6 :mind-control]], :ref "Magic p. 135}; Social Engineering: Back to School, p. 24"}
    {:name :timeport, :prerequisites [[:advantages/magery 3] :teleport], :ref "Magic p. 81"}
    {:name :alter-visage, :prerequisites [[:advantages/magery 1] #{:perfect-illusion :shapeshifting} [8 :body-control]], :ref "Magic, p. 41"}
    {:name :explosive-lightning, :prerequisites [:lightning], :ref "Magic p. 196"}
@@ -138,11 +138,11 @@
    {:name :converse, :prerequisites [[:advantages/magery 1] :garble :silence], :ref "Magic p. 173"}
    {:name :identify-spell, :prerequisites [:detect-magic], :ref "Basic Set, p. 249}; Magic, p. 102"}
    {:name :fasten, :prerequisites [:knot], :ref "Magic p. 118"}
-   {:name :charm, :prerequisites [[:advantages/magery 1] :loyalty [7 :other]], :ref "Magic p. 139"}
+   {:name :charm, :prerequisites [[:advantages/magery 1] :loyalty [7 :mind-control]], :ref "Magic p. 139"}
    {:name :distill, :prerequisites [:mature :destroy-water], :ref "GURPS Magic, p. 89"}
    {:name :create-mount, :prerequisites [[:advantages/magery 3] :create-animal], :ref "Magic p. 99"}
    {:name :malfunction, :prerequisites [[:advantages/magery 2] :glitch], :ref "Magic p. 177"}
-   {:name :dispel-magic, :prerequisites [:counterspell [12 :other]], :ref "Basic Set, p. 250}; Magic p. 126"}
+   {:name :dispel-magic, :prerequisites [:counterspell [12 :meta]], :ref "Basic Set, p. 250}; Magic p. 126"}
    {:name :mage-light, :prerequisites [:mage-sight :light], :ref "Magic p. 113"}
    {:name :flaming-missiles, :prerequisites [:flaming-weapon], :ref "Magic p. 75"}
    {:name :gloom, :prerequisites [:continual-light], :ref "Magic p. 112"}
@@ -161,22 +161,22 @@
    {:name :scryguard, :prerequisites [[:advantages/magery 1]], :ref "GURPS Fantasy, p. 170}; Thaumatology: Urban Magics"}
    {:name :missile-shield, :prerequisites [[:advantages/magery 2] #{:shield :apportation}], :ref "Magic p. 168}; Thaumatology: Urban Magics, p. 33"}
    {:name :awaken-computer, :prerequisites [:animation :wisdom], :ref "Magic p. 178"}
-   {:name :essential-acid, :prerequisites [[:advantages/magery 3] :all [6 :acid]], :ref "Magic p. 192}; Pyramid 3/60: Dungeon Fantasy III, p. 6"}
+   {:name :essential-acid, :prerequisites [[:advantages/magery 3] :acid-ball :acid-jet :rain-of-acid :create-acid :resist-acid :spit-acid], :ref "Magic p. 192}; Pyramid 3/60: Dungeon Fantasy III, p. 6"}
    {:name :phantom, :prerequisites [[:advantages/magery 2] :perfect-illusion :hinder :apportation], :ref "Magic p. 97"}
    {:name :control-illusion, :prerequisites [:perfect-illusion], :ref "Magic p. 97"}
    {:name :create-steam, :prerequisites [:boil-water], :ref "Magic p. 190"}
-   {:name :paralyze-limb, :prerequisites [[:advantages/magery 1] :pain [4 :other]], :ref "Basic Set, p. 244}; Magic, p. 40"}
+   {:name :paralyze-limb, :prerequisites [[:advantages/magery 1] :pain [4 :body-control]], :ref "Basic Set, p. 244}; Magic, p. 40"}
    {:name :icy-breath, :prerequisites [[:advantages/magery 1] :snow-jet :resist-cold], :ref "Magic p. 192"}
    {:name :shield, :prerequisites [[:advantages/magery 2]], :ref "Basic Set, p. 252}; Magic p. 167"}
    {:name :animate-machine, :prerequisites [:machine-control #{:animation :animate-object}], :ref "Magic p. 177"}
    {:name :bind-spirit, :prerequisites [:comm :spirit :soul-jar], :ref "Magic p. 158"}
-   {:name :curse, :prerequisites [[:advantages/magery 2] :2-each-from-10-colleges], :ref "Magic p. 129"}
+   {:name :curse, :prerequisites [[:advantages/magery 2] :2-spell-from-10-colleges], :ref "Magic p. 129"}
    {:name :hinder, :prerequisites [#{:clumsiness :haste}], :ref "Basic Set, p. 244}; Magic, p. 36"}
-   {:name :switch-bodies, :prerequisites [:permanent-possession], :ref "4e spell chart"}
+   ;;{:name :switch-bodies, :prerequisites [:permanent-possession], :ref "4e spell chart"}
    {:name :rear-vision, :prerequisites [:alertness], :ref "Magic p. 134"}
    {:name :awaken, :prerequisites [:lend-vitality], :ref "Basic Set, p. 248}; Magic p. 90"}
-   {:name :flow, :prerequisites [:body-of-fluid], :ref "Magical Styles: Dungeon Magic, p.9"}
-   {:name :accelerate-pregnancy, :prerequisites [:ease-labor :haste], :ref "Spell: Bio-Tech, p. 30}; Item: Classic: Technomancer pg 17"}
+   ;;{:name :flow, :prerequisites [:body-of-fluid], :ref "Magical Styles: Dungeon Magic, p.9"}
+   ;;{:name :accelerate-pregnancy, :prerequisites [:ease-labor :haste], :ref "Spell: Bio-Tech, p. 30}; Item: Classic: Technomancer pg 17"}
    {:name :might, :prerequisites [:lend-energy], :ref "Magic, p. 37"}
    {:name :restore, :prerequisites [#{:simple-illusion :find-weakness}], :ref "Magic p. 116"}
    {:name :coolness, :prerequisites [:cold], :ref "Magic p. 187"}
@@ -187,16 +187,16 @@
    {:name :catch-spell, :prerequisites [[:advantages/magery 2] [:attributes/dex 12] :return-missile], :ref "Magic p. 123"}
    {:name :rain-of-fire, :prerequisites [[:advantages/magery 2] :create-fire], :ref "Magic p. 74}; Pyramid 3/60: Dungeon Fantasy III, p. 5"}
    {:name :ecstasy, :prerequisites [[:advantages/magery 2] :emotion-control], :ref "Magic p. 139"}
-   {:name :summon-fire-elemental, :prerequisites [[:advantages/magery 1] #{[[8 :fire]] [[4 :fire] #{:summon-water-elemental :summon-air-elemental :summon-earth-elemental}]}], :ref "Magic p. 27"}
+   {:name :summon-fire-elemental, :prerequisites [[:advantages/magery 1] #{[8 :fire] [[4 :fire] #{:summon-water-elemental :summon-air-elemental :summon-earth-elemental}]}], :ref "Magic p. 27"}
    {:name :raise-cone-of-power, :prerequisites [:lend-energy #{:restore-mana :pentagram}], :ref "GURPS Thaumatology, p. 52"}
    {:name :breathe-air, :prerequisites [:create-water :destroy-air], :ref "Magic p. 26"}
    {:name :decapitation, :prerequisites [[:advantages/magery 2] :alter-body], :ref "Magic, p. 42"}
-   {:name :flying-carpet, :prerequisites [:flight :or-magery-2 :walk-on-air], :ref "Magic p. 145"}
+   {:name :flying-carpet, :prerequisites [:flight #{[:advantages/magery 2] :walk-on-air}], :ref "Magic p. 145"}
    {:name :major-healing, :prerequisites [[:advantages/magery 1] :minor-healing], :ref "Basic Set, p. 248}; Magic p. 91"}
    {:name :create-animal, :prerequisites [:create-water :create-object [:attributes/int 12]], :ref "Magic p. 98"}
    {:name :hide-emotion, :prerequisites [:sense-emotion], :ref "Magic, p. 45"}
    {:name :spark-storm, :prerequisites [:windstorm :lightning], :ref "Magic p. 196"}
-   {:name :summon-air-elemental, :prerequisites [[:advantages/magery 1] [4 :air] #{:summon-water-elemental :summon-fire-elemental :summon-earth-elemental}], :ref "Magic p. 27"}
+   {:name :summon-air-elemental, :prerequisites [[:advantages/magery 1] #{[8 :air] [[4 :air] #{:summon-water-elemental :summon-fire-elemental :summon-earth-elemental}]}], :ref "Magic p. 27"}
    {:name :seek-magic, :prerequisites [:detect-magic], :ref "Magic, p. 102"}
    {:name :wall-of-light, :prerequisites [:continual-light], :ref "Magic p. 113"}
    {:name :acid-jet, :prerequisites [[:advantages/magery 2] :water-jet :create-acid], :ref "Magic p. 192"}
@@ -213,7 +213,7 @@
    {:name :hide-thoughts, :prerequisites [:truthsayer], :ref "Basic Set, p. 245}; Magic, p. 46"}
    {:name :frailty, :prerequisites [:lend-energy], :ref "Magic, p. 37"}
    {:name :curse-missile, :prerequisites [[:advantages/magery 2] :curse], :ref "Classic: Magic p 24"}
-   {:name :lightning, :prerequisites [[:advantages/magery 1] [6 :other]], :ref "Basic Set p. 244}; Magic p. 196"}
+   {:name :lightning, :prerequisites [[:advantages/magery 1] [6 :air]], :ref "Basic Set p. 244}; Magic p. 196"}
    {:name :inspired-creation, :prerequisites [], :ref "Magic p. 115"}
    {:name :adjustable-clothing, :prerequisites [:enchant :reshape], :ref "Magic p. 58}; Thaumatology: Urban Magics, p. 33"}
    {:name :possession, :prerequisites [[:advantages/magery 1] #{:control-person :beast-possession}], :ref "Magic, p. 49"}
@@ -240,19 +240,19 @@
    {:name :dancing-object, :prerequisites [[:advantages/magery 2] :apportation], :ref "Magic p. 144, Classic Magic p 61"}
    {:name :gift-of-letters, :prerequisites [:borrow-language], :ref "Magic, p. 46"}
    {:name :animate-shadow, :prerequisites [:skull-spirit :shape-darkness], :ref "Magic p. 154"}
-   {:name :mouth-goes-away, :prerequisites [[:advantages/magery 1] :alter-visage [4 :body-control]], :ref "Alphabet Arcane, p. 17"}
+   ;;{:name :mouth-goes-away, :prerequisites [[:advantages/magery 1] :alter-visage [4 :body-control]], :ref "Alphabet Arcane, p. 17"}
    {:name :climbing, :prerequisites [], :ref "Magic, p. 35"}
    {:name :flash, :prerequisites [:continual-light], :ref "Magic p. 112"}
    {:name :inscribe, :prerequisites [:simple-illusion :copy], :ref "Magic p. 97"}
    {:name :turn-blade, :prerequisites [#{:spasm :apportation}], :ref "Magic p. 167"}
    {:name :air-vortex, :prerequisites [[:advantages/magery 2] :body-of-air :windstorm], :ref "Magic p. 26"}
    {:name :storm, :prerequisites [:rain :hail], :ref "Magic p. 195"}
-   {:name :ethereal-body, :prerequisites [[6 :movement] :or-magery-3 :body-of-air], :ref "Magic p. 146"}
+   {:name :ethereal-body, :prerequisites [#{[6 :movement] [[:advantages/magery 3] :body-of-air]}], :ref "Magic p. 146"}
    {:name :shrink, :prerequisites [[:advantages/magery 2] :alter-body], :ref "Magic, p. 42"}
    {:name :preserve-food, :prerequisites [:decay], :ref "GURPS Magic, p. 79"}
    {:name :alter-voice, :prerequisites [[4 :body-control] [4 :sound]], :ref "Magic, p. 41"}
    {:name :resist-lightning, :prerequisites [[6 :air]], :ref "Magic p. 196"}
-   {:name :body-of-wind, :prerequisites [[:advantages/magery 3] [:body-of-air 16] [:windstorm 16] {:fire 1, :water 1, :earth 1, :ether 1}], :ref "Magic p. 27"}
+   {:name :body-of-wind, :prerequisites [[:advantages/magery 3] [:body-of-air 16] [:windstorm 16] :1-spell-from-5-colleges], :ref "Magic p. 27"}
    {:name :memorize, :prerequisites [#{:wisdom [6 :knowledge]}], :ref "Magic, p. 105}; Social Engineering: Back to School, p. 24"}
    {:name :boil-water, :prerequisites [:shape-water :heat], :ref "Magic p. 192"}
    {:name :repair, :prerequisites [[:advantages/magery 2] :rejoin], :ref "Magic p. 118"}
@@ -260,7 +260,7 @@
    {:name :dispel-possession, :prerequisites [#{:possession :soul-rider}], :ref "Magic p. 49"}
    {:name :soul-jar, :prerequisites [[:advantages/magery 1] [6 :necromantic] :steal-vitality], :ref "Magic p. 154"}
    {:name :history, :prerequisites [:trace], :ref "Magic, p. 104"}
-   {:name :create-door, :prerequisites [:teleport :any-1-walk-through-spell], :ref "Magic p. 84"}
+   {:name :create-door, :prerequisites [:teleport #{:walk-through-wood :walk-through-plants :walk-through-earth}], :ref "Magic p. 84"}
    {:name :spasm, :prerequisites [:itch], :ref "Basic Set, p. 244}; Magic, p. 35"}
    {:name :suspend-time, :prerequisites [[:advantages/magery 3] :slow-time], :ref "Magic p. 86"}
    {:name :seek-earth, :prerequisites [], :ref "Basic Set, p. 245}; Magic, p. 50"}
@@ -270,7 +270,7 @@
    {:name :compel-lie, :prerequisites [:emotion-control], :ref "Magic, p. 137"}
    {:name :animate-object, :prerequisites [[:advantages/magery 2] [3 :shape]], :ref "Magic p. 117"}
    {:name :mystic-mark, :prerequisites [:dye :trace], :ref "Magic p. 119"}
-   {:name :remove-fetus, :prerequisites [:ease-labor #{:minor-healing :apportation}], :ref "GURPS Bio-Tech, p. 32"}
+   ;;{:name :remove-fetus, :prerequisites [:ease-labor #{:minor-healing :apportation}], :ref "GURPS Bio-Tech, p. 32"}
    {:name :distant-blow, :prerequisites [[:advantages/magery 2] :apportation], :ref "Magic p. 144"}
    {:name :colors, :prerequisites [:light], :ref "Magic p. 110"}
    {:name :suggestion, :prerequisites [:emotion-control :forgetfulness], :ref "Magic p. 140"}
@@ -301,10 +301,10 @@
    {:name :purify-water :prerequisites [:seek-water] :ref "GURPS Basic Set, p. 253}; GURPS Magic, p. 184"}
    {:name :seek-water :prerequisites [] :ref "GURPS Basic Set, p. 253}; GURPS Magic, p. 184"}
    {:name :truthsayer, :prerequisites [:sense-emotion], :ref "Basic Set, p. 245}; Magic, p. 45"}
-   {:name :wish, :prerequisites [:lesser-wish [:animal 1] [:light-and-darkness 1] [:body-control 1] [:communication-and-empathy 1] [:meta 1] [:mind-control 1] [:movement 1] [:food 1] [:gate 1] [:sound 1] [:illusion-and-creation 1] [:knowledge 1] [:weather 1] [:protection-and-warning 1]], :ref "Magic p. 61"}
+   {:name :wish, :prerequisites [:lesser-wish :1-spell-from-15-colleges], :ref "Magic p. 61"}
    {:name :telecast, :prerequisites [[:advantages/magery 3] :teleport :wizard-eye :1-spell-from-10-colleges], :ref "Magic p. 128"}
    {:name :false-aura, :prerequisites [:conceal-magic :aura], :ref "Magic p. 122"}
-   {:name :scribe, :prerequisites [:voices :dancing-object #{:better :1-written-language-at-accented}], :ref "Magic p. 174"}
+   {:name :scribe, :prerequisites [:voices :dancing-object], :ref "Magic p. 174"}
    {:name :encrypt, :prerequisites [:daze], :ref "Magic p. 135"}
    {:name :penetrating-spell, :prerequisites [:delay :find-weakness], :ref "Magic p. 123"}
    {:name :seek-machine, :prerequisites [], :ref "Magic p. 175"}
@@ -312,8 +312,8 @@
    {:name :icy-touch, :prerequisites [[:advantages/magery 1] [5 :water]], :ref "Magic p. 188"}
    {:name :time-out, :prerequisites [[:advantages/magery 3] :accelerate-time], :ref "Magic p. 87"}
    {:name :resist-poison, :prerequisites [:vigor], :ref "Magic p. 91"}
-   {:name :bless, :prerequisites [[:advantages/magery 2] :2-each-from-10-colleges], :ref "Magic p. 129"}
-   {:name :mark-of-thieves, :prerequisites [[:advantages/magery 1] :pestilence], :ref "Alphabet Arcane, p. 17"}
+   {:name :bless, :prerequisites [[:advantages/magery 2] :2-spell-from-10-colleges], :ref "Magic p. 129"}
+   ;;{:name :mark-of-thieves, :prerequisites [[:advantages/magery 1] :pestilence], :ref "Alphabet Arcane, p. 17"}
    {:name :summon-shade, :prerequisites [#{:divination :summon-spirit}], :ref "Magic, p. 102"}
    {:name :wind, :prerequisites [:windstorm], :ref "Magic p. 193"}
    ;;{:name :disruption-bolt, :prerequisites [:spectrum-vision [6 :light-and-darkness] :radiation], :ref "Technomancer p 24"}
@@ -326,14 +326,14 @@
    {:name :fire-cloud, :prerequisites [:shape-air :fireball], :ref "Magic p. 75"}
    {:name :ensorcel, :prerequisites [:malefice], :ref "Magic p. 60"}
    {:name :destroy-water, :prerequisites [:create-water], :ref "Basic Set, p. 253}; Magic p. 185"}
-   {:name :trace-teleport, :prerequisites [:teleport :timeport :or-plane-shift], :ref "Magic p. 84"}
+   {:name :trace-teleport, :prerequisites [#{:teleport :timeport :plane-shift}], :ref "Magic p. 84"}
    {:name :amulet, :prerequisites [:talisman], :ref "Magic p. 58"}
-   {:name :permanent-shapeshifting, :prerequisites [[:advantages/magery 3] :appropriate-shapeshifting], :ref "Magic p. 33"}
+   {:name :permanent-shapeshifting, :prerequisites [[:advantages/magery 3] :shapeshifting], :ref "Magic p. 33"}
    {:name :phantom-flame, :prerequisites [#{:simple-illusion :shape-fire}], :ref "Magic p. 73"}
    {:name :return-missile, :prerequisites [:catch-missile], :ref "Magic p. 168"}
    {:name :vigil, :prerequisites [[:advantages/magery 2] :sleep :lend-energy], :ref "Magic p. 138"}
    {:name :strike-barren, :prerequisites [[:advantages/magery 1] :steal-vitality :decay], :ref "Magic, p. 41"}
-   {:name :transform-other, :prerequisites [:shapeshift-others :appropriate-transform-body], :ref "Magic, p. 43"}
+   {:name :transform-other, :prerequisites [:shapeshift-others :transform-body], :ref "Magic, p. 43"}
    {:name :dream-projection, :prerequisites [:dream-sending], :ref "Magic, p. 46"}
    {:name :borrow-skill, :prerequisites [:lend-skill], :ref "Magic, p. 47"}
    {:name :shape-earth, :prerequisites [:seek-earth], :ref "Basic Set, p. 245}; Magic, p. 50"}
@@ -342,7 +342,7 @@
    {:name :umbrella, :prerequisites [#{:shape-water :shield}], :ref "Magic p. 185"}
    {:name :shape-fire, :prerequisites [:ignite-fire], :ref "Basic Set, p. 246}; Magic p. 72"}
    {:name :peaceful-sleep, :prerequisites [:sleep :silence], :ref "Magic p. 138"}
-   {:name :draw-together-shards, :prerequisites [:repair :trace :apportation], :ref "Alphabet Arcane, p. 9"}
+   ;;{:name :draw-together-shards, :prerequisites [:repair :trace :apportation], :ref "Alphabet Arcane, p. 9"}
    {:name :restore-hearing, :prerequisites [:minor-healing #{:strike-deaf :keen-hearing}], :ref "Magic p. 92"}
    {:name :restoration, :prerequisites [:major-healing :relieve-paralysis :restore], :ref "Magic p. 93"}
    {:name :partial-shapeshifting, :prerequisites [[:advantages/magery 3] :alter-body :shapeshifting], :ref "Magic p. 34"}
@@ -371,7 +371,7 @@
    {:name :astral-block, :prerequisites [:summon-spirit :repel-spirits], :ref "Magic p. 159"}
    {:name :mature, :prerequisites [#{:season :decay}], :ref "GURPS Magic, p. 78"}
    {:name :seek-food, :prerequisites [], :ref "GURPS Magic, p. 77"}
-   {:name :divert-teleport, :prerequisites [:mager-3 :trace-teleport], :ref "Magic p. 84"}
+   {:name :divert-teleport, :prerequisites [[:advantages/magery 3] :trace-teleport], :ref "Magic p. 84"}
    {:name :plastic-vision, :prerequisites [:shape-plastic], :ref "Magic, p. 183"}
    {:name :reveal-function, :prerequisites [:seek-machine], :ref "Magic p. 176"}
    {:name :create-acid, :prerequisites [:create-water :create-earth], :ref "Magic p. 190}; Pyramid 3/60: Dungeon Fantasy III, p. 6"}
@@ -388,14 +388,14 @@
    {:name :disorient, :prerequisites [:foolishness], :ref "Magic p. 135"}
    {:name :snow, :prerequisites [:clouds :frost], :ref "Magic p. 193"}
    {:name :foul-water, :prerequisites [:purify-water :decay], :ref "GURPS Magic, p. 185"}
-   {:name :slow-time, :prerequisites [[:advantages/magery 2] [:attributes/int 13] :2-from-each-of-10-colleges], :ref "Magic p. 86"}
+   {:name :slow-time, :prerequisites [[:advantages/magery 2] [:attributes/int 13] :2-from-10-colleges], :ref "Magic p. 86"}
    {:name :season, :prerequisites [:test-food], :ref "GURPS Magic, p. 77"}
    {:name :madness, :prerequisites [#{:forgetfulness :drunkenness}], :ref "Magic p. 136"}
    {:name :shrink-object, :prerequisites [:contract-object], :ref "Magic p. 120"}
    {:name :aura, :prerequisites [:detect-magic], :ref "Basic Set, p. 249}; Magic, p. 101"}
    {:name :stone-missile, :prerequisites [:create-earth], :ref "Magic, p. 52"}
    {:name :utter-dome, :prerequisites [[:advantages/magery 2] :force-dome :spell-shield], :ref "Magic p. 170"}
-   {:name :infiltrate, :prerequisites [:body-of-fluid], :ref "Magical Styles: Dungeon Magic, p. 9"}
+   ;;{:name :infiltrate, :prerequisites [:body-of-fluid], :ref "Magical Styles: Dungeon Magic, p. 9"}
    {:name :entrap-spirit, :prerequisites [[:advantages/magery 1] :soul-jar :turn-spirit], :ref "Magic p. 157"}
    {:name :restore-memory, :prerequisites [:awaken [:attributes/int 11]], :ref "Magic p. 92"}
    {:name :warm, :prerequisites [:heat [4 :air]], :ref "Magic p. 195"}
@@ -425,7 +425,7 @@
    {:name :pentagram, :prerequisites [:spell-shield], :ref "Magic p. 124}; Thaumatology: Urban Magics"}
    {:name :stop-bleeding, :prerequisites [:lend-vitality], :ref "Magic p. 91}; Fantasy, p. 169"}
    {:name :invisible-wizard-eye, :prerequisites [:wizard-eye :invisibility], :ref "Magic, p. 104"}
-   {:name :pathfinder, :prerequisites [[:advantages/magery 1] [:attributes/int 12] [2 :seek]], :ref "Magic, p. 105"}
+   {:name :pathfinder, :prerequisites [[:advantages/magery 1] [:attributes/int 12] #{:seek-fire :seek-air :seek-earth :seek-water :seek-food :seek-pass :seek-gate :seek-magic :seek-plant :seek-machine :seek-power :seek-fuel :seek-radiation :seek-plastic :seek-coastline}], :ref "Magic, p. 105"}
    {:name :wizard-eye, :prerequisites [:apportation :keen-vision], :ref "Magic, p. 104"}
    {:name :solidify, :prerequisites [:materialize], :ref "Magic p. 151"}
    {:name :cloud-vaulting, :prerequisites [[:advantages/magery 2] :jump :walk-on-air], :ref "Magic p. 148"}
@@ -437,7 +437,7 @@
    {:name :drunkenness, :prerequisites [:foolishness :clumsiness], :ref "Magic p. 136"}
    {:name :beast-seeker, :prerequisites [#{:beast-summoning :seeker}], :ref "Magic p. 32"}
    {:name :undo, :prerequisites [:locksmith], :ref "Magic p. 145"}
-   {:name :weapon-self, :prerequisites [[:advantages/magery 2] :apportation :6-makin [:breaking :reshape]], :ref "Magic p. 119"}
+   {:name :weapon-self, :prerequisites [[:advantages/magery 2] :apportation [6 :making-and-breaking] :reshape], :ref "Magic p. 119"}
    {:name :sound-vision, :prerequisites [#{:acute-hearing :keen-hearing}], :ref "Magic p. 171"}
    {:name :shrink-other, :prerequisites [[:advantages/magery 3] :shrink], :ref "Magic, p. 42"}
    {:name :resist-water, :prerequisites [#{:shape-water :umbrella} :destroy-water], :ref "Magic p. 186"}
@@ -448,8 +448,8 @@
    {:name :flesh-to-stone, :prerequisites [:earth-to-stone], :ref "Basic Set, p. 246}; Magic, p. 51"}
    {:name :timeslip, :prerequisites [:timeport], :ref "Magic p. 81"}
    {:name :slow, :prerequisites [[:advantages/magery 1] :haste :hinder], :ref "Magic p. 145"}
-   {:name :hellspawn, :prerequisites [:summon-demon], :ref "GURPS Bio-Tech, p. 32}; Technomander p. 27"}
-   {:name :nauseate, :prerequisites [:perfume [1 :other]], :ref "Magic, p. 38"}
+   ;;{:name :hellspawn, :prerequisites [:summon-demon], :ref "GURPS Bio-Tech, p. 32}; Technomander p. 27"}
+   {:name :nauseate, :prerequisites [:perfume [1 :body-control]], :ref "Magic, p. 38"}
    {:name :blur, :prerequisites [:darkness], :ref "Basic Set p. 250}; Magic p. 113"}
    {:name :create-fire-elemental, :prerequisites [[:advantages/magery 2] :control-fire-elemental], :ref "Magic p. 22"}
    {:name :rebuild, :prerequisites [[:advantages/magery 3] :repair :create-object [3 :air] [3 :water] [3 :fire] [3 :earth]], :ref "Magic p. 177"}
@@ -463,12 +463,12 @@
    {:name :sense-mana, :prerequisites [:detect-magic], :ref "Magic, p. 101"}
    ;;{:name :transference-bolt, :prerequisites [:any-three-of-ball-of-lightning :flaming-armor :rain-of-acid :breathe-fire :flaming-missiles :rain-of-fire :breathe-steam :flaming-weapon-rive :burning-touch :lightning-armor :shocking-touch :continual-sunlight :lightning-missiles :spark-cloud :explosive-fireball :lightning-stare :spark-storm :explosive-lightning :lightning-weapon :spit-acid :fire-cloud :lightning-whip :wall-of-lightning], :ref "Magic Styles: Dungeon Magic, p. 19"}
    {:name :avoid, :prerequisites [:hide :fear :forgetfulness], :ref "Magic p. 140"}
-   {:name :suspend-magic, :prerequisites [:suspend-spell [8 :other]], :ref "Magic p. 123"}
+   {:name :suspend-magic, :prerequisites [:suspend-spell [8 :meta]], :ref "Magic p. 123"}
    {:name :poltergeist, :prerequisites [:apportation], :ref "Magic p. 144"}
    {:name :share-energy, :prerequisites [:lend-energy], :ref "Magic p. 89"}
    {:name :scroll, :prerequisites [[:advantages/magery 1] [:skills/writing 12]], :ref "Magic p. 57"}
    {:name :contract-object, :prerequisites [[:advantages/magery 3] :transform-object], :ref "Magic p. 120"}
-   {:name :mass-zombie, :prerequisites [:zombie :charisma-2+], :ref "Magic p. 153}; Pyramid 3/60: Dungeon Fantasy III, p. 6"}
+   {:name :mass-zombie, :prerequisites [:zombie [:charisma 2]], :ref "Magic p. 153}; Pyramid 3/60: Dungeon Fantasy III, p. 6"}
    {:name :glass-wall, :prerequisites [#{[5 :knowledge] :earth-vision}], :ref "Magic, p. 103"}
    {:name :slide, :prerequisites [:apportation :grease], :ref "Magic p. 145"}
    {:name :gauntness, :prerequisites [[:advantages/magery 2] :earth-to-air :destroy-water :hunger [3 :body-control]], :ref "Magic, p. 43"}
@@ -508,7 +508,7 @@
    {:name :wall-of-lightning, :prerequisites [:lightning], :ref "Magic p. 197"}
    {:name :air-vision, :prerequisites [:shape-air], :ref "Magic p. 24"}
    {:name :choke, :prerequisites [[:advantages/magery 1] [5 :body-control] :spasm], :ref "Magic, p. 40"}
-   {:name :despoil-seed, :prerequisites [[:advantages/magery 1] :alter-body :strike-barren], :ref "Alphabet Arcane, p. 17"}
+   ;;{:name :despoil-seed, :prerequisites [[:advantages/magery 1] :alter-body :strike-barren], :ref "Alphabet Arcane, p. 17"}
    {:name :create-air, :prerequisites [:purify-air], :ref "Basic Set p. 243}; Magic p. 23"}
    {:name :great-voice, :prerequisites [:voices :thunderclap], :ref "Magic p. 173"}
    {:name :glitch, :prerequisites [:machine-control], :ref "Magic p. 178"}
@@ -535,7 +535,8 @@
    {:name :remove-enchantment, :prerequisites [:enchant], :ref "Magic p. 58"}
    {:name :strike-blind, :prerequisites [:spasm [2 :light-and-darkness]], :ref "Magic, p. 38"}
    {:name :strike-numb, :prerequisites [:resist-pain], :ref "Magic, p. 40"}
-   {:name :summon-earth-elemental, :prerequisites [[:advantages/magery 1] #{[[8 :earth]] [[4 :earth] #{:summon-water-elemental :summon-fire-elemental :summon-air-elemental}]}], :ref "Magic, p. 27"}
+   {:name :summon-earth-elemental, :prerequisites [[:advantages/magery 1] #{[8 :earth] [[4 :earth] #{:summon-water-elemental :summon-fire-elemental :summon-air-elemental}]}], :ref "Magic, p. 27"}
+   {:name :summon-water-elemental, :prerequisites [[:advantages/magery 1] #{[8 :water] [[4 :water] #{:summon-earth-elemental :summon-fire-elemental :summon-air-elemental}]}], :ref "Magic, p. 27"}
    {:name :lend-spell, :prerequisites [[:advantages/magery 1] :lend-skill :1-spell-from-6-colleges], :ref "Magic p. 126"}
    {:name :thirst, :prerequisites [[:advantages/magery 1] :debility :destroy-water], :ref "Magic, p. 38"}
    {:name :night-vision, :prerequisites [[5 :light-and-darkness] :keen-vision], :ref "Magic p. 111}; Fantasy, p. 170"}
@@ -549,7 +550,7 @@
    {:name :shape-light, :prerequisites [:light], :ref "Magic p. 111"}
    {:name :share-vitality, :prerequisites [:lend-vitality], :ref "Magic p. 90"}
    {:name :glib-tongue, :prerequisites [:suggestion], :ref "Magic p. 141"}
-   {:name :enchant, :prerequisites [[:advantages/magery 2] [:gate 1] [:body-control 1] [:movement 1] [:food 1] [:sound 1] [:illusion-and-creation 1] [:knowledge 1] [:protection-and-warning 1] [:meta 1] [:light-and-darkness 1]], :ref "Basic Set, p. 480}; Magic p. 56"}
+   {:name :enchant, :prerequisites [[:advantages/magery 2] :1-spell-from-10-colleges], :ref "Basic Set, p. 480}; Magic p. 56"}
    {:name :lightning-missiles, :prerequisites [:lightning-weapon], :ref "Magic p. 198"}
    {:name :mage-sense, :prerequisites [:detect-magic], :ref "Magic, p. 102"}
    {:name :scents-of-the-past, :prerequisites [[:advantages/magery 2] :history :odor], :ref "Magic, p. 107"}
@@ -590,7 +591,7 @@
    {:name :beast-possession, :prerequisites [#{:possession :rider-within}], :ref "Magic p. 32"}
    {:name :grace, :prerequisites [:clumsiness], :ref "Magic, p. 37"}
    {:name :water-vision, :prerequisites [:shape-water], :ref "Magic, p. 187"}
-   {:name :imp-face, :prerequisites [[:advantages/magery 1] :planar-summons :alter-visage], :ref "Alphabet Arcane, p. 17"}
+   ;;{:name :imp-face, :prerequisites [[:advantages/magery 1] :planar-summons :alter-visage], :ref "Alphabet Arcane, p. 17"}
    {:name :boost-health, :prerequisites [:vigor], :ref "Magic, p. 37"}
    {:name :loyalty, :prerequisites [:bravery [2 :mind-control]], :ref "Magic p. 136"}
    {:name :see-secrets, :prerequisites [:seeker :aura], :ref "Magic, p. 105}; Pyramid 3/60: Dungeon Fantasy III, p. 5"}
@@ -801,11 +802,11 @@
    :animal #{:repel-animal :great-shapeshift :repel-hybrids :protect-animal :shapeshift-others :beast-summoning :spider-silk :beast-speech :permanent-shapeshifting :partial-shapeshifting :beast-rouser :rider-within :beast-seeker :beast-soother :animal-control :beast-possession :permanent-beast-possession :master :rider :beast-link :shapeshifting},
    :making-and-breaking #{:weaken :awaken-craft-spirit :copy :shatterproof :knot :stiffen :mapmaker :transform-object :soilproof :dye :ruin :fasten :restore :inspired-creation :shatter :rejoin :inscribe :repair :animate-object :mystic-mark :draw-together-shards :sharpen :rive :enlarge-object :shrink-object :weapon-self :rebuild :contract-object :reshape :disintegrate :explode :find-weakness :toughen :transparency :clean :extend-object},
    :protection-and-warning #{:utter-wall :warmth :protect-animal :sense-danger :resist-sound :mystic-mist :nightingale :reverse-missiles :missile-shield :shield :turn-blade :resist-lightning :resist-radiation :resist-poison :return-missile :umbrella :reflect-gaze :utter-dome :resist-disease :sense-observation :resist-water :watchdog :teleport-shield :resist-acid :resist-pressure :weather-dome :shade},
-   :water #{:shape-water :seek-water :purify-water :water-jet :acid-ball :icy-missile :dehydrate :condense-steam :ice-vision :body-of-ice :frost :geyser :freeze :frostbite :dry-spring :distill :ice-dagger :essential-acid :create-steam :icy-breath :flow :coolness :breathe-air :acid-jet :create-water-elemental :boil-water :create-water :icy-touch :destroy-water :icy-weapon :create-acid :hail :foul-water :infiltrate :essential-water :breathe-steam :current :ice-slick :body-of-water :create-spring :create-ice :earth-to-water :flesh-to-ice :control-water-elemental :fog :breathe-water :mud-jet :ice-sphere},
+   :water #{:shape-water :summon-water-elemental :seek-water :purify-water :water-jet :acid-ball :icy-missile :dehydrate :condense-steam :ice-vision :body-of-ice :frost :geyser :freeze :frostbite :dry-spring :distill :ice-dagger :essential-acid :create-steam :icy-breath :flow :coolness :breathe-air :acid-jet :create-water-elemental :boil-water :create-water :icy-touch :destroy-water :icy-weapon :create-acid :hail :foul-water :infiltrate :essential-water :breathe-steam :current :ice-slick :body-of-water :create-spring :create-ice :earth-to-water :flesh-to-ice :control-water-elemental :fog :breathe-water :mud-jet :ice-sphere},
    :mind-control #{:mass-charm :hallucination :permanent-madness :great-hallucination :forgetfulness :mass-suggestion :oath :panic :wisdom :charm :false-memory :rear-vision :ecstasy :relieve-madness :mass-hallucination :enslave :enthrall :memorize :command :compel-lie :suggestion :strengthen-will :boost-intelligence :encrypt :pacify :vigil :dream-projection :peaceful-sleep :recall :dull :weaken-will :permanent-forgetfulness :great-geas :disorient :madness :drunkenness :mental-stun :emotion-control :avoid :mass-daze :berserker :sickness :lesser-geas :fascinate :dream-sending :bravery :foolishness :glib-tongue :terror :loyalty :daze :alertness :will-lock :nightmare :mass-sleep :fear :sleep :dullness :keen :discord :mindlessness},
    :illusion-and-creation #{:duplicate :illusion-disguise :create-servant :simple-illusion :create-mount :dispel-creation :phantom :control-illusion :create-animal :independence :initiative :inscribe :phantom-flame :know-illusion :create-object :perfect-illusion :illusion-shell :dispel-illusion :create-warrior :control-creation :complex-illusion},
    :body-control #{:hold-breath :total-paralysis :boost-strength :haircut :rooted-feet :itch :stop-spasm :alter-body :transmogrification :enlarge :pain :transform-body :alter-visage :paralyze-limb :hinder :accelerate-pregnancy :might :boost-dexterity :decapitation :frailty :curse-missile :lengthen-limb :mouth-goes-away :climbing :shrink :alter-voice :spasm :perfume :vigor :clumsiness :mark-of-thieves :strike-barren :transform-other :roundabout :agonize :tickle :reflexes :cadence :resist-pain :balance :shrink-other :ambidexterity :nauseate :corpulence :gauntness :seek-emitter :debility :deathtouch :sensitize :tanglefoot :touch :weaken-blood :choke :despoil-seed :sickness :strike-blind :strike-numb :thirst :control-limb :wither-limb :grace :imp-face :boost-health :strike-dumb :strike-deaf :stun :enlarge-other :hunger :hair-growth :fumble :retch},
-   :plant #{:seek-plant :golem :wither-plant :walk-through-wood :walk-through-plants :tangle-growth :shape-plant :rejuvenate-plant :rain-of-nuts :purify-earth :pollen-cloud :plant-vision :plant-speech :plant-sense :plant-growth :plant-form-other :plant-form :identity-plant :hide-path :heal-plant :forest-warning :false-tracks :explode :essential-wood :create-plant :conceal :slow-fall :body-of-wood :body-of-slime :blossom :blight :bless-plants :arboreal-immurement :animate-plant}
+   :plant #{:seek-plant :golem :wither-plant :walk-through-wood :walk-through-plants :tangle-growth :shape-plant :rejuvenate-plant :rain-of-nuts :purify-earth :pollen-cloud :plant-vision :plant-speech :plant-sense :plant-growth :plant-form-other :plant-form :identify-plant :hide-path :heal-plant :forest-warning :false-tracks :explode :essential-wood :create-plant :conceal :slow-fall :body-of-wood :body-of-slime :blossom :blight :bless-plants :arboreal-immurement :animate-plant}
    :technological #{:malfunction :awaken-computer :animate-machine :seek-machine :reveal-function :rebuild :machine-control :glitch :schematic :machine-summoning :permanent-machine-possession :machine-speech :machine-possession}})
 
 (comment

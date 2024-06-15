@@ -4,7 +4,7 @@
             [gurps.utils.helpers :refer [->int default-to]]
             [gurps.widgets.base :refer [view text input]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
-            [gurps.pages.character.widgets.helpers :refer [cost->points]]
+            [gurps.pages.character.widgets.helpers :refer [cost->points long-attr]]
             ["twrnc" :refer [style] :rename {style tw}]))
 
 (defn- calc-cost [label value]
@@ -22,16 +22,6 @@
   [^js {:keys [style key]} & children]
   [:> view {:key key :style #js [(tw "h-12 w-12 align-middle border-2 items-center justify-center"), style]}
    children])
-
-(def long-attr
-  {:str :strength
-   :dex :dexterity
-   :int :intelligence
-   :ht :health
-   :fp :fatigue
-   :hp :hitpoints
-   :will :will
-   :per :perception})
 
 (defn key->i18n-label
   [key]

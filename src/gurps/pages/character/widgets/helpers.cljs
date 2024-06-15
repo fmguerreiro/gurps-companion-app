@@ -26,3 +26,13 @@
    :will {:incr 5}
    :per  {:incr 5}
    :fp   {:incr 3}})
+
+(def long-attr
+  {:str :strength
+   :dex :dexterity
+   :int :intelligence
+   :ht :health
+   :fp :fatigue
+   :hp :hitpoints
+   :will :will
+   :per :perception})
