@@ -31,6 +31,12 @@
 (s/def ::skill (s/keys :req-un [::name ::k ::cost]))
 (s/def ::skills (s/coll-of ::skill))
 
+(s/def ::lvl number?)
+(s/def ::spell (s/keys :req-un [::lvl]))
+(s/def ::spells (s/or :nil nil? :m (s/map-of ::k ::spell)))
+(s/def ::spell-cost (s/keys :opt-un [::cost]))
+(s/def ::spell-costs (s/or :nil nil? :m (s/map-of ::k ::spell-cost)))
+
 (s/def ::spoken  #{"native" "accented" "broken"})
 (s/def ::written #{"native" "accented" "broken"})
 (s/def ::native? boolean?)
@@ -63,7 +69,9 @@
 (s/def ::world (s/keys :req-un [::tech-level]))
 
 (s/def ::db
-  (s/keys :req-un [::profile ::attributes ::attribute-costs ::attribute-current ::skills ::languages ::items ::world ::navigation]))
+  (s/keys :req-un [::profile ::attributes ::attribute-costs ::attribute-current
+                   ::skills ::languages ::items ::world ::spells ::spell-costs
+                   ::navigation]))
 
 ;; initial state of app-db
 (defonce app-db
@@ -105,6 +113,9 @@
                        :fp 0}
 
    :skills []
+
+   :spells {}
+   :spell-costs {:sense-spirit {:cost 1}, :warmth {:cost 2}, :golem {:cost 4}, :fireball {:cost 10}} ;; TODO: remove
 
    :languages []
 
