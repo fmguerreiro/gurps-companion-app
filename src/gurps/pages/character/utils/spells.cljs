@@ -809,6 +809,21 @@
    :plant #{:seek-plant :golem :wither-plant :walk-through-wood :walk-through-plants :tangle-growth :shape-plant :rejuvenate-plant :rain-of-nuts :purify-earth :pollen-cloud :plant-vision :plant-speech :plant-sense :plant-growth :plant-form-other :plant-form :identify-plant :hide-path :heal-plant :forest-warning :false-tracks :explode :essential-wood :create-plant :conceal :slow-fall :body-of-wood :body-of-slime :blossom :blight :bless-plants :arboreal-immurement :animate-plant}
    :technological #{:malfunction :awaken-computer :animate-machine :seek-machine :reveal-function :rebuild :machine-control :glitch :schematic :machine-summoning :permanent-machine-possession :machine-speech :machine-possession}})
 
+(defn invert-map [m]
+  (->> m
+       (reduce
+        (fn [acc [k vs]]
+          (reduce
+           (fn [acc v]
+             (update acc v conj k))
+           acc
+           vs))
+        {})
+       (into {})))
+
+(def spells-to-colleges
+  (invert-map spells-by-college))
+
 (comment
 
   (defn kebab-case [s]

@@ -8,10 +8,11 @@
             [cljs-bean.core :refer [->clj]]
             [gurps.utils.helpers :refer [str->key ->int]]
             [gurps.widgets.base :refer [view text button]]
-            [gurps.pages.character.utils.spells :refer [spells-by-name]]
+            [gurps.pages.character.utils.spells :refer [spells-by-name spells-to-colleges]]
             [gurps.pages.character.widgets.helpers :refer [long-attr]]
             [gurps.utils.i18n :as i18n]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [re-frame.core :as rf]))
 
 (defn- key->i18n-label
   [key]
@@ -25,16 +26,56 @@
 
 (defn- lvl-prerequisite
   [prereq]
-  (let [[k level] prereq]
-    [:> view {:style (tw "flex flex-row flex-grow justify-between")}
-     [:> text {:style (tw "")} (i18n/label (keyword :t (key->i18n-label k)))]
+  (let [[k level]  prereq
+        spell-lvl  (some-> (rf/subscribe [:spells]) deref (keyword (name k)) :lvl)]
+        ;; TODO:
+        ;; advantages (some-> (rf/subscribe [:advantages]) deref)
+        ;; skills     (some-> (rf/subscribe [:skills]) deref)
+
+    [:> view {:style (tw (str "flex flex-row flex-grow justify-between"
+                              (when (>= spell-lvl level) " bg-green-100")))}
+     [:> text (i18n/label (keyword :t (key->i18n-label k)))]
      [:> text level]]))
 
 (defn- num-spells-prerequisite
   [prereq]
-  (let [[num college] prereq]
-    [:> view {:style (tw "flex flex-row flex-grow justify-between")}
+  (let [[num college] prereq
+        spell-count (some-> (rf/subscribe [:spell-count-per-college]) deref college)]
+    [:> view {:style (tw (str "flex flex-row flex-grow justify-between")
+                         (when (>= spell-count num) " bg-green-100"))}
      [:> text (i18n/label :t/num-spells {:college college :count num})]])) ;; TODO: add navigation button to college page
+
+;; TODO: move this to spells/list.cljs or something
+(rf/reg-sub
+ :spells
+ :<- [:spell-costs]
+ (fn [spell-costs]
+   (reduce (fn [acc [k {:keys [cost]}]]
+             (assoc-in acc [k :lvl] (+ 10 cost))) ;; TODO: proper calculation, also check if it's vh, also need to fetch iq + magery
+           {}
+           spell-costs)))
+
+(rf/reg-sub
+ :spell-costs
+ (fn [db]
+   (get-in db [:spell-costs] {})))
+
+(rf/reg-sub
+ :spell-count-per-college
+ :<- [:spells]
+ (fn [spells]
+   (->> spells ;; => {:warmth {:lvl 12}, :golem {:lvl 9}, ...}
+        (reduce
+         (fn [acc [k _]]
+           (assoc-in acc [k] (k spells-to-colleges)))
+         {})   ;; => {:warmth #{:fire :protection-and-warning}, :golem #{:enchantment :plant}} TODO: '(:fire ...) instead of set, not sure if problem
+        (reduce
+         (fn [acc [_ vs]]
+           (reduce (fn [acc v]
+                     (update-in acc [v] (fnil inc 0)))
+                   acc
+                   vs))
+         {})))) ;; => {:fire 1, :enchantment 1, :plant 1, :protection-and-warning 1}
 
 (declare prerequisite) ;; used by all-prerequisite/or-prerequisite recursively
 
@@ -60,18 +101,26 @@
 
 (defn- spell-count-from-colleges
   [prereq]
-  (let [[spell-count _ _ college-count] (str/split (-> prereq symbol str) #"-")]
-    [:> text (i18n/label :t/num-colleges {:colleges college-count :count (->int spell-count)})]))
+  (let [[spell-count _ _ college-count] (str/split (-> prereq symbol str) #"-")
+        passing-college-count           (some->> (rf/subscribe [:spell-count-per-college])
+                                                 deref
+                                                 (filter #(>= (val %) (->int spell-count)))
+                                                 count)]
+    [:> text {:style (str ""
+                          (when (>= passing-college-count (->int college-count)) " bg-green-100"))}
+     (i18n/label :t/num-colleges {:colleges college-count :count (->int spell-count)})]))
 
 (defn- spell-prerequisite
   [prereq nav]
   (if (re-matches spell-from-colleges-pattern (-> prereq symbol str))
     [spell-count-from-colleges prereq]
     ;; else it's one spell
-    [:> button {:onPress #(-> nav (.push (i18n/label :t/spell-details) #js {:id (str (symbol prereq))}))}
-     [:> view {:style (tw "flex flex-row flex-grow justify-between")}
-      [:> text (i18n/label (str "spell-" (symbol prereq)))]
-      [:> text {:style (tw "font-bold")} ">"]]]))
+    (let [spell (some-> (rf/subscribe [:spells]) deref prereq)]
+      [:> button {:onPress #(-> nav (.push (i18n/label :t/spell-details) #js {:id (str (symbol prereq))}))}
+       [:> view {:style (tw (str "flex flex-row flex-grow justify-between items-center"
+                                 (when spell " bg-green-100")))}
+        [:> text (i18n/label (str "spell-" (symbol prereq)))]
+        [:> text {:style (tw "font-bold")} ">"]]])))
 
 (defn- or-prerequisite
   [prereqs nav]
