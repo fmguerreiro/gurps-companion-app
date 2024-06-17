@@ -95,11 +95,11 @@
              (.then #(js/console.log "clear" %)))
 
          (-> ^js async-storage
-             (.multiGet #js [":languages"])
+             (.multiGet #js [":spell-costs"])
              (.then #(js/console.log "multi-get" %)))
 
          (-> ^js async-storage
-             (.removeItem ":languages")
+             (.removeItem ":spell-costs")
              (.then #(js/console.log "remove-item" %)))
 
          (-> ^js async-storage

@@ -8,11 +8,14 @@
             [cljs-bean.core :refer [->clj]]
             [gurps.utils.helpers :refer [str->key ->int]]
             [gurps.widgets.base :refer [view text button]]
+            [gurps.widgets.add-button :refer [add-button]]
             [gurps.pages.character.utils.spells :refer [spells-by-name spells-to-colleges]]
             [gurps.pages.character.widgets.helpers :refer [long-attr]]
             [gurps.utils.i18n :as i18n]
+            [gurps.utils.debounce :refer [debounce-and-dispatch]]
             [clojure.string :as str]
-            [re-frame.core :as rf]))
+            [re-frame.core :as rf]
+            [taoensso.timbre :as log]))
 
 (defn- key->i18n-label
   [key]
@@ -24,25 +27,33 @@
           (= "tl" name) "tech-level"
           :else (str "spell-" (str/join "-" (filter some? [type name])))))) ;; TODO: make clickable
 
+;; TODO: skills/attributes/advantages
 (defn- lvl-prerequisite
-  [prereq]
-  (let [[k level]  prereq
-        spell-lvl  (some-> (rf/subscribe [:spells]) deref (keyword (name k)) :lvl)]
+  [spell-k prereq]
+  (let [[k level]        prereq
+        spell-lvl       (some-> (rf/subscribe [:spells]) deref (keyword (name k)) :lvl)
+        prereq-cleared? (>= spell-lvl level)]
         ;; TODO:
         ;; advantages (some-> (rf/subscribe [:advantages]) deref)
         ;; skills     (some-> (rf/subscribe [:skills]) deref)
-
+    (rf/dispatch [:spells/update-prerequisites spell-k (keyword (name k)) prereq-cleared?])
     [:> view {:style (tw (str "flex flex-row flex-grow justify-between"
-                              (when (>= spell-lvl level) " bg-green-100")))}
+                              (when prereq-cleared? " bg-green-100")))}
      [:> text (i18n/label (keyword :t (key->i18n-label k)))]
      [:> text level]]))
 
+(defn- num-spells-k
+  [num college]
+  (keyword (str (symbol college) "-" num)))
+
 (defn- num-spells-prerequisite
-  [prereq]
-  (let [[num college] prereq
-        spell-count (some-> (rf/subscribe [:spell-count-per-college]) deref college)]
+  [k prereq]
+  (let [[num college]   prereq
+        spell-count     (some-> (rf/subscribe [:spells/count-per-college]) deref college)
+        prereq-cleared? (>= spell-count num)]
+    (rf/dispatch [:spells/update-prerequisites k (num-spells-k num college) prereq-cleared?])
     [:> view {:style (tw (str "flex flex-row flex-grow justify-between")
-                         (when (>= spell-count num) " bg-green-100"))}
+                         (when prereq-cleared? " bg-green-100"))}
      [:> text (i18n/label :t/num-spells {:college college :count num})]])) ;; TODO: add navigation button to college page
 
 ;; TODO: move this to spells/list.cljs or something
@@ -55,13 +66,14 @@
            {}
            spell-costs)))
 
+;; TODO: move this to spells/list.cljs or something
 (rf/reg-sub
  :spell-costs
  (fn [db]
    (get-in db [:spell-costs] {})))
 
 (rf/reg-sub
- :spell-count-per-college
+ :spells/count-per-college
  :<- [:spells]
  (fn [spells]
    (->> spells ;; => {:warmth {:lvl 12}, :golem {:lvl 9}, ...}
@@ -80,64 +92,70 @@
 (declare prerequisite) ;; used by all-prerequisite/or-prerequisite recursively
 
 (defn- all-prerequisite
-  [prereqs nav]
+  [k prereqs nav]
   [:> view {:style (tw "flex flex-col flex-grow gap-2")}
    [:> text {:style (tw "capitalize")} (i18n/label :t/requires-all)]
    [:> view {:style (tw "flex flex-col gap-2 ml-2")}
     (map-indexed (fn [idx prereq]
                    ^{:key (str "prereq-" idx)}
-                   [prerequisite prereq nav])
+                   [prerequisite k prereq nav])
                  prereqs)]])
 
 (defn- vec-prerequisite
-  [prereq nav]
+  [k prereq nav]
   (let [[first second] prereq]
-    (cond (number? first)   [num-spells-prerequisite prereq]
-          (keyword? second) [all-prerequisite prereq nav]
-          (vector? first)   (all-prerequisite prereq nav)
-          :else             [lvl-prerequisite prereq])))
+    (cond (number? first)   [num-spells-prerequisite k prereq]
+          (keyword? second) [all-prerequisite k prereq nav]
+          (vector? first)   (all-prerequisite k prereq nav)
+          :else             [lvl-prerequisite k prereq])))
 
 (def ^:private spell-from-colleges-pattern #"\d+-spell-from-\d+-colleges")
 
 (defn- spell-count-from-colleges
-  [prereq]
+  [k prereq]
   (let [[spell-count _ _ college-count] (str/split (-> prereq symbol str) #"-")
-        passing-college-count           (some->> (rf/subscribe [:spell-count-per-college])
+        passing-college-count           (some->> (rf/subscribe [:spells/count-per-college])
                                                  deref
                                                  (filter #(>= (val %) (->int spell-count)))
-                                                 count)]
+                                                 count)
+        prereq-cleared?                 (>= passing-college-count (->int college-count))]
+    (rf/dispatch [:spells/update-prerequisites k prereq prereq-cleared?])
     [:> text {:style (str ""
-                          (when (>= passing-college-count (->int college-count)) " bg-green-100"))}
+                          (when prereq-cleared? " bg-green-100"))}
      (i18n/label :t/num-colleges {:colleges college-count :count (->int spell-count)})]))
 
+(defn- has-spell-prerequisite
+  [k prereq nav]
+  (let [spell (some-> (rf/subscribe [:spells]) deref prereq)]
+    (rf/dispatch [:spells/update-prerequisites k prereq (some? spell)])
+    [:> button {:onPress #(-> nav (.push (i18n/label :t/spell-details) #js {:id (str (symbol prereq))}))}
+     [:> view {:style (tw (str "flex flex-row flex-grow justify-between items-center"
+                               (when spell " bg-green-100")))}
+      [:> text (i18n/label (str "spell-" (symbol prereq)))]
+      [:> text {:style (tw "font-bold mb-0.5")} ">"]]]))
+
 (defn- spell-prerequisite
-  [prereq nav]
+  [k prereq nav]
   (if (re-matches spell-from-colleges-pattern (-> prereq symbol str))
-    [spell-count-from-colleges prereq]
+    [spell-count-from-colleges k prereq]
     ;; else it's one spell
-    (let [spell (some-> (rf/subscribe [:spells]) deref prereq)]
-      [:> button {:onPress #(-> nav (.push (i18n/label :t/spell-details) #js {:id (str (symbol prereq))}))}
-       [:> view {:style (tw (str "flex flex-row flex-grow justify-between items-center"
-                                 (when spell " bg-green-100")))}
-        [:> text (i18n/label (str "spell-" (symbol prereq)))]
-        [:> text {:style (tw "font-bold")} ">"]]])))
+    [has-spell-prerequisite k prereq nav]))
 
 (defn- or-prerequisite
-  [prereqs nav]
+  [k prereqs nav]
   [:> view {:style (tw "flex flex-col flex-grow gap-2")}
    [:> text {:style (tw "capitalize")} (i18n/label :t/requires-either)]
    [:> view {:style (tw "flex flex-col gap-2 ml-2")}
     (map-indexed (fn [idx prereq]
-                   (js/console.log "or" prereq)
                    ^{:key (str "prereq-" idx)}
-                   [prerequisite prereq nav])
+                   [prerequisite k prereq nav])
                  prereqs)]])
 
 (defn- prerequisite
-  [prereq nav]
-  (cond (keyword? prereq) [spell-prerequisite prereq nav]
-        (vector? prereq)  [vec-prerequisite prereq nav]
-        (set? prereq)     [or-prerequisite prereq nav]
+  [k prereq nav]
+  (cond (keyword? prereq) [spell-prerequisite k prereq nav]
+        (vector? prereq)  [vec-prerequisite k prereq nav]
+        (set? prereq)     [or-prerequisite k prereq nav]
         :else             [:<>]))
 
 (defn- section
@@ -150,9 +168,11 @@
   [props]
   (let [navigation (rnn/useNavigation)
         k          (-> props ->clj :route :params :id str->key)
-        {:keys [ref prerequisites]} (k spells-by-name)]
-    [:> rn/ScrollView {:style (tw "bg-white")}
-     [:> view {:style (tw "bg-white p-2 flex flex-col gap-2 flex-grow")}
+        {:keys [ref prerequisites]} (k spells-by-name)
+        can-purchase?               (some-> (rf/subscribe [:spells/can-purchase? k]) deref)]
+    (log/info "spell-details-page" k)
+    [:> rn/ScrollView {:style (tw "bg-white") :contentContainerStyle (tw "grow")}
+     [:> view {:style (tw "bg-white p-2 flex flex-col grow gap-2")}
       [section (i18n/label :t/description)
        [:> text (i18n/label (keyword :t (str "spell-" (symbol k) "-description")))]]
 
@@ -181,5 +201,77 @@
         [section (i18n/label :t/dependencies)
          (map-indexed (fn [idx prereq]
                         ^{:key (str "prereq-" idx)}
-                        [prerequisite prereq navigation])
-                      prerequisites)])]]))
+                        [prerequisite k prereq navigation])
+                      prerequisites)])
+
+      (when can-purchase?
+        [:> view {:style (tw "absolute bottom-4 right-4")}
+         [add-button {:on-click #(rf/dispatch [:spells/add k])}]])]]))
+
+(rf/reg-event-fx
+ :spells/add
+ (fn [{:keys [db]} [_ k]]
+   (log/info "spells/add" k)
+   (let [new-db (assoc-in db [:spell-costs k :cost] 1)]
+     {:db new-db
+      :effects.async-storage/set {:k     :spell-costs
+                                  :value (get-in new-db [:spell-costs])}})))
+
+(rf/reg-event-db
+ :spells/update-prerequisites
+ (fn [db [_ spell-k prereq-k prereq-cleared?]]
+   (assoc-in db [:spell-costs spell-k :prereqs prereq-k] prereq-cleared?)))
+
+(defn- meets-prerequisites?
+  [prereq->cleared? prereqs]
+  (let [ps (if (and (coll? prereqs) (= 1 (count prereqs))) (first prereqs) prereqs)]
+    (cond (keyword? ps) (get prereq->cleared? ps false)
+          (vector? ps)  (let [[first second] ps]
+                          (cond (number? first)       (get prereq->cleared? (num-spells-k first second) false)
+                                (or (keyword? second)
+                                    (vector? first))  (->> ps
+                                                           (map #(meets-prerequisites? prereq->cleared? %))
+                                                           (map false?)
+                                                           count
+                                                           (= 0))
+                                :else                 (get prereq->cleared? (keyword (name first)) false)))
+          (set? ps)     (->> ps
+                             (map #(meets-prerequisites? prereq->cleared? %))
+                             (map true?)
+                             count
+                             pos?)
+          :else             true)))
+
+(rf/reg-sub
+ :spells/can-purchase?
+ :<- [:spell-costs]
+ (fn [spell-costs [_ spell-k]]
+   (if (> (get-in spell-costs [spell-k :cost] 0) 0)
+     ;; if spell already purchased, dont show add button
+     false
+     ;; else, do requirement checks
+     (let [prereqs (get-in spell-costs [spell-k :prereqs])]
+       (or (nil? prereqs) ;; no prereqs
+           (meets-prerequisites? prereqs (get-in spells-by-name [spell-k :prerequisites])))))))
+
+(comment
+  (def prereqs [#{:keen-vision [5 :light-and-darkness]}])
+  (def prereq->cleared? {:heat true,
+                         :warmth false,
+                         :keen-vision true,
+                         :light-and-darkness-5 true})
+
+  {:cook {:prereqs {:test-food true, :create-fire true}},
+   :seek-fire {:cost 1},
+   :know-recipe {:prereqs {:far-tasting true, :season true}},
+   :essential-food {:prereqs {:create-food true, :food-6 true}, :cost 1},
+   :seek-water {:cost 1},
+   :water-to-wine {:prereqs {:purify-water true, :mature true}},
+   :mature {:prereqs {:season true, :decay false}, :cost 1}, :seek-food {:cost 1}, :season {:prereqs {:test-food true}}, :far-tasting {:prereqs {:magery false, :seek-food true, :seek-air false}}, :ignite-fire {:cost 1}, :create-food {:prereqs {:cook true, :seek-food true}}, :test-food {:cost 1}, :create-fire {:prereqs {:seek-fire true, :ignite-fire true}, :cost 1}, :seek-air {:cost 1}, :purify-water {:prereqs {:seek-water true}, :cost 1}}
+
+  (defn- debug
+    [exp & tag]
+    (println tag exp)
+    exp)
+
+  (meets-prerequisites? prereq->cleared? prereqs))

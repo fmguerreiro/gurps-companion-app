@@ -115,7 +115,7 @@
    :skills []
 
    :spells {}
-   :spell-costs {:sense-spirit {:cost 1}, :warmth {:cost 2}, :golem {:cost 4}, :fireball {:cost 10}} ;; TODO: remove
+   :spell-costs {}
 
    :languages []
 
