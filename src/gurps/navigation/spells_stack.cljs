@@ -8,6 +8,7 @@
             [gurps.widgets.character-icon :refer [character-icon]]
             [gurps.pages.character.spells.groups :refer [spell-groups-page]]
             [gurps.pages.character.spells.details :refer [spell-details-page]]
+            [gurps.pages.character.spells.character :refer [character-spells-page]]
             [taoensso.timbre :as log]))
 
 (defonce Stack (rnn-stack/createNativeStackNavigator))
@@ -26,10 +27,14 @@
 (defn spells-stack
   []
   (r/with-let [spell-group-component   (fn [props] (r/as-element [spell-groups-page props]))
-               spell-details-component (fn [props] (r/as-element [spell-details-page props]))]
-               ;; character-add-skill-spec-component (fn [props] (r/as-element [character-add-skill-spec-page props])
+               spell-details-component (fn [props] (r/as-element [spell-details-page props]))
+               character-spells-component (fn [props] (r/as-element [character-spells-page props]))]
 
     [:> Stack.Navigator
+     [:> Stack.Screen {:name      (i18n/label :t/grimoire)
+                       :component character-spells-component
+                       :options   options}]
+
      [:> Stack.Screen {:name      (i18n/label :t/spells)
                        :component spell-group-component
                        :options   options}]
@@ -41,9 +46,3 @@
                                       (->js
                                        (merge options
                                               {:title (i18n/label (keyword :t (str "spell-" id)))}))))}]]))
-
-     ;; [:> Stack.Screen {:name      (i18n/label :t/add-skill-specialization)
-     ;;                        :component character-add-skill-spec-component
-     ;;                        :options    {:headerRight (header-icon)
-     ;;                                    :headerTitleStyle header-title-style
-     ;;                                    :headerTitleAlign "center"}}]

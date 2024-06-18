@@ -56,22 +56,6 @@
                          (when prereq-cleared? " bg-green-100"))}
      [:> text (i18n/label :t/num-spells {:college college :count num})]])) ;; TODO: add navigation button to college page
 
-;; TODO: move this to spells/list.cljs or something
-(rf/reg-sub
- :spells
- :<- [:spell-costs]
- (fn [spell-costs]
-   (reduce (fn [acc [k {:keys [cost]}]]
-             (assoc-in acc [k :lvl] (+ 10 cost))) ;; TODO: proper calculation, also check if it's vh, also need to fetch iq + magery
-           {}
-           spell-costs)))
-
-;; TODO: move this to spells/list.cljs or something
-(rf/reg-sub
- :spell-costs
- (fn [db]
-   (get-in db [:spell-costs] {})))
-
 (rf/reg-sub
  :spells/count-per-college
  :<- [:spells]
@@ -222,6 +206,7 @@
  (fn [db [_ spell-k prereq-k prereq-cleared?]]
    (assoc-in db [:spell-costs spell-k :prereqs prereq-k] prereq-cleared?)))
 
+;; BUG: sometimes the spell will be purchaseable when it shouldnt
 (defn- meets-prerequisites?
   [prereq->cleared? prereqs]
   (let [ps (if (and (coll? prereqs) (= 1 (count prereqs))) (first prereqs) prereqs)]
