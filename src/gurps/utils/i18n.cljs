@@ -1,6 +1,7 @@
 (ns gurps.utils.i18n
   (:require ["i18n-js" :as i18n]
-            [clojure.string :as string]))
+            [clojure.string :as string]
+            [cljs-bean.core :refer [->js]]))
 
 ;; original source:
 ;; https://github.com/status-im/status-mobile/blob/4469717cc13b5c23ba687e085319e36e640e8b2d/src/utils/i18n.cljs
@@ -31,10 +32,10 @@
     (let [{:keys [delimiter separator]} delimeters]
       (.toNumber i18n
                  (string/replace number #"," ".")
-                 (clj->js {:precision 10,
-                           :strip_insignificant_zeros true,
-                           :delimiter delimiter,
-                           :separator separator})))))
+                 (->js {:precision 10,
+                        :strip_insignificant_zeros true,
+                        :delimiter delimiter,
+                        :separator separator})))))
 
 (def default-option-value "<no value>")
 
@@ -50,7 +51,7 @@
   ([path options]
    (if (exists? (.t i18n))
      (let [options (update options :amount label-number)]
-       (.t i18n (name path) (clj->js (label-options options))))
+       (.t i18n (name path) (->js (label-options options))))
      (name path))))
 
 (def label (memoize label-fn))
@@ -63,7 +64,7 @@
 (defn label-pluralize
   [amount path & options]
   (if (exists? (.t i18n))
-    (.p i18n amount (name path) (clj->js options))
+    (.p i18n amount (name path) (->js options))
     (name path)))
 
 (def locale (.-locale i18n))

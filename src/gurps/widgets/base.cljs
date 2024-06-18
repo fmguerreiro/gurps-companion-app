@@ -10,3 +10,4 @@
 
 (def section-list rn/SectionList)
 (def flat-list (r/adapt-react-class rn/FlatList))
+(def scroll-view (r/adapt-react-class rn/ScrollView))

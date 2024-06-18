@@ -3,6 +3,7 @@
             [re-frame.core :as rf]
             [gurps.utils.i18n :as i18n]
             ["twrnc" :refer [style] :rename {style tw}]
+            [gurps.utils.helpers :refer [->int]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
             [gurps.widgets.base :refer [view text]]))
 
@@ -28,4 +29,4 @@
      [:> text {:style (tw "text-lg underline")} (if upgradable? (calc-val attr value cost) value)]
      (when upgradable?
        [bracketed-numeric-input {:val            cost
-                                 :on-change-text #(rf/dispatch [:attribute-costs/update attr (js/parseInt %)])}])]))
+                                 :on-change-text #(rf/dispatch [:attribute-costs/update attr (->int %)])}])]))

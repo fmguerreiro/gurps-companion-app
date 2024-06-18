@@ -27,13 +27,10 @@
   ([form separator pre]
    (mapcat (fn [[k v]]
              (let [prefix (if pre (str pre separator (name k)) (name k))]
-               (if (map? v)
+               (if (and (map? v) (seq v))
                  (flatten-map v separator prefix)
                  [[(keyword prefix) v]])))
            form)))
-
-;; TODO
-;; ((keyword :languages :1) (flatten-map app-db "/"))
 
 (rf/reg-event-fx
  :initialize-storage
@@ -58,6 +55,8 @@
                                 :value root-state}}))
 
 (comment
+
+  (contains? (into #{} (keys (flatten-map app-db "/"))) :spell-costs)
 
   (def pre-process #js {:type "state", :data #js {:state #js {:stale false, :type "tab", :key "tab-gTuB1_sKhODGh83aPktB4", :index 1, :routeNames #js ["Skills-Root" "Stats" "Items"], :history #js [#js {:type "route", :key "Skills-Root-m0VkiI9Z_bgThxv3ZVO6S"} #js {:type "route", :key "Stats-PV-3SHFTWsT63FbCt8XIj"}], :routes #js [#js {:name "Skills-Root", :key "Skills-Root-m0VkiI9Z_bgThxv3ZVO6S", :params nil} #js {:name "Stats", :key "Stats-PV-3SHFTWsT63FbCt8XIj", :params nil} #js {:name "Items", :key "Items-c2mc0i77aoybuhCI-LFvj", :params nil}]}}})
 

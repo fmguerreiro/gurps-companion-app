@@ -1,7 +1,7 @@
 (ns gurps.setup.i18n-resources
-  (:require
-    [gurps.utils.i18n :as i18n]
-    [clojure.string :as string]))
+  (:require [clojure.string :as string]
+            [cljs-bean.core :refer [->js]]
+            [gurps.utils.i18n :as i18n]))
 
 ;; original code from
 ;; https://github.com/status-im/status-mobile/blob/4469717cc13b5c23ba687e085319e36e640e8b2d/src/status_im/setup/i18n_resources.cljs
@@ -75,7 +75,7 @@
                                     (string/replace "-" "_")
                                     keyword)))))
 
-(i18n/setup (name default-device-language) (clj->js translations-by-locale))
+(i18n/setup (name default-device-language) (->js translations-by-locale))
 
 (defn load-language
   [lang]
