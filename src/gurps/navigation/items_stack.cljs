@@ -24,7 +24,8 @@
                      :component melee-weapons-component}]
 
      [:> Tab.Screen {:name      (i18n/label :t/items)
-                     :component possessions-component}]
+                     :component possessions-component
+                     :options   {:title (i18n/label :t/armor-possessions)}}]
 
      [:> Tab.Screen {:name      (i18n/label :t/ranged-weapons)
                      :component ranged-weapons-component}]]))

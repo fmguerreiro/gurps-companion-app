@@ -79,8 +79,6 @@
 (defn character-items-page
   []
   [:> view {:style (tw "flex flex-col bg-white gap-4 flex-grow p-2")}
-   [:> text {:style (tw "font-bold text-center uppercase")} (i18n/label :t/armor-possessions)]
-
    [header]
 
    [items]
