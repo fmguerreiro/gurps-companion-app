@@ -12,7 +12,7 @@
             [gurps.widgets.underlined-input :refer [underlined-input]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
             [gurps.pages.character.widgets.helpers :refer [generify-key]]
-            [gurps.pages.character.utils.skills :refer [skills difficulties] :rename {skills skill-map}]
+            [gurps.pages.character.utils.skills :refer [skills difficulties lvl-with-difficulty lvl-with-cost] :rename {skills skill-map}]
             [gurps.pages.character.widgets.attribute :refer [key->i18n-label]]
             [gurps.pages.character.widgets.attributes] ;; NOTE: makes sure the subs are registered
             [clojure.string :as str]
@@ -45,27 +45,6 @@
   "Get the highest attribute value"
   [attr-map attrs]
   (apply max (map (fn [attr] (get attr-map attr)) (if (seqable? attrs) attrs [attrs]))))
-
-(defn- difficulty-mod
-  "Adjusts the value based on the difficulty level"
-  [val diff]
-  (cond (= diff :e) val
-        (= diff :a) (dec val)
-        (= diff :h) (- val 2)
-        (= diff :v) (- val 3)))
-
-(defn cost-mod
-  "Adjusts the value based on the cost"
-  [base n]
-  (let [increment (cond
-                    (<= n 1) 0
-                    (<= n 3) 1
-                    (<= n 4) 2
-                    (<= n 8) 3
-                    (<= n 12) 4
-                    (<= n 16) 5
-                    :else (+ 5 (quot (- n 16) 4)))]
-    (+ base increment)))
 
 (defn- skill-lvl
   [skill-key]
@@ -191,8 +170,8 @@
      (->> skills
           (map #(merge % ((generify-key (:k %)) skill-map)))
           (map #(merge % {:attr-lvl (best-attr attrs (:attr %))}))
-          (map #(merge % {:diff-lvl (difficulty-mod (:attr-lvl %) (:diff %))}))
-          (map #(merge % {:lvl (cost-mod (:diff-lvl %) (:cost %))}))
+          (map #(merge % {:diff-lvl (lvl-with-difficulty (:attr-lvl %) (:diff %))}))
+          (map #(merge % {:lvl (lvl-with-cost (:diff-lvl %) (:cost %))}))
           (reduce #(assoc %1 (:k %2) %2) {})))))
 
 (rf/reg-event-fx

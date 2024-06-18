@@ -7,6 +7,8 @@
             [gurps.widgets.add-button :refer [add-button]]
             [gurps.widgets.base :refer [view flat-list scroll-view text button]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
+            [gurps.pages.character.utils.skills :refer [lvl-with-difficulty lvl-with-cost]]
+            [gurps.pages.character.utils.spells :refer [vh-spells]]
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [->int]]
             [gurps.utils.debounce :refer [debounce-and-dispatch]]))
@@ -66,14 +68,31 @@
      [:> view {:style (tw "absolute bottom-4 right-4")}
       [add-button {:on-click #(-> nav (.push (i18n/label :t/spells)))}]]]))
 
+;; TODO: move this to an advantages page
+(rf/reg-sub
+ :advantages
+ (fn [db]
+   (get-in db [:advantages] {:magery 1})))
+
+(defn spell-lvl
+  [spell-k lvl cost]
+  (lvl-with-cost
+   (lvl-with-difficulty lvl (if (spell-k vh-spells) :vh :h))
+   cost))
+
+;; TODO: there is also "power investiture" for clerical spells (use that lvl instead of magery for clerical-type spells)
 (rf/reg-sub
  :spells
  :<- [:spell-costs]
- (fn [spell-costs]
-   (reduce (fn [acc [k {cost :cost}]]
-             (update-in acc [k] merge {:lvl (+ 10 cost) :cost cost})) ;; TODO: proper lvl calculation, also check if it's vh, also need to fetch iq + magery
-           {}
-           spell-costs)))
+ :<- [:advantages]
+ :<- [:attributes/int]
+ (fn [[spell-costs advantages int]]
+   (let [{mag :magery, :or {mag 0}} advantages
+         lvl (fn [k cost] (spell-lvl k (+ mag int) cost))]
+     (reduce (fn [acc [k {cost :cost}]]
+               (update-in acc [k] merge {:lvl (lvl k cost) :cost cost}))
+             {}
+             spell-costs))))
 
 (rf/reg-sub
  :spell-costs

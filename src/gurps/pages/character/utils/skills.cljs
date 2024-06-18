@@ -30,6 +30,27 @@
 
 (def difficulties {:e :easy :a :average :h :hard :v :very-hard})
 
+(defn lvl-with-difficulty
+  "Adjusts the lvl based on the difficulty"
+  [lvl diff]
+  (cond (= diff :e) lvl
+        (= diff :a) (dec lvl)
+        (= diff :h) (- lvl 2)
+        (= diff :v) (- lvl 3)))
+
+(defn lvl-with-cost
+  "Adjusts the lvl based on the cost"
+  [curr-lvl cost]
+  (let [increment (cond
+                    (<= cost 1) 0
+                    (<= cost 3) 1
+                    (<= cost 4) 2
+                    (<= cost 8) 3
+                    (<= cost 12) 4
+                    (<= cost 16) 5
+                    :else (+ 5 (quot (- cost 16) 4)))]
+    (+ curr-lvl increment)))
+
 (def categories [:animal :arts :athletics :business :combat-melee :combat-ranged :craft :criminal :invention :esoteric :everyman :knowledge :medical :military :science :occult :outdoor :plant :police :repair :scholar :social :humanities :spy :technical :transportation])
 
 (defn calc-hoc [keys subtrahend]
