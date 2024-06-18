@@ -1,6 +1,7 @@
 (ns gurps.navigation.spells-stack
   (:require ["@react-navigation/native-stack" :as rnn-stack]
             ["twrnc" :refer [style] :rename {style tw}]
+            [cljs-bean.core :refer [->js]]
             [reagent.core :as r]
             [gurps.utils.i18n :as i18n]
             [gurps.widgets.base :refer [view]]
@@ -9,7 +10,7 @@
             [gurps.pages.character.spells.details :refer [spell-details-page]]
             [taoensso.timbre :as log]))
 
-(defonce SkillStack (rnn-stack/createNativeStackNavigator))
+(defonce Stack (rnn-stack/createNativeStackNavigator))
 
 (def header-title-style (tw "text-xl font-bold text-center capitalize"))
 
@@ -28,17 +29,20 @@
                spell-details-component (fn [props] (r/as-element [spell-details-page props]))]
                ;; character-add-skill-spec-component (fn [props] (r/as-element [character-add-skill-spec-page props])
 
-    [:> SkillStack.Navigator
-     [:> SkillStack.Screen {:name      (i18n/label :t/spells)
-                            :component spell-group-component
-                            :options   options}]
+    [:> Stack.Navigator
+     [:> Stack.Screen {:name      (i18n/label :t/spells)
+                       :component spell-group-component
+                       :options   options}]
 
-     [:> SkillStack.Screen {:name      (i18n/label :t/spell-details)
-                            :component spell-details-component
-                            :options   (fn [props] ;; TODO: this is meant to set the header title to the spell name, but doesnt seem to be working for some reason
-                                         (merge options {:title (-> ^js props .-route .-params .-id)}))}]]))
+     [:> Stack.Screen {:name      (i18n/label :t/spell-details)
+                       :component spell-details-component
+                       :options   (fn [props]
+                                    (let [id (-> ^js props .-route .-params .-id)]
+                                      (->js
+                                       (merge options
+                                              {:title (i18n/label (keyword :t (str "spell-" id)))}))))}]]))
 
-     ;; [:> SkillStack.Screen {:name      (i18n/label :t/add-skill-specialization)
+     ;; [:> Stack.Screen {:name      (i18n/label :t/add-skill-specialization)
      ;;                        :component character-add-skill-spec-component
      ;;                        :options    {:headerRight (header-icon)
      ;;                                    :headerTitleStyle header-title-style
