@@ -10,7 +10,7 @@
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [str->key key->str]]
             [gurps.pages.character.utils.skills :refer [skills grouped-skills difficulties default-skill-lvl skill->txt]]
-            [gurps.widgets.base :refer [view text button section-list]]))
+            [gurps.widgets.base :refer [view text button section-list-raw]]))
 
 (defn- keyword->title
   [keyword]
@@ -64,7 +64,7 @@
                default-lvls (some-> (rf/subscribe [:skills/defaults]) deref)
                render-item  #(row % default-lvls)]
     (r/create-element
-     section-list
+     section-list-raw
      #js {:sections (vec->js-array sections)
           :renderSectionHeader section-header
           :keyExtractor (fn [item idx] (str item "-" idx))

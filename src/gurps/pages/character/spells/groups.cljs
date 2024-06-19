@@ -2,54 +2,46 @@
 ;; Each spell is a button that can be clicked to view the details of that spell and add it to the character
 
 (ns gurps.pages.character.spells.groups
-  (:require [clojure.string :as str]
-            [reagent.core :as r]
-            ["@react-navigation/native" :as rnn]
+  (:require ["@react-navigation/native" :as rnn]
             ["twrnc" :refer [style] :rename {style tw}]
+            [cljs-bean.core :refer [->clj]]
+            [reagent.core :as r]
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [str->key key->str]]
-            [gurps.pages.character.utils.spells :refer [spells spells-by-college]]
-            [gurps.pages.character.utils.skills :refer [skill->txt]]
+            [gurps.pages.character.utils.spells :refer [spells-by-college]]
             [gurps.widgets.base :refer [view text button section-list]]
-            [taoensso.timbre :as log]
             [re-frame.core :as rf]))
 
-;; TODO: helper
-(defn- keyword->title
-  [keyword]
-  (let [namespace (namespace keyword)
-        name (name keyword)
-        text (if namespace namespace name)]
-    (str/replace text #"-" " ")))
-
-;; TODO: helper
+;; TODO: put in helper file
 (defn- vec->js-array [vec]
   (let [arr #js []]
     (doseq [x vec]
       (.push arr x))
     arr))
+
 (defn- row
-  [props expanded-colleges]
+  [item expanded-colleges spells]
   (let [navigation (rnn/useNavigation)
-        item-txt  (.-name (.-item ^js props))
-        college   (.-college (.-item ^js props))
-        expanded? (get-in expanded-colleges [college :expanded?] false)
-        item-key  (str->key item-txt)]
+        item-txt   (:name item)
+        college    (:college item)
+        expanded?  (get-in expanded-colleges [college :expanded?] false)
+        item-key   (str->key item-txt)]
     (r/as-element
      (if (not expanded?)
        [:<>]
 
        [:> button {:key (str item-txt "-btn")
-                   :style (tw "w-full px-4 py-2 font-medium text-left rtl:text-right border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white")
+                   :style (tw (str "w-full px-4 py-2 font-medium text-left rtl:text-right border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white")
+                              (when (item-key spells) " bg-green-100"))
                    :onPress #(-> navigation (.navigate (i18n/label :t/spell-details) #js {:id item-txt}))}
         [:> view {:style (tw "flex flex-row justify-between")}
          [:> text {:style (tw "capitalize")}
           (i18n/label (keyword :t (str "spell-" item-txt)))]]]))))
 
 (defn- section-header
-  [props expanded-colleges]
-  (let [college   (-> ^js props .-section .-title)
-        expanded? (get-in expanded-colleges [college :expanded?] false)]
+  [section expanded-sections]
+  (let [college   (:title section)
+        expanded? (get-in expanded-sections [college :expanded?] false)]
     (r/as-element
      [:> button {:style (tw "h-8 bg-white")
                  :onPress #(rf/dispatch [:college-list/toggle-section college])}
@@ -71,31 +63,36 @@
                        vec->js-array)}))
    grouped-map))
 
-(+ 1 2)
 (defn spell-groups
   []
-  (let [sections       (get-sections spells-by-college)
-        key-extractor  (fn [item] (str (.-name ^js item) "-" (.-college ^js item) "-row"))
-        expanded-colleges (some-> (rf/subscribe [:college-list/expanded]) deref)
-        render-item    (fn [props] (row props expanded-colleges))
-        render-section (fn [props] (section-header props expanded-colleges))]
+  (let [expanded-sections (some-> (rf/subscribe [:college-list/expanded]) deref)
+        spells            (some-> (rf/subscribe [:spells]) deref)]
+    [section-list
+     {:sections (vec->js-array (get-sections spells-by-college))
 
-    (r/create-element
-     section-list
-     #js {:sections (vec->js-array sections)
-          :renderSectionHeader render-section
-          :keyExtractor key-extractor
-          :renderItem render-item})))
+      :render-section-header
+      (fn [item-info-js]
+        (let [item-info (->clj item-info-js :keywordize-keys true)
+              {data :section} item-info]
+          (section-header data expanded-sections)))
+
+      :key-extractor
+      (fn [item-js idx]
+        (-> item-js
+            (->clj :keywordize-keys true)
+            :name
+            (str "-" idx "-row")))
+
+      :render-item
+      (fn [item-info-js]
+        (let [item-info (->clj item-info-js :keywordize-keys true)
+              {data :item} item-info]
+          (row data expanded-sections spells)))}]))
 
 (defn spell-groups-page
   []
   [:> view {:style (tw "flex flex-col bg-white flex-1 px-2")}
    [spell-groups]])
-
-(rf/reg-sub
- :college-list/expanded?
- (fn [db [college]]
-   (get-in db [:spell-list college :expanded?] false)))
 
 (rf/reg-sub
  :college-list/expanded
