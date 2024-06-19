@@ -117,10 +117,12 @@
 
 (defn- has-spell-prerequisite
   [k prereq nav]
-  (let [spell (some-> (rf/subscribe [:spells]) deref prereq)]
+  (let [spell (some-> (rf/subscribe [:spells]) deref prereq)
+        ;; e.g. advantages/magery -> advantage, skills/writing -> skill
+        type  (or (some-> prereq namespace (str/replace #"s$" "")) "spell")
+        name  (name prereq)]
     (rf/dispatch [:spells/update-prerequisites k prereq (some? spell)])
-    ;; TODO: sometimes this is not a spell, need to go to advantages / skills page instead
-    [:> button {:onPress #(-> nav (.push (i18n/label :t/spell-details) #js {:id (str (symbol prereq))}))}
+    [:> button {:onPress #(-> nav (.push (i18n/label (keyword :t (str type "-details"))) #js {:id name}))}
      [:> view {:style (tw (str "flex flex-row flex-grow justify-between items-center"
                                (when spell " bg-green-100")))}
       [:> text (i18n/label (keyword :t (key->i18n-label prereq)))]
