@@ -5059,5 +5059,6 @@
   "spell-lightning-missiles-cost": "4 to cast. 2 to maintain. Cost doubles if the missiles to be fired are nonmetallic.",
   "spell-lightning-missiles-time": "3 seconds.",
 
-  "advantage-magery": "Magery"
+  "advantage-magery": "Magery",
+  "advantage-animal-empathy": "Animal Empathy"
 }

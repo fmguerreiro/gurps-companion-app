@@ -150,6 +150,14 @@
    (get-in db [:skills] [])))
 
 (rf/reg-sub
+ :skill-map
+ :<- [:skills]
+ (fn [skills]
+   (->> skills
+        (map #(:k %))
+        set)))
+
+(rf/reg-sub
  :skill
  :<- [:skills]
  (fn [skills [_ idx]]

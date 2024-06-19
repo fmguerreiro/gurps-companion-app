@@ -61,7 +61,7 @@
         skill           (skill-key skills)
         specializations (:specializations skill)
         default-lvls    (some-> (rf/subscribe [:skills/defaults]) deref)
-        skills          (some->> (rf/subscribe [:skills]) deref (map #(:k %)) set)
+        skills          (some-> (rf/subscribe [:skill-map]) deref)
         navigation      (rnn/useNavigation)]
     [:> view {:style (tw "p-2 bg-white flex flex-col gap-2 flex-grow")}
      ;; description

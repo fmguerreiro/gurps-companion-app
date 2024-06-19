@@ -12,7 +12,6 @@
             [gurps.pages.character.utils.spells :refer [spells-by-name spells-to-colleges]]
             [gurps.pages.character.widgets.helpers :refer [long-attr]]
             [gurps.utils.i18n :as i18n]
-            [gurps.utils.debounce :refer [debounce-and-dispatch]]
             [clojure.string :as str]
             [re-frame.core :as rf]
             [taoensso.timbre :as log]))
@@ -27,20 +26,28 @@
           (= "tl" name) "tech-level"
           :else (str "spell-" (str/join "-" (filter some? [type name])))))) ;; TODO: make clickable
 
-;; TODO: skills/attributes/advantages
 (defn- lvl-prerequisite
   [spell-k prereq]
-  (let [[k level]        prereq
-        spell-lvl       (some-> (rf/subscribe [:spells]) deref (keyword (name k)) :lvl)
-        prereq-cleared? (>= spell-lvl level)]
-        ;; TODO:
-        ;; advantages (some-> (rf/subscribe [:advantages]) deref)
-        ;; skills     (some-> (rf/subscribe [:skills]) deref)
+  (let [[k lvl]         prereq
+        prereq-cleared? (some-> (rf/subscribe [:spell/clears-prereq? k lvl]) deref)]
     (rf/dispatch [:spells/update-prerequisites spell-k (keyword (name k)) prereq-cleared?])
     [:> view {:style (tw (str "flex flex-row flex-grow justify-between"
                               (when prereq-cleared? " bg-green-100")))}
      [:> text (i18n/label (keyword :t (key->i18n-label k)))]
-     [:> text level]]))
+     [:> text lvl]]))
+
+(rf/reg-sub
+ :spell/clears-prereq?
+ :<- [:spells]
+ :<- [:advantages]
+ :<- [:skills/lvls]
+ (fn [[spells advantages skills] [_ k lvl]]
+   (let [type (keyword (namespace k))
+         name (keyword (name k))]
+     (>= (cond (= :advantages type) (name advantages) ;; TODO: maybe advantages will change form
+               (= :skills type) (get-in skills [name :lvl])
+               :else (get-in spells [name :lvl]))
+         lvl))))
 
 (defn- num-spells-k
   [num college]
@@ -112,10 +119,11 @@
   [k prereq nav]
   (let [spell (some-> (rf/subscribe [:spells]) deref prereq)]
     (rf/dispatch [:spells/update-prerequisites k prereq (some? spell)])
+    ;; TODO: sometimes this is not a spell, need to go to advantages / skills page instead
     [:> button {:onPress #(-> nav (.push (i18n/label :t/spell-details) #js {:id (str (symbol prereq))}))}
      [:> view {:style (tw (str "flex flex-row flex-grow justify-between items-center"
                                (when spell " bg-green-100")))}
-      [:> text (i18n/label (str "spell-" (symbol prereq)))]
+      [:> text (i18n/label (keyword :t (key->i18n-label prereq)))]
       [:> text {:style (tw "font-bold mb-0.5")} ">"]]]))
 
 (defn- spell-prerequisite
@@ -192,6 +200,15 @@
         [:> view {:style (tw "absolute bottom-4 right-4")}
          [add-button {:on-click #(rf/dispatch [:spells/add k])}]])]]))
 
+(defn remove-keys
+  [key-set data]
+  (clojure.walk/prewalk
+   (fn [node]
+     (if (map? node)
+       (apply dissoc node key-set)
+       node))
+   data))
+
 (rf/reg-event-fx
  :spells/add
  (fn [{:keys [db]} [_ k]]
@@ -199,14 +216,13 @@
    (let [new-db (assoc-in db [:spell-costs k :cost] 1)]
      {:db new-db
       :effects.async-storage/set {:k     :spell-costs
-                                  :value (get-in new-db [:spell-costs])}})))
+                                  :value (remove-keys [:prereqs] (get-in new-db [:spell-costs]))}})))
 
 (rf/reg-event-db
  :spells/update-prerequisites
  (fn [db [_ spell-k prereq-k prereq-cleared?]]
    (assoc-in db [:spell-costs spell-k :prereqs prereq-k] prereq-cleared?)))
 
-;; BUG: sometimes the spell will be purchaseable when it shouldnt
 (defn- meets-prerequisites?
   [prereq->cleared? prereqs]
   (let [ps (if (and (coll? prereqs) (= 1 (count prereqs))) (first prereqs) prereqs)]
@@ -216,7 +232,7 @@
                                 (or (keyword? second)
                                     (vector? first))  (->> ps
                                                            (map #(meets-prerequisites? prereq->cleared? %))
-                                                           (map false?)
+                                                           (filter false?)
                                                            count
                                                            (= 0))
                                 :else                 (get prereq->cleared? (keyword (name first)) false)))

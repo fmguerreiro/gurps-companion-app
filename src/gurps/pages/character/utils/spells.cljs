@@ -290,7 +290,7 @@
    {:name :slow-fire, :prerequisites [:extinguish-fire], :ref "Magic p. 73"}
    {:name :great-ward, :prerequisites [[:advantages/magery 2] :ward], :ref "Magic p. 122"}
    {:name :scrywall, :prerequisites [:scryguard], :ref "Magic p. 122; Thaumatology: Urban Magics, p. 33"}
-   {:name :purify-signal, :prerequisites [:purify-air [:world/tl 6]], :ref "Classic: Technomanser p 17"}
+   {:name :purify-signal, :prerequisites [:purify-air [:world/tl 6]], :ref "Classic: Technomancer p 17"}
    {:name :plane-shift, :prerequisites [:planar-summons], :ref "Basic Set p. 247; Magic p. 83"}
    {:name :windstorm, :prerequisites [:shape-air], :ref "Magic p. 25"}
    {:name :boost-intelligence, :prerequisites [:wisdom], :ref "Magic p. 37"}
@@ -409,7 +409,7 @@
    {:name :conceal-magic, :prerequisites [:detect-magic], :ref "Magic p. 122, Thaumatology: Urban Magics"}
    {:name :resist-disease, :prerequisites [#{:remove-contagion :vigor}], :ref "Magic p. 90"}
    {:name :light-tread, :prerequisites [:apportation :shape-earth], :ref "Magic p. 145"}
-   {:name :beast-rouser, :prerequisites [#{:vexation :animal-empathy}], :ref "Magic p. 30"}
+   {:name :beast-rouser, :prerequisites [#{:vexation :advantages/animal-empathy}], :ref "Magic p. 30"}
    {:name :rider-within, :prerequisites [[2 :animal]], :ref "Magic p. 31"}
    {:name :mage-sight, :prerequisites [:detect-magic], :ref "Magic, p. 102"}
    {:name :hex, :prerequisites [:enchant], :ref "Magic p. 57"}
@@ -474,11 +474,11 @@
    {:name :gauntness, :prerequisites [[:advantages/magery 2] :earth-to-air :destroy-water :hunger [3 :body-control]], :ref "Magic, p. 43"}
    {:name :prehistory, :prerequisites [:ancient-history], :ref "Magic, p. 104"}
    {:name :heat, :prerequisites [:create-fire :shape-fire], :ref "Basic Set, p. 247; Magic p. 74"}
-   {:name :beast-soother, :prerequisites [#{:persuasion :animal-empathy}], :ref "Magic p. 29"}
+   {:name :beast-soother, :prerequisites [#{:persuasion :advantages/animal-empathy}], :ref "Magic p. 29"}
    {:name :mass-daze, :prerequisites [:daze [:attributes/int 13]], :ref "Basic Set p. 251; Magic p. 137"}
    {:name :wizard-hand, :prerequisites [:manipulate :far-feeling], :ref "Magic, p. 104"}
    {:name :communication, :prerequisites [:wizard-eye :far-hearing :voices :simple-illusion], :ref "Magic, p. 48"}
-   {:name :seek-emitter, :prerequisites [[:world/tl 6]], :ref "Classic: Technomanser p 17"}
+   {:name :seek-emitter, :prerequisites [[:world/tl 6]], :ref "Classic: Technomancer p 17"}
    ;;{:name :stroke-of-lightning, :prerequisites [:ball-of-lightning :flaming-armor :rain-of-acid :breathe-fire :flaming-missiles :rain-of-fire :breathe-steam :flaming-weapon-rive :burning-touch :lightning-armor :shocking-touch :continual-sunlight :lightning-missiles :spark-cloud :explosive-fireball :lightning-stare :spark-storm :explosive-lightning :lightning-weapon :spit-acid :fire-cloud :lightning-whip :wall-of-lightning], :ref "Magic Styles: Dungeon Magic p. 19"}
    {:name :materialize, :prerequisites [:summon-spirit], :ref "Magic p. 150"}
    {:name :cure-radiation, :prerequisites [:resist-radiation :major-healing], :ref "Magic p. 182"}
@@ -682,7 +682,7 @@
    {:name :glow, :prerequisites [:continual-light], :ref "Magic p. 112"}
    {:name :sunbolt, :prerequisites [[6 :light-and-darkness] :sunlight], :ref "Magic p. 114"}
    {:name :shapeshifting, :prerequisites [[:advantages/magery 1] [6 :animal]], :ref "Magic p. 32-33"}
-   {:name :purify-air, :prerequisites [], :ref "Basic Set p. 243; Magic p. 23; Classic: Technomanser p 17"}
+   {:name :purify-air, :prerequisites [], :ref "Basic Set p. 243; Magic p. 23; Classic: Technomancer p 17"}
    {:name :instant-restoration, :prerequisites [[:advantages/magery 2] :restoration], :ref "Magic p. 93"}
    {:name :flaming-weapon, :prerequisites [[:advantages/magery 2] :heat], :ref "Magic p. 75"}
    {:name :extinguish-fire, :prerequisites [:ignite-fire], :ref "Basic Set, p. 247; Magic p. 72"}

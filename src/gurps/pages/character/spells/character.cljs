@@ -92,7 +92,7 @@
      (reduce (fn [acc [k {cost :cost}]]
                (update-in acc [k] merge {:lvl (lvl k cost) :cost cost}))
              {}
-             spell-costs))))
+             (filter #(some? (:cost (val %))) spell-costs)))))
 
 (rf/reg-sub
  :spell-costs
