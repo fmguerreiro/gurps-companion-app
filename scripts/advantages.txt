@@ -475,7 +475,7 @@ discretion, you may trade in any
 remaining points for money (see
 p. 26), reflecting parting gifts.
 
-Familiars
+Familiars
 Wizards, telepaths, and so on are
 often supernaturally linked to special
 Allies known as familiars. These are
@@ -619,7 +619,7 @@ make plans or recall information
 (GM’s decision), at no penalty to
 additional actions.
 
-In order to do anything that
+In order to do anything that
 depends on someone else’s reactions,
 you must deliberately “slow down”
 and function at his speed. This applies
@@ -879,7 +879,7 @@ see visions or witness omens that have
 some bearing on future events. Work
 out the details with your GM; for
 
-instance, the God of Fire might
+instance, the God of Fire might
 require you to stare into flames for an
 hour, after which you hear a voice in
 the flames. The GM rolls secretly
@@ -1060,7 +1060,7 @@ you are wealthy, you might be expected to give gifts to your hosts), but
 there are side benefits. Members of
 the group are friendly to each other
 
-(+3 reactions), and may provide
+(+3 reactions), and may provide
 advice, introductions, and small
 loans, if asked. The level of assistance
 might occasionally approach that of
@@ -1163,7 +1163,7 @@ of a cat. Change the damage you inflict
 with a punch or kick from crushing to
 cutting. 5 points.
 
-Talons: Longer claws – up to 12”
+Talons: Longer claws – up to 12”
 long. Change the damage you inflict
 with a punch or kick from crushing to
 your choice of cutting or impaling
@@ -2050,7 +2050,7 @@ implant). The Reprogrammable disadvantage (p. 150) is also common for
 Digital Minds, as is the Automaton
 meta-trait (p. 263), but you do not
 
-have to possess either trait. Many
+have to possess either trait. Many
 advantages are also possible but not
 automatic:
 Computing Power: If you operate
@@ -2299,7 +2299,7 @@ of your equipment, unless you buy a
 special enhancement). It takes one second and a Concentrate maneuver to
 separate or merge. When your Dupes
 
-merge, your FP and HP are the average
+merge, your FP and HP are the average
 of all your copies’ FP and HP at that
 time. Your combined self remembers
 everything experienced by any Dupe.
@@ -2806,7 +2806,7 @@ constitutes an “attack” is final.
 A normal human can purchase one
 Extra Attack. This lets him attack with
 
-both hands at once, and represents
+both hands at once, and represents
 unusually good coordination. Supers
 and nonhumans have no such limitation. A super-powered cop could buy
 two Extra Attacks, enabling him to
@@ -2903,7 +2903,7 @@ have more than two legs:
 Three or four legs: If you lose a leg,
 you can continue to move at half
 
-Move (round down). Loss of a second
+Move (round down). Loss of a second
 leg causes you to fall. 5 points.
 Five or six legs: Each leg lost
 reduces Move by 20% until only three
@@ -3255,7 +3255,7 @@ given sufficient time and money –
 invent entirely new gadgets as
 described under Gadgeteering (p. 475).
 
-This trait costs 1 point per gravity
+This trait costs 1 point per gravity
 field with which you have experience.
 For instance, an Earth native who
 works on the moon might have
@@ -3341,7 +3341,7 @@ realistic! The GM may wish to limit it
 further, or forbid it, in a realistic
 campaign.
 
-Gadgeteers and Gizmos
+Gadgeteers and Gizmos
 Those with the Gadgeteer advantage (p. 56) have more latitude. In
 addition to the usual items available, a
 Gadgeteer may specify that his Gizmo
@@ -3485,7 +3485,7 @@ rolls an 11 for the first one, but on the
 second roll, he gets a 14. This is above
 his HT (12), but below his modified
 
-HT (12 + 4 = 16). He passes out, and
+HT (12 + 4 = 16). He passes out, and
 his foes leave him for dead. Roughly a
 day later, he’ll regain consciousness –
 injured, but not dead!
@@ -3840,7 +3840,7 @@ Diffuse Targets (p. 380). Homogenous
 includes the benefits of No Brain and
 No Vitals. This trait is intended for
 
-entities such as iron golems, trees, and
+entities such as iron golems, trees, and
 slimes. 40 points.
 No Blood: You do not rely upon a
 vital bodily fluid (like blood) for survival. You do not bleed (see Bleeding,
@@ -4425,7 +4425,7 @@ more of a handicap in some settings
 than in others. A suggested value is
 -10%.
 
-Maximum Range: You can only
+Maximum Range: You can only
 jump a certain total distance through
 time, or a certain number of
 “removes” between parallel worlds, no
@@ -4779,7 +4779,7 @@ on the setting.
 Magery 0 costs 5 points for all
 mages, but you may apply one of the
 
-limitations below to the 10 points/level
+limitations below to the 10 points/level
 for Magery 1+. Limited Magery is
 sometimes known as “aspected
 Magery.”
@@ -5104,7 +5104,7 @@ attempt to force the subject to act
 against his principles (e.g., commit
 suicide or harm a loved one), roll
 
-another Quick Contest. If your victim
+another Quick Contest. If your victim
 wins, he breaks free. Roll at the
 moment of truth – you can march him
 to the edge of a cliff, but he doesn’t roll
@@ -5347,7 +5347,7 @@ points per tenfold increase in the
 number of people.
 
 
-As a rule, the GM should only permit PCs to buy Mindlinks with Allies,
+As a rule, the GM should only permit PCs to buy Mindlinks with Allies,
 Contacts, and Dependents; duplicates
 (see Duplication, p. 50); and other PCs
 (if their players permit).
@@ -5657,7 +5657,7 @@ basically incalculable), or a true god
 who appears personally to intervene
 on your behalf. 30 points.
 
-Note that the base cost to have a
+Note that the base cost to have a
 deity as a Patron is comparable to that
 for a powerful mundane Patron, but
 divine power requires the Special
@@ -5825,7 +5825,7 @@ direct aid . . . but only when it suits the
 Patron, and always in an untraceable
 way. A Patron like this often regards its
 
-aid as an investment on which it
+aid as an investment on which it
 expects some return; therefore, it
 might not have your best interests at
 heart! Only the GM knows any of these
@@ -6153,7 +6153,7 @@ you would have Acrobatics-12 in a DX
 9 body and Acrobatics-14 in a DX 11
 body.
 
-If you occupy a sentient host, you
+If you occupy a sentient host, you
 have sufficient access to his memories
 for the first few hours of the takeover
 to learn his name and daily routine,
@@ -6875,7 +6875,7 @@ The base cost for Resistant
 depends on the rarity of the effects it
 counteracts:
 
-Very Common: A broad category
+Very Common: A broad category
 within the noxious items described
 above. Example: Metabolic Hazards
 (all threats that only affect the living,
@@ -7270,7 +7270,7 @@ although your skill levels are affected
 by changes to the controlling attribute
 scores.
 
-If the Alternate Form’s racial template has traits that conflict with your
+If the Alternate Form’s racial template has traits that conflict with your
 personal traits, the traits of your
 Alternate Form take precedence. For
 instance, if you become a dolphin with
@@ -7432,7 +7432,7 @@ race with the Morph ability must subtract the point cost of Morph from
 racial cost when determining what
 forms they can assume.
 
-Example: Blue Blobs have a racial
+Example: Blue Blobs have a racial
 Morph ability worth 125 points – the
 basic ability, plus 25 points of extra
 capacity. This lets them assume forms
@@ -8224,7 +8224,7 @@ four levels of a particular Talent.
 However, overlapping Talents can give
 skill bonuses (only) in excess of +4.
 
-Cost of Talents
+Cost of Talents
 The cost of a Talent depends on the
 size of the group of skills affected:
 Small (6 or fewer related skills): 5
@@ -8727,8 +8727,7 @@ You must buy this ability separately for each terrain type.
 
 Terror
 Mental; Supernatural
-30 points + 10 points per
--1 to Fright Check
+30 points + 10 points per -1 to Fright Check
 
 You can unhinge the minds of
 others. There are many way this effect
@@ -8884,7 +8883,7 @@ halve all vision penalties underwater
 as anyone else).
 Cost depends on your capabilities:
 
-You can only see UV, and are blind
+You can only see UV, and are blind
 indoors, underground, or anywhere
 else there is no UV, even when there
 are normal light sources present: 0
@@ -9171,8 +9170,7 @@ heal 1 HP or 1 FP (your choice). You
 cannot raise your HP or FP above normal this way.
 The basic Vampiric Bite described
 above costs 30 points. You may buy
-increased HP drain for 5 points per
-additional HP drained per second; for
+increased HP drain for 5 points per additional HP drained per second; for
 instance, to drain 10 HP per second,
 pay 75 points.
 Vampiric Bite also lets you bite in
@@ -9355,7 +9353,7 @@ Mind Reading with the Sensory enhancement,
 etc.), or visualize it clearly (which is only possible if
 you have visited it previously in person).
 
-You can carry up to Basic Lift
+You can carry up to Basic Lift
 when you travel, plus any Payload
 (p. 74). To carry more, or to bring
 along other people, take the Extra
@@ -9495,7 +9493,7 @@ shorter than one light-second (186,000
 miles, -10 to IQ). This effectively limits
 you to space travel. There is one benefit to Hyperjump: if you possess
 
-Navigation (Hyperspace) skill, you
+Navigation (Hyperspace) skill, you
 may substitute it for IQ. -50% if your
 effective speed is the speed of light
 (every 186,000 miles traveled takes
@@ -9627,7 +9625,7 @@ skill in the interim. This enhancement
 does not let you learn skills from a TL
 higher than your own. +25%.
 
-Special Limitations
+Special Limitations
 Emergencies Only: Your Wild
 Talent only works in life-threatening
 situations, such as mortal combat. To

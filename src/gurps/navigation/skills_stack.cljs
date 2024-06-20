@@ -11,17 +11,6 @@
 
 (defonce Stack (rnn-stack/createNativeStackNavigator))
 
-(def header-title-style (tw "text-xl font-bold text-center capitalize"))
-
-(defn- header-icon
-  []
-  (fn [] (r/as-element [:> view [character-icon]])))
-
-(def options
-  {:headerRight (header-icon)
-   :headerTitleStyle header-title-style
-   :headerTitleAlign "center"})
-
 (defn skill-details-screen
   []
   (r/with-let [skill-details-component (fn [props] (r/as-element [character-add-skill-spec-page props]))]

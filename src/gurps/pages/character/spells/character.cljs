@@ -38,12 +38,13 @@
   (let [name (i18n/label (keyword :t (str "spell-" id)))]
     (r/as-element
      [row
-      [:> text {:style (tw "capitalize")} name]
+      [:> text {:style (tw "capitalize")} name] ;; TODO: make clickable to go to spell details!
       [:> text {:style (tw "capitalize")} lvl]
-      [bracketed-numeric-input {:val            cost
+      [bracketed-numeric-input {:val cost
                                 :on-change-text
                                 #(debounce-and-dispatch [:spells/update-cost (keyword id) (->int %)] 500)}]])))
 
+;; TODO: add a custom empty spell at bottom for the user to input whatever they want
 (defn character-spells-page
   []
   (let [nav    (rnn/useNavigation)
@@ -67,12 +68,6 @@
 
      [:> view {:style (tw "absolute bottom-4 right-4")}
       [add-button {:on-click #(-> nav (.push (i18n/label :t/spells)))}]]]))
-
-;; TODO: move this to an advantages page
-(rf/reg-sub
- :advantages
- (fn [db]
-   (get-in db [:advantages] {:magery 1})))
 
 (defn spell-lvl
   [spell-k lvl cost]

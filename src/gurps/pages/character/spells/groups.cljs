@@ -4,20 +4,13 @@
 (ns gurps.pages.character.spells.groups
   (:require ["@react-navigation/native" :as rnn]
             ["twrnc" :refer [style] :rename {style tw}]
-            [cljs-bean.core :refer [->clj]]
+            [cljs-bean.core :refer [->clj ->js]]
             [reagent.core :as r]
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [str->key key->str]]
             [gurps.pages.character.utils.spells :refer [spells-by-college]]
             [gurps.widgets.base :refer [view text button section-list]]
             [re-frame.core :as rf]))
-
-;; TODO: put in helper file
-(defn- vec->js-array [vec]
-  (let [arr #js []]
-    (doseq [x vec]
-      (.push arr x))
-    arr))
 
 (defn- row
   [item expanded-colleges spells]
@@ -50,25 +43,24 @@
         (i18n/label (keyword :t college))]
        [:> text (if expanded? "▲" "▼")]]])))
 
-(defn- get-sections
-  [grouped-map]
-  (map
-   (fn [x]
-     (let [college   (-> x key key->str)]
-       #js {:title college
-            :data (->> x
-                       val
-                       (map key->str)
-                       (map #(do #js {:college college, :name %}))
-                       vec->js-array)}))
-   grouped-map))
+(def ^:private sections
+  (->> spells-by-college
+       (map
+        (fn [x]
+          (let [college   (-> x key key->str)]
+            #js {:title college
+                 :data (->> x
+                            val
+                            (map key->str)
+                            (map #(do #js {:college college, :name %})))})))
+       ->js))
 
 (defn spell-groups
   []
   (let [expanded-sections (some-> (rf/subscribe [:college-list/expanded]) deref)
         spells            (some-> (rf/subscribe [:spells]) deref)]
     [section-list
-     {:sections (vec->js-array (get-sections spells-by-college))
+     {:sections sections
 
       :render-section-header
       (fn [item-info-js]

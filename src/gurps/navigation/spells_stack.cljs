@@ -10,8 +10,7 @@
             [gurps.pages.character.spells.details :refer [spell-details-page]]
             [gurps.pages.character.spells.character :refer [character-spells-page]]
             [gurps.navigation.skills-stack :refer [skill-details-screen]]
-            [gurps.navigation.advantages-stack :refer [advantage-details-screen]]
-            [taoensso.timbre :as log]))
+            [gurps.navigation.advantages-stack :refer [advantage-details-screen]]))
 
 (defonce Stack (rnn-stack/createNativeStackNavigator))
 
