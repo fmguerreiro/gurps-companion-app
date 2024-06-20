@@ -16,19 +16,25 @@
      [:> view {:style (tw "flex-1 justify-center items-end")} col2])])
 
 (defn- header
-  [{id :title}]
+  [{id :title} expanded?]
   (r/as-element
-   [row
-    [:> text {:style (tw "capitalize font-bold")} (i18n/label (keyword :t id))]]))
+   [:> button {:onPress #(rf/dispatch [:advantage-list/toggle-section id])}
+    [row
+     [:> text {:style (tw "capitalize font-bold")} (i18n/label (keyword :t id))]
+     [:> text (if expanded? "▲" "▼")]]]))
 
 (defn- item
-  [{id :name}]
-  (let [name (i18n/label (keyword :t (str "advantage-" id)))]
+  [{id :name} visible?]
+  (let [name (i18n/label (keyword :t (str "advantage-" id)))
+        nav  (rnn/useNavigation)]
     (r/as-element
-     [row
-      [:> text {:style (tw "capitalize")} name]
-      ;; TODO: needs to be a button
-      [:> text {:style (tw "capitalize")} ">"]])))
+     (if visible?
+       [:<>]
+       ;; else
+       [:> button {:onPress #(-> nav (.navigate (i18n/label :t/advantage-details) #js {:id id}))}
+        [row
+         [:> text {:style (tw "capitalize")} name]
+         [:> text {:style (tw "capitalize")} ">"]]]))))
 
 ;; {:physical [...], :mental [...], ...}
 ;; => #js [{title: "Physical", data: #js [{name: "Acute Hearing", level: "1", cost: "2"}]}, ...]
@@ -43,15 +49,17 @@
   []
   [:> view {:style (tw "flex flex-col bg-white flex-1 px-2")}
 
-   (let [advantages (some-> (rf/subscribe [:advantages]) deref)]
+   (let [advantages        (some-> (rf/subscribe [:advantages]) deref)
+         expanded-sections (some-> (rf/subscribe [:advantage-list/expanded]) deref)]
      [section-list
       {:sections sections
 
        :render-section-header
        (fn [item-info-js]
-         (let [item-info (->clj item-info-js :keywordize-keys true)
-               {data :section} item-info]
-           (header data)))
+         (let [item-info       (->clj item-info-js :keywordize-keys true)
+               {data :section} item-info
+               expanded?       (get-in expanded-sections [(:title data) :expanded?] false)]
+           (header data expanded?)))
 
        :key-extractor
        (fn [item-js idx]
@@ -62,12 +70,23 @@
 
        :render-item
        (fn [item-info-js]
-         (let [item-info (->clj item-info-js :keywordize-keys true)
-               {data :item} item-info]
-           (item data)))}])])
+         (let [item-info    (->clj item-info-js :keywordize-keys true)
+               {data :item} item-info
+               visible?     (get-in expanded-sections [(:type-1 data) :expanded?] false)]
+           (item data visible?)))}])])
 
 ;; TODO: probably need to move this to the first advantage-tabbed page
 (rf/reg-sub
  :advantages
  (fn [db]
    (get-in db [:advantages] {})))
+
+(rf/reg-sub
+ :advantage-list/expanded
+ (fn [db]
+   (get-in db [:advantage-list] {})))
+
+(rf/reg-event-db
+ :advantage-list/toggle-section
+ (fn [db [_ advantage]]
+   (update-in db [:advantage-list advantage :expanded?] not)))
