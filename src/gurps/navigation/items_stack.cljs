@@ -3,6 +3,7 @@
             ["twrnc" :refer [style] :rename {style tw}]
             [reagent.core :as r]
             [gurps.utils.i18n :as i18n]
+            [gurps.navigation.common :refer [options]]
             [gurps.pages.character.items :refer [character-items-page]]
             [gurps.pages.character.items.melee-weapons-page :refer [melee-weapons-page]]
             [gurps.pages.character.items.ranged-weapons-page :refer [ranged-weapons-page]]))
@@ -21,11 +22,14 @@
                                        :headerTitleAlign "center"}}
 
      [:> Tab.Screen {:name      (i18n/label :t/melee-weapons)
-                     :component melee-weapons-component}]
+                     :component melee-weapons-component
+                     :options   options}]
 
      [:> Tab.Screen {:name      (i18n/label :t/items)
                      :component possessions-component
-                     :options   {:title (i18n/label :t/armor-possessions)}}]
+                     :options   (merge options
+                                       {:title (i18n/label :t/armor-possessions)})}]
 
      [:> Tab.Screen {:name      (i18n/label :t/ranged-weapons)
-                     :component ranged-weapons-component}]]))
+                     :component ranged-weapons-component
+                     :options   options}]]))

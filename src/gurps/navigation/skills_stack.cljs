@@ -1,10 +1,8 @@
 (ns gurps.navigation.skills-stack
   (:require ["@react-navigation/native-stack" :as rnn-stack]
-            ["twrnc" :refer [style] :rename {style tw}]
             [reagent.core :as r]
             [gurps.utils.i18n :as i18n]
-            [gurps.widgets.base :refer [view]]
-            [gurps.widgets.character-icon :refer [character-icon]]
+            [gurps.navigation.common :refer [options]]
             [gurps.pages.character.skills :refer [character-skills-page]]
             [gurps.pages.character.skills.groups :refer [character-add-skill-page]]
             [gurps.pages.character.skills.specialization :refer [character-add-skill-spec-page]]))
