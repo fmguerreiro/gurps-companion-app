@@ -86,6 +86,8 @@ def scrape():
                         description += lines[i + j]
                         j += 1
                     description = str_replace(description)
+                    # remove text after the last period
+                    description = description[: description.rfind(".")] + "."
 
                     # print translations to file
                     with open(output, "a") as file:
