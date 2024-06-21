@@ -5,18 +5,13 @@
             [reagent.core :as r]
             [re-frame.core :as rf]
             [gurps.widgets.add-button :refer [add-button]]
-            [gurps.widgets.base :refer [view flat-list scroll-view text button]]
+            [gurps.widgets.base :refer [view flat-list text button]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
             [gurps.pages.character.utils.skills :refer [lvl-with-difficulty lvl-with-cost]]
             [gurps.pages.character.utils.spells :refer [vh-spells]]
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [->int]]
             [gurps.utils.debounce :refer [debounce-and-dispatch]]))
-;; TODO
-(defn debug
-  [d]
-  (println "DEBUG" d)
-  d)
 
 (defn- row
   [col1 col2 col3]
@@ -34,11 +29,12 @@
     [:> text {:style (tw "capitalize font-bold")} (i18n/label :t/cost)]]))
 
 (defn- item
-  [{:keys [id lvl cost]}]
+  [{:keys [id lvl cost]} nav]
   (let [name (i18n/label (keyword :t (str "spell-" id)))]
     (r/as-element
      [row
-      [:> text {:style (tw "capitalize")} name] ;; TODO: make clickable to go to spell details!
+      [:> button {:onPress #(-> nav (.push (i18n/label :t/spell-details) #js {:id id}))}
+       [:> text {:style (tw "capitalize")} name]]
       [:> text {:style (tw "capitalize")} lvl]
       [bracketed-numeric-input {:val cost
                                 :on-change-text
@@ -62,7 +58,7 @@
        (fn [item-info-js]
          (let [item-info (->clj item-info-js :keywordize-keys true)
                {data :item} item-info]
-           (item data)))
+           (item data nav)))
 
        :ListHeaderComponent header}]
 
