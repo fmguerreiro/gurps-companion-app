@@ -1,10 +1,11 @@
 (ns gurps.pages.character.advantages.groups
   (:require ["@react-navigation/native" :as rnn]
             ["twrnc" :refer [style] :rename {style tw}]
+            ["@expo/vector-icons/MaterialCommunityIcons" :default icon]
             [cljs-bean.core :refer [->clj ->js]]
             [reagent.core :as r]
             [gurps.utils.i18n :as i18n]
-            [gurps.pages.character.utils.advantages :refer [advantages-by-type]]
+            [gurps.pages.character.utils.advantages :refer [advantages-by-name advantages-by-type]]
             [gurps.widgets.base :refer [view text button section-list]]
             [re-frame.core :as rf]))
 
@@ -24,19 +25,22 @@
      [:> text {:style (tw "capitalize font-bold")} (i18n/label (keyword :t id))]
      [:> text (if expanded? "▲" "▼")]]]))
 
-;; TODO: show type-2 icon next to name
 (defn- item
-  [{id :name} visible? owned?]
-  (let [name (i18n/label (keyword :t (str "advantage-" id)))
-        nav  (rnn/useNavigation)]
+  [{id :name, type :type-2} visible? owned?]
+  (let [name  (i18n/label (keyword :t (str "advantage-" id)))
+        icon' (if (= :supernatural (keyword type)) "lightning-bolt" "alien")
+        nav   (rnn/useNavigation)]
     (r/as-element
-     (if visible?
+     (if (not visible?)
        [:<>]
-       ;; else
+       ;; visible
        [:> button {:style (tw (if owned? "bg-green-100" ""))
                    :onPress #(-> nav (.navigate (i18n/label :t/advantage-details) #js {:id id}))}
         [row
-         [:> text name]
+         [:> view {:style (tw "flex flex-row flex-grow items-center gap-1")}
+          [:> text name]
+          (when (not= :mundane (keyword type))
+            [:> icon {:name icon' :size 20 :color (tw "text-black")}])]
          [:> text {:style (tw "capitalize")} ">"]]]))))
 
 ;; {:physical [...], :mental [...], ...}
@@ -61,7 +65,7 @@
        (fn [item-info-js]
          (let [item-info       (->clj item-info-js :keywordize-keys true)
                {data :section} item-info
-               expanded?       (get-in expanded-sections [(:title data) :expanded?] false)]
+               expanded?       (get-in expanded-sections [(-> data :title keyword) :expanded?] false)]
            (header data expanded?)))
 
        :key-extractor
@@ -76,8 +80,9 @@
          (let [item-info    (->clj item-info-js :keywordize-keys true)
                {data :item} item-info
                visible?     (get-in expanded-sections [(:type-1 data) :expanded?] false)
-               owned?       (contains? advantages (keyword (:name data)))]
-           (item data visible? owned?)))}])])
+               owned?       (contains? advantages (keyword (:name data)))
+               item'        (merge ((keyword (:name data)) advantages-by-name) data)]
+           (item item' visible? owned?)))}])])
 
 (rf/reg-sub
  :advantage-list/expanded
