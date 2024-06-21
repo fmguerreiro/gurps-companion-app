@@ -213,8 +213,13 @@
    {:name :no-hangover :type-1 :physical :type-2 :mundane :cost 1}
    {:name :penetrating-voice :type-1 :physical :type-2 :mundane :cost 1}])
 
+;; NOTE: 360°-vision doesn't seem to get added when reducing for some reason, so we add it manually
+(def ^:private special-case (dissoc {:360°-vision (first advantages)} :name))
+
 (def advantages-by-name
-  (reduce (fn [acc kv] (assoc acc (:name kv) (dissoc kv :name))) advantages))
+  (conj
+   (reduce (fn [acc kv] (assoc acc (:name kv) (dissoc kv :name))) advantages)
+   special-case))
 
 (def advantages-by-type
   (group-by :type-1 advantages))

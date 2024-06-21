@@ -37,6 +37,9 @@
 (s/def ::spell-cost (s/keys :opt-un [::cost]))
 (s/def ::spell-costs (s/or :nil nil? :m (s/map-of ::k ::spell-cost)))
 
+(s/def ::advantage (s/keys :req [::cost ::lvl]))
+(s/def ::advantages (s/map-of ::k ::advantage))
+
 (s/def ::spoken  #{"native" "accented" "broken"})
 (s/def ::written #{"native" "accented" "broken"})
 (s/def ::native? boolean?)
@@ -71,6 +74,7 @@
 (s/def ::db
   (s/keys :req-un [::profile ::attributes ::attribute-costs ::attribute-current
                    ::skills ::languages ::items ::world ::spells ::spell-costs
+                   ;; TODO: not sure what's wrong with ::advantages
                    ::navigation]))
 
 ;; initial state of app-db
@@ -116,6 +120,8 @@
 
    :spells {}
    :spell-costs {}
+
+   :advantages {}
 
    :languages []
 
