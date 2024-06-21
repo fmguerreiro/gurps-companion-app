@@ -18,7 +18,7 @@
   [:> view {:style (tw "flex flex-row h-6 gap-2 mx-2 my-1")}
    [:> view {:style (tw "flex-3 justify-center items-start")} col1]
    [:> view {:style (tw "flex-1 justify-center items-center")} col2]
-   [:> view {:style (tw "flex-1 justify-center items-end")} col3]])
+   [:> view {:style (tw "flex-1 min-w-8 justify-center items-end")} col3]])
 
 (defn- header
   []
@@ -35,7 +35,6 @@
   [{:keys [id lvl cost], :or {lvl 1}} nav]
   (let [name      (i18n/label (keyword :t (str "advantage-" id)))
         cost-info (get-in advantages-by-name [(keyword id) :cost])]
-    (println name cost-info)
     (r/as-element
      [row
       [:> button {:onPress #(-> nav (.push (i18n/label :t/advantage-details) #js {:id id}))}
@@ -43,7 +42,7 @@
 
       ;; lvl
       (if (= cost-info :variable)
-        [bracketed-numeric-input {:val lvl
+        [bracketed-numeric-input {:val (->int lvl)
                                   :on-change-text
                                   #(debounce-and-dispatch [:advantages/update :lvl (keyword id) (->int %)] 500)}]
         [:> text {:style (tw "text-xl")} lvl])
@@ -53,13 +52,15 @@
             [bracketed-numeric-input {:val cost
                                       :on-change-text
                                       #(debounce-and-dispatch [:advantages/update :cost (keyword id) (->int %)] 500)}]
-            (number? cost-info) [:> text {:style (tw "text-xl")} cost]
-            ;; TODO: dropdown values dont show up for some reason
-            (coll?   cost-info) [dropdown {:data (->> cost-info (map #(do {:value % :label (str %)})))
-                                           :val cost
-                                           :on-change #(do
-                                                         (rf/dispatch [:advantages/update :cost (keyword id) (->int %)])
-                                                         (rf/dispatch [:advantages/update :lvl (keyword id) (inc (index-of (->int %) cost-info))]))}])])))
+            (number? cost-info) [:> text {:style (tw "text-xl mr-2")} cost]
+            (coll?   cost-info) [dropdown {:data        (->> cost-info (map #(do {:label %, :value %})))
+                                           :style       (tw "min-w-8 flex-1")
+                                           :list-style  (tw "min-w-12 left-82")
+                                           :val         cost
+                                           :placeholder cost
+                                           :on-change   #(do
+                                                           (rf/dispatch [:advantages/update :cost (keyword id) (->int %)])
+                                                           (rf/dispatch [:advantages/update :lvl (keyword id) (inc (index-of (->int %) cost-info))]))}])])))
 
 (defn character-advantages-page
   []
