@@ -77,18 +77,18 @@
                                        :tabBarIcon (tab-bar-icon "star")
                                        :headerShown false}}]
 
-       [:> RootTab.Screen {:name      (str (i18n/label :t/items) "Stack")
-                           :component items-stack-component
-                           :options   {:title (i18n/label :t/items)
-                                       :headerTitleAlign "center"
-                                       :tabBarIcon (tab-bar-icon "shield-sword")
-                                       :headerShown false}}]
-
        [:> RootTab.Screen {:name      (str (i18n/label :t/spells) "Stack")
                            :component spell-stack-component
                            :options   {:title (i18n/label :t/spells)
                                        :headerTitleAlign "center"
                                        :tabBarIcon (tab-bar-icon "fire")
+                                       :headerShown false}}]
+
+       [:> RootTab.Screen {:name      (str (i18n/label :t/items) "Stack")
+                           :component items-stack-component
+                           :options   {:title (i18n/label :t/items)
+                                       :headerTitleAlign "center"
+                                       :tabBarIcon (tab-bar-icon "shield-sword")
                                        :headerShown false}}]
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/info))
