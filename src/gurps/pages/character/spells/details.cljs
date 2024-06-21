@@ -44,7 +44,7 @@
  (fn [[spells advantages skills] [_ k lvl]]
    (let [type (keyword (namespace k))
          name (keyword (name k))]
-     (>= (cond (= :advantages type) (name advantages) ;; TODO: maybe advantages will change form
+     (>= (cond (= :advantages type) (get-in advantages [name :lvl])
                (= :skills type) (get-in skills [name :lvl])
                :else (get-in spells [name :lvl]))
          lvl))))

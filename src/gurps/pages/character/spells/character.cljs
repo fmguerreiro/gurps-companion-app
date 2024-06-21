@@ -78,8 +78,8 @@
  :<- [:advantages]
  :<- [:attributes/int]
  (fn [[spell-costs advantages int]]
-   (let [{mag :magery, :or {mag 0}} advantages
-         lvl (fn [k cost] (spell-lvl k (+ mag int) cost))]
+   (let [{mag :magery, :or {mag {:lvl 0}}} advantages
+         lvl (fn [k cost] (spell-lvl k (+ (:lvl mag) int) cost))]
      (reduce (fn [acc [k {cost :cost}]]
                (update-in acc [k] merge {:lvl (lvl k cost) :cost cost}))
              {}

@@ -24,6 +24,7 @@
      [:> text {:style (tw "capitalize font-bold")} (i18n/label (keyword :t id))]
      [:> text (if expanded? "▲" "▼")]]]))
 
+;; TODO: show type-2 icon next to name
 (defn- item
   [{id :name} visible? owned?]
   (let [name (i18n/label (keyword :t (str "advantage-" id)))
