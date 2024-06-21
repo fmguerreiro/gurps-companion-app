@@ -1,4 +1,4 @@
-(ns gurps.pages.character.advantages.list
+(ns gurps.pages.character.advantages.groups
   (:require ["@react-navigation/native" :as rnn]
             ["twrnc" :refer [style] :rename {style tw}]
             [cljs-bean.core :refer [->clj ->js]]
@@ -10,7 +10,7 @@
 
 (defn- row
   [col1 col2]
-  [:> view {:style (tw "bg-white flex flex-row gap-2 p-2")}
+  [:> view {:style (tw "flex flex-row gap-2 p-2 bg-inherit")}
    [:> view {:style (tw "flex-3 justify-center items-start")} col1]
    (when col2
      [:> view {:style (tw "flex-1 justify-center items-end")} col2])])
@@ -18,22 +18,24 @@
 (defn- header
   [{id :title} expanded?]
   (r/as-element
-   [:> button {:onPress #(rf/dispatch [:advantage-list/toggle-section id])}
+   [:> button {:style   (tw "bg-white")
+               :onPress #(rf/dispatch [:advantage-list/toggle-section id])}
     [row
      [:> text {:style (tw "capitalize font-bold")} (i18n/label (keyword :t id))]
      [:> text (if expanded? "▲" "▼")]]]))
 
 (defn- item
-  [{id :name} visible?]
+  [{id :name} visible? owned?]
   (let [name (i18n/label (keyword :t (str "advantage-" id)))
         nav  (rnn/useNavigation)]
     (r/as-element
      (if visible?
        [:<>]
        ;; else
-       [:> button {:onPress #(-> nav (.navigate (i18n/label :t/advantage-details) #js {:id id}))}
+       [:> button {:style (tw (if owned? "bg-green-100" ""))
+                   :onPress #(-> nav (.navigate (i18n/label :t/advantage-details) #js {:id id}))}
         [row
-         [:> text {:style (tw "capitalize")} name]
+         [:> text name]
          [:> text {:style (tw "capitalize")} ">"]]]))))
 
 ;; {:physical [...], :mental [...], ...}
@@ -45,7 +47,7 @@
                :data advantages}))
        ->js))
 
-(defn advantage-list-page
+(defn advantage-groups-page
   []
   [:> view {:style (tw "flex flex-col bg-white flex-1 px-2")}
 
@@ -72,14 +74,9 @@
        (fn [item-info-js]
          (let [item-info    (->clj item-info-js :keywordize-keys true)
                {data :item} item-info
-               visible?     (get-in expanded-sections [(:type-1 data) :expanded?] false)]
-           (item data visible?)))}])])
-
-;; TODO: probably need to move this to the first advantage-tabbed page
-(rf/reg-sub
- :advantages
- (fn [db]
-   (get-in db [:advantages] {})))
+               visible?     (get-in expanded-sections [(:type-1 data) :expanded?] false)
+               owned?       (contains? advantages (keyword (:name data)))]
+           (item data visible? owned?)))}])])
 
 (rf/reg-sub
  :advantage-list/expanded
