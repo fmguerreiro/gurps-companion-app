@@ -26,7 +26,7 @@
    [row
     [:> text {:style (tw "capitalize font-bold")} (i18n/label :t/name)]
     [:> text {:style (tw "capitalize font-bold")} (i18n/label :t/level)]
-    [:> text {:style (tw "capitalize font-bold")} (i18n/label :t/cost)]]))
+    [:> text {:style (tw "capitalize mr-1 font-bold")} (i18n/label :t/cost)]]))
 
 ;; TODO: put in a utils file
 (defn index-of [e coll] (first (keep-indexed #(when (= e %2) %1) coll)))
