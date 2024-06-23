@@ -5,7 +5,8 @@
             [gurps.widgets.base :refer [view text input]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
             [gurps.pages.character.widgets.helpers :refer [cost->points long-attr]]
-            ["twrnc" :refer [style] :rename {style tw}]))
+            ["twrnc" :refer [style] :rename {style tw}]
+            [clojure.string :as str]))
 
 (defn- calc-cost [label value]
   ;; (info "calc-cost" label value)
@@ -23,9 +24,13 @@
   [:> view {:key key :style #js [(tw "h-12 w-12 align-middle border-2 items-center justify-center"), style]}
    children])
 
-(defn key->i18n-label
+(defn key->t
   [key]
-  (keyword :t (str "attr-" (symbol (long-attr key)))))
+  (->> key
+       list
+       flatten
+       (map #(i18n/label (keyword :t (str "attr-" (some-> % long-attr symbol)))))
+       (str/join "/")))
 
 (defn attribute-input
   [^js {:keys [attr val cost current on-change-text secondary? style]
@@ -33,7 +38,7 @@
   [:> view {:style #js [(tw "flex flex-row flex-grow gap-1"), style]}
    (box {:style (tw (str "justify-start ") (if secondary? "w-10" "w-8"))}
         [:> text {:style (tw "text-xl font-bold")}
-         (i18n/label (key->i18n-label attr))])
+         (key->t attr)])
 
    (if secondary?
      (box-border {:key attr} [:> text {:key attr :style (tw "text-xl")} val])

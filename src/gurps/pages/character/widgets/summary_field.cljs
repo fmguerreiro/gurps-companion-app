@@ -1,7 +1,7 @@
 (ns gurps.pages.character.widgets.summary-field
   (:require [gurps.utils.i18n :as i18n]
             [gurps.utils.debounce :as debounce]
-            [gurps.widgets.underlined-input :refer [underlined-input labelled-underlined-input]]
+            [gurps.widgets.underlined-input :refer [labelled-underlined-input]]
             [re-frame.core :as rf]))
 
 (defn summary-field

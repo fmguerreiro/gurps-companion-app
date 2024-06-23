@@ -13,7 +13,7 @@
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
             [gurps.pages.character.widgets.helpers :refer [generify-key]]
             [gurps.pages.character.utils.skills :refer [skills difficulties lvl-with-difficulty lvl-with-cost] :rename {skills skill-map}]
-            [gurps.pages.character.widgets.attribute :refer [key->i18n-label]]
+            [gurps.pages.character.widgets.attribute :refer [key->t]]
             [gurps.pages.character.widgets.attributes] ;; NOTE: makes sure the subs are registered
             [clojure.string :as str]
             [taoensso.timbre :as log]))
@@ -53,12 +53,6 @@
     [underlined-input {:val (:lvl skill)
                        :text-align "center"
                        :disabled? true}]))
-
-(defn- attr->label
-  [attr]
-  (str/join ","
-            (map #(i18n/label (key->i18n-label %))
-                 (if (seq? attr) attr [attr]))))
 
 (defn- diff->label
   [diff]
@@ -115,10 +109,12 @@
                                               :disabled? true}]])
                         ;; lvl
                         [skill-lvl k]
+
                         ;; main attr(s)
-                        [underlined-input {:val (attr->label attr)
+                        [underlined-input {:val (key->t attr)
                                            :text-align "center"
                                            :disabled? true}]
+
                         ;; difficulty
                         [underlined-input {:val (diff->label diff)
                                            :text-align "center"
@@ -128,6 +124,7 @@
                                                   :input-mode "numeric"
                                                   :max-length 2
                                                   :on-change-text #(debounce-and-dispatch [:skills.update/cost i (->int %)] 500)}]]))
+
                    skills)]
 
      ;; add-skill button
