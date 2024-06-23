@@ -4,6 +4,8 @@
             ["@react-navigation/native" :as rnn]
             ["@react-navigation/bottom-tabs" :as rnn-bottom-tabs]
             ["@expo/vector-icons/MaterialCommunityIcons" :default material-icon]
+            ["@expo/vector-icons/Fontisto" :default fontisto-icon]
+            ["@expo/vector-icons/Ionicons" :default ion-icon]
             ["react-native-safe-area-context" :refer (useSafeAreaInsets) :rename {SafeAreaProvider safe-area-provider}]
             ["twrnc" :refer [style] :rename {style tw}]
             [gurps.utils.i18n :as i18n]
@@ -23,8 +25,10 @@
 (def header-title-style (tw "text-xl font-bold text-center capitalize"))
 
 (defn tab-bar-icon
-  [icon]
-  (fn [] (r/as-element [:> material-icon {:name icon :size 20 :color icon-color}])))
+  ([icon] (tab-bar-icon icon :material))
+  ([icon variant]
+   (let [icon-comp (cond (= :fontisto variant) fontisto-icon, (= :ionicons variant) ion-icon :else material-icon)]
+     (fn [] (r/as-element [:> icon-comp {:name icon :size 20 :color icon-color}])))))
 
 (defn header-icon
   []
@@ -58,16 +62,16 @@
        [:> RootTab.Screen {:name      (i18n/label :t/stats)
                            :component (fn [props] (r/as-element [character-stats-page props]))
                            :options   {:title (i18n/label :t/stats)
-                                       :tabBarIcon (tab-bar-icon "arm-flex")
                                        :headerTitleAlign "center"
                                        :headerTitleStyle header-title-style
+                                       :tabBarIcon (tab-bar-icon "persons" :fontisto)
                                        :headerRight (header-icon)}}]
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/skills) "Stack")
                            :component skill-stack-component
                            :options   {:title (i18n/label :t/skills)
                                        :headerTitleAlign "center"
-                                       :tabBarIcon (tab-bar-icon "dice-multiple")
+                                       :tabBarIcon (tab-bar-icon "arm-flex")
                                        :headerShown false}}]
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/advantages) "Stack")
@@ -91,9 +95,9 @@
                                        :tabBarIcon (tab-bar-icon "shield-sword")
                                        :headerShown false}}]
 
-       [:> RootTab.Screen {:name      (str (i18n/label :t/info))
+       [:> RootTab.Screen {:name      (str (i18n/label :t/background))
                            :component (fn [props] (r/as-element [character-info-page props]))
-                           :options   {:title (i18n/label :t/information)
+                           :options   {:title (i18n/label :t/background)
                                        :headerTitleAlign "center"
-                                       :tabBarIcon (tab-bar-icon "information-outline")
+                                       :tabBarIcon (tab-bar-icon "book" :ionicons)
                                        :headerTitleStyle header-title-style}}]]]]))
