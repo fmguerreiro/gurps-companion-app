@@ -9,8 +9,9 @@
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
             [gurps.widgets.dropdown :refer [dropdown]]
             [gurps.pages.character.utils.advantages :refer [advantages-by-name]]
+            [gurps.pages.character.utils.disadvantages :refer [disadvantages-by-name]]
             [gurps.utils.i18n :as i18n]
-            [gurps.utils.helpers :refer [->int]]
+            [gurps.utils.helpers :refer [->int singularize-key]]
             [gurps.utils.debounce :refer [debounce-and-dispatch]]))
 
 (defn- row
@@ -32,40 +33,44 @@
 (defn index-of [e coll] (first (keep-indexed #(when (= e %2) %1) coll)))
 
 (defn- item
-  [{:keys [id lvl cost], :or {lvl 1}} nav]
-  (let [name      (i18n/label (keyword :t (str "advantage-" id)))
-        cost-info (get-in advantages-by-name [(keyword id) :cost])]
+  [{:keys [id lvl cost], :or {lvl 1}} nav type]
+  (let [name      (i18n/label (keyword :t (str (singularize-key type) "-" id)))
+        by-name   (if (= type :advantages) advantages-by-name disadvantages-by-name)
+        cost-info (get-in by-name [(keyword id) :cost])]
     (r/as-element
      [row
-      [:> button {:onPress #(-> nav (.push (i18n/label :t/advantage-details) #js {:id id}))}
+      [:> button {:onPress #(-> nav (.push (i18n/label (keyword :t (str (singularize-key type) "-details")))
+                                           #js {:id id}))}
        [:> text {:style (tw "capitalize")} name]]
 
       ;; lvl
       (if (= cost-info :variable)
         [bracketed-numeric-input {:val (->int lvl)
                                   :on-change-text
-                                  #(debounce-and-dispatch [:advantages/update :lvl (keyword id) (->int %)] 500)}]
+                                  #(debounce-and-dispatch [(keyword type :update) :lvl (keyword id) (->int %)] 500)}]
         [:> text {:style (tw "text-xl")} lvl])
 
       ;; cost
       (cond (= cost-info :variable)
             [bracketed-numeric-input {:val cost
                                       :on-change-text
-                                      #(debounce-and-dispatch [:advantages/update :cost (keyword id) (->int %)] 500)}]
+                                      #(debounce-and-dispatch [(keyword type :update) :cost (keyword id) (->int %)] 500)}]
             (number? cost-info) [:> text {:style (tw "text-xl mr-2")} cost]
             (coll?   cost-info) [dropdown {:data        (->> cost-info (map #(do {:label %, :value %})))
-                                           :style       (tw "min-w-8 flex-1")
-                                           :list-style  (tw "min-w-12 left-82")
+                                           :style       (tw "min-w-12 flex-1")
+                                           :list-style  (tw "min-w-16 left-82")
+                                           :placeholder-style (tw "text-right")
+                                           :selected-style    (tw "text-right")
                                            :val         cost
                                            :placeholder cost
                                            :on-change   #(do
-                                                           (rf/dispatch [:advantages/update :cost (keyword id) (->int %)])
-                                                           (rf/dispatch [:advantages/update :lvl (keyword id) (inc (index-of (->int %) cost-info))]))}])])))
+                                                           (rf/dispatch [(keyword type :update) :cost (keyword id) (->int %)])
+                                                           (rf/dispatch [(keyword type :update) :lvl  (keyword id) (inc (index-of (->int %) cost-info))]))}])])))
 
 (defn character-advantages-page
-  []
+  [type]
   (let [nav        (rnn/useNavigation)
-        advantages (some-> (rf/subscribe [:advantages]) deref)]
+        advantages (some-> (rf/subscribe [type]) deref)]
     [:> view {:style (tw "bg-white flex flex-col grow")}
 
      [flat-list
@@ -79,22 +84,11 @@
        (fn [item-info-js]
          (let [item-info (->clj item-info-js :keywordize-keys true)
                {data :item} item-info]
-           (item data nav)))
+           (item data nav type)))
 
        :ListHeaderComponent header}]
 
      [:> view {:style (tw "absolute bottom-4 right-4")}
-      [add-button {:on-click #(-> nav (.push (i18n/label :t/advantage-list)))}]]]))
-
-(rf/reg-sub
- :advantages
- (fn [db]
-   (get-in db [:advantages] {})))
-
-(rf/reg-event-fx
- :advantages/update
- (fn [{db :db} [_ k id v]]
-   (let [new-db (assoc-in db [:advantages id k] v)]
-     {:db new-db
-      :effects.async-storage/set {:k     :advantages
-                                  :value (get-in new-db [:advantages])}})))
+      [add-button {:on-click
+                   #(-> nav
+                        (.push (i18n/label (keyword :t (str (singularize-key type) "-list")))))}]]]))

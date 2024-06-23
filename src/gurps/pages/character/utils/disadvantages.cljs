@@ -211,8 +211,16 @@
    {:name :minor-handicaps :type-1 :physical :type-2 :mundane :cost -1}
    {:name :nervous-stomach :type-1 :physical :type-2 :mundane :cost -1}])
 
+;; NOTE: absent-mindedness doesn't seem to get added when reducing for some reason, so we add it manually
+(def ^:private special-case (dissoc {:absent-mindedness (first disadvantages)} :name))
+
 (def disadvantages-by-name
-  (reduce (fn [acc kv] (assoc acc (:name kv) (dissoc kv :name))) disadvantages))
+  (conj
+   (reduce (fn [acc kv] (assoc acc (:name kv) (dissoc kv :name))) disadvantages)
+   special-case))
 
 (def disadvantages-by-type
   (group-by :type-1 disadvantages))
+
+(comment (clojure.set/difference (into #{} (map :name disadvantages)) (into #{} (keys disadvantages-by-name)))
+         (count (keys disadvantages-by-name)))

@@ -1,4 +1,6 @@
-(ns gurps.utils.helpers)
+(ns gurps.utils.helpers
+  (:require
+   [clojure.string :as str]))
 
 (defn default-to
   "Returns the default value if the value is nil or empty"
@@ -28,6 +30,29 @@
    (if (some? (namespace key))
      (str (namespace key) "-" (name key))
      (str (name key)))))
+
+(defn pluralize-key
+  [key]
+  (symbol
+   (if (some? (namespace key))
+     (str (namespace key) "s-" (name key))
+     (str (name key) "s"))))
+
+(defn singularize
+  "Not exhaustive, but good enough for now
+  can use https://www.npmjs.com/package/pluralize for more"
+  [s]
+  (str/replace s #"(s)$" ""))
+
+(defn singularize-key
+  "Returns the singular form of the key.
+  e.g. :skills -> :skill
+       :skills/weapon -> :skill/weapon"
+  [key]
+  (symbol
+   (if (some? (namespace key))
+     (str (singularize (namespace key)) "-" (name key))
+     (str (singularize (name key))))))
 
 ;; NOTE: because 'positions has vanished from clojure.contrib.seq
 (defn positions

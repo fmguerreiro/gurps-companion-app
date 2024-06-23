@@ -39,6 +39,7 @@
 
 (s/def ::advantage (s/keys :req [::cost ::lvl]))
 (s/def ::advantages (s/map-of ::k ::advantage))
+(s/def ::disadvantages (s/map-of ::k ::advantage))
 
 (s/def ::spoken  #{"native" "accented" "broken"})
 (s/def ::written #{"native" "accented" "broken"})
@@ -122,6 +123,7 @@
    :spell-costs {}
 
    :advantages {}
+   :disadvantages {}
 
    :languages []
 
