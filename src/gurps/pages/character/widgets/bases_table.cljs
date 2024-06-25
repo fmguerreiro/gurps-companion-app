@@ -49,10 +49,10 @@
  :attributes/damage-thrust
  :<- [:attributes/str]
  (fn [str]
-   (get-in damage-table [str :sw])))
+   (get-in damage-table [str :thr])))
 
 (rf/reg-sub
  :attributes/damage-swing
  :<- [:attributes/str]
  (fn [str]
-   (get-in damage-table [str :thr])))
+   (get-in damage-table [str :sw])))
