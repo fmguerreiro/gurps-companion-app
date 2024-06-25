@@ -40,7 +40,9 @@
   (rf/reg-sub
    attr
    (fn [db _]
-     (get-in db [(keyword (namespace attr)) (keyword (name attr))] 0))))
+     (let [namespace (keyword (namespace attr))
+           name (keyword (name attr))]
+       (get-in db [namespace name] (if (= :attribute-costs namespace) 0 10))))))
 
 (def cost-based-attrs [:attributes/hp :attributes/fp :attributes/per :attributes/will])
 (doseq [attr cost-based-attrs]
