@@ -24,23 +24,19 @@
     [row
      [:> text {:style (tw "font-bold")} title]
      [:<>]]]))
-     ;;[:> text (if expanded? "▲" "▼")]]]))
 
 (defn- item
   [{id :id group :skill} owned?]
   (let [name  (i18n/label (keyword :t id))
         nav   (rnn/useNavigation)]
     (r/as-element
-     (if false ;; (not visible?)
-       [:<>]
-       ;; visible
-       [:> button {:style (if owned? "bg-green-100" "")
-                   :onPress #(do
-                               (rf/dispatch [:items.melee/add (keyword id) (keyword group)])
-                               (-> nav (.navigate (i18n/label (keyword :t/melee-weapons-owned)))))}
-        [row
-         [:> text name]
-         [:> text {:style (tw "font-bold")} "+"]]]))))
+     [:> button {:style (tw (if owned? "bg-green-100" ""))
+                 :onPress #(do
+                             (rf/dispatch [:items.melee/add (keyword id) (keyword group)])
+                             (-> nav (.navigate (i18n/label (keyword :t/melee-weapons-owned)))))}
+      [row
+       [:> text name]
+       [:> text {:style (tw "font-bold")} "+"]]])))
 
 (defn- header-title
   [k]
@@ -57,7 +53,8 @@
 
 (defn melee-list-page
   []
-  (let [weapons           (some->> (rf/subscribe [:items/melee-weapons]) deref (group-by :name))]
+  (let [weapons (some->> (rf/subscribe [:items/melee-weapons]) deref (group-by :skill))
+        weapons-by-skill-and-id (some->> weapons (map (fn [[k v]] [k (group-by :id v)])) (into {}))]
 
     [:> view {:style (tw "flex flex-col bg-white flex-1 px-2")}
      [section-list
@@ -80,7 +77,7 @@
        (fn [item-info-js]
          (let [item-info    (->clj item-info-js :keywordize-keys true)
                {data :item} item-info
-               owned?       (contains? weapons (:id data))]
+               owned?       (not (nil? (get-in weapons-by-skill-and-id [(keyword (:skill data)) (keyword (:id data))])))]
            (item data owned?)))}]]))
 
 (rf/reg-event-fx

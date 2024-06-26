@@ -1,144 +1,144 @@
 (ns gurps.pages.character.items.melee-weapons-page
   (:require ["twrnc" :refer [style] :rename {style tw}]
+            ["@react-navigation/native" :as rnn]
+            [cljs-bean.core :refer [->js ->clj]]
             [re-frame.core :as rf]
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [->int]]
-            [gurps.widgets.underlined-input :refer [underlined-input]]
-            [gurps.widgets.dropdown :refer [dropdown]]
-            [gurps.widgets.base :refer [view text]]
+            [gurps.widgets.base :refer [view flat-list text]]
+            [gurps.widgets.add-button :refer [add-button]]
             [gurps.pages.character.widgets.helpers :refer [generify-key]]
             [gurps.pages.character.utils.skills :refer [grouped-skills]]
-            [gurps.utils.debounce :refer [debounce-and-dispatch debounce]]
-            [taoensso.timbre :as log]))
+            [reagent.core :as r]
+            [clojure.string :as str]))
 
 (defn- row
-  [col1 col2 col3 col4 col5 col6]
-  [:> view {:style (tw "flex flex-row h-6 gap-2")}
-   [:> view {:style (tw "w-3/12")} col1]
-   [:> view {:style (tw "w-2/12")} col2]
-   [:> view {:style (tw "w-2/12")} col3]
-   [:> view {:style (tw "w-2/12")} col4]
-   [:> view {:style (tw "w-2/12")} col5]
-   [:> view {:style (tw "w-1/12 pr-4")} col6]])
+  [col1 col2 col3 col4 col5 col6 col7]
+  [:> view {:style (tw "flex flex-row h-6 gap-1")}
+   [:> view {:style (tw "items-center justify-center flex-3")} col1]
+   [:> view {:style (tw "items-center justify-center flex-1")} col2]
+   [:> view {:style (tw "items-center justify-center flex-1")} col3]
+   [:> view {:style (tw "items-center justify-center flex-1")} col4]
+   [:> view {:style (tw "items-center justify-center flex-1")} col5]
+   [:> view {:style (tw "items-center justify-center flex-1")} col6]
+   [:> view {:style (tw "items-center justify-center flex-1")} col7]])
 
 (defn- header
   []
-  [row
-   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/weapon)]
-   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/dmg-thrust)]
-   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/dmg-swing)]
-   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/reach)]
-   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/parry)]
-   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/weight)]])
-
-;; TODO: AI generated. has an off-by one error somewhere
-;; +3 -> 1d
-;; +4 -> 1d+1
-;; +5 -> 1d+2
-;; +6 -> 2d
-(defn dice-addition
-  [dice-roll n]
-  (let [roll-parts (re-find #"(\d+)d\+?(\d*)" dice-roll)
-        roll-dices (js/parseInt (nth roll-parts 1))
-        roll-addition (js/parseInt (nth roll-parts 2 0))
-        abs-n (abs n)]
-    (cond
-      (neg? n)
-      (let [dices (max 0 (- roll-dices (quot abs-n 3)))
-            remaining-addition (max 0 (- roll-addition (rem abs-n 3)))]
-        (str dices (when (pos? dices) "d") (when (pos? remaining-addition) (str "+" remaining-addition))))
-
-      (pos? n)
-      (loop [dices roll-dices
-             remaining n
-             addition roll-addition]
-        (cond
-          (>= remaining 7) (recur (+ dices 2) (- remaining 7) addition)
-          (>= remaining 4) (recur (+ dices 1) (- remaining 4) addition)
-          :else (let [total-dices (+ dices (quot (+ remaining 2) 3))
-                      remaining-addition (rem (+ remaining 2) 3)]
-                  (str total-dices "d" (when (pos? remaining-addition) (str "+" remaining-addition))))))
-
-      :else (str (when (pos? roll-dices) (str roll-dices "d")) (when (pos? roll-addition) (str "+" roll-addition))))))
+  (r/as-element
+   [row
+    [:> text {:style (tw "font-bold text-left capitalize")} (i18n/label :t/weapon)]
+    [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/dmg)]
+    [:> text {:style (tw "font-bold text-xs text-center capitalize")} (i18n/label :t/reach)]
+    [:> text {:style (tw "font-bold text-xs text-center capitalize")} (i18n/label :t/parry)]
+    [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/cost)]
+    [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/attr-st)]
+    [:> text {:style (tw "font-bold text-right capitalize")} (i18n/label :t/wt)]]))
 
 (def empty-weapon {:name "" :weight 0 :thr-mod "1d" :swg-mod "1d" :reach "" :parry nil})
 
-;; NOTE (MELEE/2)+3; round down
-(defn lvl->parry
-  [lvl]
-  (let [parry (quot (+ lvl 2) 3)]
-    (if (pos? parry) parry 0)))
+(defn- str-addition
+  "1d+2+2 => 1d+4"
+  [s]
+  (reduce (fn [acc add]
+            (if (str/includes? add "d")
+              add
+              (str acc (reduce + 0 (map ->int (str/split add #"\+"))))))
+          (str/split s #"(\d+\+\d+)")))
+
+;; TODO: simplify 1d+4 => 2d+1, 1d+5 => 2d+2, 1d+6 => 3d, etc
+;;       also, a weapons ST caps the damage to 3xST in the damage-table for sw/thr
+(defn- get-dmg
+  [dmg swg thr]
+  (let [dmg' (str (symbol (first (keys dmg))))]
+    (-> dmg'
+        (str/replace #"sw" swg)
+        (str/replace #"thr" thr)
+        str-addition)))
+
+(defn- number-str?
+  [s]
+  (re-matches #"^\-?\d+$" s))
+
+(defn- get-parry
+  "'0u', :staff {:staff 7} => 7u
+   '+2', :staff {:staff 7} => 9"
+  [parry skill skills]
+  (let [lvl (get skills skill)]
+    (if (and lvl (re-find #"\d+" (str (symbol parry))))
+      (let [added-lvl (+ lvl (first (map ->int (filter number-str? (str/split parry #"\+?(-?\d+)")))))]
+        (str/replace (str/replace parry #"\d+" (str added-lvl)) #"(\+|-)" ""))
+      parry)))
+
+(defn- get-dmg-type
+  [dmg]
+  (let [d (-> dmg keys first symbol str)]
+    (str "(" (str/replace d #"(\+|-).*" "") ")")))
+
+(defn- item-row
+  [{:keys [id dmg reach parry cost st weight skill i]} swg thr parry-skills]
+  (let [dmg' (get-dmg dmg swg thr)
+        dmg-type (get-dmg-type dmg)
+        name (if (i18n/has-label? id) (i18n/label id) id)
+        parry' (get-parry parry (keyword skill) parry-skills)]
+    [:> view {:style (tw (if (even? i) "bg-white" "bg-slate-100"))}
+     [row
+      [:> view {:style (tw "flex flex-row justify-between flex-1 items-center justify-center")}
+       [:> text {:style (tw "flex-1 capitalize")} name]
+       [:> text {:style (tw "italic")} dmg-type]]
+      [:> text {:style (tw "text-center")} dmg']
+      [:> text {:style (tw "text-center")} (str reach)]
+      [:> text {:style (tw "text-center uppercase")} parry']
+      [:> text {:style (tw "text-center")} (str cost)]
+      [:> text {:style (tw "text-center")} (str st)]
+      [:> text {:style (tw "text-right")} (str weight)]]]))
+
+(defn- item
+  [{:keys [dmg reach parry], :as data} swg thr parry-skils nav]
+  (r/as-element
+   (map-indexed
+    (fn [i d]
+      (let [cost   (if (= 0 i) (:cost data) "")
+            st     (if (= 0 i) (:st data) "")
+            weight (if (= 0 i) (:weight data) "")
+            id     (if (= 0 i) (:id data) "")]
+        ^{:key (str "item-" (:id data) "-" i)}
+        [item-row
+         (merge data
+                {:i i, :dmg d, :reach (get reach i (last reach)), :parry (get parry i (last parry))}
+                {:cost cost, :st st, :weight weight, :id id})
+         swg
+         thr
+         parry-skils]))
+    dmg)))
 
 (defn melee-weapons-page
   []
-  [:> view {:style (tw "flex flex-col gap-2 bg-white flex-grow p-2")}
-   [header]
+  (let [nav     (rnn/useNavigation)
+        weapons (some-> (rf/subscribe [:items/melee-weapons]) deref)
+        swg     (some-> (rf/subscribe [:attributes/damage-swing])  deref)
+        thr     (some-> (rf/subscribe [:attributes/damage-thrust]) deref)
+        parry-skills (some-> (rf/subscribe [:defenses/parries]) deref)]
 
-   (let [weapons (some-> (rf/subscribe [:items/melee-weapons]) deref)
-         thr     (some-> (rf/subscribe [:attributes/damage-thrust]) deref)
-         swg     (some-> (rf/subscribe [:attributes/damage-swing])  deref)
-         weapon-parries    (some-> (rf/subscribe [:defenses/parries]) deref)
-         parriable-weapons (some-> (rf/subscribe [:skills/parriable-weapons]) deref)]
-     ;; (log/info "melee-weapons-page" weapon-parries)
-     (map-indexed
-      (fn [i {:keys [name thr-mod swg-mod weight reach parry]}]
-        (let [thr-ref (atom nil)
-              swg-ref (atom nil)]
-          ^{:key (str "weapon-" i)}
-          [row
-           ;; name
-           [underlined-input {:val name
-                              :on-change-text #(debounce-and-dispatch [:items.melee/update, i, :name, %] 500)}]
-           ;; damage-thr
-           [underlined-input {:val thr-mod ;; (dice-addition thr thr-mod)
-                              :on-change-text (debounce (fn [e]
-                                                          (rf/dispatch [:items.melee/update, i, :thr-mod, e])
-                                                          ;; TODO: review this dice addition logic
-                                                          ;; (rf/dispatch [:items.melee/update, i, :thr-mod, (->int e)])
-                                                          ;; (.clear ^js @thr-ref)
-                                                          )
-                                                        1000)
-                              :get-ref    #(reset! thr-ref %)
-                              ;; :input-mode "numeric"
-                              ;; :max-length 3
-                              :text-align "center"
-                              :clear-on-input? true}]
-           ;; damage-swg
-           [underlined-input {:val swg-mod ;; (dice-addition swg swg-mod)
-                              :on-change-text (debounce (fn [e]
-                                                          (rf/dispatch [:items.melee/update, i, :swg-mod, e])
-                                                          ;; (rf/dispatch [:items.melee/update, i, :swg-mod, (->int e)])
-                                                          ;; (.clear ^js swg-ref)
-                                                          )
-                                                        1000)
-                              :get-ref    #(reset! swg-ref %)
-                              ;; :input-mode "numeric"
-                              ;; :max-length 3
-                              :text-align "center"
-                              :clear-on-input? true}]
-           ;; reach
-           [underlined-input {:val reach
-                              :text-align "center"
-                              :on-change-text #(rf/dispatch [:items.melee/update, i, :reach, %])}]
+    [:> view {:style (tw "bg-white flex flex-col grow p-2")}
 
-           ;; parry
-           [dropdown {:val parry
-                      :placeholder (when parry (str ((keyword parry) weapon-parries)))
-                      :list-style (tw "w-26 left-70")
-                      :placeholder-style (tw "text-center text-xs")
-                      :item-style (tw "capitalize")
-                      :selected-style (tw "capitalize text-center text-xs")
-                      :on-change #(rf/dispatch [:items.melee/update, i, :parry, %])
-                      :data (->> parriable-weapons (map #(do {:label (:name %) :value (:k %)})))}]
+     [flat-list
+      {:data (->js weapons)
 
-           ;; weight
-           [underlined-input {:val weight
-                              :input-mode "numeric"
-                              :max-length 3
-                              :text-align "center"
-                              :on-change-text #(debounce-and-dispatch [:items.melee/update, i, :weight, (->int %)] 500)}]]))
+       :key-extractor
+       (fn [item]
+         (:id (->clj item :keywordize-keys true)))
 
-      (conj weapons empty-weapon)))])
+       :render-item
+       (fn [item-info-js]
+         (let [item-info (->clj item-info-js :keywordize-keys true)
+               {data :item} item-info]
+           (item data swg thr parry-skills nav)))
+
+       :ListHeaderComponent header}]
+
+     [:> view {:style (tw "absolute bottom-4 right-4")}
+      [add-button {:on-click #(-> nav (.push (i18n/label :t/melee-weapons-list)))}]]]))
 
 (rf/reg-sub
  :items/melee-weapons
@@ -166,6 +166,13 @@
    (->> weapons
         (filter #(not (or (= :cloak (:k %)) (= :shield (keyword (namespace (:k %))))))))))
 
+;; NOTE (MELEE/2)+3; round down
+(defn- lvl->parry
+  [lvl]
+  (let [parry (quot (+ lvl 2) 3)]
+    (if (pos? parry) parry 0)))
+
+;; TODO: base parry should be the highest parry in the weapons list
 (rf/reg-sub
  :defenses/parries
  :<- [:skills/weapons]
