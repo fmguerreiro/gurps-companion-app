@@ -36,7 +36,8 @@
     [:> text {:style (tw "font-bold text-right capitalize")} (i18n/label :t/wt)]]))
 
 (defn- str-addition
-  "1d+2+2 => 1d+4"
+  "1d+2+2 => 1d+4
+   1d+2-1 => 1d+1" ;; TODO
   [s]
   (reduce (fn [acc add]
             (if (str/includes? add "d")
@@ -53,6 +54,8 @@
         (str/replace #"sw" swg)
         (str/replace #"thr" thr)
         str-addition)))
+
+;; (get-dmg {:thr-1 :cr} "3d" "1d+2")
 
 (defn- number-str?
   [s]

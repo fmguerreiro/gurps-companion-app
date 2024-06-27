@@ -5,8 +5,7 @@
             ;; NOTE: referenced because of events registered there we depend on, this is kinda jank, need to refactor so we dont need to do this
             [gurps.pages.character.widgets.encumbrance-table]
             ["twrnc" :refer [style] :rename {style tw}]
-            [re-frame.core :as rf]
-            [taoensso.timbre :as log]))
+            [re-frame.core :as rf]))
 
 (defn bases-table
   []

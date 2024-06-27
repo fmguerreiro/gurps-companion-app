@@ -32,7 +32,7 @@
     (r/as-element
      [:> button {:style (tw (if owned? "bg-green-100" ""))
                  :onPress #(do
-                             (rf/dispatch [:items.melee/add (keyword id) (keyword group)])
+                             (rf/dispatch [:items.melee/add (keyword id) (if (coll? group) (map keyword group) (keyword group))])
                              (-> nav (.navigate (i18n/label (keyword :t/melee-weapons-owned)))))}
       [row
        [:> text name]
@@ -83,7 +83,7 @@
 (rf/reg-event-fx
  :items.melee/add
  (fn [{:keys [db]} [_ id skill]]
-   (let [weapon (first (filter #(= id (:id %)) (weapons-by-skill skill)))
+   (let [weapon (first (filter #(= id (:id %)) (get weapons-by-skill skill)))
          i      (count (get-in db [:items :melee-weapons] []))
          new-db (update-in db [:items :melee-weapons] (fnil #(do (assoc-in % [i] weapon)) [weapon]))]
      {:db new-db

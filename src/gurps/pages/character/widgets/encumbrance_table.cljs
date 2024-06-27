@@ -2,9 +2,8 @@
   (:require ["twrnc" :refer [style] :rename {style tw}]
             [re-frame.core :as rf]
             [gurps.widgets.base :refer [text view]]
-            [gurps.utils.helpers :refer [positions]]
-            [gurps.utils.i18n :as i18n]
-            [taoensso.timbre :as log]))
+            [gurps.utils.helpers :refer [->int positions]]
+            [gurps.utils.i18n :as i18n]))
 
 ;; TODO: use gurps.widgets.underlined-row/labelled-underlined-input widget instead
 (defn labeled-underlined-row
@@ -107,6 +106,8 @@
  :<- [:items/melee-weapons]
  :<- [:items/ranged-weapons]
  (fn [[possessions melee-weapons ranged-weapons]]
-   (reduce (fn [acc item] (+ acc (:weight item)))
-           0
-           (concat possessions melee-weapons ranged-weapons))))
+   ;; NOTE: melee weapons sometimes have a :var weight, so we need to convert it to an integer
+   (let [melee-weapons' (map (fn [item] (assoc item :weight (->int (:weight item)))) melee-weapons)]
+     (reduce (fn [acc item] (+ acc (:weight item)))
+             0
+             (concat possessions melee-weapons' ranged-weapons)))))
