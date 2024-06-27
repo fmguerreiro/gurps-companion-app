@@ -5,7 +5,7 @@
             [re-frame.core :as rf]
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [->int]]
-            [gurps.widgets.base :refer [view flat-list text]]
+            [gurps.widgets.base :refer [view flat-list button text]]
             [gurps.widgets.add-button :refer [add-button]]
             [gurps.pages.character.widgets.helpers :refer [generify-key]]
             [gurps.pages.character.utils.skills :refer [grouped-skills]]
@@ -34,8 +34,6 @@
     [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/cost)]
     [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/attr-st)]
     [:> text {:style (tw "font-bold text-right capitalize")} (i18n/label :t/wt)]]))
-
-(def empty-weapon {:name "" :weight 0 :thr-mod "1d" :swg-mod "1d" :reach "" :parry nil})
 
 (defn- str-addition
   "1d+2+2 => 1d+4"
@@ -94,7 +92,7 @@
       [:> text {:style (tw "text-right")} (str weight)]]]))
 
 (defn- item
-  [{:keys [dmg reach parry], :as data} swg thr parry-skils nav]
+  [{:keys [dmg reach parry], :as data} swg thr parry-skills nav]
   (r/as-element
    (map-indexed
     (fn [i d]
@@ -103,13 +101,14 @@
             weight (if (= 0 i) (:weight data) "")
             id     (if (= 0 i) (:id data) "")]
         ^{:key (str "item-" (:id data) "-" i)}
-        [item-row
-         (merge data
-                {:i i, :dmg d, :reach (get reach i (last reach)), :parry (get parry i (last parry))}
-                {:cost cost, :st st, :weight weight, :id id})
-         swg
-         thr
-         parry-skils]))
+        [:> button {:onPress #(-> nav (.push (i18n/label :t/melee-weapons-edit) (->js {:id (:id data)})))}
+         [item-row
+          (merge data
+                 {:i i, :dmg d, :reach (get reach i (last reach)), :parry (get parry i (last parry))}
+                 {:cost cost, :st st, :weight weight, :id id})
+          swg
+          thr
+          parry-skills]]))
     dmg)))
 
 (defn melee-weapons-page
@@ -182,12 +181,3 @@
             (map #(:k %))
             (map #(do {% (lvl->parry (:lvl (% skill-lvls)))}))
             (into {}))))
-
-(rf/reg-event-fx
- :items.melee/update
- (fn [{:keys [db]} [_ i k v]]
-   (let [weapon (merge (get-in db [:items :melee-weapons i] empty-weapon) {k v})
-         new-db (update-in db [:items :melee-weapons] (fnil #(do (assoc-in % [i] weapon)) [weapon]))]
-     {:db new-db
-      :effects.async-storage/set {:k     :items/melee-weapons
-                                  :value (get-in new-db [:items :melee-weapons])}})))
