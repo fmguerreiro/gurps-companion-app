@@ -7,6 +7,7 @@
             [gurps.widgets.underlined-input :refer [underlined-input labelled-underlined-input]]
             [gurps.pages.character.utils.skills :refer [grouped-skills]]
             [gurps.utils.helpers :refer [->int]]
+            [gurps.utils.debounce :refer [debounce-and-dispatch]]
             [gurps.utils.i18n :as i18n]))
 
 (defn- debug
@@ -20,6 +21,12 @@
    [:> text {:style (tw "font-bold capitalize")} label]
    children])
 
+(defn- prepend-addition
+  [s]
+  (cond (str/starts-with? s "-") s
+        (not (str/starts-with? s "+")) (str "+" s)
+        :else s))
+
 (def dmg [:sw :thr :spec])
 (def dmg-data
   (map #(do {:value % :label (i18n/label (keyword :k (str "dmg-" (symbol %))))}) dmg))
@@ -27,25 +34,33 @@
 (def dmg-type-data
   (map #(do {:value % :label (i18n/label (keyword :t (str "dmg-type-" (symbol %))))}) dmg-types))
 (defn- dmg-section
-  [dmg]
+  [dmg idx]
   [section (i18n/label :t/damage)
    [:> view {:style (tw "flex flex-col gap-1")}
     (map-indexed
-     (fn [idx dmg']
+     (fn [i dmg']
        (let [modifier (-> dmg' keys first)
              dmg-type (-> dmg' modifier)
              [base mod] (str/split (-> modifier symbol str) #"[+-]")]
-         ^{:key (str "dmg-" idx)}
+         ^{:key (str "dmg-" i)}
          [:> view {:style (tw "flex flex-row gap-1 items-center")}
           [dropdown {:placeholder (i18n/label (keyword :k (str "dmg-" base)))
                      :data dmg-data
                      :style (tw "flex-1")
                      :placeholder-style (tw "text-center text-xs")
                      :selected-style (tw "text-right")}]
-          ;; TODO: needs to be an input (also can be a dice! 2d-2 should be valid?)
-          [:> text (if (str/includes? (-> modifier symbol str) "-")
-                     (str "-" mod)
-                     mod)]
+          [underlined-input {:val (if (str/includes? (-> modifier symbol str) "-")
+                                    (str "-" mod)
+                                    mod)
+                             :on-change-text #(debounce-and-dispatch
+                                               [:items.melee/update
+                                                idx
+                                                :dmg
+                                                (assoc-in dmg [i] {(keyword (str base (prepend-addition %))) dmg-type})] 500)
+                             :style (tw "flex-1")
+                             :text-align "center"
+                             :max-length 5
+                             :input-mode "numeric"}]
 
           [dropdown {:placeholder (i18n/label (keyword :t (str "dmg-type-" (symbol dmg-type))))
                      :data dmg-type-data
@@ -145,7 +160,7 @@
 
       [:> view {:style (tw "flex flex-row gap-2")}
        [:> view {:style (tw "flex-2")}
-        [dmg-section dmg]]
+        [dmg-section dmg idx]]
        [:> view {:style (tw "flex-1")}
         [reach-section reach idx]]]
 

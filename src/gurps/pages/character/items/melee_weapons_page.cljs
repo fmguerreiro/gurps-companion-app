@@ -39,16 +39,16 @@
   "1d+2+2 => 1d+4
    1d+2-1 => 1d+1"
   [s]
-  (let [dice (re-seq #"\d+d" s)
-        sums (reduce + 0 (map ->int (re-seq #"-?(?!1d)\d+" s)))]
-    (str (str/join "" dice) (if (pos? sums) "+" "") sums)))
+  (let [dice  (re-seq #"\d+d" s)
+        dice' (->> dice (map #(str/replace % #"d" "")) (map ->int) (reduce + 0))
+        nums  (reduce + 0 (map ->int (re-seq #"-?(?!\d+d)\d+" s)))]
+    (str (str dice' "d") (if (pos? nums) "+" "") nums)))
 
 (defn- remove-zero-sum
   [s]
-  (str/replace s #"[+-]?0" ""))
+  (str/replace s #"^\d+d[+-]?0" ""))
 
-;; TODO: simplify 1d+4 => 2d+1, 1d+5 => 2d+2, 1d+6 => 3d, etc
-;;       also, a weapons ST caps the damage to 3xST in the damage-table for sw/thr
+;; TODO: a weapons ST caps the damage to 3xST in the damage-table for sw/thr
 (defn- get-dmg
   [dmg swg thr]
   (let [dmg' (str (symbol (first (keys dmg))))]
@@ -57,6 +57,11 @@
         (str/replace #"thr" thr)
         str-addition
         remove-zero-sum)))
+
+(defn- get-dmg-type
+  [dmg]
+  (let [d (-> dmg keys first symbol str)]
+    (str "(" (str/replace d #"(\+|-).*" "") ")")))
 
 (defn- number-str?
   [s]
@@ -72,17 +77,13 @@
         (str/replace (str/replace parry #"\d+" (str added-lvl)) #"(\+|-)" ""))
       parry)))
 
-(defn- get-dmg-type
-  [dmg]
-  (let [d (-> dmg keys first symbol str)]
-    (str "(" (str/replace d #"(\+|-).*" "") ")")))
-
 (defn- item-row
   [{:keys [id dmg reach parry cost st weight skill i]} swg thr parry-skills]
   (let [dmg' (get-dmg dmg swg thr)
         dmg-type (get-dmg-type dmg)
         name (if (i18n/has-label? id) (i18n/label id) id)
         parry' (get-parry parry (keyword skill) parry-skills)]
+    (println id dmg-type dmg')
     [:> view {:style (tw (if (even? i) "bg-white" "bg-slate-100"))}
      [row
       [:> view {:style (tw "flex flex-row justify-between flex-1 items-center justify-center")}
@@ -122,7 +123,7 @@
         swg     (some-> (rf/subscribe [:attributes/damage-swing])  deref)
         thr     (some-> (rf/subscribe [:attributes/damage-thrust]) deref)
         parry-skills (some-> (rf/subscribe [:defenses/parries]) deref)]
-
+    (println weapons) ;; TODO: remove
     [:> view {:style (tw "bg-white flex flex-col grow p-2")}
 
      [flat-list
