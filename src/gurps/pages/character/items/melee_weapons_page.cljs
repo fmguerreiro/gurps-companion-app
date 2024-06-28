@@ -37,13 +37,15 @@
 
 (defn- str-addition
   "1d+2+2 => 1d+4
-   1d+2-1 => 1d+1" ;; TODO
+   1d+2-1 => 1d+1"
   [s]
-  (reduce (fn [acc add]
-            (if (str/includes? add "d")
-              add
-              (str acc (reduce + 0 (map ->int (str/split add #"\+"))))))
-          (str/split s #"(\d+\+\d+)")))
+  (let [dice (re-seq #"\d+d" s)
+        sums (reduce + 0 (map ->int (re-seq #"-?(?!1d)\d+" s)))]
+    (str (str/join "" dice) (if (pos? sums) "+" "-") sums)))
+
+(defn- remove-zero-sum
+  [s]
+  (str/replace s #"[+-]0" ""))
 
 ;; TODO: simplify 1d+4 => 2d+1, 1d+5 => 2d+2, 1d+6 => 3d, etc
 ;;       also, a weapons ST caps the damage to 3xST in the damage-table for sw/thr
@@ -53,9 +55,11 @@
     (-> dmg'
         (str/replace #"sw" swg)
         (str/replace #"thr" thr)
-        str-addition)))
+        str-addition
+        remove-zero-sum)))
 
 ;; (get-dmg {:thr-1 :cr} "3d" "1d+2")
+;; (get-dmg {:thr+4 :cr} "3d" "1d+2")
 
 (defn- number-str?
   [s]
