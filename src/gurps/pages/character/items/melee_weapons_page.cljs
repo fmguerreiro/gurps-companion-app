@@ -86,7 +86,7 @@
     [:> view {:style (tw (if (even? i) "bg-white" "bg-slate-100"))}
      [row
       [:> view {:style (tw "flex flex-row justify-between flex-1 items-center justify-center")}
-       [:> text {:style (tw "flex-1 capitalize")} name]
+       [:> text {:style (tw "flex-1 capitalize") :numberOfLines 1} name]
        [:> text {:style (tw "italic")} dmg-type]]
       [:> text {:style (tw "text-center")} dmg']
       [:> text {:style (tw "text-center")} (str reach)]
