@@ -1,8 +1,8 @@
 (ns gurps.pages.character.widgets.summary-field
-  (:require [gurps.utils.i18n :as i18n]
+  (:require [re-frame.core :as rf]
+            [gurps.utils.i18n :as i18n]
             [gurps.utils.debounce :as debounce]
-            [gurps.widgets.underlined-input :refer [labelled-underlined-input]]
-            [re-frame.core :as rf]))
+            [gurps.widgets.underlined-input :refer [labelled-underlined-input]]))
 
 (defn summary-field
   [{:keys [key editable? style input-style text-align on-change-text]

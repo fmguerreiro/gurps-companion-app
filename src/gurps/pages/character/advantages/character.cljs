@@ -11,7 +11,7 @@
             [gurps.pages.character.utils.advantages :refer [advantages-by-name]]
             [gurps.pages.character.utils.disadvantages :refer [disadvantages-by-name]]
             [gurps.utils.i18n :as i18n]
-            [gurps.utils.helpers :refer [->int singularize-key]]
+            [gurps.utils.helpers :refer [->int singularize-key index-of]]
             [gurps.utils.debounce :refer [debounce-and-dispatch]]))
 
 (defn- row
@@ -28,9 +28,6 @@
     [:> text {:style (tw "capitalize font-bold")} (i18n/label :t/name)]
     [:> text {:style (tw "capitalize font-bold")} (i18n/label :t/level)]
     [:> text {:style (tw "capitalize mr-1 font-bold")} (i18n/label :t/cost)]]))
-
-;; TODO: put in a utils file
-(defn index-of [e coll] (first (keep-indexed #(when (= e %2) %1) coll)))
 
 (defn- item
   [{:keys [id lvl cost], :or {lvl 1}} nav type]

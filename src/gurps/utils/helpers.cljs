@@ -1,6 +1,5 @@
 (ns gurps.utils.helpers
-  (:require
-   [clojure.string :as str]))
+  (:require [clojure.string :as str]))
 
 (defn default-to
   "Returns the default value if the value is nil or empty"
@@ -61,3 +60,7 @@
                   (when (pred x)
                     idx))
                 coll))
+
+(defn index-of
+  [e coll]
+  (first (keep-indexed #(when (= e %2) %1) coll)))
