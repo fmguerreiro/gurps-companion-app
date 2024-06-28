@@ -41,11 +41,11 @@
   [s]
   (let [dice (re-seq #"\d+d" s)
         sums (reduce + 0 (map ->int (re-seq #"-?(?!1d)\d+" s)))]
-    (str (str/join "" dice) (if (pos? sums) "+" "-") sums)))
+    (str (str/join "" dice) (if (pos? sums) "+" "") sums)))
 
 (defn- remove-zero-sum
   [s]
-  (str/replace s #"[+-]0" ""))
+  (str/replace s #"[+-]?0" ""))
 
 ;; TODO: simplify 1d+4 => 2d+1, 1d+5 => 2d+2, 1d+6 => 3d, etc
 ;;       also, a weapons ST caps the damage to 3xST in the damage-table for sw/thr
@@ -57,9 +57,6 @@
         (str/replace #"thr" thr)
         str-addition
         remove-zero-sum)))
-
-;; (get-dmg {:thr-1 :cr} "3d" "1d+2")
-;; (get-dmg {:thr+4 :cr} "3d" "1d+2")
 
 (defn- number-str?
   [s]
