@@ -89,7 +89,7 @@
        [:> text {:style (tw "flex-1 capitalize") :numberOfLines 1} name]
        [:> text {:style (tw "italic")} dmg-type]]
       [:> text {:style (tw "text-center")} dmg']
-      [:> text {:style (tw "text-center")} (str reach)]
+      [:> text {:style (tw "text-center")} (str/join "-" (distinct (re-seq #"\d+" reach)))]
       [:> text {:style (tw "text-center uppercase")} parry']
       [:> text {:style (tw "text-center")} (str cost)]
       [:> text {:style (tw "text-center")} (str st)]
