@@ -82,10 +82,12 @@
 
 (defn- item-row
   [{:keys [id name dmg reach parry cost st weight skill i]} swg thr parry-skills]
-  (let [dmg' (get-dmg dmg swg thr)
+  (let [dmg'     (get-dmg dmg swg thr)
         dmg-type (get-dmg-type dmg)
-        name' (or name (if (i18n/has-label? id) (i18n/label id) id))
-        parry' (get-parry parry (keyword skill) parry-skills)]
+        name'   (or name (if (i18n/has-label? id) (i18n/label id) id))
+        skills (flatten [skill])
+        parry'  (->> skills (map #(get-parry parry (keyword %) parry-skills)) (map ->int) (map-indexed vector) (apply max-key second) second)
+        parry'' (get-parry parry :skill {:skill parry'})]
     [:> view {:style (tw (if (even? i) "bg-white" "bg-slate-100"))}
      [row
       [:> view {:style (tw "flex flex-row justify-between flex-1 items-center justify-center")}
@@ -93,7 +95,7 @@
        [:> text {:style (tw "italic")} dmg-type]]
       [:> text {:style (tw "text-center")} dmg']
       [:> text {:style (tw "text-center")} (str/join "-" (map str/upper-case (distinct (re-seq #"[\dc]" reach))))]
-      [:> text {:style (tw "text-center uppercase")} parry']
+      [:> text {:style (tw "text-center uppercase")} parry'']
       [:> text {:style (tw "text-center")} (str cost)]
       [:> text {:style (tw "text-center")} (str st)]
       [:> text {:style (tw "text-right")} (str weight)]]]))
@@ -116,6 +118,7 @@
           swg
           thr
           parry-skills]]))
+
     dmg)))
 
 (defn melee-weapons-page
@@ -125,7 +128,6 @@
         swg     (some-> (rf/subscribe [:attributes/damage-swing])  deref)
         thr     (some-> (rf/subscribe [:attributes/damage-thrust]) deref)
         parry-skills (some-> (rf/subscribe [:defenses/parries]) deref)]
-    (println weapons) ;; TODO: remove
     [:> view {:style (tw "bg-white flex flex-col grow p-2")}
 
      [flat-list
@@ -183,8 +185,9 @@
  :defenses/parries
  :<- [:skills/weapons]
  :<- [:skills/lvls]
- (fn [[skills skill-lvls]]
-   (some->> skills
+ :<- [:attributes/dex]
+ (fn [[skills skill-lvls dx]]
+   (some->> (merge skills {:name "DX", :k :dx, :cost 1})
             (map #(:k %))
-            (map #(do {% (lvl->parry (:lvl (% skill-lvls)))}))
+            (map #(do {% (lvl->parry (:lvl (% (merge skill-lvls {:dx {:lvl dx}}))))}))
             (into {}))))

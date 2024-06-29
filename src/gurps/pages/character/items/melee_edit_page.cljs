@@ -10,11 +10,6 @@
             [gurps.utils.debounce :refer [debounce-and-dispatch]]
             [gurps.utils.i18n :as i18n]))
 
-(defn- debug
-  [exp & tag]
-  (println tag exp)
-  exp)
-
 (defn- section
   [label children]
   [:> view {:style (tw "flex flex-col gap-2")}
