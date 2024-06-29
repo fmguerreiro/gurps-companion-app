@@ -1,4 +1,4 @@
-(ns gurps.pages.character.items.melee-edit-page
+(ns gurps.pages.character.items.melee.edit
   (:require ["twrnc" :refer [style] :rename {style tw}]
             [clojure.string :as str]
             [re-frame.core :as rf]

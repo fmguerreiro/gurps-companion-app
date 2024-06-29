@@ -29,7 +29,7 @@
 (defn- header
   []
   [row
-   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/weapon)]
+   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/weapon)]
    [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/damage)]
    [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/acc)]
    [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/range)]

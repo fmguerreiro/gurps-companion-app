@@ -1,4 +1,4 @@
-(ns gurps.pages.character.items.melee-list-page
+(ns gurps.pages.character.items.melee.list
   (:require ["@react-navigation/native" :as rnn]
             ["twrnc" :refer [style] :rename {style tw}]
             [cljs-bean.core :refer [->clj ->js]]

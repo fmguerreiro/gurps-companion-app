@@ -1,4 +1,4 @@
-(ns gurps.pages.character.items.melee-weapons-page
+(ns gurps.pages.character.items.melee.character
   (:require ["twrnc" :refer [style] :rename {style tw}]
             ["@react-navigation/native" :as rnn]
             [cljs-bean.core :refer [->js ->clj]]
@@ -121,7 +121,7 @@
 
     dmg)))
 
-(defn melee-weapons-page
+(defn character-melee-page
   []
   (let [nav     (rnn/useNavigation)
         weapons (some-> (rf/subscribe [:items/melee-weapons]) deref)
