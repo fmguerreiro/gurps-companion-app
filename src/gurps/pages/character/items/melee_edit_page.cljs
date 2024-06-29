@@ -135,7 +135,7 @@
        (map (comp keyword str))
        (map #(do {:value %, :label (-> % symbol str str/upper-case)}))))
 (defn- reach-section
-  [reach idx]
+  [reach idx size]
   [section (i18n/label :t/reach)
    [:> view {:style (tw "flex flex-col gap-1")}
     (map-indexed
@@ -156,7 +156,7 @@
                      :style (tw "flex-1")
                      :placeholder-style (tw "text-center uppercase text-xs")
                      :selected-style (tw "text-center uppercase text-xs")}]]))
-     reach)]])
+     (flatten (conj reach (repeat (- size (count reach)) (last reach)))))]])
 
 (defn melee-edit-page
   [props]
@@ -181,7 +181,7 @@
        [:> view {:style (tw "flex-2")}
         [dmg-section dmg idx]]
        [:> view {:style (tw "flex-1")}
-        [reach-section reach idx]]]
+        [reach-section reach idx (count dmg)]]]
 
       [:> view {:style (tw "flex flex-row gap-2")}
        [:> view {:style (tw "flex-1")}
