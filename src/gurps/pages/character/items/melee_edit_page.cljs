@@ -48,7 +48,7 @@
      (fn [i dmg']
        (let [modifier (-> dmg' keys first)
              dmg-type (-> dmg' modifier)
-             motion   (first (re-seq #"[^0-9-+]+" (debug (key->str modifier) "what")))
+             motion   (first (re-seq #"[^0-9-+]+" (key->str modifier)))
              motion'  (if (or (str/blank? motion) (= motion "d")) "spec" motion)
              mods     (re-seq #"(?!sw|thr)-?\b\w+" (key->str modifier))]
          ^{:key (str "dmg-" i)}
@@ -75,6 +75,10 @@
 
           [dropdown {:placeholder (i18n/label (keyword :t (str "dmg-type-" (symbol dmg-type))))
                      :data dmg-type-data
+                     :on-change #(rf/dispatch [:items.melee/update
+                                               idx
+                                               :dmg
+                                               (assoc-in dmg [i] {modifier (keyword %)})])
                      :style (tw "flex-1")
                      :placeholder-style (tw "text-center text-xs")
                      :selected-style (tw "text-right")}]]))
