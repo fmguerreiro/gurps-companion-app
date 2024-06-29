@@ -1,7 +1,8 @@
 module.exports = {
   expo: {
+    owner: "tofuman",
     name: "Gurps Companion",
-    slug: "gurps-companion",
+    slug: "gurps-companion-app",
     privacy: "public",
     platforms: ["ios", "android", "web"],
     version: "1.0.0",
@@ -10,7 +11,7 @@ module.exports = {
     splash: {
       image: "./assets/splash.png",
       resizeMode: "contain",
-      backgroundColor: "#fce8a4",
+      backgroundColor: "#ffffff",
     },
     updates: {
       fallbackToCacheTimeout: 0,
