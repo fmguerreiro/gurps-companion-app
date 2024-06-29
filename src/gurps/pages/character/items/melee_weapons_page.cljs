@@ -20,8 +20,8 @@
    [:> view {:style (tw "items-center justify-center flex-1")} col3]
    [:> view {:style (tw "items-center justify-center flex-1")} col4]
    [:> view {:style (tw "items-center justify-center flex-1")} col5]
-   [:> view {:style (tw "items-center justify-center flex-1")} col6]
-   [:> view {:style (tw "items-center justify-center flex-1")} col7]])
+   [:> view {:style (tw "items-center justify-center flex-0.5")} col6]
+   [:> view {:style (tw "items-center justify-center flex-0.5")} col7]])
 
 (defn- header
   []
@@ -31,7 +31,7 @@
     [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/dmg)]
     [:> text {:style (tw "font-bold text-xs text-center capitalize")} (i18n/label :t/reach)]
     [:> text {:style (tw "font-bold text-xs text-center capitalize")} (i18n/label :t/parry)]
-    [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/cost)]
+    [:> text {:style (tw "font-bold text-xs text-center capitalize")} (i18n/label :t/cost)]
     [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/attr-st)]
     [:> text {:style (tw "font-bold text-right capitalize")} (i18n/label :t/wt)]]))
 
@@ -81,15 +81,15 @@
         parry))))
 
 (defn- item-row
-  [{:keys [id dmg reach parry cost st weight skill i]} swg thr parry-skills]
+  [{:keys [id name dmg reach parry cost st weight skill i]} swg thr parry-skills]
   (let [dmg' (get-dmg dmg swg thr)
         dmg-type (get-dmg-type dmg)
-        name (if (i18n/has-label? id) (i18n/label id) id)
+        name' (or name (if (i18n/has-label? id) (i18n/label id) id))
         parry' (get-parry parry (keyword skill) parry-skills)]
     [:> view {:style (tw (if (even? i) "bg-white" "bg-slate-100"))}
      [row
       [:> view {:style (tw "flex flex-row justify-between flex-1 items-center justify-center")}
-       [:> text {:style (tw "flex-1 capitalize") :numberOfLines 1} name]
+       [:> text {:style (tw "flex-1 capitalize") :numberOfLines 1} name']
        [:> text {:style (tw "italic")} dmg-type]]
       [:> text {:style (tw "text-center")} dmg']
       [:> text {:style (tw "text-center")} (str/join "-" (map str/upper-case (distinct (re-seq #"[\dc]" reach))))]

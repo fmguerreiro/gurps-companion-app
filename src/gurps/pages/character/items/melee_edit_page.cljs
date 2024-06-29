@@ -172,6 +172,7 @@
       ;; name
       [labelled-underlined-input
        {:label (i18n/label :t/name)
+        :on-change-text #(debounce-and-dispatch [:items.melee/update idx :name %] 500)
         :val (if name
                name
                (if (i18n/has-label? id) (i18n/label id) id))}]
