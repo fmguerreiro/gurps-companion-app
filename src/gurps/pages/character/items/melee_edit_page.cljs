@@ -23,7 +23,8 @@
 
 (defn- prepend-addition
   [s]
-  (cond (str/starts-with? s "-") s
+  (cond (str/blank? s) ""
+        (str/starts-with? s "-") s
         (not (str/starts-with? s "+")) (str "+" s)
         :else s))
 
@@ -33,6 +34,12 @@
 (def dmg-types [:cr :burn :cor :imp :pi- :pi :pi+ :pi++ :tox :aff :fat])
 (def dmg-type-data
   (map #(do {:value % :label (i18n/label (keyword :t (str "dmg-type-" (symbol %))))}) dmg-types))
+
+(defn- modifier->str
+  [m]
+  (first (re-seq #"[+-].+" (str (symbol m)))))
+
+(def key->str (comp str symbol))
 (defn- dmg-section
   [dmg idx]
   [section (i18n/label :t/damage)
@@ -41,22 +48,26 @@
      (fn [i dmg']
        (let [modifier (-> dmg' keys first)
              dmg-type (-> dmg' modifier)
-             [base mod] (str/split (-> modifier symbol str) #"[+-]")]
+             motion   (first (re-seq #"[^0-9-+]+" (debug (key->str modifier) "what")))
+             motion'  (if (or (str/blank? motion) (= motion "d")) "spec" motion)
+             mods     (re-seq #"(?!sw|thr)-?\b\w+" (key->str modifier))]
          ^{:key (str "dmg-" i)}
          [:> view {:style (tw "flex flex-row gap-1 items-center")}
-          [dropdown {:placeholder (i18n/label (keyword :k (str "dmg-" base)))
+          [dropdown {:placeholder (i18n/label (keyword :k (str "dmg-" motion')))
                      :data dmg-data
                      :style (tw "flex-1")
+                     :on-change #(rf/dispatch [:items.melee/update
+                                               idx
+                                               :dmg
+                                               (assoc-in dmg [i] {(keyword (str (symbol %) (prepend-addition (modifier->str modifier)))) dmg-type})])
                      :placeholder-style (tw "text-center text-xs")
-                     :selected-style (tw "text-right")}]
-          [underlined-input {:val (if (str/includes? (-> modifier symbol str) "-")
-                                    (str "-" mod)
-                                    mod)
+                     :selected-style (tw "text-right text-xs")}]
+          [underlined-input {:val (reduce #(str %1 (prepend-addition %2)) "" mods)
                              :on-change-text #(debounce-and-dispatch
                                                [:items.melee/update
                                                 idx
                                                 :dmg
-                                                (assoc-in dmg [i] {(keyword (str base (prepend-addition %))) dmg-type})] 500)
+                                                (assoc-in dmg [i] {(keyword (str motion' (prepend-addition %))) dmg-type})] 500)
                              :style (tw "flex-1")
                              :text-align "center"
                              :max-length 5

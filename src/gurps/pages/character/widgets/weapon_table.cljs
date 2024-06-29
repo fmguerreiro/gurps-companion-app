@@ -35,7 +35,7 @@
 
    {:id :force-sword :dmg [{:8d :burn}] :reach [:1-2] :parry [:0] :cost 10000 :weight 2 :st 3 :tl 10 :skill :force-sword}
 
-   {:id :garrote :dmg [{:spec :spec}] :reach [:c] :parry [:no] :cost 2 :weight 0 :st 0 :tl 0 :skill :garrote}
+   {:id :garrote :dmg [{:spec :cr}] :reach [:c] :parry [:no] :cost 2 :weight 0 :st 0 :tl 0 :skill :garrote}
 
    {:id :large-knife :dmg [{:sw-2 :cut}, {:thr :imp}] :reach [:c-1, :c] :parry [:-1] :cost 40 :weight 1 :st 6 :tl 0 :skill :knife}
    {:id :small-knife :dmg [{:sw-3 :cut}, {:thr-1 :imp}] :reach [:c-1, :c] :parry [:-1] :cost 30 :weight 0.5 :st 5 :tl 0 :skill :knife}

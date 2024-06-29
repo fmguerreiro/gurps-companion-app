@@ -39,14 +39,10 @@
   "1d+2+2 => 1d+4
    1d+2-1 => 1d+1"
   [s]
-  (let [dice  (re-seq #"\d+d" s)
+  (let [dice  (re-seq #"-?\d+d" s)
         dice' (->> dice (map #(str/replace % #"d" "")) (map ->int) (reduce + 0))
         nums  (reduce + 0 (map ->int (re-seq #"-?(?!\d+d)\d+" s)))]
-    (str (str dice' "d") (if (pos? nums) "+" "") nums)))
-
-(defn- remove-zero-sum
-  [s]
-  (str/replace s #"^\d+d[+-]?0" ""))
+    (str (str dice' "d") (if (pos? nums) "+" "") (when (not= 0 nums) nums))))
 
 ;; TODO: a weapons ST caps the damage to 3xST in the damage-table for sw/thr
 (defn- get-dmg
@@ -55,13 +51,16 @@
     (-> dmg'
         (str/replace #"sw" swg)
         (str/replace #"thr" thr)
-        str-addition
-        remove-zero-sum)))
+        str-addition)))
+
+(str-addition "1d-2-2d")
 
 (defn- get-dmg-type
   [dmg]
-  (let [d (-> dmg keys first symbol str)]
-    (str "(" (str/replace d #"(\+|-).*" "") ")")))
+  (let [d       (-> dmg keys first symbol str)
+        motion  (str/replace d #"(\+|-).*" "")
+        motion' (if (str/blank? motion) "spec" motion)]
+    (str "(" motion' ")")))
 
 (defn- number-str?
   [s]
@@ -83,14 +82,13 @@
         dmg-type (get-dmg-type dmg)
         name (if (i18n/has-label? id) (i18n/label id) id)
         parry' (get-parry parry (keyword skill) parry-skills)]
-    (println id dmg-type dmg')
     [:> view {:style (tw (if (even? i) "bg-white" "bg-slate-100"))}
      [row
       [:> view {:style (tw "flex flex-row justify-between flex-1 items-center justify-center")}
        [:> text {:style (tw "flex-1 capitalize") :numberOfLines 1} name]
        [:> text {:style (tw "italic")} dmg-type]]
       [:> text {:style (tw "text-center")} dmg']
-      [:> text {:style (tw "text-center")} (str/join "-" (distinct (re-seq #"\d+" reach)))]
+      [:> text {:style (tw "text-center")} (str/join "-" (map str/upper-case (distinct (re-seq #"[\dc]" reach))))]
       [:> text {:style (tw "text-center uppercase")} parry']
       [:> text {:style (tw "text-center")} (str cost)]
       [:> text {:style (tw "text-center")} (str st)]

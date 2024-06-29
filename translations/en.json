@@ -33,6 +33,7 @@
   "melee-weapons-edit": "Melee Weapon Edit",
   "melee-weapons-owned": "Owned Melee Weapons",
 
+  "dmg-type-cut": "Cutting",
   "dmg-type-cr": "Crushing",
   "dmg-type-burn": "Burning",
   "dmg-type-cor": "Corrosion",
@@ -44,9 +45,12 @@
   "dmg-type-tox": "Toxic",
   "dmg-type-aff": "Affliction",
   "dmg-type-fat": "Fatigue",
-  "dmg-sw": "Swinging",
-  "dmg-thr": "Thrusting",
+  "dmg-sw": "Base sw",
+  "dmg-thr": "Base thr",
   "dmg-spec": "Special",
+  "parry-unbalanced": "Unbalanced",
+  "parry-fencing": "Fencing",
+  "parry-no": "No",
 
   "ranged-weapons": "Ranged Weapons",
   "reach": "Reach",
