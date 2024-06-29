@@ -93,35 +93,38 @@
   (str/replace s #"[^0-9-+]+" ""))
 
 (defn- parry-section
-  [parry]
+  [parry idx]
   [section (i18n/label :t/parry)
    [:> view {:style (tw "flex flex-col gap-1")}
     (map-indexed
-     (fn [idx parry']
-       ^{:key (str "parry-" idx)}
-       [:> view {:style (tw "flex flex-row gap-1 items-center")}
-        [underlined-input {:val (keep-numbers (str parry'))
-                           :style (tw "flex-1")
-                           :text-align "center"
-                           :input-mode "numeric"}]
-        [dropdown {:placeholder (-> parry' symbol str remove-numbers)
-                   :data [{:label "" :value nil}, {:label (i18n/label :t/parry-unbalanced) :value :u}, {:label (i18n/label :t/parry-fencing) :value :f}, {:label (i18n/label :t/parry-no) :value :no}]
-                   :style (tw "flex-2")
-                   :placeholder-style (tw "text-center capitalize text-xs")
-                   :selected-style (tw "text-center capitalize")}]])
+     (fn [i parry']
+       (let [parry-type (-> parry' symbol str remove-numbers)
+             parry-mod  (-> parry' symbol str keep-numbers)]
+         ^{:key (str "parry-" i)}
+         [:> view {:style (tw "flex flex-row gap-1 items-center")}
+          [underlined-input {:val parry-mod
+                             :on-change-text #(debounce-and-dispatch [:items.melee/update idx :parry [(keyword (str (->int %) parry-type))]] 500)
+                             :style (tw "flex-1")
+                             :text-align "center"
+                             :input-mode "numeric"}]
+          [dropdown {:placeholder parry-type
+                     :data [{:label "" :value nil}, {:label (i18n/label :t/parry-unbalanced) :value :u}, {:label (i18n/label :t/parry-fencing) :value :f}, {:label (i18n/label :t/parry-no) :value :no}]
+                     :on-change #(rf/dispatch [:items.melee/update idx :parry [(keyword (str parry-mod %))]])
+                     :style (tw "flex-2")
+                     :placeholder-style (tw "text-center capitalize text-xs")
+                     :selected-style (tw "text-center capitalize")}]]))
      parry)]])
 
 (defn- skill-key
   [k]
-  (if (namespace k)
-    (namespace k)
-    k))
+  (or (namespace k) k))
 (defn- skill-dropdown
-  [skill]
+  [skill idx]
   (let [skills (-> grouped-skills :combat-melee keys)
         data   (some->> skills (map #(do {:value % :label (i18n/label (str "skill-" (symbol (skill-key %))))})))]
     [dropdown {:placeholder (i18n/label (str "skill-" (symbol (skill-key skill))))
                :data data
+               :on-change #(rf/dispatch [:items.melee/update idx :skill (keyword %)])
                :style (tw "flex-1")
                :placeholder-style (tw "text-xs")
                :selected-style (tw "text-center")}]))
@@ -182,9 +185,9 @@
       [:> view {:style (tw "flex flex-row gap-2")}
        [:> view {:style (tw "flex-1")}
         [section (i18n/label :t/skill)
-         [skill-dropdown skill]]]
+         [skill-dropdown skill idx]]]
        [:> view {:style (tw "flex-1")}
-        [parry-section parry]]]
+        [parry-section parry idx]]]
 
       [:> view {:style (tw "flex flex-row gap-2")}
        [:> view {:style (tw "flex-1")}
@@ -192,6 +195,7 @@
         [labelled-underlined-input
          {:label (i18n/label :t/cost)
           :val cost
+          :on-change-text #(debounce-and-dispatch [:items.melee/update idx :cost (->int %)] 500)
           :text-align "center"
           :input-mode "numeric"}]]
 
@@ -201,6 +205,7 @@
          {:label (i18n/label :t/weight)
           :val weight
           :text-align "center"
+          :on-change-text #(debounce-and-dispatch [:items.melee/update idx :weight (->int %)] 500)
           :input-mode "numeric"}]]
 
        [:> view {:style (tw "flex-1")}
@@ -209,6 +214,7 @@
          {:label (i18n/label :t/attr-st)
           :val st
           :text-align "center"
+          :on-change-text #(debounce-and-dispatch [:items.melee/update idx :st (->int %)] 500)
           :input-mode "numeric"}]]]]]))
 
 (def empty-weapon {:id nil :dmg [] :reach [] :parry [] :cost 0 :weight 0 :st 0 :skill nil})

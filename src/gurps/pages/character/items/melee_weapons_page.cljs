@@ -66,15 +66,19 @@
   [s]
   (re-matches #"^\-?\d+$" s))
 
+;; (get-parry "0u", :staff, {:staff 7})
 (defn- get-parry
   "'0u', :staff {:staff 7} => 7u
-   '+2', :staff {:staff 7} => 9"
+   '+2', :staff {:staff 7} => 9
+   '0no',:staff {:staff 7} => no"
   [parry skill skills]
-  (let [lvl (get skills skill)]
-    (if (and lvl (re-find #"\d+" (str (symbol parry))))
-      (let [added-lvl (+ lvl (first (map ->int (filter number-str? (str/split parry #"\+?(-?\d+)")))))]
-        (str/replace (str/replace parry #"\d+" (str added-lvl)) #"(\+|-)" ""))
-      parry)))
+  (if (str/includes? parry "no")
+    "no"
+    (let [lvl (get skills skill)]
+      (if (and lvl (re-find #"\d+" (str (symbol parry))))
+        (let [added-lvl (+ lvl (first (map ->int (filter number-str? (str/split parry #"\+?(-?\d+)")))))]
+          (str/replace (str/replace parry #"\d+" (str added-lvl)) #"(\+|-)" ""))
+        parry))))
 
 (defn- item-row
   [{:keys [id dmg reach parry cost st weight skill i]} swg thr parry-skills]
