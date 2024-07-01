@@ -6,9 +6,9 @@
             [gurps.utils.i18n :as i18n]
             [gurps.navigation.common :refer [options]]
             [gurps.pages.character.items :refer [character-items-page]]
-            [gurps.pages.character.items.melee-weapons-page :refer [melee-weapons-page]]
-            [gurps.pages.character.items.melee-list-page :refer [melee-list-page]]
-            [gurps.pages.character.items.melee-edit-page :refer [melee-edit-page]]
+            [gurps.pages.character.items.melee.character :refer [character-melee-page]]
+            [gurps.pages.character.items.melee.list :refer [melee-list-page]]
+            [gurps.pages.character.items.melee.edit :refer [melee-edit-page]]
             [gurps.pages.character.items.ranged-weapons-page :refer [ranged-weapons-page]]))
 
 (defonce Tab (rnn-top-tabs/createMaterialTopTabNavigator))
@@ -18,7 +18,7 @@
 
 (defn- melee-weapons-stack
   []
-  (r/with-let [owned-component (fn [props] (r/as-element [melee-weapons-page props]))
+  (r/with-let [owned-component (fn [props] (r/as-element [character-melee-page props]))
                list-component  (fn [props] (r/as-element [melee-list-page props]))
                edit-component  (fn [props] (r/as-element [melee-edit-page props]))]
 
@@ -38,6 +38,7 @@
   (r/with-let [possessions-component (fn [props] (r/as-element [character-items-page props]))
                melee-weapons-component (fn [props] (r/as-element [melee-weapons-stack props]))
                ranged-weapons-component (fn [props] (r/as-element [ranged-weapons-page props]))]
+
     [:> Tab.Navigator {:initialRouteName (i18n/label :t/items)
                        :screenOptions {:tabBarLabelStyle header-title-style
                                        :headerTitleAlign "center"}}

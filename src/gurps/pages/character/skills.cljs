@@ -1,45 +1,39 @@
 (ns gurps.pages.character.skills
-  (:require ["react-native" :as rn]
-            ["@react-navigation/native" :as rnn]
+  (:require ["@react-navigation/native" :as rnn]
             ["twrnc" :refer [style] :rename {style tw}]
+            [cljs-bean.core :refer [->js ->clj]]
             [re-frame.core :as rf]
+            [reagent.core :as r]
             [react-native.platform :refer [ios?]]
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [key->str ->int flatten-key]]
             [gurps.utils.debounce :refer [debounce-and-dispatch]]
-            [gurps.widgets.base :refer [view text button]]
+            [gurps.widgets.base :refer [view flat-list text button]]
             [gurps.widgets.add-button :refer [add-button]]
-            [gurps.widgets.underlined-input :refer [underlined-input]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
             [gurps.pages.character.widgets.helpers :refer [generify-key]]
             [gurps.pages.character.utils.skills :refer [skills difficulties lvl-with-difficulty lvl-with-cost] :rename {skills skill-map}]
             [gurps.pages.character.widgets.attribute :refer [key->t]]
-            [gurps.pages.character.widgets.attributes] ;; NOTE: makes sure the subs are registered
-            [clojure.string :as str]
-            [taoensso.timbre :as log]))
+            [gurps.pages.character.widgets.attributes])) ;; NOTE: makes sure the subs are registered
 
 (defn- row
   [col1 col2 col3 col4 col5]
-  [:> view {:style (tw "flex flex-row gap-1 h-8")}
-   [:> view {:style (tw "flex-5 my-auto")} col1]
-   [:> view {:style (tw "flex-1 my-auto")} col2]
-   [:> view {:style (tw "flex-2 my-auto")} col3]
-   [:> view {:style (tw "flex-1 my-auto")} col4]
-   [:> view {:style (tw "flex-1 my-auto")} col5]])
+  [:> view {:style (tw "flex flex-row h-6 gap-2 mx-2 my-1")}
+   [:> view {:style (tw "flex-4 justify-center items-start")} col1]
+   [:> view {:style (tw "flex-1 justify-center items-center")} col2]
+   [:> view {:style (tw "flex-1.5 justify-center items-center")} col3]
+   [:> view {:style (tw "flex-0.8 justify-center items-center")} col4]
+   [:> view {:style (tw "flex-1 justify-center items-end")} col5]])
 
 (defn- header
   []
-  [row
-   [:> text {:style (tw "font-bold text-left capitalize")} (i18n/label :t/name)]
-   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/level)]
-   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/attribute)]
-   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/diff)]
-   [:> text {:style (tw "font-bold text-center capitalize")} (i18n/label :t/cost)]])
-
-(defn- add-skill-button
-  []
-  (when-let [navigation (rnn/useNavigation)]
-    [add-button {:on-click (fn [] (-> navigation (.navigate (i18n/label :t/add-skill))))}]))
+  (r/as-element
+   [row
+    [:> text {:style (tw "capitalize font-bold")} (i18n/label :t/name)]
+    [:> text {:style (tw "capitalize font-bold")} (i18n/label :t/level)]
+    [:> text {:style (tw "capitalize font-bold"), :numberOfLines 1} (i18n/label :t/attribute)]
+    [:> text {:style (tw "capitalize font-bold"), :numberOfLines 1} (i18n/label :t/diff)]
+    [:> text {:style (tw "capitalize font-bold")} (i18n/label :t/cost)]]))
 
 (defn- best-attr
   "Get the highest attribute value"
@@ -50,86 +44,65 @@
   [skill-key]
   (let [skills (some-> (rf/subscribe [:skills/lvls]) deref)
         skill  (skill-key skills)]
-    [underlined-input {:val (:lvl skill)
-                       :text-align "center"
-                       :disabled? true}]))
+    [:> text {:style (tw "text-center")} (:lvl skill)]))
 
 (defn- diff->label
   [diff]
   (i18n/label (keyword :t (diff difficulties))))
 
-(defn- platform-dependent-name-row
-  "This row behaves differently between android and ios.
-  On android, the on-press event for a text input doesnt work, so we wrap it in a button.
-  This causes problems on ios, so we keep the two implementations separate."
-  [name on-press]
-  (if ios?
-    [underlined-input {:val name
-                       :style (tw "capitalize")
-                       :placeholder-color "#FFF"
-                       :on-press on-press
-                       :disabled? true}]
-    ;; android
-    [:> button {:style (tw "flex-1")
-                :onPress on-press}
-     [underlined-input {:val name
-                        :style (tw "capitalize")
-                        :placeholder-color "#FFF"
-                        :disabled? true}]]))
+(defn- item
+  [{:keys [k name cost]} idx nav]
+  (let [{:keys [diff attr]} (-> k generify-key skill-map)
+        on-press  #(-> nav (.navigate (i18n/label :t/add-skill-specialization) #js {:id (key->str (generify-key %))}))]
+    (r/as-element
+     [row
+      ;; name
+      (if ios?
+        [:> text {:onPress on-press, :numberOfLines 1, :style (tw "capitalize")} name]
+        [:> button {:style (tw "flex-1"), :onPress #(on-press k)}
+         [:> text {:style (tw "capitalize"), :numberOfLines 1} name]])
+
+      ;; lvl
+      [skill-lvl k]
+
+      ;; main attr(s)
+      [:> text {:style (tw "text-center")} (key->t attr)]
+
+      ;; difficulty
+      [:> text {:style (tw "text-center")} (diff->label diff)]
+
+      ;; cost
+      [bracketed-numeric-input {:val cost
+                                :input-mode "numeric"
+                                :max-length 2
+                                :on-change-text #(debounce-and-dispatch [:skills.update/cost idx (->int %)] 500)}]])))
 
 (defn character-skills-page
   []
-  (let [skills     (some-> (rf/subscribe [:skills]) deref)
-        navigation (rnn/useNavigation)
-        on-press   #(-> navigation (.navigate (i18n/label :t/add-skill-specialization)
-                                              #js {:id (key->str (generify-key %))}))]
-    [:> view {:style (tw "flex flex-1 flex-col")}
-     [:> rn/ScrollView {:style (tw "flex flex-1 flex-col bg-white flex-grow px-2")}
+  (let [nav      (rnn/useNavigation)
+        skills   (some-> (rf/subscribe [:skills]) deref)]
 
-      [header]
+    [:> view {:style (tw "bg-white flex flex-col grow")}
 
-      ;; skills
-      (map-indexed (fn [i {:keys [k name cost]}]
-                     (let [{:keys [diff attr]} (-> k generify-key skill-map)]
-                       ^{:key (str "skill-" i)}
-                       [row
-                        ;; name
-                        (if ios?
-                          [underlined-input {:val name
-                                             :style (tw "capitalize")
-                                             :placeholder-color "#FFF"
-                                             :on-press #(on-press k)
-                                             :disabled? true}]
+     [flat-list
+      {:data (->> skills (map #(merge % {:id (:k %)})) ->js)
 
-                          [:> button {:style (tw "flex-1")
-                                      :onPress #(on-press k)}
-                           [underlined-input {:val name
-                                              :style (tw "capitalize")
-                                              :placeholder-color "#FFF"
-                                              :disabled? true}]])
-                        ;; lvl
-                        [skill-lvl k]
+       :key-extractor
+       (fn [item]
+         (:id (->clj item :keywordize-keys true)))
 
-                        ;; main attr(s)
-                        [underlined-input {:val (key->t attr)
-                                           :text-align "center"
-                                           :disabled? true}]
+       :render-item
+       (fn [item-info-js]
+         (let [item-info (->clj item-info-js :keywordize-keys true)
+               {data :item} item-info
+               idx (:index item-info)
+               data' (merge data {:k (keyword (:k data))})]
+           (item data' idx nav)))
 
-                        ;; difficulty
-                        [underlined-input {:val (diff->label diff)
-                                           :text-align "center"
-                                           :disabled? true}]
-                        ;; cost
-                        [bracketed-numeric-input {:val cost
-                                                  :input-mode "numeric"
-                                                  :max-length 2
-                                                  :on-change-text #(debounce-and-dispatch [:skills.update/cost i (->int %)] 500)}]]))
+       :ListHeaderComponent header}]
 
-                   skills)]
-
-     ;; add-skill button
      [:> view {:style (tw "absolute bottom-4 right-4")}
-      [add-skill-button]]]))
+      [add-button {:on-click #(-> nav (.push (i18n/label :t/add-skill)))}]]]))
 
 ;; register all skill-cost subs
 (doseq [skill (keys skill-map)]
@@ -159,6 +132,11 @@
  :<- [:skills]
  (fn [skills [_ idx]]
    (get-in skills [idx])))
+
+(defn- debug
+  [exp & tag]
+  (println tag exp)
+  exp)
 
 (rf/reg-sub
  :skills/lvls
