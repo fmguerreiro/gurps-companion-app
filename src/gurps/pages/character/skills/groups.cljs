@@ -78,7 +78,7 @@
              {}
              skill-keys))))
 
-(defn character-add-skill-page
+(defn skill-groups-page
   []
   [:> view {:style (tw "flex flex-col bg-white px-2")}
    [skill-groups]])

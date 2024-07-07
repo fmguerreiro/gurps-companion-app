@@ -1,4 +1,4 @@
-(ns gurps.pages.character.skills
+(ns gurps.pages.character.skills.character
   (:require ["@react-navigation/native" :as rnn]
             ["twrnc" :refer [style] :rename {style tw}]
             [cljs-bean.core :refer [->js ->clj]]

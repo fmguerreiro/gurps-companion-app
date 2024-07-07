@@ -1,4 +1,4 @@
-(ns gurps.pages.character.skills.specialization
+(ns gurps.pages.character.skills.details
   (:require [cljs-bean.core :refer [->clj]]
             [clojure.string :as str]
             [reagent.core :as r]
@@ -8,9 +8,9 @@
             [gurps.utils.i18n :as i18n]
             [gurps.pages.character.utils.skills :refer [skills skill->txt difficulties]]
             ["twrnc" :refer [style] :rename {style tw}]
-            ["@react-navigation/native" :as rnn]
-            [taoensso.timbre :as log]))
+            ["@react-navigation/native" :as rnn]))
 
+;; TODO use flex instead of width
 (defn- row
   [col1 col2 col3 col4]
   [:> view {:style (tw "flex flex-row justify-between")}
@@ -54,7 +54,7 @@
   [:> text {:style (tw "text-xl font-bold capitalize")}
    txt])
 
-(defn character-add-skill-spec-page
+(defn skill-details-page
   [props]
   (let [skill-key       (-> props ->clj :route :params :id str->key)
         skill-name      (if (some? (namespace skill-key)) (namespace skill-key) (name skill-key))
