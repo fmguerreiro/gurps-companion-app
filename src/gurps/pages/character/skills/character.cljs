@@ -53,12 +53,12 @@
 (defn- item
   [{:keys [k name cost]} idx nav]
   (let [{:keys [diff attr]} (-> k generify-key skill-map)
-        on-press  #(-> nav (.navigate (i18n/label :t/add-skill-specialization) #js {:id (key->str (generify-key %))}))]
+        on-press  #(-> nav (.push (i18n/label :t/add-skill-specialization) #js {:id (key->str (generify-key %))}))]
     (r/as-element
      [row
       ;; name
       (if ios?
-        [:> text {:onPress on-press, :numberOfLines 1, :style (tw "capitalize")} name]
+        [:> text {:onPress #(on-press k), :numberOfLines 1, :style (tw "capitalize")} name]
         [:> button {:style (tw "flex-1"), :onPress #(on-press k)}
          [:> text {:style (tw "capitalize"), :numberOfLines 1} name]])
 

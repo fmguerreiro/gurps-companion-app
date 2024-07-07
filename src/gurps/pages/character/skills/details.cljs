@@ -56,6 +56,7 @@
 
 (defn skill-details-page
   [props]
+  (println props)
   (let [skill-key       (-> props ->clj :route :params :id str->key)
         skill-name      (if (some? (namespace skill-key)) (namespace skill-key) (name skill-key))
         skill           (skill-key skills)
