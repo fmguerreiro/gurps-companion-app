@@ -13,36 +13,36 @@
   [col1 col2 col3 col4]
   [:> view {:style (tw "flex flex-row justify-between")}
     ;; name
-   [:> view {:style (tw "flex-3 my-auto")} col1]
+   [:> view {:style (tw "flex-2 my-auto")} col1]
     ;; difficulty
    [:> view {:style (tw "flex-1 my-auto")} col2]
     ;; default-lvl ;; TODO: explanation on which skill it's defaulting from?
    [:> view {:style (tw "flex-1 my-auto")} col3]
    [:> view {:style (tw "flex-1 my-auto")} col4]])
 
-(defn- skill-header
+(defn- header
   []
   [row
    [:> text {:style (tw "font-bold")} (i18n/label :t/skill)]
-   [:> text {:style (tw "font-bold text-center")} (i18n/label :t/difficulty)]
-   [:> text {:style (tw "font-bold text-center")} (i18n/label :t/default-lvl)]
-   [:> text {:style (tw "font-bold text-center")} (i18n/label :t/learn?)]])
+   [:> text {:style (tw "font-bold justify-center text-center")} (i18n/label :t/default-lvl)]
+   [:> text {:style (tw "font-bold justify-center text-center")} (i18n/label :t/learn?)]
+   [:> text {:style (tw "font-bold justify-center text-center")} (i18n/label :t/difficulty)]])
 
 (defn skill-row
   "Add a row for a skill to the skill list"
   [skill-key default-lvl disabled?]
-  (let [skill      (skill-key skills)
-        navigation (rnn/useNavigation)]
+  (let [skill (skill-key skills)
+        nav   (rnn/useNavigation)]
     (r/as-element
      [:> view {:style (tw "flex flex-col gap-2")}
-      [skill-header]
+      [header]
 
       [:> button {:onPress  #(do (rf/dispatch [:skills/add skill-key])
-                                 (-> navigation (.navigate (i18n/label :t/skills))))
-                  :style    (when disabled? (tw "bg-slate-200 py-1"))
+                                 (-> nav (.navigate (i18n/label :t/skills))))
+                  :style    (when disabled? (tw "bg-green-100 py-1"))
                   :disabled disabled?}
        [row
-        [:> text {:style (tw "capitalize")} (skill->txt skill-key)]
+        [:> text {:style (tw "capitalize"), :numberOfLines 1} (skill->txt skill-key)]
         [:> text {:style (tw "text-center")} (i18n/label (keyword :t (str (symbol ((:diff skill) difficulties)) "-full")))]
         [:> text {:style (tw "text-center")} default-lvl]
         (when (not disabled?) [:> text {:style (tw "text-center")} "+"])]]])))
@@ -101,31 +101,43 @@
 
 (defn- keyword-prerequisite
   [nav k lvl]
-  [:> button {:onPress #(-> nav (.push (key->page k) #js {:id (name k)}))}
-   [:> view {:style (tw (str "flex flex-row flex-grow justify-between"))}
-                               ;;(when prereq-cleared? " bg-green-100")))}
-    [:> text (key->i18n-label k)]
+  (let [cleared? (some-> (rf/subscribe [:skill/clears-prereq? k (or lvl 1)]) deref)]
+    (println "cleared?" cleared?)
+    [:> button {:onPress #(-> nav (.push (key->page k) #js {:id (name k)}))}
+     [:> view {:style (tw (str "flex flex-row flex-grow justify-between"
+                               (when cleared? " bg-green-100")))}
+      [:> text (key->i18n-label k)]
 
-    (when lvl
-      [:> text lvl])]])
+      (when lvl
+        [:> text lvl])]]))
+
+(rf/reg-sub
+ :skill/clears-prereq?
+ :<- [:advantages]
+ :<- [:skills/lvls]
+ ;; TODO :<- [:talents]
+ (fn [[advantages skills] [_ k lvl]]
+   (let [type (keyword (namespace k))
+         name (keyword (name k))]
+     (>= (cond (= :advantages type) (get-in advantages [name :lvl])
+               :else (get-in skills [name :lvl]))
+         lvl))))
 
 (defn- map-prerequisite
   [nav k]
   (let [key (-> k first key)
         val (-> k first val)]
-    (println "map-prerequisite" key val k)
     (cond (= :and key) [and-prerequisite nav val]
           (= :or key) [or-prerequisite nav val]
           (and (keyword? key) (number? val)) [keyword-prerequisite nav key val]
-          ;; TODO other types
+          ;; TODO other types?
           :else [:<>])))
 
 (defn- prerequisite
   [nav k]
-  (println "prerequisite" k)
   (cond (map? k) [map-prerequisite nav k]
         (keyword? k) [keyword-prerequisite nav k]
-        ;; TODO other types
+        ;; TODO other types?
         :else [:<>]))
 
 (defn skill-details-page
@@ -167,7 +179,7 @@
                                        :onPress #(do (rf/dispatch [:skills/add skill-key spec])
                                                      (-> nav (.navigate (i18n/label :t/skills))))}
                             [:> view {:style (tw (str "flex flex-row grow border-b"
-                                                      (when disabled? " py-1 bg-slate-200")
+                                                      (when disabled? " py-1 bg-green-100")
                                                       (when (not= spec last-spec) " border-slate-200")))} ;; TODO: border between elems not working
                              [:> text {:style (tw "capitalize flex-1 text-left")} txt]
                              (when (not disabled?) [:> text {:style (tw "flex-1 text-right")} "+"])]])))))]]))
@@ -197,3 +209,15 @@
       :fx [[:dispatch [:profile.update/unspent-points 1]]]
       :effects.async-storage/set {:k     :skills
                                   :value (get-in new-db [:skills])}})))
+
+;; (rf/reg-sub
+;;  :skills/can-purchase?
+;;  :<- [:skill/lvls]
+;;  (fn [spell-costs [_ spell-k]]
+;;    (if (> (get-in spell-costs [spell-k :cost] 0) 0)
+;;      ;; if spell already purchased, dont show add button
+;;      false
+;;      ;; else, do requirement checks
+;;      (let [prereqs (get-in spell-costs [spell-k :prereqs])]
+;;        (or (nil? prereqs) ;; no prereqs
+;;            (meets-prerequisites? prereqs (get-in spells-by-name [spell-k :prerequisites])))))))
