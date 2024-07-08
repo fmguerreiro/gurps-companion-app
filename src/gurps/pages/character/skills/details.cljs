@@ -1,6 +1,5 @@
 (ns gurps.pages.character.skills.details
   (:require [cljs-bean.core :refer [->clj]]
-            [clojure.string :as str]
             [reagent.core :as r]
             [re-frame.core :as rf]
             [gurps.widgets.base :refer [view text button]]
@@ -10,17 +9,16 @@
             ["twrnc" :refer [style] :rename {style tw}]
             ["@react-navigation/native" :as rnn]))
 
-;; TODO use flex instead of width
 (defn- row
   [col1 col2 col3 col4]
   [:> view {:style (tw "flex flex-row justify-between")}
     ;; name
-   [:> view {:style (tw "w-3/6 my-auto")} col1]
+   [:> view {:style (tw "flex-3 my-auto")} col1]
     ;; difficulty
-   [:> view {:style (tw "w-1/6 my-auto")} col2]
+   [:> view {:style (tw "flex-1 my-auto")} col2]
     ;; default-lvl ;; TODO: explanation on which skill it's defaulting from?
-   [:> view {:style (tw "w-1/6 my-auto")} col3]
-   [:> view {:style (tw "w-1/6 my-auto")} col4]])
+   [:> view {:style (tw "flex-1 my-auto")} col3]
+   [:> view {:style (tw "flex-1 my-auto")} col4]])
 
 (defn- skill-header
   []
@@ -49,32 +47,105 @@
         [:> text {:style (tw "text-center")} default-lvl]
         (when (not disabled?) [:> text {:style (tw "text-center")} "+"])]]])))
 
+(defn- modifiers
+  [skill]
+  (when (i18n/has-label? (i18n/label (keyword :t (str "skill-modifiers-" (symbol skill)))))
+    [:> view {:style (tw "flex flex-col gap-1")}
+     [:> text {:style (tw "font-bold")} (i18n/label :t/modifiers)]
+     [:> text (i18n/label (keyword :t (str "skill-modifiers-" (symbol skill))))]]))
+
 (defn- spec-header
   [txt]
   [:> text {:style (tw "text-xl font-bold capitalize")}
    txt])
 
+(declare prerequisite)
+
+(defn- and-prerequisite
+  [nav prereqs]
+  [:> view {:style (tw "flex flex-col flex-grow gap-2")}
+   [:> text {:style (tw "capitalize")} (i18n/label :t/requires-all)]
+   [:> view {:style (tw "flex flex-col gap-2 ml-2")}
+    (map-indexed (fn [idx prereq]
+                   ^{:key (str "and-prereq-" idx)}
+                   [prerequisite nav prereq])
+                 prereqs)]])
+
+(defn- or-prerequisite
+  [nav prereqs]
+  [:> view {:style (tw "flex flex-col flex-grow gap-2")}
+   [:> text {:style (tw "capitalize")} (i18n/label :t/requires-either)]
+   [:> view {:style (tw "flex flex-col gap-2 ml-2")}
+    (map-indexed (fn [idx prereq]
+                   ^{:key (str "or-prereq-" idx)}
+                   [prerequisite nav prereq])
+                 prereqs)]])
+
+(defn- key->i18n-label
+  [k]
+  (let [type   (namespace k)
+        name   (name k)
+        prefix (cond (= "advantages" type) "advantage"
+                     (= "talents" type) "talent"
+                     :else "skill")]
+    (i18n/label (keyword :t (str prefix "-" name)))))
+
+(defn- key->page
+  [k]
+  (let [type (namespace k)
+        page (cond (= "advantages" type) :t/advantage-details
+                   ;; (= "talents" type) :t/talent-details ;; TODO: implement talents
+                   ;; TODO: musical instrument?? see ":musical-influence"
+                   :else :t/add-skill-specialization)]
+    (i18n/label page)))
+
+(defn- keyword-prerequisite
+  [nav k lvl]
+  [:> button {:onPress #(-> nav (.push (key->page k) #js {:id (name k)}))}
+   [:> view {:style (tw (str "flex flex-row flex-grow justify-between"))}
+                               ;;(when prereq-cleared? " bg-green-100")))}
+    [:> text (key->i18n-label k)]
+
+    (when lvl
+      [:> text lvl])]])
+
+(defn- map-prerequisite
+  [nav k]
+  (let [key (-> k first key)
+        val (-> k first val)]
+    (println "map-prerequisite" key val k)
+    (cond (= :and key) [and-prerequisite nav val]
+          (= :or key) [or-prerequisite nav val]
+          (and (keyword? key) (number? val)) [keyword-prerequisite nav key val]
+          ;; TODO other types
+          :else [:<>])))
+
+(defn- prerequisite
+  [nav k]
+  (println "prerequisite" k)
+  (cond (map? k) [map-prerequisite nav k]
+        (keyword? k) [keyword-prerequisite nav k]
+        ;; TODO other types
+        :else [:<>]))
+
 (defn skill-details-page
   [props]
-  (println props)
   (let [skill-key       (-> props ->clj :route :params :id str->key)
         skill-name      (if (some? (namespace skill-key)) (namespace skill-key) (name skill-key))
         skill           (skill-key skills)
         specializations (:specializations skill)
         default-lvls    (some-> (rf/subscribe [:skills/defaults]) deref)
         skills          (some-> (rf/subscribe [:skill-map]) deref)
-        navigation      (rnn/useNavigation)]
+        nav             (rnn/useNavigation)]
     [:> view {:style (tw "p-2 bg-white flex flex-col gap-2 flex-grow")}
      ;; description
      [spec-header (i18n/label :t/description)]
+
      [:> text
       (i18n/label (keyword :t (str "skill-description-" (symbol skill-name))))]
 
      ;; modifiers
-     (when (not (str/starts-with? (i18n/label (keyword :t (str "skill-modifiers-" (symbol skill-name)))) "[missing"))
-       [:> view {:style (tw "flex flex-col gap-1")}
-        [:> text {:style (tw "font-bold")} (i18n/label :t/modifiers)]
-        [:> text (i18n/label (keyword :t (str "skill-modifiers-" (symbol skill-name))))]])
+     [modifiers (symbol skill-name)]
 
      (if (not (= "sp" (name skill-key)))
        ;; pure skill - no specialization
@@ -94,7 +165,7 @@
                            [:> button {:key (str spec "-spec")
                                        :disabled disabled?
                                        :onPress #(do (rf/dispatch [:skills/add skill-key spec])
-                                                     (-> navigation (.navigate (i18n/label :t/skills))))}
+                                                     (-> nav (.navigate (i18n/label :t/skills))))}
                             [:> view {:style (tw (str "flex flex-row grow border-b"
                                                       (when disabled? " py-1 bg-slate-200")
                                                       (when (not= spec last-spec) " border-slate-200")))} ;; TODO: border between elems not working
@@ -106,9 +177,9 @@
        [:> view {:style (tw "flex flex-col gap-2 mt-2")}
         [:> text {:style (tw "font-bold")} (i18n/label :t/dependencies)]
 
-        (map-indexed (fn [i [dep-key]]
-                       ^{:key (str "dependency-" i)}
-                       [:> text dep-key])
+        (map-indexed (fn [i prereq]
+                       ^{:key (str "prereq-" i)}
+                       [prerequisite nav (apply hash-map prereq)])
                      (:prerequisites skill))])]))
 
 (defn- ->db

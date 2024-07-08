@@ -2,6 +2,7 @@
   (:require ["@react-navigation/native-stack" :as rnn-stack]
             [reagent.core :as r]
             [gurps.utils.i18n :as i18n]
+            [gurps.navigation.advantages-stack :refer [advantage-details-screen]]
             [gurps.navigation.common :refer [options]]
             [gurps.pages.character.skills.character :refer [character-skills-page]]
             [gurps.pages.character.skills.groups :refer [skill-groups-page]]
@@ -30,4 +31,7 @@
                        :component groups-component
                        :options   options}]
 
-     (skill-details-screen)]))
+     (skill-details-screen)
+
+     ;; some skills have advantage requirements
+     (advantage-details-screen)]))
