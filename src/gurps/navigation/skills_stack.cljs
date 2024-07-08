@@ -1,6 +1,7 @@
 (ns gurps.navigation.skills-stack
   (:require ["@react-navigation/native-stack" :as rnn-stack]
             [reagent.core :as r]
+            [cljs-bean.core :refer [->js]]
             [gurps.utils.i18n :as i18n]
             [gurps.navigation.advantages-stack :refer [advantage-details-screen]]
             [gurps.navigation.common :refer [options]]
@@ -15,7 +16,12 @@
   (r/with-let [details-component (fn [props] (r/as-element [skill-details-page props]))]
     [:> Stack.Screen {:name      (i18n/label :t/add-skill-specialization)
                       :component details-component
-                      :options   options}]))
+                      :options   (fn [props]
+                                   (let [id  (-> ^js props .-route .-params .-id)
+                                         id' (or (-> id keyword namespace) id)]
+                                     (-> {:title (i18n/label (keyword :t (str "skill-" id')))}
+                                         (merge options)
+                                         ->js)))}]))
 
 (defn skills-stack
   []
