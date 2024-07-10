@@ -1,5 +1,6 @@
 (ns gurps.pages.character.utils.skills
-  (:require [clojure.string :as str]))
+  (:require [clojure.string :as str]
+            [gurps.utils.i18n :as i18n]))
 
 (defn- get-in-any
   "Like get-in, but takes a sequence of keys and returns the max value of the last key's starting name in the sequence.
@@ -11,12 +12,6 @@
        (map val)
        (reduce max)))
 
-(defn- normalize-skill
-  [txt]
-  (-> txt
-      (str/replace #"-or-" "/")
-      (str/replace #"-" " ")))
-
 (defn skill->txt
   "Converts a skill key to a human-readable string.
   e.g. (skill->txt :fast-draw/two-handed-axe-or-mace) => \"Fast Draw (Two Handed Axe/Mace)\""
@@ -25,8 +20,8 @@
         skill    (name key)]
     (str/join " "
               (if (some? category)
-                [(normalize-skill category) (when (not= "sp" skill) (str "(" (normalize-skill skill) ")"))]
-                [(normalize-skill skill)]))))
+                [(i18n/label (keyword :t (str "skill-" category))) (when (not= "sp" skill) (str "(" (i18n/label (keyword :t (str "skill-" skill))) ")"))]
+                [(i18n/label (keyword :t (str "skill-" skill)))]))))
 
 (def difficulties {:e :easy :a :average :h :hard :v :very-hard})
 
@@ -97,7 +92,16 @@
    :group-performance/sp {:diff :a :attr :int
                           :specializations [:choreography :conducting :directing :fight-choreography]
                           :default [(calc-hoc [:attributes :int] 5)]
-                          :prerequisites {:and [{:or [:diplomacy :intimidation :leadership]} {:or [:choreography :conducting :directing :fight-choreography]}]}}
+                          :prerequisites {:and [{:or [:diplomacy :intimidation :leadership]}
+                                                {:or [:choreography :conducting :directing :fight-choreography]}]}}
+   :choreography {:diff :a :attr :int :default [(calc-hoc [:skills :arts :dancing] 2)] :prerequisites {:and [:dancing]}}
+   :conducting   {:diff :a :attr :int :default [(calc-hoc [:skills :arts :musical-instrument/sp] 2)
+                                                (calc-hoc [:skills :arts :singing] 2)]
+                  :prerequisites {:and [:singing :musical-instrument]}}
+   :directing    {:diff :a :attr :int :default [(calc-hoc [:skills :arts :performance] 5)]
+                  :prerequisites {:and [:performance]}}
+   :fight-choreography {:diff :a :attr :int :default [(calc-hoc [:skills :arts :stage-combat] 2)]
+                        :prerequisites {:and [:stage-combat]}}
 
    :makeup {:diff :e :attr :int :default [(calc-hoc [:attributes :int] 4),
                                           (calc-hoc [:skills :criminal :disguise] 2)]}
@@ -829,7 +833,7 @@
 
 (def grouped-skills
   {:animal (select-keys skills [:animal-handling :falconry :mimicry/animal-sounds :mimicry/bird-calls :mount :naturalist :packing :riding/sp :teamster/sp :veterinary])
-   :arts (select-keys skills [:artist/sp :connoisseur/sp :current-affairs/high-culture :current-affairs/popular-culture :dancing :electronics-operation/media :fire-eating :group-performance/sp :makeup :mimicry/sp :musical-composition :musical-instrument/sp :performance :photography :poetry :singing :sleight-of-hand :stage-combat :ventriloquism :writing])
+   :arts (select-keys skills [:artist/sp :connoisseur/sp :current-affairs/high-culture :current-affairs/popular-culture :dancing :electronics-operation/media :fire-eating :group-performance/sp :makeup :mimicry/sp :musical-composition :musical-instrument/sp :performance :photography :poetry :singing :sleight-of-hand :stage-combat :ventriloquism :writing :fight-choreography :choreography :directing :conducting])
    :athletic (select-keys skills [:acrobatics :aerobatics :aquabatics :bicycling :body-sense :breath-control :climbing :combat-art/sp :flight :free-fall :hiking :jumping :lifting :mount :parachuting :running :scuba :sports/sp :swimming :throwing])
    :business (select-keys skills [:accounting :administration :current-affairs/business :diplomacy :economics :finance :law/sp :market-analysis :mathematics/statistics :merchant :politics :public-speaking :savoir-faire/high-society])
    :combat-melee (select-keys skills [:axe-or-mace :boxing :brawling :broadsword :cloak :fast-draw/sp :flail :force-sword :force-whip :garrote :jitte-sai :judo :karate :knife :kusari :lance :main-gauche :melee-weapon :monowire-whip :parry-missile-weapons :polearm :rapier :saber :shield/sp :shortsword :smallsword :spear :staff :sumo-wrestling :tonfa :two-handed-axe-or-mace :two-handed-flail :two-handed-sword :whip :wrestling])
