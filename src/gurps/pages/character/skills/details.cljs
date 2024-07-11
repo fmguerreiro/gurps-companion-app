@@ -242,27 +242,34 @@
    (let [skill-k (get-in db [:details-page/key])]
      (assoc-in db [:skill-prereqs skill-k :prereqs prereq-k] cleared?))))
 
-;; TODO: check if conditions are met
-
 (defn- meets-prerequisites?
   [prereq->cleared? prereqs]
-  (let [ps (if (and (coll? prereqs) (= 1 (count prereqs))) (first prereqs) prereqs)]
-    (cond (keyword? ps) (get prereq->cleared? ps false)
-          (vector? ps)  (let [[first second] ps]
-                          (cond ;; (number? first)       (get prereq->cleared? (num-spells-k first second) false)
-                            (or (keyword? second)
-                                (vector? first))  (->> ps
-                                                       (map #(meets-prerequisites? prereq->cleared? %))
-                                                       (filter false?)
-                                                       count
-                                                       (= 0))
-                            :else                 (get prereq->cleared? (keyword (name first)) false)))
-          (set? ps)     (->> ps
-                             (map #(meets-prerequisites? prereq->cleared? %))
-                             (map true?)
-                             count
-                             pos?)
-          :else             true)))
+  (if (keyword? prereqs)
+    (prereq->cleared? prereqs)
+
+    (let [ps (->> prereqs
+                  first second
+                  ;; {:and [:light-walk, ...]} => [:light-walk, ...]
+                  ;; {:or [:light-walk, ...]} => #{:light-walk, ...}
+                  (map #(if (keyword? %) %
+                            (let [cnd (first (keys %))] (if (= :or cnd) (into #{} (first (vals %))) (first (vals %)))))))]
+      (->> ps
+           (map #(cond (keyword? %) (prereq->cleared? %)
+
+                       (vector? %)  (->> %
+                                         (map (fn [xs] (meets-prerequisites? prereq->cleared? xs)))
+                                         (filter false?)
+                                         count
+                                         (= 0))
+                       (set? %)     (->> %
+                                         (map (fn [xs] (meets-prerequisites? prereq->cleared? xs)))
+                                         (map true?)
+                                         count
+                                         pos?)
+                       :else             true))
+           (filter false?)
+           count
+           (= 0)))))
 
 (rf/reg-sub
  :skill/prerequisites
@@ -280,4 +287,10 @@
      false
      ;; else, do requirement checks
      (or (nil? prereqs) ;; no prereqs
-         (meets-prerequisites? prereqs (get-in skills [k :prerequisites]))))))
+         (meets-prerequisites? prereqs
+                               (get-in gurps.pages.character.utils.skills/skills [k :prerequisites]))))))
+
+(comment)
+  ;; (def prereqs {:and [{:or [:advantages/trained-by-a-master :advantages/weapon-master]} :jumping :power-blow]})
+  ;; (def and-or (first (keys prereqs)))
+  ;; (def ps (if (= :or and-or) (into #{} (-> prereqs first second (map #(let [cnd (key %)] (if (= :or cnd) (into #{} (val %)) (val %)))) )) (second prereqs))
