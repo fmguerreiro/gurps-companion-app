@@ -7,7 +7,7 @@
             [cljs-bean.core :refer [->clj ->js]]
             [reagent.core :as r]
             [gurps.utils.i18n :as i18n]
-            [gurps.utils.helpers :refer [str->key key->str]]
+            [gurps.utils.helpers :refer [str->key]]
             [gurps.pages.character.utils.spells :refer [spells-by-college]]
             [gurps.widgets.base :refer [view text button section-list]]
             [re-frame.core :as rf]))
@@ -45,46 +45,38 @@
 
 (def ^:private sections
   (->> spells-by-college
-       (map
-        (fn [x]
-          (let [college   (-> x key key->str)]
-            #js {:title college
-                 :data (->> x
-                            val
-                            (map key->str)
-                            (map #(do #js {:college college, :name %})))})))
+       (map (fn [x]
+              {:title (key x)
+               :data (map #(do {:college (key x), :name %}) (val x))}))
        ->js))
 
-(defn spell-groups
+;; TODO: what.
+(defn spell-groups-page
   []
   (let [expanded-sections (some-> (rf/subscribe [:college-list/expanded]) deref)
         spells            (some-> (rf/subscribe [:spells]) deref)]
-    [section-list
-     {:sections sections
+    [:> view {:style (tw "flex flex-col bg-white flex-1 px-2")}
+     [section-list
+      {:sections sections
 
-      :render-section-header
-      (fn [item-info-js]
-        (let [item-info (->clj item-info-js :keywordize-keys true)
-              {data :section} item-info]
-          (section-header data expanded-sections)))
+       :render-section-header
+       (fn [item-info-js]
+         (let [item-info (->clj item-info-js :keywordize-keys true)
+               {data :section} item-info]
+           (section-header data expanded-sections)))
 
-      :key-extractor
-      (fn [item-js idx]
-        (-> item-js
-            (->clj :keywordize-keys true)
-            :name
-            (str "-" idx "-row")))
+       :key-extractor
+       (fn [item-js idx]
+         (-> item-js
+             (->clj :keywordize-keys true)
+             :name
+             (str "-" idx "-row")))
 
-      :render-item
-      (fn [item-info-js]
-        (let [item-info (->clj item-info-js :keywordize-keys true)
-              {data :item} item-info]
-          (row data expanded-sections spells)))}]))
-
-(defn spell-groups-page
-  []
-  [:> view {:style (tw "flex flex-col bg-white flex-1 px-2")}
-   [spell-groups]])
+       :render-item
+       (fn [item-info-js]
+         (let [item-info (->clj item-info-js :keywordize-keys true)
+               {data :item} item-info]
+           (row data expanded-sections spells)))}]]))
 
 (rf/reg-sub
  :college-list/expanded
