@@ -7,11 +7,11 @@ module.exports = {
     platforms: ["ios", "android", "web"],
     version: "1.0.0",
     orientation: "portrait",
-    icon: "./assets/icon.png",
+    icon: "./assets/splash.png",
     splash: {
       image: "./assets/splash.png",
       resizeMode: "contain",
-      backgroundColor: "#ffffff",
+      backgroundColor: "#33cfff",
     },
     updates: {
       fallbackToCacheTimeout: 0,
