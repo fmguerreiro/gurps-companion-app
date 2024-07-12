@@ -58,18 +58,6 @@
               #js {:title (-> x key key->str)
                    :data  (->> x val keys (map key->str) vec->js-array)}))))
 
-(defn skill-groups
-  []
-  (r/with-let [sections     (get-sections grouped-skills)
-               default-lvls (some-> (rf/subscribe [:skills/defaults]) deref)
-               render-item  #(row % default-lvls)]
-    (r/create-element
-     section-list-raw
-     #js {:sections (vec->js-array sections)
-          :renderSectionHeader section-header
-          :keyExtractor (fn [item idx] (str item "-" idx))
-          :renderItem render-item})))
-
 (rf/reg-sub
  :skills/defaults
  (fn [db]
@@ -81,4 +69,12 @@
 (defn skill-groups-page
   []
   [:> view {:style (tw "flex flex-col bg-white px-2")}
-   [skill-groups]])
+   (r/with-let [sections     (get-sections grouped-skills)
+                default-lvls (some-> (rf/subscribe [:skills/defaults]) deref)
+                render-item  #(row % default-lvls)]
+     (r/create-element
+      section-list-raw
+      #js {:sections (vec->js-array sections)
+           :renderSectionHeader section-header
+           :keyExtractor (fn [item idx] (str item "-" idx))
+           :renderItem render-item}))])

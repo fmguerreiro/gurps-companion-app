@@ -32,7 +32,6 @@
   "Add a row for a skill to the skill list"
   [skill-key default-lvl]
   (let [skill (skill-key skills)
-        nav   (rnn/useNavigation)
         purchased?    (some-> (rf/subscribe [:skills/lvls]) deref skill-key some?)
         can-purchase? (some-> (rf/subscribe [:skills/can-purchase? skill-key]) deref)]
     (r/as-element
@@ -40,8 +39,7 @@
 
       [header]
 
-      [:> button {:onPress  #(do (rf/dispatch [:skills/add skill-key])
-                                 (-> nav (.navigate (i18n/label :t/skills))))
+      [:> button {:onPress  #(rf/dispatch [:skills/add skill-key])
                   :style    (when purchased? (tw "bg-green-100"))
                   :disabled (not can-purchase?)}
        [row
@@ -57,8 +55,7 @@
 
 (defn- specializations-section
   [skill-key specializations]
-  (let [nav    (rnn/useNavigation)
-        skills (some-> (rf/subscribe [:skills/lvls]) deref)
+  (let [skills (some-> (rf/subscribe [:skills/lvls]) deref)
         can-purchase? (some-> (rf/subscribe [:skills/can-purchase? skill-key]) deref)]
     [:> view
      [flat-list
@@ -77,8 +74,8 @@
                disabled? (contains? skills (keyword (namespace skill-key) data))]
            (r/as-element
             [:> button {:disabled (and (not can-purchase?) disabled?)
-                        :onPress #(do (rf/dispatch [:skills/add skill-key data])
-                                      (-> nav (.navigate (i18n/label :t/skills))))}
+                        :onPress #(rf/dispatch [:skills/add skill-key data])}
+
              [:> view {:style (tw (str "flex flex-row grow border-b py-1"
                                        (when disabled? " bg-green-100")))}
 
