@@ -26,3 +26,4 @@ app/
 .lsp/sqlite.db
 nativewind-output.js
 .storybook/
+.env
