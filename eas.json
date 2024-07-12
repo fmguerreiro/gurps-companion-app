@@ -1,0 +1,17 @@
+{
+  "build": {
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_EAS_PROJECT_ID": "3886722a-82d7-4acb-8a77-310f13e3e5d9"
+      }
+    },
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_EAS_PROJECT_ID": "3886722a-82d7-4acb-8a77-310f13e3e5d9"
+      }
+    }
+  }
+}

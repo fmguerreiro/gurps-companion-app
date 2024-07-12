@@ -20,8 +20,15 @@ module.exports = {
     ios: {
       supportsTablet: true,
     },
+    android: {
+      package: "com.fmguerreiro.gurpscompanion",
+      versionCode: 1,
+    },
     extra: {
       storybookEnabled: process.env.STORYBOOK_ENABLED,
+      eas: {
+        projectId: process.env.EXPO_PUBLIC_EAS_PROJECT_ID,
+      },
     },
     web: {
       bundler: "metro", // for tailwind support
