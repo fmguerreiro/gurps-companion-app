@@ -6,6 +6,7 @@
             ["@react-navigation/native" :as rnn]
             ["react-native" :as rn]
             [cljs-bean.core :refer [->clj]]
+            [gurps.events.profile]
             [gurps.utils.helpers :refer [str->key ->int]]
             [gurps.widgets.add-button :refer [add-button]]
             [gurps.widgets.base :refer [view text button]]
@@ -24,17 +25,27 @@
           (= "advantages" type) (str "advantage-" name)
           (= "skills" type) (str "skill-" name)
           (= "tl" name) "tech-level"
-          :else (str "spell-" (str/join "-" (filter some? [type name])))))) ;; TODO: make clickable
+          :else (str "spell-" (str/join "-" (filter some? [type name]))))))
+
+(defn- key->page
+  [key]
+  (let [type (namespace key)
+        page (cond (= "advantages" type) :t/advantage-details
+                   (= "skills" type) :t/add-skill-specialization
+                   (nil? type) :t/spell-details)]
+    (i18n/label page)))
 
 (defn- lvl-prerequisite
-  [spell-k prereq]
-  (let [[k lvl]         prereq
-        prereq-cleared? (some-> (rf/subscribe [:spell/clears-prereq? k lvl]) deref)]
+  [spell-k [k lvl]]
+  (let [prereq-cleared? (some-> (rf/subscribe [:spell/clears-prereq? k lvl]) deref)
+        nav             (rnn/useNavigation)]
     (rf/dispatch [:spells/update-prerequisites spell-k (keyword (name k)) prereq-cleared?])
-    [:> view {:style (tw (str "flex flex-row flex-grow justify-between"
-                              (when prereq-cleared? " bg-green-100")))}
-     [:> text (i18n/label (keyword :t (key->i18n-label k)))]
-     [:> text lvl]]))
+
+    [:> button {:onPress #(-> nav (.push (key->page k) #js {:id (name k)}))}
+     [:> view {:style (tw (str "flex flex-row flex-grow justify-between"
+                               (when prereq-cleared? " bg-green-100")))}
+      [:> text (i18n/label (keyword :t (key->i18n-label k)))]
+      [:> text lvl]]]))
 
 (rf/reg-sub
  :spell/clears-prereq?
@@ -111,8 +122,7 @@
                                                  count)
         prereq-cleared?                 (>= passing-college-count (->int college-count))]
     (rf/dispatch [:spells/update-prerequisites k prereq prereq-cleared?])
-    [:> text {:style (str ""
-                          (when prereq-cleared? " bg-green-100"))}
+    [:> text {:style (if prereq-cleared? "bg-green-100" "")}
      (i18n/label :t/num-colleges {:colleges college-count :count (->int spell-count)})]))
 
 (defn- has-spell-prerequisite
@@ -217,6 +227,7 @@
    (log/info "spells/add" k)
    (let [new-db (assoc-in db [:spell-costs k :cost] 1)]
      {:db new-db
+      :fx [[:dispatch [:profile.update/unspent-points 1]]]
       :effects.async-storage/set {:k     :spell-costs
                                   :value (remove-keys [:prereqs] (get-in new-db [:spell-costs]))}})))
 
