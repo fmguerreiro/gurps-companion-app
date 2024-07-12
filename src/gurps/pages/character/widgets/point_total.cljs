@@ -14,6 +14,8 @@
    (let [costs (+ (->> db :attribute-costs vals (reduce +))
                   (->> db :skills (map :cost) (reduce +))
                   (->> db :spell-costs vals (map :cost) (reduce +))
+                  (->> db :advantages vals (map :cost) (reduce +))
+                  (->> db :disadvantages vals (map :cost) (reduce +))
                   (->> db :languages (filter #(not (:native? %))) (map :cost) (reduce +)))]
      (or costs 0))))
 
