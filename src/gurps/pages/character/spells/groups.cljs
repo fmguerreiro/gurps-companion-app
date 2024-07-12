@@ -36,7 +36,7 @@
   (let [college   (:title section)
         expanded? (get-in expanded-sections [college :expanded?] false)]
     (r/as-element
-     [:> button {:style (tw "h-8 bg-white")
+     [:> button {:style (tw "h-10 bg-white")
                  :onPress #(rf/dispatch [:college-list/toggle-section college])}
       [:> view {:style (tw "flex flex-row justify-between items-center my-auto")}
        [:> text {:style (tw "font-bold my-auto capitalize")}
@@ -50,7 +50,6 @@
                :data (map #(do {:college (key x), :name %}) (val x))}))
        ->js))
 
-;; TODO: what.
 (defn spell-groups-page
   []
   (let [expanded-sections (some-> (rf/subscribe [:college-list/expanded]) deref)
