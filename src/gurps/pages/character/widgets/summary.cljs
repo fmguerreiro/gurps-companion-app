@@ -14,7 +14,7 @@
   [:> view {:style (tw "flex flex-col gap-1")}
    [input-group {:key "summary-1"}
     ^{:key "summary-name"}
-    [:> view {:style (tw "flex-2")}
+    [:> view {:style (tw "flex-1.6")}
      [summary-field {:key :name}]]
 
     ^{:key "summary-player"}
@@ -27,7 +27,7 @@
 
    [input-group {:key "summary-2" :style (tw "justify-end")}
     ^{:key "summary-unspent-points"}
-    [:> view {:style (tw "min-w-29 mr-0.5")}
+    [:> view {:style (tw "min-w-32")}
      [unspent-points-field {:input-style "min-w-12" :text-align "center"}]]]])
 
 ;; [input-group {:key "summary-2"}
