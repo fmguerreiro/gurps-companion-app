@@ -1,10 +1,9 @@
 (ns gurps.pages.character.info.widgets.tech-level-dropdown
-  (:require [gurps.widgets.base :refer [view text]]
-            [gurps.widgets.dropdown :refer [dropdown]]
-            ["twrnc" :refer [style] :rename {style tw}]
+  (:require ["twrnc" :refer [style] :rename {style tw}]
             [re-frame.core :as rf]
-            [gurps.utils.i18n :as i18n]
-            [taoensso.timbre :as log]))
+            [gurps.widgets.base :refer [view text]]
+            [gurps.widgets.dropdown :refer [dropdown]]
+            [gurps.utils.i18n :as i18n]))
 
 (def lvl->label
   {0 {:value "stone-age"
@@ -38,6 +37,9 @@
       :label (i18n/label :t/starfaring)
       :description (i18n/label :t/starfaring-desc)}})
 
+(def ^:private data
+  (map #(merge (val %) {:description (str (inc (key %)) " - " (:description (val %)))}) lvl->label))
+
 (def val->lvl (reduce (fn [acc kv] (assoc acc (:value (val kv)) (key kv))) {} lvl->label))
 
 (defn tech-level-dropdown []
@@ -50,7 +52,7 @@
                 :selected-style (tw "text-center")
                 :on-change #(rf/dispatch [:tech-level/update (get-in val->lvl [%])])
                 :placeholder (get-in lvl->label [val :description])
-                :data (vals lvl->label)}]]))
+                :data data}]]))
 
 (rf/reg-sub
  :world/tech-level
