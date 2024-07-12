@@ -1,7 +1,8 @@
 (ns gurps.pages.character.widgets.point-total
   (:require [re-frame.core :as rf]
             [gurps.utils.helpers :refer [->int]]
-            [gurps.pages.character.widgets.summary-field :refer [summary-field]]))
+            [gurps.pages.character.widgets.summary-field :refer [summary-field]]
+            [taoensso.timbre :as log]))
 
 (defn point-total-field
   []
@@ -12,6 +13,7 @@
  (fn [db]
    (let [costs (+ (->> db :attribute-costs vals (reduce +))
                   (->> db :skills (map :cost) (reduce +))
+                  (->> db :spell-costs vals (map :cost) (reduce +))
                   (->> db :languages (filter #(not (:native? %))) (map :cost) (reduce +)))]
      (or costs 0))))
 

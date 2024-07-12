@@ -6,7 +6,6 @@
             ["@react-navigation/native" :as rnn]
             ["react-native" :as rn]
             [cljs-bean.core :refer [->clj]]
-            [gurps.events.profile]
             [gurps.utils.helpers :refer [str->key ->int]]
             [gurps.widgets.add-button :refer [add-button]]
             [gurps.widgets.base :refer [view text button]]

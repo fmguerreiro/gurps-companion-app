@@ -93,7 +93,9 @@
 (rf/reg-event-fx
  :spells/update-cost
  (fn [{db :db} [_ id v]]
-   (let [new-db (assoc-in db [:spell-costs id :cost] v)]
+   (let [old-c  (get-in db [:spell-costs id :cost] 0)
+         new-db (assoc-in db [:spell-costs id :cost] v)]
      {:db new-db
+      :fx [[:dispatch [:profile.update/unspent-points (- v old-c)]]]
       :effects.async-storage/set {:k     :spell-costs
                                   :value (get-in new-db [:spell-costs])}})))
