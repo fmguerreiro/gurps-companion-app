@@ -42,10 +42,12 @@
 
    (if secondary?
      (box-border {:key attr} [:> text {:key attr :style (tw "text-xl")} val])
+     ;; primary
      (box-border {:style (tw "bg-slate-100")}
                  [:> input {:key attr
-                            :style (tw "text-xl")
-                            :maxLength 3
+                            :style (tw "text-xl items-center justify-center")
+                            :textAlign "center"
+                            :maxLength 2
                             :keyboardType "numeric"
                             :onChangeText (debounce/debounce #(on-change-text (->int %)) 500)
                             :placeholder (str val)}]))
