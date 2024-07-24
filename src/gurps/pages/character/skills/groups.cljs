@@ -2,11 +2,11 @@
 ;; Each skill is a button that can be clicked to view the details of that skill and add the skill to the character.
 
 (ns gurps.pages.character.skills.groups
-  (:require [clojure.string :as str]
+  (:require ["@react-navigation/native" :as rnn]
+            ["twrnc" :refer [style] :rename {style tw}]
+            [clojure.string :as str]
             [reagent.core :as r]
             [re-frame.core :as rf]
-            ["@react-navigation/native" :as rnn]
-            ["twrnc" :refer [style] :rename {style tw}]
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [str->key key->str]]
             [gurps.pages.character.utils.skills :refer [skills grouped-skills difficulties default-skill-lvl skill->txt]]
@@ -19,22 +19,26 @@
         text (if namespace namespace name)]
     (str/replace text #"-" " ")))
 
-(defn- vec->js-array [vec]
+(defn- vec->js-array
+  [vec]
   (let [arr #js []]
     (doseq [x vec]
       (.push arr x))
     arr))
 
-(defn row [props default-lvls]
+(defn item
+  [props default-lvls owned-skills]
   (let [navigation (rnn/useNavigation)
         item-txt   (.-item props)
         item-key   (str->key item-txt)
         skill      (item-key skills)
         difficulty (i18n/label (keyword "t" ((:diff skill) difficulties)))
-        needs-specialization? (= "sp" (name item-key))]
+        needs-specialization? (= "sp" (name item-key))
+        owned?     (contains? owned-skills item-key)]
     (r/as-element
      [:> button {:key (str item-txt "-btn")
-                 :style (tw "w-full px-4 py-2 font-medium text-left rtl:text-right border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white")
+                 :style #js [(tw "w-full px-4 py-2 font-medium text-left rtl:text-right border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"),
+                             (when owned? (tw "bg-green-100"))]
                  :onPress #(-> navigation (.navigate (i18n/label :t/add-skill-specialization) #js {:id item-txt}))}
       [:> view {:style (tw "flex flex-row justify-between")}
        [:> text {:style (tw "capitalize")} (if needs-specialization?
@@ -69,9 +73,14 @@
 (defn skill-groups-page
   []
   [:> view {:style (tw "flex flex-col bg-white px-2")}
-   (r/with-let [sections     (get-sections grouped-skills)
-                default-lvls (some-> (rf/subscribe [:skills/defaults]) deref)
-                render-item  #(row % default-lvls)]
+   (let [sections     (get-sections grouped-skills)
+         default-lvls (some-> (rf/subscribe [:skills/defaults]) deref)
+         ;; NOTE: add generic skill when a specialization is owned, so as to highlight it
+         owned-skills (some->> (rf/subscribe [:skill-map]) deref
+                               (map #(if (namespace %) [% (keyword (namespace %) "sp")] %))
+                               flatten
+                               (into #{}))
+         render-item  #(item % default-lvls owned-skills)]
      (r/create-element
       section-list-raw
       #js {:sections (vec->js-array sections)
