@@ -4,7 +4,7 @@
             [cljs-bean.core :refer [->clj ->js]]
             [reagent.core :as r]
             [re-frame.core :as rf]
-            [gurps.widgets.base :refer [view flat-list text button]]
+            [gurps.widgets.base :refer [view flat-list-old text button]]
             [gurps.utils.helpers :refer [str->key]]
             [gurps.utils.i18n :as i18n]
             [gurps.pages.character.utils.skills :refer [skills skill->txt difficulties]]))
@@ -58,12 +58,14 @@
   (let [skills (some-> (rf/subscribe [:skills/lvls]) deref)
         can-purchase? (some-> (rf/subscribe [:skills/can-purchase? skill-key]) deref)]
     [:> view
-     [flat-list
+     [flat-list-old
       {:data (->js specializations)
 
        :key-extractor identity
 
        :scroll-enabled false
+
+       :estimated-item-size 25
 
        :render-item
        (fn [item-info-js]

@@ -54,6 +54,8 @@
        (fn [item]
          (:id (->clj item :keywordize-keys true)))
 
+       :estimated-item-size 32
+
        :render-item
        (fn [item-info-js]
          (let [item-info (->clj item-info-js :keywordize-keys true)
