@@ -10,9 +10,6 @@
 ;;            {:db db
 ;;             :fx [[:fx1] [:fx2]]}))
 (rf/reg-fx
- :chain
- (fn [fxs]
-   (log/info "Effects: " fxs)
-   (doseq [fx fxs]
-     (log/info "Dispatching" fx)
-     (rf/dispatch fx))))
+ :log/info
+ (fn [{:keys [label vals]}]
+   (log/info label vals)))

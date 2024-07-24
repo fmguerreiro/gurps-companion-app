@@ -1,12 +1,11 @@
 (ns gurps.pages.character.widgets.attributes
-  (:require [taoensso.timbre :refer [info]]
+  (:require ["twrnc" :refer [style] :rename {style tw}]
+            [clojure.string :as str]
             [re-frame.core :as rf]
             [gurps.widgets.base :refer [view]]
             [gurps.pages.character.widgets.reified-attribute :refer [reified-attribute]]
             [gurps.pages.character.widgets.reified-secondary-attribute :refer [reified-secondary-attribute]]
-            [gurps.pages.character.widgets.helpers :refer [cost->points]]
-            ["twrnc" :refer [style] :rename {style tw}]
-            [clojure.string :as str]))
+            [gurps.pages.character.widgets.helpers :refer [cost->points]]))
 
 (defn attribute-group []
   [:> view {:style (tw "flex flex-row justify-between mt-1")} ;; NOTE: mt to account for out-of-bounds "current" label
@@ -56,23 +55,30 @@
 (rf/reg-event-fx
  :attrs/update
  (fn [{:keys [db]} [_ k v]]
-   (info "update attr" k v)
    (let [old-v (get-in db [(keyword (namespace k)) (keyword (name k))])]
      {:db (-> db (assoc-in [(keyword (namespace k)) (keyword (name k))] v))
       :fx [(when (str/includes? (namespace k) "costs") [:dispatch [:profile.update/unspent-points (- v old-v)]])]
+      :log/info {:label ":attrs/update" :vals [k v]}
       :effects.async-storage/set {:k k :value v}})))
 
 (def currents [:attribute-current/hp :attribute-current/fp])
 (doseq [current currents]
   (rf/reg-sub
+   (keyword (str (symbol current) "-stored"))
+   (fn [db]
+     (get-in db [(keyword (namespace current)) (keyword (name current))] 10)))
+
+  (rf/reg-sub
    current
-   (fn [db _]
-     (get-in db [(keyword (namespace current)) (keyword (name current))]))))
+   :<- [(keyword :attributes (name current))]
+   :<- [(keyword (str (symbol current) "-stored"))]
+   (fn [[max stored]]
+     (or stored max))))
 
 (rf/reg-event-fx
  :attribute-current/update
  (fn [{:keys [db]} [_ k v]]
-   (info "attribute-current/update" k v)
    {:db (assoc-in db [(keyword (namespace k)) (keyword (name k))] v)
+    :log/info {:label "attribute-current/update" :vals [k v]}
     :effects.async-storage/set {:k     k
                                 :value v}}))
