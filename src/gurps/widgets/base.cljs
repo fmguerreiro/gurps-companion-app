@@ -5,7 +5,7 @@
 (def view rn/View)
 (def text rn/Text)
 (def input rn/TextInput)
-(def button rn/TouchableHighlight)
+(def button rn/TouchableOpacity)
 (def image rn/Image)
 
 (def section-list-raw rn/SectionList)
