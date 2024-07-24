@@ -68,7 +68,7 @@
      (box {:style (tw "w-12")}
           [:<>]))
 
-   (box (when secondary? {:style (tw "w-12")})
+   (box {}
         [bracketed-numeric-input {:on-change-text on-change-text
                                   :editable? secondary?
                                   :val (if secondary? (str cost) (calc-cost attr val))}])])
