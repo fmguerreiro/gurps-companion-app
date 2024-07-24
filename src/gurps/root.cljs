@@ -10,10 +10,10 @@
             ["twrnc" :refer [style] :rename {style tw}]
             [gurps.utils.i18n :as i18n]
             [gurps.widgets.base :refer [view]]
-            [gurps.widgets.character-icon :refer [character-icon]]
             [gurps.pages.character.stats :refer [character-stats-page]]
             [gurps.pages.character.info :refer [character-info-page]]
             [gurps.navigation.items-stack :refer [items-stack]]
+            [gurps.navigation.common :refer [options]]
             [gurps.navigation.skills-stack :refer [skills-stack]]
             [gurps.navigation.spells-stack :refer [spells-stack]]
             [gurps.navigation.advantages-stack :refer [advantages-stack]]))
@@ -22,18 +22,11 @@
 
 (def icon-color (.-color (tw "text-slate-400")))
 
-(def header-title-style (tw "text-xl font-bold text-center capitalize"))
-
 (defn tab-bar-icon
   ([icon] (tab-bar-icon icon :material))
   ([icon variant]
    (let [icon-comp (cond (= :fontisto variant) fontisto-icon, (= :ionicons variant) ion-icon :else material-icon)]
      (fn [] (r/as-element [:> icon-comp {:name icon :size 20 :color icon-color}])))))
-
-(defn header-icon
-  []
-  (fn [] (r/as-element [:> view {:style (tw "mx-4")}
-                        [character-icon]])))
 
 (defn- safe-view
   [component]
@@ -61,43 +54,46 @@
 
        [:> RootTab.Screen {:name      (i18n/label :t/stats)
                            :component (fn [props] (r/as-element [character-stats-page props]))
-                           :options   {:title (i18n/label :t/stats)
-                                       :headerTitleAlign "center"
-                                       :headerTitleStyle header-title-style
-                                       :tabBarIcon (tab-bar-icon "persons" :fontisto)
-                                       :headerRight (header-icon)}}]
+                           :options   (merge
+                                       options
+                                       {:title (i18n/label :t/stats)
+                                        :tabBarIcon (tab-bar-icon "persons" :fontisto)})}]
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/skills) "Stack")
                            :component skill-stack-component
-                           :options   {:title (i18n/label :t/skills)
-                                       :headerTitleAlign "center"
-                                       :tabBarIcon (tab-bar-icon "arm-flex")
-                                       :headerShown false}}]
+                           :options   (merge
+                                       options
+                                       {:title (i18n/label :t/skills)
+                                        :tabBarIcon (tab-bar-icon "arm-flex")
+                                        :headerShown false})}]
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/advantages) "Stack")
                            :component advan-stack-component
-                           :options   {:title (i18n/label :t/advantages)
-                                       :headerTitleAlign "center"
-                                       :tabBarIcon (tab-bar-icon "star")
-                                       :headerShown false}}]
+                           :options   (merge
+                                       options
+                                       {:title (i18n/label :t/advantages)
+                                        :tabBarIcon (tab-bar-icon "star")
+                                        :headerShown false})}]
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/spells) "Stack")
                            :component spell-stack-component
-                           :options   {:title (i18n/label :t/spells)
-                                       :headerTitleAlign "center"
-                                       :tabBarIcon (tab-bar-icon "fire")
-                                       :headerShown false}}]
+                           :options   (merge
+                                       options
+                                       {:title (i18n/label :t/spells)
+                                        :tabBarIcon (tab-bar-icon "fire")
+                                        :headerShown false})}]
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/items) "Stack")
                            :component items-stack-component
-                           :options   {:title (i18n/label :t/items)
-                                       :headerTitleAlign "center"
-                                       :tabBarIcon (tab-bar-icon "shield-sword")
-                                       :headerShown false}}]
+                           :options   (merge
+                                       options
+                                       {:title (i18n/label :t/items)
+                                        :tabBarIcon (tab-bar-icon "shield-sword")
+                                        :headerShown false})}]
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/background))
                            :component (fn [props] (r/as-element [character-info-page props]))
-                           :options   {:title (i18n/label :t/background)
-                                       :headerTitleAlign "center"
-                                       :tabBarIcon (tab-bar-icon "book" :ionicons)
-                                       :headerTitleStyle header-title-style}}]]]]))
+                           :options   (merge
+                                       options
+                                       {:title (i18n/label :t/background)
+                                        :tabBarIcon (tab-bar-icon "book" :ionicons)})}]]]]))
