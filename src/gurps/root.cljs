@@ -10,10 +10,10 @@
             ["twrnc" :refer [style] :rename {style tw}]
             [gurps.utils.i18n :as i18n]
             [gurps.widgets.base :refer [view]]
-            [gurps.pages.character.stats :refer [character-stats-page]]
             [gurps.pages.character.info :refer [character-info-page]]
             [gurps.navigation.items-stack :refer [items-stack]]
             [gurps.navigation.common :refer [options]]
+            [gurps.navigation.character-stack :refer [character-stack]]
             [gurps.navigation.skills-stack :refer [skills-stack]]
             [gurps.navigation.spells-stack :refer [spells-stack]]
             [gurps.navigation.advantages-stack :refer [advantages-stack]]))
@@ -42,23 +42,24 @@
                add-listener! (fn [^js navigation-ref]
                                (when navigation-ref
                                  (.addListener navigation-ref "state" save-root-state!)))
-               character-component   (fn [] (r/as-element [character-stats-page]))
-               skill-stack-component (fn [] (r/as-element [skills-stack]))
-               items-stack-component (fn [] (r/as-element (safe-view [items-stack])))
-               spell-stack-component (fn [] (r/as-element [spells-stack]))
-               advan-stack-component (fn [] (r/as-element (safe-view [advantages-stack])))]
+               character-stack-component (fn [] (r/as-element [character-stack]))
+               skill-stack-component     (fn [] (r/as-element [skills-stack]))
+               items-stack-component     (fn [] (r/as-element (safe-view [items-stack])))
+               spell-stack-component     (fn [] (r/as-element [spells-stack]))
+               advan-stack-component     (fn [] (r/as-element (safe-view [advantages-stack])))]
 
     [:> safe-area-provider
      [:> rnn/NavigationContainer {:ref add-listener!
                                   :initialState (when @!root-state (some-> @!root-state .-data .-state))}
       [:> RootTab.Navigator
 
-       [:> RootTab.Screen {:name      (i18n/label :t/stats)
-                           :component character-component
+       [:> RootTab.Screen {:name      (str (i18n/label :t/stats) "Stack")
+                           :component character-stack-component
                            :options   (merge
                                        options
                                        {:title (i18n/label :t/stats)
-                                        :tabBarIcon (tab-bar-icon "persons" :fontisto)})}]
+                                        :tabBarIcon (tab-bar-icon "persons" :fontisto)
+                                        :headerShown false})}]
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/skills) "Stack")
                            :component skill-stack-component
