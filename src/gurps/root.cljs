@@ -16,7 +16,8 @@
             [gurps.navigation.character-stack :refer [character-stack]]
             [gurps.navigation.skills-stack :refer [skills-stack]]
             [gurps.navigation.spells-stack :refer [spells-stack]]
-            [gurps.navigation.advantages-stack :refer [advantages-stack]]))
+            [gurps.navigation.advantages-stack :refer [advantages-stack]]
+            [react-native.platform :refer [android?]]))
 
 (defonce RootTab (rnn-bottom-tabs/createBottomTabNavigator))
 
@@ -25,8 +26,12 @@
 (defn tab-bar-icon
   ([icon] (tab-bar-icon icon :material))
   ([icon variant]
-   (let [icon-comp (cond (= :fontisto variant) fontisto-icon, (= :ionicons variant) ion-icon :else material-icon)]
-     (fn [] (r/as-element [:> icon-comp {:name icon :size 20 :color icon-color}])))))
+   (let [icon-comp (cond (= :fontisto variant) fontisto-icon,
+                         (= :ionicons variant) ion-icon
+                         :else material-icon)]
+     (fn []
+       (r/as-element
+        [:> icon-comp {:name icon :size 24 :color icon-color}])))))
 
 (defn- safe-view
   [component]
@@ -51,7 +56,8 @@
     [:> safe-area-provider
      [:> rnn/NavigationContainer {:ref add-listener!
                                   :initialState (when @!root-state (some-> @!root-state .-data .-state))}
-      [:> RootTab.Navigator
+
+      [:> RootTab.Navigator (when android? {:screenOptions {:tabBarStyle (tw "h-14 py-2 bg-white")}})
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/stats) "Stack")
                            :component character-stack-component
