@@ -1,5 +1,6 @@
 (ns gurps.db
-  (:require [cljs.spec.alpha :as s]))
+  (:require [cljs.spec.alpha :as s]
+            [gurps.utils.i18n :as i18n]))
 
 (s/def ::name string?)
 (s/def ::player string?)
@@ -126,7 +127,11 @@
    :advantages {}
    :disadvantages {}
 
-   :languages []
+   :languages [{:name (i18n/label :t/language-common)
+                :spoken "native"
+                :written "native"
+                :native? true
+                :cost 0}]
 
    :items {:possessions []
            :melee-weapons []

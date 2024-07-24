@@ -168,6 +168,8 @@
   "dependencies": "Prerequisites",
   "specializations": "Specializations",
   "modifiers": "Modifiers",
+  "language-common": "Common",
+
   "skill-writing": "Writing",
   "axe": "Axe",
   "hatchet": "Hatchet",

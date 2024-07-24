@@ -8,8 +8,7 @@
             ["@expo/vector-icons/FontAwesome" :default icon]
             ["twrnc" :refer [style] :rename {style tw}]
             [re-frame.core :as rf]
-            [clojure.string :as str]
-            [taoensso.timbre :as log]))
+            [clojure.string :as str]))
 
 ;; TODO: "written" skill may be less if TL is low (less than 3?)
 ;; TODO: dyslexia makes you illiterate ??
