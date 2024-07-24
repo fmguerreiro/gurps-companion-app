@@ -74,7 +74,8 @@
 
 (s/def ::db
   (s/keys :req-un [::profile ::attributes ::attribute-costs ::attribute-current
-                   ::skills ::languages ::items ::world ::spells ::spell-costs
+                   ::skills ::languages ::world ::spells ::spell-costs
+                   ;; ::items
                    ;; TODO: not sure what's wrong with ::advantages
                    ::navigation]))
 
@@ -114,8 +115,8 @@
                      :int 0
                      :ht 0}
 
-   :attribute-current {:hp 0
-                       :fp 0}
+   :attribute-current {:hp 10
+                       :fp 10}
 
    :skills []
 
