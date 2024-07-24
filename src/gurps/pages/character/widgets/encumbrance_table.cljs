@@ -8,7 +8,7 @@
 ;; TODO: use gurps.widgets.underlined-row/labelled-underlined-input widget instead
 (defn labeled-underlined-row
   [^js {:keys [label value style]}]
-  [:> view {:style #js [(tw "flex flex-row gap-0.5 justify-center"), style]}
+  [:> view {:style #js [(tw "flex flex-row gap-1 justify-center"), style]}
    [:> text {:style (tw "flex-grow")} label]
    [:> text {:style (tw "underline grow-0 text-center")} value]]) ;; TODO: width should be 3 digits wide
 
