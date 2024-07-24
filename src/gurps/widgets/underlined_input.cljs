@@ -36,7 +36,7 @@
                           :disabled?      disabled?}])]))
 
 (defn labelled-underlined-input
-  [{:keys [label val on-change-text disabled? style label-style input-style capitalize? text-align]
+  [{:keys [label val on-change-text disabled? style label-style input-style capitalize? max-length text-align input-mode]
     :or   {disabled? false, capitalize? true}}]
   [:> view {:style #js [(tw "flex flex-row gap-2 items-end h-5"), style]}
    [:> text {:style #js [(tw "capitalize font-bold"), label-style]} label]
@@ -44,7 +44,9 @@
                       :on-change-text on-change-text
                       :disabled?      disabled?
                       :style          input-style
+                      :input-mode     input-mode
                       :text-align     text-align
+                      :max-length     max-length
                       :capitalize?    capitalize?}]])
 
 (defn labelled-multiline-underlined-input

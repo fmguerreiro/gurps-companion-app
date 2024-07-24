@@ -17,18 +17,19 @@
     [:> view {:style (tw "flex-1.6")}
      [summary-field {:key :name}]]
 
-    ^{:key "summary-player"}
-    [:> view {:style (tw "flex-1")}
-     [summary-field {:key :player}]]
-
     ^{:key "summary-point-total"}
-    [:> view {:style (tw "flex-1")}
+    [:> view {:style (tw "min-w-32")}
      [point-total-field]]]
 
    [input-group {:key "summary-2" :style (tw "justify-end")}
+
+    ^{:key "summary-player"}
+    [:> view {:style (tw "flex-1.6")}
+     [summary-field {:key :player}]]
+
     ^{:key "summary-unspent-points"}
     [:> view {:style (tw "min-w-32")}
-     [unspent-points-field {:input-style "min-w-12" :text-align "center"}]]]])
+     [unspent-points-field]]]])
 
 ;; [input-group {:key "summary-2"}
    ;;  ^{:key "summary-ht"} [summary-field {:key :ht, :style (tw "max-w-12")}]

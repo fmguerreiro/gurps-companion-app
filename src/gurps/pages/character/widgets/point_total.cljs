@@ -1,12 +1,18 @@
 (ns gurps.pages.character.widgets.point-total
-  (:require [re-frame.core :as rf]
+  (:require ["twrnc" :refer [style] :rename {style tw}]
+            [re-frame.core :as rf]
             [gurps.utils.helpers :refer [->int]]
-            [gurps.pages.character.widgets.summary-field :refer [summary-field]]
-            [taoensso.timbre :as log]))
+            [gurps.pages.character.widgets.summary-field :refer [summary-field]]))
 
 (defn point-total-field
   []
-  [summary-field {:key :point-total, :text-align "center", :editable? false, :on-change-text ->int}])
+  [summary-field {:key :point-total,
+                  :text-align "right",
+                  :editable? false,
+                  :on-change-text ->int,
+                  :input-mode "numeric",
+                  :max-length 4,
+                  :input-style (tw "w-16")}])
 
 (rf/reg-sub
  :profile/point-total
@@ -20,8 +26,14 @@
      (or costs 0))))
 
 (defn unspent-points-field
-  [{:keys [style input-style text-align]}]
-  [summary-field {:key :unspent-points, :on-change-text ->int, :style style, :input-style input-style, :text-align text-align}])
+  [{:keys [style]}]
+  [summary-field {:key :unspent-points,
+                  :on-change-text ->int,
+                  :style style,
+                  :input-style (tw "w-16 bg-slate-100"),
+                  :input-mode "numeric",
+                  :max-length 4,
+                  :text-align "right"}])
 
 (rf/reg-sub
  :profile/unspent-points
