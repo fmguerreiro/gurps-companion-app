@@ -42,9 +42,10 @@
                add-listener! (fn [^js navigation-ref]
                                (when navigation-ref
                                  (.addListener navigation-ref "state" save-root-state!)))
+               character-component   (fn [] (r/as-element [character-stats-page]))
                skill-stack-component (fn [] (r/as-element [skills-stack]))
                items-stack-component (fn [] (r/as-element (safe-view [items-stack])))
-               spell-stack-component (fn [] (r/as-element (safe-view [spells-stack])))
+               spell-stack-component (fn [] (r/as-element [spells-stack]))
                advan-stack-component (fn [] (r/as-element (safe-view [advantages-stack])))]
 
     [:> safe-area-provider
@@ -53,7 +54,7 @@
       [:> RootTab.Navigator
 
        [:> RootTab.Screen {:name      (i18n/label :t/stats)
-                           :component (fn [props] (r/as-element [character-stats-page props]))
+                           :component character-component
                            :options   (merge
                                        options
                                        {:title (i18n/label :t/stats)
