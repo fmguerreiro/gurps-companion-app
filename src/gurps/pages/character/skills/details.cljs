@@ -5,48 +5,24 @@
             [reagent.core :as r]
             [re-frame.core :as rf]
             [gurps.widgets.base :refer [view flat-list-old text button]]
+            [gurps.widgets.add-button :refer [add-button]]
             [gurps.utils.helpers :refer [str->key]]
             [gurps.utils.i18n :as i18n]
             [gurps.pages.character.utils.skills :refer [skills skill->txt difficulties]]))
 
-(defn- row
-  [col1 col2 col3 col4]
-  [:> view {:style (tw "flex flex-row justify-between")}
-   ;; name
-   [:> view {:style (tw "flex-2 my-auto")} col1]
-   ;; difficulty
-   [:> view {:style (tw "flex-1 my-auto")} col2]
-   ;; default-lvl ;; TODO: explanation on which skill it's defaulting from?
-   [:> view {:style (tw "flex-1 my-auto")} col3]
-   [:> view {:style (tw "flex-1 my-auto")} col4]])
-
-(defn- header
-  []
-  [row
-   [:> text {:style (tw "font-bold")} (i18n/label :t/name)]
-   [:> text {:style (tw "font-bold justify-center text-center")} (i18n/label :t/difficulty)]
-   [:> text {:style (tw "font-bold justify-center text-center")} (i18n/label :t/default-lvl)]
-   [:> text {:style (tw "font-bold justify-center text-center")} (i18n/label :t/learn?)]])
-
-(defn skill-row
-  "Add a row for a skill to the skill list"
+(defn single-skill-section
   [skill-key default-lvl]
-  (let [skill (skill-key skills)
-        purchased?    (some-> (rf/subscribe [:skills/lvls]) deref skill-key some?)
-        can-purchase? (some-> (rf/subscribe [:skills/can-purchase? skill-key]) deref)]
+  (let [skill (skill-key skills)]
     (r/as-element
      [:> view {:style (tw "flex flex-col gap-2")}
 
-      [header]
+      [:> view {:style (tw "flex flex-col gap-1")}
+       [:> text {:style (tw "text-xl font-bold justify-center")} (i18n/label :t/difficulty)]
+       [:> text {:style (tw "")} (i18n/label (keyword :t (str (symbol ((:diff skill) difficulties)) "-full")))]]
 
-      [:> button {:onPress  #(rf/dispatch [:skills/add skill-key])
-                  :style    (when purchased? (tw "bg-green-100"))
-                  :disabled (not can-purchase?)}
-       [row
-        [:> text {:style (tw "capitalize"), :numberOfLines 1} (skill->txt skill-key)]
-        [:> text {:style (tw "text-center")} (i18n/label (keyword :t (str (symbol ((:diff skill) difficulties)) "-full")))]
-        [:> text {:style (tw "text-center")} default-lvl]
-        (when can-purchase? [:> text {:style (tw "text-center")} "+"])]]])))
+      [:> view {:style (tw "flex flex-col gap-1")}
+       [:> text {:style (tw "text-xl font-bold justify-center")} (i18n/label :t/default-lvl)]
+       [:> text {:style (tw "")} default-lvl]]])))
 
 (defn- section-header
   [txt]
@@ -177,6 +153,8 @@
   [props]
   (let [skill-key       (-> props ->clj :route :params :id str->key)
         skill-name      (if (some? (namespace skill-key)) (namespace skill-key) (name skill-key))
+        purchased?      (some-> (rf/subscribe [:skills/lvls]) deref skill-key some?)
+        can-purchase?   (some-> (rf/subscribe [:skills/can-purchase? skill-key]) deref)
         skill           (skill-key skills)
         specializations (:specializations skill)
         default-lvls    (some-> (rf/subscribe [:skills/defaults]) deref)
@@ -196,7 +174,7 @@
 
      (if (not (= "sp" (name skill-key)))
        ;; pure skill - no specialization
-       [skill-row skill-key (get default-lvls skill-key) (contains? skills skill-key)]
+       [single-skill-section skill-key (get default-lvls skill-key) (contains? skills skill-key)]
 
        ;; specializations
        (when specializations
@@ -210,7 +188,13 @@
         (map-indexed (fn [i prereq]
                        ^{:key (str "prereq-" i)}
                        [prerequisite nav (apply hash-map prereq)])
-                     (:prerequisites skill))])]))
+                     (:prerequisites skill))])
+
+     (when (and (not (= "sp" (name skill-key))) can-purchase? (not purchased?))
+       [:> view {:style (tw "absolute bottom-4 right-4")}
+        [add-button {:on-click #(do
+                                  (rf/dispatch [:skills/add skill-key])
+                                  (-> nav .goBack))}]])]))
 
 (defn- ->db
   [skill-key spec]
