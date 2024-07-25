@@ -24,13 +24,13 @@
        [:> view {:style (tw "flex flex-col")}
         (for [kv (seq defenses)]
           ^{:key (str "defense-dr-" (key kv))}
-          [:> view {:style (tw "flex flex-row gap-2 justify-center h-5")}
+          [:> view {:style (tw "flex flex-row gap-1 justify-center h-5")}
            ^{:key (str "defense-dr-label-" (key kv))}
-           [:> text {:style (tw "w-1/2 mr-2 text-right justify-end")} ;; HACK: mr-1.5 to prevent cutoff of text
+           [:> text {:style (tw "flex-1 text-right justify-end")}
             (i18n/label (keyword :t (key kv)))]
            ^{:key (str "defense-dr-input-" (key kv))}
            [underlined-input {:val         (val kv)
-                              :style       (tw "w-1/2 justify-start")
+                              :style       (tw "flex-1 justify-start")
                               :text-align  "center"
                               :disabled?   true}]])])]]
    ;; parry
