@@ -4,6 +4,7 @@
             [reagent.core :as r]))
 
 (def view rn/View)
+(def keyboard-avoiding-view (r/adapt-react-class rn/KeyboardAvoidingView))
 (def text rn/Text)
 (def input rn/TextInput)
 (def button rn/TouchableOpacity)

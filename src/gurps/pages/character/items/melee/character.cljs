@@ -5,7 +5,7 @@
             [re-frame.core :as rf]
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [->int]]
-            [gurps.widgets.base :refer [view flat-list button text]]
+            [gurps.widgets.base :refer [keyboard-avoiding-view view flat-list button text]]
             [gurps.widgets.add-button :refer [add-button]]
             [gurps.pages.character.widgets.helpers :refer [generify-key]]
             [gurps.pages.character.utils.skills :refer [grouped-skills]]
@@ -128,27 +128,28 @@
         swg     (some-> (rf/subscribe [:attributes/damage-swing])  deref)
         thr     (some-> (rf/subscribe [:attributes/damage-thrust]) deref)
         parry-skills (some-> (rf/subscribe [:defenses/parries]) deref)]
-    [:> view {:style (tw "bg-white flex flex-col grow p-2")}
+    [keyboard-avoiding-view {:behavior :padding, :style (tw "flex-1")}
+     [:> view {:style (tw "bg-white flex flex-col grow p-2")}
 
-     [flat-list
-      {:data (->js weapons)
+      [flat-list
+       {:data (->js weapons)
 
-       :key-extractor
-       (fn [item]
-         (:id (->clj item :keywordize-keys true)))
+        :key-extractor
+        (fn [item]
+          (:id (->clj item :keywordize-keys true)))
 
-       :estimated-item-size 49
+        :estimated-item-size 49
 
-       :render-item
-       (fn [item-info-js]
-         (let [item-info (->clj item-info-js :keywordize-keys true)
-               {data :item} item-info]
-           (item data swg thr parry-skills nav)))
+        :render-item
+        (fn [item-info-js]
+          (let [item-info (->clj item-info-js :keywordize-keys true)
+                {data :item} item-info]
+            (item data swg thr parry-skills nav)))
 
-       :ListHeaderComponent header}]
+        :ListHeaderComponent header}]
 
-     [:> view {:style (tw "absolute bottom-4 right-4")}
-      [add-button {:on-click #(-> nav (.push (i18n/label :t/melee-weapons-list)))}]]]))
+      [:> view {:style (tw "absolute bottom-4 right-4")}
+       [add-button {:on-click #(-> nav (.push (i18n/label :t/melee-weapons-list)))}]]]]))
 
 (rf/reg-sub
  :items/melee-weapons

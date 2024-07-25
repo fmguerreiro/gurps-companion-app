@@ -5,7 +5,7 @@
             [reagent.core :as r]
             [re-frame.core :as rf]
             [gurps.widgets.add-button :refer [add-button]]
-            [gurps.widgets.base :refer [view flat-list text button]]
+            [gurps.widgets.base :refer [keyboard-avoiding-view view flat-list text button]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
             [gurps.pages.character.utils.skills :refer [lvl-with-difficulty lvl-with-cost]]
             [gurps.pages.character.utils.spells :refer [vh-spells]]
@@ -45,27 +45,28 @@
   []
   (let [nav    (rnn/useNavigation)
         spells (some-> (rf/subscribe [:spells]) deref)]
-    [:> view {:style (tw "bg-white flex flex-col grow")}
+    [keyboard-avoiding-view {:behavior :padding, :style (tw "flex-1")}
+     [:> view {:style (tw "bg-white flex flex-col grow")}
 
-     [flat-list
-      {:data (->> spells (map #(merge (val %) {:id (key %)})) ->js)
+      [flat-list
+       {:data (->> spells (map #(merge (val %) {:id (key %)})) ->js)
 
-       :key-extractor
-       (fn [item]
-         (:id (->clj item :keywordize-keys true)))
+        :key-extractor
+        (fn [item]
+          (:id (->clj item :keywordize-keys true)))
 
-       :estimated-item-size 32
+        :estimated-item-size 32
 
-       :render-item
-       (fn [item-info-js]
-         (let [item-info (->clj item-info-js :keywordize-keys true)
-               {data :item} item-info]
-           (item data nav)))
+        :render-item
+        (fn [item-info-js]
+          (let [item-info (->clj item-info-js :keywordize-keys true)
+                {data :item} item-info]
+            (item data nav)))
 
-       :ListHeaderComponent header}]
+        :ListHeaderComponent header}]
 
-     [:> view {:style (tw "absolute bottom-4 right-4")}
-      [add-button {:on-click #(-> nav (.push (i18n/label :t/spells)))}]]]))
+      [:> view {:style (tw "absolute bottom-4 right-4")}
+       [add-button {:on-click #(-> nav (.push (i18n/label :t/spells)))}]]]]))
 
 (defn spell-lvl
   [spell-k lvl cost]

@@ -6,7 +6,7 @@
             [gurps.utils.helpers :refer [->int]]
             [gurps.widgets.underlined-input :refer [underlined-input]]
             [gurps.widgets.dropdown :refer [dropdown]]
-            [gurps.widgets.base :refer [view text]]
+            [gurps.widgets.base :refer [keyboard-avoiding-view view text]]
             [gurps.pages.character.items.defenses-section :refer [defenses-section]]
             [gurps.utils.debounce :refer [debounce-and-dispatch]]))
 
@@ -77,15 +77,16 @@
 
 (defn character-items-page
   []
-  [:> view {:style (tw "flex flex-col bg-white gap-4 flex-grow p-2")}
-   [header]
+  [keyboard-avoiding-view {:behavior :padding, :style (tw "flex-1")}
+   [:> view {:style (tw "flex flex-col bg-white gap-4 flex-grow p-2")}
+    [header]
 
-   [items]
+    [items]
 
-   [:> view {:style (tw "mt-2")}
-    [defenses-section]]
+    [:> view {:style (tw "mt-2")}
+     [defenses-section]]
 
-   [:> StatusBar {:style "auto"}]])
+    [:> StatusBar {:style "auto"}]]])
 
 (def ks [:possessions])
 (doseq [k ks]

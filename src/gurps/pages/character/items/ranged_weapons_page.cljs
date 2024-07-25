@@ -4,9 +4,8 @@
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [->int]]
             [gurps.widgets.underlined-input :refer [underlined-input]]
-            [gurps.widgets.base :refer [view text]]
-            [gurps.utils.debounce :refer [debounce-and-dispatch]]
-            [taoensso.timbre :as log]))
+            [gurps.widgets.base :refer [keyboard-avoiding-view view text]]
+            [gurps.utils.debounce :refer [debounce-and-dispatch]]))
 
 (defn- row
   [col1 col2 col3 col4 col5 col6 col7]
@@ -42,42 +41,43 @@
 (defn ranged-weapons-page
   []
   (let [weapons (some-> (rf/subscribe [:items/ranged-weapons]) deref)]
-    [:> view {:style (tw "flex flex-col gap-2 flex-grow bg-white p-2")}
+    [keyboard-avoiding-view {:behavior :padding, :style (tw "flex-1")}
+     [:> view {:style (tw "flex flex-col gap-2 flex-grow bg-white p-2")}
 
-     [header]
+      [header]
 
-     (map-indexed (fn [i {:keys [name dmg acc range rof shots weight]}]
-                    ^{:key (str "ranged-" i)}
-                    [row
-                     [underlined-input {:val name
-                                        :on-change-text #(debounce-and-dispatch [:items.ranged/update i :name %] 500)}]
-                     [underlined-input {:val dmg
-                                        :text-align "center"
-                                        :on-change-text #(debounce-and-dispatch [:items.ranged/update i :dmg %] 500)}]
-                     [underlined-input {:val acc
-                                        :text-align "center"
-                                        :input-mode "numeric"
-                                        :max-length 2
-                                        :on-change-text #(debounce-and-dispatch [:items.ranged/update i :acc (->int %)] 500)}]
-                     [underlined-input {:val range
-                                        :text-align "center"
-                                        :input-mode "numeric"
-                                        :on-change-text #(debounce-and-dispatch [:items.ranged/update i :range %] 500)}]
-                     [underlined-input {:val rof
-                                        :text-align "center"
-                                        :input-mode "numeric"
-                                        :max-length 3
-                                        :on-change-text #(debounce-and-dispatch [:items.ranged/update i :rof (->int %)] 500)}]
-                     [underlined-input {:val shots
-                                        :text-align "center"
-                                        :input-mode "numeric"
-                                        :on-change-text #(debounce-and-dispatch [:items.ranged/update i :shots %] 500)}]
-                     [underlined-input {:val weight
-                                        :text-align "center"
-                                        :input-mode "numeric"
-                                        :max-length 3
-                                        :on-change-text #(debounce-and-dispatch [:items.ranged/update i :weight (->int %)] 500)}]])
-                  (conj weapons empty-weapon))]))
+      (map-indexed (fn [i {:keys [name dmg acc range rof shots weight]}]
+                     ^{:key (str "ranged-" i)}
+                     [row
+                      [underlined-input {:val name
+                                         :on-change-text #(debounce-and-dispatch [:items.ranged/update i :name %] 500)}]
+                      [underlined-input {:val dmg
+                                         :text-align "center"
+                                         :on-change-text #(debounce-and-dispatch [:items.ranged/update i :dmg %] 500)}]
+                      [underlined-input {:val acc
+                                         :text-align "center"
+                                         :input-mode "numeric"
+                                         :max-length 2
+                                         :on-change-text #(debounce-and-dispatch [:items.ranged/update i :acc (->int %)] 500)}]
+                      [underlined-input {:val range
+                                         :text-align "center"
+                                         :input-mode "numeric"
+                                         :on-change-text #(debounce-and-dispatch [:items.ranged/update i :range %] 500)}]
+                      [underlined-input {:val rof
+                                         :text-align "center"
+                                         :input-mode "numeric"
+                                         :max-length 3
+                                         :on-change-text #(debounce-and-dispatch [:items.ranged/update i :rof (->int %)] 500)}]
+                      [underlined-input {:val shots
+                                         :text-align "center"
+                                         :input-mode "numeric"
+                                         :on-change-text #(debounce-and-dispatch [:items.ranged/update i :shots %] 500)}]
+                      [underlined-input {:val weight
+                                         :text-align "center"
+                                         :input-mode "numeric"
+                                         :max-length 3
+                                         :on-change-text #(debounce-and-dispatch [:items.ranged/update i :weight (->int %)] 500)}]])
+                   (conj weapons empty-weapon))]]))
 
 (rf/reg-sub
  :items/ranged-weapons

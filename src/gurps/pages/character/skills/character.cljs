@@ -8,7 +8,7 @@
             [gurps.utils.i18n :as i18n]
             [gurps.utils.helpers :refer [key->str ->int flatten-key]]
             [gurps.utils.debounce :refer [debounce-and-dispatch]]
-            [gurps.widgets.base :refer [view flat-list text button]]
+            [gurps.widgets.base :refer [keyboard-avoiding-view view flat-list text button]]
             [gurps.widgets.add-button :refer [add-button]]
             [gurps.widgets.bracketed-numeric-input :refer [bracketed-numeric-input]]
             [gurps.pages.character.widgets.helpers :refer [generify-key]]
@@ -81,30 +81,30 @@
   []
   (let [nav      (rnn/useNavigation)
         skills   (some-> (rf/subscribe [:skills]) deref)]
+    [keyboard-avoiding-view {:behavior :padding, :style (tw "flex-1")}
+     [:> view {:style (tw "bg-white flex flex-col grow")}
 
-    [:> view {:style (tw "bg-white flex flex-col grow")}
+      [flat-list
+       {:data (->> skills (map #(merge % {:id (:k %)})) ->js)
 
-     [flat-list
-      {:data (->> skills (map #(merge % {:id (:k %)})) ->js)
+        :key-extractor
+        (fn [item]
+          (:id (->clj item :keywordize-keys true)))
 
-       :key-extractor
-       (fn [item]
-         (:id (->clj item :keywordize-keys true)))
+        :estimated-item-size 40
 
-       :estimated-item-size 40
+        :render-item
+        (fn [item-info-js]
+          (let [item-info (->clj item-info-js :keywordize-keys true)
+                {data :item} item-info
+                idx (:index item-info)
+                data' (merge data {:k (keyword (:k data))})]
+            (item data' idx nav)))
 
-       :render-item
-       (fn [item-info-js]
-         (let [item-info (->clj item-info-js :keywordize-keys true)
-               {data :item} item-info
-               idx (:index item-info)
-               data' (merge data {:k (keyword (:k data))})]
-           (item data' idx nav)))
+        :ListHeaderComponent header}]
 
-       :ListHeaderComponent header}]
-
-     [:> view {:style (tw "absolute bottom-4 right-4")}
-      [add-button {:on-click #(-> nav (.push (i18n/label :t/add-skill)))}]]]))
+      [:> view {:style (tw "absolute bottom-4 right-4")}
+       [add-button {:on-click #(-> nav (.push (i18n/label :t/add-skill)))}]]]]))
 
 ;; register all skill-cost subs
 (doseq [skill (keys skill-map)]
