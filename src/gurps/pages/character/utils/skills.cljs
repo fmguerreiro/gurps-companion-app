@@ -306,7 +306,7 @@
    :sling {:diff :h :attr :dex :default [(calc-hoc [:attributes :dex] 6)]}
    :spear-thrower {:diff :a :attr :dex :default [(calc-hoc [:attributes :dex] 5),
                                                  (calc-hoc [:skills :combat-ranged :thrown-weapon/spear] 4)]}
-   :throwing-art {:diff :h :attr :dex :prerequisites {:or [:advantages/trained-by-a-master :advantages/weapon-master]}}
+   :throwing-art {:diff :h :attr :dex :prerequisites {:and [{:or [:advantages/trained-by-a-master :advantages/weapon-master]}]}}
    :thrown-weapon/sp {:diff :e :attr :dex
                       :default [(calc-hoc [:attributes :dex] 4)]
                       :specializations [:axe-or-mace :dart :harpoon :knife :shuriken :spear :stick]}
@@ -417,17 +417,17 @@
    :flying-leap {:diff :h, :attr :int, :prerequisites {:and [{:or [:advantages/trained-by-a-master :advantages/weapon-master]}, :jumping, :power-blow]}}
    :immovable-stance {:diff :h :attr :dex, :prerequisites {:and [:advantages/trained-by-a-master]}}
    :invisibility-art {:diff :v :attr :int, :prerequisites {:and [:advantages/trained-by-a-master, {:hypnotism 14}, {:stealth 14}]}}
-   :kiai {:diff :h :attr :ht, :prerequisites {:or [:advantages/trained-by-a-master, :advantages/weapon-master]}}
+   :kiai {:diff :h :attr :ht, :prerequisites {:and [{:or [:advantages/trained-by-a-master, :advantages/weapon-master]}]}}
    :light-walk {:diff :h :attr :dex :prerequisites {:and [:advantages/trained-by-a-master, {:acrobatics 14}, {:stealth 14}]}}
    :meditation {:diff :h :attr :will :default [(calc-hoc [:attributes :will] 6),
                                                (calc-hoc [:skills :esoteric :autohypnosis] 4)]}
-   :mental-strength {:diff :e :attr :will :prerequisites {:or [:advantages/trained-by-a-master :advantages/weapon-master]}}
+   :mental-strength {:diff :e :attr :will :prerequisites {:and [{:or [:advantages/trained-by-a-master :advantages/weapon-master]}]}}
    :mind-block {:diff :a :attr :will :default [(calc-hoc [:attributes :will] 5),
                                                (calc-hoc [:skills :esoteric :meditation] 5)]}
    :musical-influence {:diff :v :attr :int :prerequisites {:and [{:talents/musical-ability 1}, {:or [{:musical-instrument/sp 12} {:singing 12}]}]}}
    :persuade {:diff :h :attr :will}
-   :power-blow {:diff :h :attr :will :prerequisites {:or [:advantages/trained-by-a-master :advantages/weapon-master]}}
-   :pressure-points {:diff :h :attr :int :prerequisites {:or [:advantages/trained-by-a-master :advantages/weapon-master]}}
+   :power-blow {:diff :h :attr :will :prerequisites {:and [{:or [:advantages/trained-by-a-master :advantages/weapon-master]}]}}
+   :pressure-points {:diff :h :attr :int :prerequisites {:and [{:or [:advantages/trained-by-a-master :advantages/weapon-master]}]}}
    :pressure-secrets {:diff :v :attr :int :prerequisites {:and [:advantages/trained-by-a-master {:pressure-points 16}]}}
    :push {:diff :h :attr :dex :prerequisites {:and [:advantages/trained-by-a-master]}}
    :suggest {:diff :h :attr :will}

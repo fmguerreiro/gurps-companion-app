@@ -1,6 +1,6 @@
 (ns gurps.pages.character.skills.details
-  (:require ["twrnc" :refer [style] :rename {style tw}]
-            ["@react-navigation/native" :as rnn]
+  (:require ["@react-navigation/native" :as rnn]
+            ["twrnc" :refer [style] :rename {style tw}]
             [cljs-bean.core :refer [->clj ->js]]
             [reagent.core :as r]
             [re-frame.core :as rf]
@@ -250,6 +250,7 @@
                   ;; {:or [:light-walk, ...]} => #{:light-walk, ...}
                   (map #(if (keyword? %) %
                             (let [cnd (first (keys %))] (if (= :or cnd) (into #{} (first (vals %))) (first (vals %)))))))]
+
       (->> ps
            (map #(cond (keyword? %) (prereq->cleared? %)
 
@@ -264,6 +265,7 @@
                                          count
                                          pos?)
                        :else             true))
+
            (filter false?)
            count
            (= 0)))))
