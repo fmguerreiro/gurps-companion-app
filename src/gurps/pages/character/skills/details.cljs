@@ -12,11 +12,11 @@
 (defn- row
   [col1 col2 col3 col4]
   [:> view {:style (tw "flex flex-row justify-between")}
-    ;; name
+   ;; name
    [:> view {:style (tw "flex-2 my-auto")} col1]
-    ;; difficulty
+   ;; difficulty
    [:> view {:style (tw "flex-1 my-auto")} col2]
-    ;; default-lvl ;; TODO: explanation on which skill it's defaulting from?
+   ;; default-lvl ;; TODO: explanation on which skill it's defaulting from?
    [:> view {:style (tw "flex-1 my-auto")} col3]
    [:> view {:style (tw "flex-1 my-auto")} col4]])
 
@@ -64,8 +64,6 @@
        :key-extractor identity
 
        :scroll-enabled false
-
-       :estimated-item-size 25
 
        :render-item
        (fn [item-info-js]
