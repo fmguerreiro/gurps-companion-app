@@ -678,8 +678,8 @@
    :search {:diff :a :attr :per :default [(calc-hoc [:attributes :per] 5),
                                           (calc-hoc [:skills :police :criminology] 5),
                                           (calc-hoc [:skills :humanities :criminology] 5)]}
-   :stealth {:diff :a :attrb :dex :default [(calc-hoc [:attributes :int] 5),
-                                            (calc-hoc [:attributes :dex] 5)]}
+   :stealth {:diff :a :attr :dex :default [(calc-hoc [:attributes :int] 5),
+                                           (calc-hoc [:attributes :dex] 5)]}
    :electrician {:diff :a :attr :int :default [(calc-hoc [:attributes :int] 5),
                                                (calc-hoc [:skills :invention :engineer/electrical] 3)]}
    :electronics-repair/sp {:diff :a :attr :int
