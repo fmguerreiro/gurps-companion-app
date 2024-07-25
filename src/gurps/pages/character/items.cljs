@@ -6,9 +6,8 @@
             [gurps.utils.helpers :refer [->int]]
             [gurps.widgets.underlined-input :refer [underlined-input]]
             [gurps.widgets.dropdown :refer [dropdown]]
-            [gurps.widgets.base :refer [view text button]]
+            [gurps.widgets.base :refer [view text]]
             [gurps.pages.character.items.defenses-section :refer [defenses-section]]
-            [taoensso.timbre :as log]
             [gurps.utils.debounce :refer [debounce-and-dispatch]]))
 
 (defn row
@@ -25,8 +24,8 @@
   [row
    [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/item)]
    [:> text {:style (tw "font-bold uppercase")} (i18n/label :t/dr)]
-   [:> text {:style (tw "font-bold capitalize")} (i18n/label :t/weight)]
-   [:> text {:style (tw "font-bold capitalize self-end")} (i18n/label :t/location)]])
+   [:> text {:style (tw "font-bold capitalize") :numberOfLines 1} (i18n/label :t/weight)]
+   [:> text {:style (tw "font-bold capitalize self-end") :numberOfLines 1} (i18n/label :t/location)]])
 
 (def locations
   [{:value "head" :label (i18n/label :t/head)}
