@@ -11,27 +11,33 @@
    [:> text {:style (tw "uppercase font-bold")} label]
    children])
 
+(defn- dr-box
+  []
+  [labelled-box (i18n/label :t/dr)
+   (let [defenses (some-> (rf/subscribe [:profile/defenses]) deref)]
+     ^{:key "defenses-dr-view"}
+     [:> view {:style (tw "flex flex-col")}
+      (for [kv (seq defenses)]
+        ^{:key (str "defense-dr-" (key kv))}
+        [:> view {:style (tw "flex flex-row w-full gap-1 justify-center h-5")}
+         ^{:key (str "defense-dr-label-" (key kv))}
+         [:> text {:style (tw "flex-1 text-right justify-end")}
+          (i18n/label (keyword :t (key kv)))]
+         ^{:key (str "defense-dr-input-" (key kv))}
+         [:> view {:style (tw "flex-1")}
+          [underlined-input {:val         (val kv)
+                             :style       (tw "w-1/2 justify-start")
+                             :text-align  "center"
+                             :disabled?   true}]]])])])
+
 (defn defenses-section
   []
   [:> view {:style (tw "flex flex-row gap-1")}
    ;; dr
    ^{:key "defenses-dr"}
    [:> view {:style (tw "flex-1")}
-    [labelled-box (i18n/label :t/dr)
-     (let [defenses (some-> (rf/subscribe [:profile/defenses]) deref)]
-       ^{:key "defenses-dr-view"}
-       [:> view {:style (tw "flex flex-col")}
-        (for [kv (seq defenses)]
-          ^{:key (str "defense-dr-" (key kv))}
-          [:> view {:style (tw "flex flex-row gap-1 justify-center h-5")}
-           ^{:key (str "defense-dr-label-" (key kv))}
-           [:> text {:style (tw "flex-1 text-right justify-end")}
-            (i18n/label (keyword :t (key kv)))]
-           ^{:key (str "defense-dr-input-" (key kv))}
-           [underlined-input {:val         (val kv)
-                              :style       (tw "flex-1 justify-start")
-                              :text-align  "center"
-                              :disabled?   true}]])])]]
+    [dr-box]]
+
    ;; parry
    ^{:key "defenses-parry"}
    [:> view {:style (tw "flex-1")}
