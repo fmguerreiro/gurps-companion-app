@@ -1,14 +1,14 @@
 (ns gurps.pages.character.info
-  (:require [gurps.widgets.base :refer [view]]
+  (:require ["expo-status-bar" :refer [StatusBar]]
+            ["react-native" :as rn]
+            ["twrnc" :refer [style] :rename {style tw}]
+            [gurps.widgets.base :refer [view]]
             [gurps.pages.character.widgets.summary :refer [summary-group]]
             [gurps.pages.character.info.widgets.portrait :refer [portrait]]
             [gurps.pages.character.info.widgets.tech-level-dropdown :refer [tech-level-dropdown]]
             [gurps.pages.character.info.widgets.reaction-modifiers-section :refer [reaction-modifiers-section]]
             [gurps.pages.character.info.widgets.languages-section :refer [languages-section]]
-            [gurps.pages.character.info.widgets.notes :refer [notes-section]]
-            ["expo-status-bar" :refer [StatusBar]]
-            ["react-native" :as rn]
-            ["twrnc" :refer [style] :rename {style tw}]))
+            [gurps.pages.character.info.widgets.notes :refer [notes-section]]))
 
 (defn character-info-page
   []

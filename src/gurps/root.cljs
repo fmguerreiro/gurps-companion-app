@@ -10,7 +10,7 @@
             ["twrnc" :refer [style] :rename {style tw}]
             [gurps.utils.i18n :as i18n]
             [gurps.widgets.base :refer [view]]
-            [gurps.pages.character.info :refer [character-info-page]]
+            [gurps.navigation.info-stack :refer [info-stack]]
             [gurps.navigation.items-stack :refer [items-stack]]
             [gurps.navigation.common :refer [options]]
             [gurps.navigation.character-stack :refer [character-stack]]
@@ -51,7 +51,8 @@
                skill-stack-component     (fn [] (r/as-element [skills-stack]))
                items-stack-component     (fn [] (r/as-element (safe-view [items-stack])))
                spell-stack-component     (fn [] (r/as-element [spells-stack]))
-               advan-stack-component     (fn [] (r/as-element (safe-view [advantages-stack])))]
+               advan-stack-component     (fn [] (r/as-element (safe-view [advantages-stack])))
+               info-stack-component      (fn [] (r/as-element [info-stack]))]
 
     [:> safe-area-provider
      [:> rnn/NavigationContainer {:ref add-listener!
@@ -99,9 +100,10 @@
                                         :tabBarIcon (tab-bar-icon "shield-sword")
                                         :headerShown false})}]
 
-       [:> RootTab.Screen {:name      (str (i18n/label :t/background))
-                           :component (fn [props] (r/as-element [character-info-page props]))
+       [:> RootTab.Screen {:name      (str (i18n/label :t/background) "Stack")
+                           :component info-stack-component
                            :options   (merge
                                        options
                                        {:title (i18n/label :t/background)
-                                        :tabBarIcon (tab-bar-icon "book" :ionicons)})}]]]]))
+                                        :tabBarIcon (tab-bar-icon "book" :ionicons)
+                                        :headerShown false})}]]]]))
