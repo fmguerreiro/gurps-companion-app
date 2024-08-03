@@ -50,7 +50,10 @@
               [(key x)
                (map #(do {:college (key x), :name %}) (val x))]))
        flatten
+       ;; NOTE: we filter out the spells that don't have a description yet
+       (filter #(or (keyword? %) (i18n/has-label? (str "spell-" (symbol (:name %)) "-description"))))
        ->js))
+
 
 (defn spell-groups-page
   []
