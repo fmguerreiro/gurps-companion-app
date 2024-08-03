@@ -57,7 +57,7 @@
      [:> rnn/NavigationContainer {:ref add-listener!
                                   :initialState (when @!root-state (some-> @!root-state .-data .-state))}
 
-      [:> RootTab.Navigator (when android? {:screenOptions {:tabBarStyle (tw "h-14 py-2 bg-white")}})
+      [:> RootTab.Navigator (when android? {:screenOptions {:tabBarStyle (tw "h-16 py-2 bg-white")}})
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/stats) "Stack")
                            :component character-stack-component
