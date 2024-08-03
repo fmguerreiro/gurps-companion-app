@@ -24,14 +24,13 @@
 (def icon-color (.-color (tw "text-slate-400")))
 
 (defn tab-bar-icon
-  ([icon] (tab-bar-icon icon :material))
-  ([icon variant]
-   (let [icon-comp (cond (= :fontisto variant) fontisto-icon,
-                         (= :ionicons variant) ion-icon
-                         :else material-icon)]
-     (fn []
-       (r/as-element
-        [:> icon-comp {:name icon :size 24 :color icon-color}])))))
+  [icon & {:keys [size variant], :or {size 24 variant :material}}]
+  (let [icon-comp (cond (= :fontisto variant) fontisto-icon,
+                        (= :ionicons variant) ion-icon
+                        :else material-icon)]
+    (fn []
+      (r/as-element
+       [:> icon-comp {:name icon :size size :color icon-color}]))))
 
 (defn- safe-view
   [component]
@@ -65,7 +64,7 @@
                            :options   (merge
                                        options
                                        {:title (i18n/label :t/stats)
-                                        :tabBarIcon (tab-bar-icon "persons" :fontisto)
+                                        :tabBarIcon (tab-bar-icon "persons" {:variant :fontisto})
                                         :headerShown false})}]
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/skills) "Stack")
@@ -73,7 +72,7 @@
                            :options   (merge
                                        options
                                        {:title (i18n/label :t/skills)
-                                        :tabBarIcon (tab-bar-icon "arm-flex")
+                                        :tabBarIcon (tab-bar-icon "arm-flex" {:size 26})
                                         :headerShown false})}]
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/advantages) "Stack")
@@ -81,15 +80,7 @@
                            :options   (merge
                                        options
                                        {:title (i18n/label :t/advantages)
-                                        :tabBarIcon (tab-bar-icon "star")
-                                        :headerShown false})}]
-
-       [:> RootTab.Screen {:name      (str (i18n/label :t/spells) "Stack")
-                           :component spell-stack-component
-                           :options   (merge
-                                       options
-                                       {:title (i18n/label :t/spells)
-                                        :tabBarIcon (tab-bar-icon "fire")
+                                        :tabBarIcon (tab-bar-icon "star" {:size 28})
                                         :headerShown false})}]
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/items) "Stack")
@@ -98,6 +89,14 @@
                                        options
                                        {:title (i18n/label :t/items)
                                         :tabBarIcon (tab-bar-icon "shield-sword")
+                                        :headerShown false})}]
+
+       [:> RootTab.Screen {:name      (str (i18n/label :t/spells) "Stack")
+                           :component spell-stack-component
+                           :options   (merge
+                                       options
+                                       {:title (i18n/label :t/spells)
+                                        :tabBarIcon (tab-bar-icon "fire" {:size 28})
                                         :headerShown false})}]
 
        [:> RootTab.Screen {:name      (str (i18n/label :t/background) "Stack")
