@@ -4,7 +4,8 @@
             [cljs-bean.core :refer [->clj ->js]]
             [reagent.core :as r]
             [re-frame.core :as rf]
-            [gurps.widgets.base :refer [view flat-list-old text button]]
+            [gurps.widgets.base :refer [view scroll-view flat-list-old text button]]
+            [gurps.widgets.text :refer [tabbed-text]]
             [gurps.widgets.add-button :refer [add-button]]
             [gurps.utils.helpers :refer [str->key]]
             [gurps.utils.i18n :as i18n]
@@ -161,40 +162,42 @@
         skills          (some-> (rf/subscribe [:skill-map]) deref)
         nav             (rnn/useNavigation)]
     (rf/dispatch [:details-page/key skill-key])
-    [:> view {:style (tw "p-2 bg-white flex flex-col gap-2 flex-grow")}
+    [scroll-view {:style (tw "bg-white")}
+
+     [:> view {:style (tw "p-2 bg-white flex flex-col gap-2 flex-grow")}
 
      ;; description
-     [:> view {:style "flex flex-col gap-1"}
-      [section-header (i18n/label :t/description)]
-      [:> text
-       (i18n/label (keyword :t (str "skill-description-" (symbol skill-name))))]]
+      [:> view {:style "flex flex-col gap-1"}
+       [section-header (i18n/label :t/description)]
+       [tabbed-text
+        (i18n/label (keyword :t (str "skill-description-" (symbol skill-name))))]]
 
-     ;; modifiers
-     [modifiers (symbol skill-name)]
+      ;; modifiers
+      [modifiers (symbol skill-name)]
 
-     (if (not (= "sp" (name skill-key)))
-       ;; pure skill - no specialization
-       [single-skill-section skill-key (get default-lvls skill-key) (contains? skills skill-key)]
+      (if (not (= "sp" (name skill-key)))
+         ;; pure skill - no specialization
+        [single-skill-section skill-key (get default-lvls skill-key) (contains? skills skill-key)]
 
-       ;; specializations
-       (when specializations
-         [specializations-section skill-key specializations]))
+         ;; specializations
+        (when specializations
+          [specializations-section skill-key specializations]))
 
-     ;; dependencies
-     (when (:prerequisites skill)
-       [:> view {:style (tw "flex flex-col gap-1")}
-        [section-header (i18n/label :t/dependencies)]
+      ;; dependencies
+      (when (:prerequisites skill)
+        [:> view {:style (tw "flex flex-col gap-1")}
+         [section-header (i18n/label :t/dependencies)]
 
-        (map-indexed (fn [i prereq]
-                       ^{:key (str "prereq-" i)}
-                       [prerequisite nav (apply hash-map prereq)])
-                     (:prerequisites skill))])
+         (map-indexed (fn [i prereq]
+                        ^{:key (str "prereq-" i)}
+                        [prerequisite nav (apply hash-map prereq)]
+                        (:prerequisites skill)))])
 
-     (when (and (not (= "sp" (name skill-key))) can-purchase? (not purchased?))
-       [:> view {:style (tw "absolute bottom-4 right-4")}
-        [add-button {:on-click #(do
-                                  (rf/dispatch [:skills/add skill-key])
-                                  (-> nav .goBack))}]])]))
+      (when (and (not (= "sp" (name skill-key))) can-purchase? (not purchased?))
+        [:> view {:style (tw "absolute bottom-4 right-4")}
+         [add-button {:on-click #(do
+                                   (rf/dispatch [:skills/add skill-key])
+                                   (-> nav .goBack))}]])]]))
 
 (defn- ->db
   [skill-key spec]
