@@ -2,7 +2,7 @@
 
 A batteries-included template for building mobile apps with ClojureScript. Ships with everything wired up so you can skip the boilerplate and start building.
 
-For a real-world example built on this template, see the [`main` branch](https://github.com/fmguerreiro/gurps-companion-app/tree/main).
+For a real-world example built on this template, see the [`app` branch](https://github.com/fmguerreiro/cljs-mobile-starter-kit/tree/app).
 
 ## Stack
 
