@@ -150,6 +150,22 @@ Use in components with `(rf/subscribe [:my-feature/value])` and `(rf/dispatch [:
 
 Add keys to `translations/en.json` and use them with `(i18n/label :t/your-key)`.
 
+## Storage
+
+Uses AsyncStorage with [transit](https://github.com/cognitect/transit-cljs) serialization for persisting re-frame state. For better performance, consider swapping to [react-native-mmkv](https://github.com/mrousavy/react-native-mmkv) — it's synchronous and significantly faster.
+
+## Storybook
+
+Component stories live in `src/stories/` with the `*-stories$` naming convention. See `src/stories/widgets/button_stories.cljs` for an example.
+
+```bash
+# generate story index
+npm run storybook:generate
+
+# run on iOS with storybook UI
+npm run storybook:ios
+```
+
 ## EAS builds
 
 ```bash
