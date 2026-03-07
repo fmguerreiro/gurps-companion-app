@@ -86,22 +86,15 @@
                 (cb nil)
                 (log/error "[async-storage]" error)))))
 
-(comment (-> ^js async-storage
-             (.getAllKeys)
-             (.then #(js/console.log "get-all-keys" %)))
+(comment
+  (-> ^js async-storage
+      (.getAllKeys)
+      (.then #(js/console.log "get-all-keys" %)))
 
-         (-> ^js async-storage
-             (.clear)
-             (.then #(js/console.log "clear" %)))
+  (-> ^js async-storage
+      (.clear)
+      (.then #(js/console.log "clear" %)))
 
-         (-> ^js async-storage
-             (.multiGet #js [":spell-costs"])
-             (.then #(js/console.log "multi-get" %)))
-
-         (-> ^js async-storage
-             (.removeItem ":spell-costs")
-             (.then #(js/console.log "remove-item" %)))
-
-         (-> ^js async-storage
-             (.getItem ":languages/0")
-             (.then #(js/console.log "get-item" %))))
+  (-> ^js async-storage
+      (.getItem ":counter")
+      (.then #(js/console.log "get-item" %))))

@@ -1,17 +1,16 @@
 module.exports = {
   expo: {
-    owner: "tofuman",
-    name: "Gurps Companion",
-    slug: "gurps-companion-app",
+    name: "My App",
+    slug: "my-app",
     privacy: "public",
     platforms: ["ios", "android", "web"],
     version: "1.0.0",
     orientation: "portrait",
-    icon: "./assets/splash.png",
+    icon: "./assets/icon.png",
     splash: {
       image: "./assets/splash.png",
       resizeMode: "contain",
-      backgroundColor: "#33cfff",
+      backgroundColor: "#ffffff",
     },
     updates: {
       fallbackToCacheTimeout: 0,
@@ -21,7 +20,7 @@ module.exports = {
       supportsTablet: true,
     },
     android: {
-      package: "com.fmguerreiro.gurpscompanion",
+      package: "com.example.myapp",
       versionCode: 1,
     },
     extra: {
@@ -31,8 +30,7 @@ module.exports = {
       },
     },
     web: {
-      bundler: "metro", // for tailwind support
+      bundler: "metro",
     },
   },
-  plugins: [["expo-router", { root: "./app" }]],
 };
