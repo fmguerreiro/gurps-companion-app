@@ -2,8 +2,6 @@
 
 import { start } from '@storybook/react-native';
 
-import '@storybook/addon-ondevice-controls/register';
-import '@storybook/addon-ondevice-actions/register';
 
 const normalizedStories = [
   {
@@ -28,7 +26,6 @@ export const view = start({
   annotations: [
     require('./preview'),
     require('@storybook/react-native/dist/preview'),
-    require('@storybook/addon-actions/preview'),
   ],
   storyEntries: normalizedStories,
 });

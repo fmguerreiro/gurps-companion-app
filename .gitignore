@@ -24,5 +24,4 @@ dist-newstyle/
 .clj-kondo/.cache
 .lsp/sqlite.db
 nativewind-output.js
-.storybook/
 .env

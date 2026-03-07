@@ -19,6 +19,7 @@
     "@expo/metro-runtime": "~3.2.1",
     "@expo/vector-icons": "^14.0.0",
     "@react-native-async-storage/async-storage": "1.23.1",
+    "@react-native-community/slider": "^5.1.2",
     "@react-navigation/bottom-tabs": "^6.5.19",
     "@react-navigation/native": "^6.1.16",
     "@react-navigation/native-stack": "^6.9.25",
@@ -37,10 +38,15 @@
     "react-native-screens": "3.31.1",
     "react-native-web": "~0.19.6",
     "tailwindcss": "3.3.2",
-    "twrnc": "^4.2.0"
+    "twrnc": "^4.2.0",
+    "typescript": "~5.3.3",
+    "@types/react": "~18.2.79"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
+    "@storybook/addon-actions": "^7.6.20",
+    "@storybook/addon-ondevice-actions": "^7.6.18",
+    "@storybook/addon-ondevice-controls": "^7.6.18",
     "@storybook/react-native": "^7.6.15",
     "babel-loader": "^8.3.0",
     "shadow-cljs": "^2.23.3",
