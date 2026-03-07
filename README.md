@@ -92,6 +92,17 @@ src/
     platform.cljs              # platform detection (ios? android?)
   expo/
     root.cljs                  # Expo root component registration
+  stories/
+    widgets/
+      button_stories.cljs      # example ClojureScript story
+.storybook/
+  index.ts                     # Storybook entry point
+  main.ts                      # Storybook config (story paths, addons)
+  storybook.requires.ts        # auto-generated story index
+  stories/
+    Button/                    # example TypeScript story
+storybook-bridge.js            # bridges .storybook/ into shadow-cljs builds
+metro.config.js                # Metro config (extraNodeModules for storybook)
 translations/
   en.json                      # English translation strings
 ```
@@ -156,15 +167,24 @@ Uses AsyncStorage with [transit](https://github.com/cognitect/transit-cljs) seri
 
 ## Storybook
 
-Component stories live in `src/stories/` with the `*-stories$` naming convention. See `src/stories/widgets/button_stories.cljs` for an example.
+In dev mode, a purple FAB button appears in the bottom-right corner. Tap it to toggle between the app and the Storybook UI.
+
+Two story formats are supported:
+
+- **TypeScript stories** in `.storybook/stories/` — standard `@storybook/react-native` format (`.stories.tsx`)
+- **ClojureScript stories** in `src/stories/` — compiled by shadow-cljs with the `*-stories$` namespace convention
+
+See `.storybook/stories/Button/Button.stories.tsx` for a TSX example and `src/stories/widgets/button_stories.cljs` for a ClojureScript example.
 
 ```bash
-# generate story index
+# generate story index (after adding new TSX stories)
 npm run storybook:generate
 
-# run on iOS with storybook UI
+# run on iOS with storybook as the initial view
 npm run storybook:ios
 ```
+
+The bridge between shadow-cljs and Storybook works via `storybook-bridge.js` at the project root, resolved through Metro's `extraNodeModules` config in `metro.config.js`.
 
 ## EAS builds
 
