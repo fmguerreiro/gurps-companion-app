@@ -26,5 +26,6 @@
                                             :before-load-async app.setup.hot-reload/before-reload
                                             }}
                 :stories {:target :npm-module
+                          :output-dir "app"
                           :ns-regexp "-stories$"
                           :output-to "app/stories.js"}}}
