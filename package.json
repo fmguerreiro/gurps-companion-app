@@ -52,5 +52,8 @@
     "shadow-cljs": "^2.23.3",
     "storybook": "^7.6.17"
   },
+  "overrides": {
+    "esbuild": "^0.28.1"
+  },
   "private": true
 }
